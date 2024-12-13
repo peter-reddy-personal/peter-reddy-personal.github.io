@@ -45,7 +45,7 @@ main {
 }
 
 #welcome {
-    background: url('https://github.com/peter-reddy-personal/peter-reddy-personal.github.io/blob/8100cd719dbf502eeaec2b32f9925db84d0d1d9c/IMG_5302.jpg') no-repeat center center/cover;
+    background: url('https://raw.githubusercontent.com/peter-reddy-personal/peter-reddy-personal.github.io/refs/heads/main/IMG_5302.jpg') no-repeat center center/cover;
 }
 
 #about, #insights {

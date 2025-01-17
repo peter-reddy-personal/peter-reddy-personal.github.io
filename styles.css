@@ -1,108 +1,98 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* General Reset */
+body, h1, h2, p, a {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
+/* Body Styling */
+body {
+  background-color: #f7f7f7;
+  color: #333;
+  text-align: center;
+}
+
+/* Header Styling */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-circle {
-    width: 10px;
-    height: 10px;
-    background-color: gold;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.logo-text {
-    font-weight: bold;
-    margin-right: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
 }
 
 .role {
-    font-style: italic;
-    color: gray;
+  color: #d4a017;
+  font-size: 14px;
 }
 
 nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: black;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
 }
 
 nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.hero-section {
-    text-align: center;
-    padding: 50px 20px;
+/* Main Hero Section */
+.hero {
+  margin-top: 40px;
 }
 
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
+.profile-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
 }
 
-.hero-section h1 {
-    margin: 20px 0 10px;
-    font-size: 2.5em;
+.hero h2 {
+  font-size: 36px;
+  margin: 20px 0;
 }
 
-.hero-section p {
-    margin: 10px 0;
-    color: gray;
+.about-text {
+  font-size: 16px;
+  color: #555;
 }
 
-.button-group {
-    margin-top: 20px;
+.buttons {
+  margin-top: 20px;
 }
 
 .button {
-    text-decoration: none;
-    padding: 10px 20px;
-    color: white;
-    border-radius: 25px;
-    margin: 0 10px;
-    display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  display: inline-block;
+  margin: 10px;
 }
 
 .button.yellow {
-    background-color: gold;
+  background-color: #d4a017;
 }
 
 .button.red {
-    background-color: #e74c3c;
+  background-color: #d14417;
 }
 
-.button.blue {
-    background-color: #3498db;
-}
-
+/* Footer Styling */
 footer {
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-top: 1px solid #ddd;
+  margin-top: 40px;
+  font-size: 14px;
 }
 
-.socials a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #3498db;
+footer a {
+  color: #555;
+  text-decoration: none;
 }

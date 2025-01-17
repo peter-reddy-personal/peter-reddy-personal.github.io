@@ -1,67 +1,108 @@
-body, html {
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100%;
+    box-sizing: border-box;
 }
 
 header {
-    position: fixed;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-nav ul {
-    list-style: none;
     display: flex;
-    justify-content: center;
-    padding: 1em;
-    margin: 0;
-}
-
-nav ul li {
-    margin: 0 1em;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-main {
-    padding-top: 60px; /* Height of the fixed header */
-}
-
-.section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-circle {
+    width: 10px;
+    height: 10px;
+    background-color: gold;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.role {
+    font-style: italic;
+    color: gray;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.hero-section {
     text-align: center;
+    padding: 50px 20px;
 }
 
-#welcome {
-    background: url('https://raw.githubusercontent.com/peter-reddy-personal/peter-reddy-personal.github.io/refs/heads/main/IMG_5302.jpg') no-repeat center center/cover;
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
 }
 
-#about, #insights {
-    background: #f5f5f5;
+.hero-section h1 {
+    margin: 20px 0 10px;
+    font-size: 2.5em;
 }
 
-h1, h2, h3 {
-    margin: 0.5em 0;
+.hero-section p {
+    margin: 10px 0;
+    color: gray;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.button {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 25px;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.button.yellow {
+    background-color: gold;
+}
+
+.button.red {
+    background-color: #e74c3c;
+}
+
+.button.blue {
+    background-color: #3498db;
 }
 
 footer {
     text-align: center;
-    padding: 1em 0;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.socials a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #3498db;
 }

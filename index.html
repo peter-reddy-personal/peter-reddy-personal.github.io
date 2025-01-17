@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peter Reddy's Personal Site</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="header-left">
+            <div class="logo">
+                <span class="logo-circle"></span>
+                <span class="logo-text">Peter Reddy</span>
+                <span class="role">Editor</span>
+            </div>
+        </div>
+        <nav class="header-right">
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
+
     <main>
-        <section id="welcome" class="section">
-            <h1>Welcome to Peter Reddy</h1>
-            <p>Discover my journey and insights</p>
-            <button>View Services</button>
-        </section>
-        <section id="about" class="section">
-            <h2>About Peter Reddy</h2>
-            <p>I'm a passionate professional based in Lewisham, dedicated to sharing insights through my personal blog and showcasing my robust CV.</p>
-            <a href="#contact">Get in touch</a>
-        </section>
-        <section id="insights" class="section">
-            <h2>Explore Insights</h2>
-            <div>
-                <h3>Professional Profile</h3>
-                <p>Showcase your skills and experiences effectively.</p>
+        <div class="hero-section">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-image">
+            <h1>Hello</h1>
+            <p>A Bit About Me</p>
+            <p>I&#39;m a paragraph. Click here to add your own text and edit me. I&#39;m a great place for you to tell a story and let your users know a little more about you.</p>
+            <div class="button-group">
+                <a href="resume.pdf" class="button yellow">Resume</a>
+                <a href="projects.html" class="button red">Projects</a>
+                <a href="#contact" class="button blue">Contact</a>
             </div>
-            <div>
-                <h3>Insightful Blog Posts</h3>
-                <p>Engage your audience with thought-provoking content.</p>
-            </div>
-            <div>
-                <h3>Dynamic CV Layout</h3>
-                <p>Present your qualifications in an eye-catching format.</p>
-            </div>
-        </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Peter Reddy. All rights reserved.</p>
+
+    <footer id="contact">
+        <p><strong>Phone:</strong> 123-456-7890</p>
+        <p><strong>Email:</strong> info@mysite.com</p>
+        <div class="socials">
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+        <p>&copy; 2035 By Peter Reddy.</p>
     </footer>
 </body>
 </html>

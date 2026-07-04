@@ -64,7 +64,7 @@ function getRiders() {
 //---------------------------------------------------------
 
 async function loadRoutes() {
-  const response = await fetch('routes.json');
+  const response = await fetch('./routes.json');
   const routes = await response.json();
   return routes;
 }

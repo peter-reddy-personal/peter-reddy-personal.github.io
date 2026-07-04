@@ -79,12 +79,12 @@ function computeRouteScore(route, riders) {
 
   riders.forEach(r => {
     score +=
-      r.sprint    * route.sprint +
-      r.punch     * route.punch +
-      r.climb     * route.climb +
-      r.pursuit   * route.pursuit +
-      r.tt        * route.tt +
-      r.endurance * route.endurance;
+      r.sprint    * route.Sprint +
+      r.punch     * route.Punch +
+      r.climb     * route.Climb +
+      r.pursuit   * route.Pursuit +
+      r.tt        * route.TT +
+      r.endurance * route.Endurance;
   });
 
   return score;
@@ -120,10 +120,10 @@ function renderResults(routes) {
   routes.slice(0, 10).forEach(r => {
     bestBody.innerHTML += `
       <tr>
-        <td>${r.route}</td>
+        <td>${r.Route}</td>
         <td>${r.score.toFixed(2)}</td>
-        <td>${r.length}</td>
-        <td>${r.elevation}</td>
+        <td>${r.Length}</td>
+        <td>${r.Elevation}</td>
       </tr>
     `;
   });
@@ -132,10 +132,10 @@ function renderResults(routes) {
   routes.slice(-10).forEach(r => {
     worstBody.innerHTML += `
       <tr>
-        <td>${r.route}</td>
+        <td>${r.Route}</td>
         <td>${r.score.toFixed(2)}</td>
-        <td>${r.length}</td>
-        <td>${r.elevation}</td>
+        <td>${r.Length}</td>
+        <td>${r.Elevation}</td>
       </tr>
     `;
   });

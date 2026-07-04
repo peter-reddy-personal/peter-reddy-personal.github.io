@@ -1,4 +1,10 @@
 //---------------------------------------------------------
+// GLOBAL ROUTES VARIABLE
+//---------------------------------------------------------
+let routes = [];
+
+
+//---------------------------------------------------------
 // 1. Add Rider Row
 //---------------------------------------------------------
 
@@ -65,7 +71,7 @@ function getRiders() {
 
 async function loadRoutes() {
   const response = await fetch('./routes.json');
-  const routes = await response.json();
+  routes = await response.json();   // <-- FIXED
   return routes;
 }
 
@@ -148,7 +154,7 @@ function renderResults(routes) {
 
 async function calculateRoutes() {
   const riders = getRiders();
-  const routes = await loadRoutes();
+  await loadRoutes();                 // <-- ensures global routes is populated
   const ranked = rankRoutes(routes, riders);
   renderResults(ranked);
 }

@@ -2,74 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Route Picker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 30px;
-      max-width: 1000px;
-    }
-
-    h2 {
-      margin-top: 40px;
-    }
-
-    #rider-container {
-      margin-bottom: 20px;
-    }
-
-    .rider-row {
-      display: grid;
-      grid-template-columns: 140px 80px repeat(7, 80px) 40px;
-      gap: 6px;
-      margin-bottom: 8px;
-      align-items: center;
-    }
-
-    .rider-row input,
-    .rider-row select {
-      padding: 4px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-
-    table th, table td {
-      border: 1px solid #ccc;
-      padding: 6px;
-      text-align: left;
-    }
-
-    table th {
-      background: #f0f0f0;
-    }
-
-    #calculate-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-  </style>
+  <title>RoutePicker</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <h1>Route Picker</h1>
+  <h1>Zwift RoutePicker</h1>
 
-  <h2>Riders</h2>
+  <!-- ============================
+       CLS Riders Section
+       ============================ -->
+  <h2>CLS Riders</h2>
 
-  <div id="rider-container"></div>
+  <div id="cls-container"></div>
 
-  <button id="add-rider-btn">Add Rider</button>
+  <button id="add-cls-btn">Add CLS Rider</button>
 
-  <br><br>
-  <button id="calculate-btn">Calculate Routes</button>
 
+  <!-- ============================
+       Opponent Riders Section
+       ============================ -->
+  <h2>Opponent Riders</h2>
+
+  <div id="opp-container"></div>
+
+  <button id="add-opp-btn">Add Opponent Rider</button>
+
+
+  <!-- ============================
+       Save Team Button
+       ============================ -->
+  <div style="margin-top:20px;">
+    <button id="save-team-btn">Save Team</button>
+  </div>
+
+
+  <!-- ============================
+       Ladder Filter
+       ============================ -->
+  <div style="margin-top:20px;">
+    <label>
+      <input type="checkbox" id="ladder-slider">
+      Ladder routes only
+    </label>
+  </div>
+
+
+  <!-- ============================
+       Calculate Button
+       ============================ -->
+  <div style="margin-top:20px;">
+    <button id="calculate-btn">Calculate Best Routes</button>
+  </div>
+
+
+  <!-- ============================
+       Results Tables
+       ============================ -->
   <h2>Best Routes</h2>
-  <table id="best-routes-table">
+  <table>
     <thead>
       <tr>
         <th>Route</th>
@@ -82,7 +74,7 @@
   </table>
 
   <h2>Worst Routes</h2>
-  <table id="worst-routes-table">
+  <table>
     <thead>
       <tr>
         <th>Route</th>
@@ -94,6 +86,11 @@
     <tbody id="worst-routes"></tbody>
   </table>
 
+
+  <!-- ============================
+       JavaScript
+       ============================ -->
   <script src="app.js"></script>
+
 </body>
 </html>

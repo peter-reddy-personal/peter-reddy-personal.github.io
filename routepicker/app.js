@@ -5,11 +5,11 @@ let routes = [];
 
 
 //---------------------------------------------------------
-// 1. Add Rider Row
+// 1. Add Rider Row (CLS or Opponent)
 //---------------------------------------------------------
 
-function addRiderRow() {
-  const container = document.getElementById('rider-container');
+function addRiderRow(sectionId) {
+  const container = document.getElementById(sectionId);
 
   const row = document.createElement('div');
   row.classList.add('rider-row');
@@ -18,8 +18,8 @@ function addRiderRow() {
     <input type="text" class="rider-name" placeholder="Name">
 
     <select class="rider-team">
-      <option value="A">Team A</option>
-      <option value="B">Team B</option>
+      <option value="CLS">CLS</option>
+      <option value="Opponent">Opponent</option>
     </select>
 
     <input type="number" class="rider-sprint" placeholder="Sprint">
@@ -37,11 +37,12 @@ function addRiderRow() {
   container.appendChild(row);
 }
 
-document.getElementById('add-rider-btn').onclick = addRiderRow;
+document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
+document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
 
 
 //---------------------------------------------------------
-// 2. Read Rider Inputs
+// 2. Read Rider Inputs (both sections)
 //---------------------------------------------------------
 
 function getRiders() {
@@ -66,18 +67,31 @@ function getRiders() {
 
 
 //---------------------------------------------------------
-// 3. Load Routes JSON
+// 3. Save Team to Local Storage
+//---------------------------------------------------------
+
+function saveTeam() {
+  const riders = getRiders();
+  localStorage.setItem('routepicker_team', JSON.stringify(riders));
+  alert('Team saved!');
+}
+
+document.getElementById('save-team-btn').onclick = saveTeam;
+
+
+//---------------------------------------------------------
+// 4. Load Routes JSON
 //---------------------------------------------------------
 
 async function loadRoutes() {
   const response = await fetch('./routes.json');
-  routes = await response.json();   // <-- FIXED
+  routes = await response.json();
   return routes;
 }
 
 
 //---------------------------------------------------------
-// 4. Compute Route Score
+// 5. Compute Route Score
 //---------------------------------------------------------
 
 function computeRouteScore(route, riders) {
@@ -98,11 +112,18 @@ function computeRouteScore(route, riders) {
 
 
 //---------------------------------------------------------
-// 5. Rank Routes
+// 6. Rank Routes (with Ladder filter)
 //---------------------------------------------------------
 
 function rankRoutes(routes, riders) {
-  return routes
+
+  const ladderOnly = document.getElementById('ladder-slider').checked;
+
+  const filtered = ladderOnly
+    ? routes.filter(r => r.Ladder === true)
+    : routes;
+
+  return filtered
     .map(route => ({
       ...route,
       score: computeRouteScore(route, riders)
@@ -112,7 +133,7 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// 6. Render Results
+// 7. Render Results
 //---------------------------------------------------------
 
 function renderResults(routes) {
@@ -122,7 +143,6 @@ function renderResults(routes) {
   bestBody.innerHTML = '';
   worstBody.innerHTML = '';
 
-  // Top 10 best routes
   routes.slice(0, 10).forEach(r => {
     bestBody.innerHTML += `
       <tr>
@@ -134,7 +154,6 @@ function renderResults(routes) {
     `;
   });
 
-  // Bottom 10 worst routes
   routes.slice(-10).forEach(r => {
     worstBody.innerHTML += `
       <tr>
@@ -149,12 +168,12 @@ function renderResults(routes) {
 
 
 //---------------------------------------------------------
-// 7. Main Calculate Function
+// 8. Main Calculate Function
 //---------------------------------------------------------
 
 async function calculateRoutes() {
+  await loadRoutes();
   const riders = getRiders();
-  await loadRoutes();                 // <-- ensures global routes is populated
   const ranked = rankRoutes(routes, riders);
   renderResults(ranked);
 }

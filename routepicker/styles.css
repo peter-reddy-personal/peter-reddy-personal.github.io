@@ -3,3 +3,15 @@
   padding: 4px;     /* small padding */
   text-align: right; /* numbers look cleaner */
 }
+
+
+#version-banner {
+  position: fixed;
+  bottom: 4px;
+  right: 8px;
+  font-size: 11px;
+  color: #888;
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+}

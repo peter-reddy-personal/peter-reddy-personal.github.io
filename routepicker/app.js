@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadSavedTeam();
 
+  // Ladder filter ON by default
+  document.getElementById('ladder-slider').checked = true;
+
   // Bind Add Rider buttons
   document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
   document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
@@ -51,6 +54,8 @@ function addRiderRow(sectionId) {
       <option value="Opponent">Opponent</option>
     </select>
 
+    <input type="number" class="rider-likelihood" placeholder="% Likelihood" value="100">
+
     <input type="number" class="rider-sprint" placeholder="Sprint">
     <input type="number" class="rider-punch" placeholder="Punch">
     <input type="number" class="rider-climb" placeholder="Climb">
@@ -86,6 +91,7 @@ function getRiders() {
     riders.push({
       name: row.querySelector('.rider-name').value,
       team: row.querySelector('.rider-team').value,
+      likelihood: Number(row.querySelector('.rider-likelihood').value) || 0,
       sprint: Number(row.querySelector('.rider-sprint').value),
       punch: Number(row.querySelector('.rider-punch').value),
       climb: Number(row.querySelector('.rider-climb').value),
@@ -184,6 +190,9 @@ function loadSavedTeam() {
         <option value="CLS" ${r.team === 'CLS' ? 'selected' : ''}>CLS</option>
         <option value="Opponent" ${r.team === 'Opponent' ? 'selected' : ''}>Opponent</option>
       </select>
+
+      <input type="number" class="rider-likelihood" value="${r.likelihood}">
+
       <input type="number" class="rider-sprint" value="${r.sprint}">
       <input type="number" class="rider-punch" value="${r.punch}">
       <input type="number" class="rider-climb" value="${r.climb}">
@@ -234,7 +243,7 @@ function computeSingleScore(route, r) {
 
 
 //---------------------------------------------------------
-// 8. Compute CLS / Opponent averages + difference
+// 8. Weighted CLS / Opponent averages + difference
 //---------------------------------------------------------
 
 function computeRouteScores(route, riders) {
@@ -242,11 +251,20 @@ function computeRouteScores(route, riders) {
   const cls = riders.filter(r => r.team === 'CLS');
   const opp = riders.filter(r => r.team === 'Opponent');
 
-  const clsScores = cls.map(r => computeSingleScore(route, r));
-  const oppScores = opp.map(r => computeSingleScore(route, r));
+  function weightedAvg(team) {
+    const totalWeight = team.reduce((sum, r) => sum + r.likelihood, 0);
+    if (totalWeight === 0) return 0;
 
-  const avgCLS = clsScores.length ? clsScores.reduce((a,b)=>a+b,0) / clsScores.length : 0;
-  const avgOpp = oppScores.length ? oppScores.reduce((a,b)=>a+b,0) / oppScores.length : 0;
+    const weightedSum = team.reduce((sum, r) => {
+      const score = computeSingleScore(route, r);
+      return sum + score * r.likelihood;
+    }, 0);
+
+    return weightedSum / totalWeight;
+  }
+
+  const avgCLS = weightedAvg(cls);
+  const avgOpp = weightedAvg(opp);
 
   return {
     avgCLS,

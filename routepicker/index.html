@@ -8,100 +8,24 @@
 
 <body>
 
-  <h1>Zwift RoutePicker</h1>
+  <h1>RoutePicker</h1>
 
-  <!-- ============================
-       CLS Riders Section
-       ============================ -->
-  <h2>CLS Riders</h2>
-
-  <div id="cls-container">
-
-    <!-- Default CLS Rider -->
-    <div class="rider-row">
-      <input type="text" class="rider-name" placeholder="Name">
-
-      <select class="rider-team">
-        <option value="CLS" selected>CLS</option>
-        <option value="Opponent">Opponent</option>
-      </select>
-
-      <input type="number" class="rider-sprint" placeholder="Sprint">
-      <input type="number" class="rider-punch" placeholder="Punch">
-      <input type="number" class="rider-climb" placeholder="Climb">
-      <input type="number" class="rider-pursuit" placeholder="Pursuit">
-      <input type="number" class="rider-tt" placeholder="TT">
-      <input type="number" class="rider-endurance" placeholder="Endurance">
-
-      <button class="remove-rider">X</button>
-    </div>
-
-  </div>
-
-  <button id="add-cls-btn">Add CLS Rider</button>
-
-
-  <!-- ============================
-       Opponent Riders Section
-       ============================ -->
-  <h2>Opponent Riders</h2>
-
-  <div id="opp-container">
-
-    <!-- Default Opponent Rider -->
-    <div class="rider-row">
-      <input type="text" class="rider-name" placeholder="Name">
-
-      <select class="rider-team">
-        <option value="CLS">CLS</option>
-        <option value="Opponent" selected>Opponent</option>
-      </select>
-
-      <input type="number" class="rider-sprint" placeholder="Sprint">
-      <input type="number" class="rider-punch" placeholder="Punch">
-      <input type="number" class="rider-climb" placeholder="Climb">
-      <input type="number" class="rider-pursuit" placeholder="Pursuit">
-      <input type="number" class="rider-tt" placeholder="TT">
-      <input type="number" class="rider-endurance" placeholder="Endurance">
-
-      <button class="remove-rider">X</button>
-    </div>
-
-  </div>
-
-  <button id="add-opp-btn">Add Opponent Rider</button>
-
-
-  <!-- ============================
-       Save Team Button
-       ============================ -->
-  <div style="margin-top:20px;">
-    <button id="save-team-btn">Save Team</button>
-  </div>
-
-
-  <!-- ============================
-       Ladder Filter
-       ============================ -->
-  <div style="margin-top:20px;">
+  <div id="controls">
     <label>
       <input type="checkbox" id="ladder-slider" checked>
       Ladder routes only
     </label>
   </div>
 
+  <h2>CLS Riders</h2>
+  <div id="cls-container"></div>
+  <button id="add-cls-btn">Add CLS Rider</button>
 
-  <!-- ============================
-       Calculate Button
-       ============================ -->
-  <div style="margin-top:20px;">
-    <button id="calculate-btn">Calculate Best Routes</button>
-  </div>
+  <h2>Opponent Riders</h2>
+  <div id="opp-container"></div>
+  <button id="add-opp-btn">Add Opponent Rider</button>
 
-
-  <!-- ============================
-       Results Tables
-       ============================ -->
+  <button id="calculate-btn">Calculate Routes</button>
 
   <h2>Best CLS Routes</h2>
   <table>
@@ -119,7 +43,6 @@
     <tbody id="best-routes"></tbody>
   </table>
 
-
   <h2>Best Opponent Routes</h2>
   <table>
     <thead>
@@ -136,36 +59,8 @@
     <tbody id="worst-routes"></tbody>
   </table>
 
+  <div id="version-banner">Loading JS…</div>
 
-
-  <!-- ============================
-       JavaScript
-       ============================ -->
-  <script src="app.js?v=2"></script>
-
-  <!-- DOMContentLoaded binding to ensure buttons work -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-      // Bind Add Rider buttons
-      document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
-      document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
-
-      // Bind Save Team
-      document.getElementById('save-team-btn').onclick = saveTeam;
-
-      // Bind Calculate
-      document.getElementById('calculate-btn').onclick = calculateRoutes;
-
-      // Bind remove buttons for default riders
-      document.querySelectorAll('.remove-rider').forEach(btn => {
-        btn.onclick = () => btn.parentElement.remove();
-      });
-
-    });
-  </script>
-
-<div id="version-banner">Loading JS…</div>
-
+  <script src="app.js?v=3001"></script>
 </body>
 </html>

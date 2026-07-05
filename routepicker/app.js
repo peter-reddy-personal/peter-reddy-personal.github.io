@@ -9,19 +9,24 @@ let routes = [];
 //---------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
 
+  loadSavedTeam();
+
   // Bind Add Rider buttons
   document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
   document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
 
-  // Bind Save Team
-  document.getElementById('save-team-btn').onclick = saveTeam;
-
   // Bind Calculate
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 
-  // Bind remove buttons for default riders
-  document.querySelectorAll('.remove-rider').forEach(btn => {
-    btn.onclick = () => btn.parentElement.remove();
+  // Bind remove + autosave for DEFAULT riders already in HTML
+  document.querySelectorAll('.rider-row').forEach(row => {
+
+    row.querySelector('.remove-rider').onclick = () => {
+      row.remove();
+      autoSaveTeam();
+    };
+
+    attachAutoSave(row);
   });
 
 });
@@ -55,10 +60,14 @@ function addRiderRow(sectionId) {
     <button class="remove-rider">X</button>
   `;
 
-  // Remove button
-  row.querySelector('.remove-rider').onclick = () => row.remove();
+  row.querySelector('.remove-rider').onclick = () => {
+    row.remove();
+    autoSaveTeam();
+  };
 
+  attachAutoSave(row);
   container.appendChild(row);
+  autoSaveTeam();
 }
 
 
@@ -88,18 +97,69 @@ function getRiders() {
 
 
 //---------------------------------------------------------
-// 3. Save Team to Local Storage
+// 3. Auto-save Team to Local Storage
 //---------------------------------------------------------
 
-function saveTeam() {
+function autoSaveTeam() {
   const riders = getRiders();
   localStorage.setItem('routepicker_team', JSON.stringify(riders));
-  alert('Team saved!');
+}
+
+function attachAutoSave(row) {
+  row.querySelectorAll('input, select').forEach(el => {
+    el.oninput = autoSaveTeam;
+  });
 }
 
 
 //---------------------------------------------------------
-// 4. Load Routes JSON
+// 4. Load Saved Team on Page Load
+//---------------------------------------------------------
+
+function loadSavedTeam() {
+  const saved = localStorage.getItem('routepicker_team');
+  if (!saved) return;
+
+  const riders = JSON.parse(saved);
+
+  document.getElementById('cls-container').innerHTML = '';
+  document.getElementById('opp-container').innerHTML = '';
+
+  riders.forEach(r => {
+    const sectionId = r.team === 'CLS' ? 'cls-container' : 'opp-container';
+    const container = document.getElementById(sectionId);
+
+    const row = document.createElement('div');
+    row.classList.add('rider-row');
+
+    row.innerHTML = `
+      <input type="text" class="rider-name" value="${r.name}">
+      <select class="rider-team">
+        <option value="CLS" ${r.team === 'CLS' ? 'selected' : ''}>CLS</option>
+        <option value="Opponent" ${r.team === 'Opponent' ? 'selected' : ''}>Opponent</option>
+      </select>
+      <input type="number" class="rider-sprint" value="${r.sprint}">
+      <input type="number" class="rider-punch" value="${r.punch}">
+      <input type="number" class="rider-climb" value="${r.climb}">
+      <input type="number" class="rider-pursuit" value="${r.pursuit}">
+      <input type="number" class="rider-tt" value="${r.tt}">
+      <input type="number" class="rider-endurance" value="${r.endurance}">
+      <button class="remove-rider">X</button>
+    `;
+
+    row.querySelector('.remove-rider').onclick = () => {
+      row.remove();
+      autoSaveTeam();
+    };
+
+    attachAutoSave(row);
+    container.appendChild(row);
+  });
+}
+
+
+//---------------------------------------------------------
+// 5. Load Routes JSON
 //---------------------------------------------------------
 
 async function loadRoutes() {
@@ -110,28 +170,46 @@ async function loadRoutes() {
 
 
 //---------------------------------------------------------
-// 5. Compute Route Score
+// 6. Compute vELO Score for a single rider
 //---------------------------------------------------------
 
-function computeRouteScore(route, riders) {
-  let score = 0;
-
-  riders.forEach(r => {
-    score +=
-      r.sprint    * route.Sprint +
-      r.punch     * route.Punch +
-      r.climb     * route.Climb +
-      r.pursuit   * route.Pursuit +
-      r.tt        * route.TT +
-      r.endurance * route.Endurance;
-  });
-
-  return score;
+function computeSingleScore(route, r) {
+  return (
+    r.sprint    * route.Sprint +
+    r.punch     * route.Punch +
+    r.climb     * route.Climb +
+    r.pursuit   * route.Pursuit +
+    r.tt        * route.TT +
+    r.endurance * route.Endurance
+  );
 }
 
 
 //---------------------------------------------------------
-// 6. Rank Routes (with Ladder filter)
+// 7. Compute CLS / Opponent averages + difference
+//---------------------------------------------------------
+
+function computeRouteScores(route, riders) {
+
+  const cls = riders.filter(r => r.team === 'CLS');
+  const opp = riders.filter(r => r.team === 'Opponent');
+
+  const clsScores = cls.map(r => computeSingleScore(route, r));
+  const oppScores = opp.map(r => computeSingleScore(route, r));
+
+  const avgCLS = clsScores.length ? clsScores.reduce((a,b)=>a+b,0) / clsScores.length : 0;
+  const avgOpp = oppScores.length ? oppScores.reduce((a,b)=>a+b,0) / oppScores.length : 0;
+
+  return {
+    avgCLS,
+    avgOpp,
+    diff: avgCLS - avgOpp
+  };
+}
+
+
+//---------------------------------------------------------
+// 8. Rank Routes separately for CLS and Opponent
 //---------------------------------------------------------
 
 function rankRoutes(routes, riders) {
@@ -142,46 +220,53 @@ function rankRoutes(routes, riders) {
     ? routes.filter(r => r.Ladder === true)
     : routes;
 
-  return filtered
-    .map(route => ({
+  const scored = filtered.map(route => {
+    const scores = computeRouteScores(route, riders);
+    return {
       ...route,
-      score: computeRouteScore(route, riders)
-    }))
-    .sort((a, b) => b.score - a.score);
+      avgCLS: scores.avgCLS,
+      avgOpp: scores.avgOpp,
+      diff: scores.diff
+    };
+  });
+
+  return {
+    bestCLS: scored.sort((a, b) => b.avgCLS - a.avgCLS),
+    bestOpp: scored.sort((a, b) => b.avgOpp - a.avgOpp)
+  };
 }
 
 
 //---------------------------------------------------------
-// 7. Render Results
+// 9. Render Results
 //---------------------------------------------------------
 
-function renderResults(routes) {
-  const bestBody = document.getElementById('best-routes');
-  const worstBody = document.getElementById('worst-routes');
+function renderResults(result) {
 
-  bestBody.innerHTML = '';
-  worstBody.innerHTML = '';
+  const clsBody = document.getElementById('best-routes');
+  const oppBody = document.getElementById('worst-routes');
 
-  // Top 10 best routes
-  routes.slice(0, 10).forEach(r => {
-    bestBody.innerHTML += `
+  clsBody.innerHTML = '';
+  oppBody.innerHTML = '';
+
+  result.bestCLS.slice(0, 10).forEach(r => {
+    clsBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
-        <td>${r.score.toFixed(2)}</td>
-        <td>${r.Length}</td>
-        <td>${r.Elevation}</td>
+        <td>${r.avgCLS.toFixed(2)}</td>
+        <td>${r.avgOpp.toFixed(2)}</td>
+        <td>${r.diff.toFixed(2)}</td>
       </tr>
     `;
   });
 
-  // Bottom 10 worst routes
-  routes.slice(-10).forEach(r => {
-    worstBody.innerHTML += `
+  result.bestOpp.slice(0, 10).forEach(r => {
+    oppBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
-        <td>${r.score.toFixed(2)}</td>
-        <td>${r.Length}</td>
-        <td>${r.Elevation}</td>
+        <td>${r.avgOpp.toFixed(2)}</td>
+        <td>${r.avgCLS.toFixed(2)}</td>
+        <td>${r.diff.toFixed(2)}</td>
       </tr>
     `;
   });
@@ -189,7 +274,7 @@ function renderResults(routes) {
 
 
 //---------------------------------------------------------
-// 8. Main Calculate Function
+// 10. Main Calculate Function
 //---------------------------------------------------------
 
 async function calculateRoutes() {

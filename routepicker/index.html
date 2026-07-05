@@ -15,7 +15,28 @@
        ============================ -->
   <h2>CLS Riders</h2>
 
-  <div id="cls-container"></div>
+  <div id="cls-container">
+
+    <!-- Default CLS Rider -->
+    <div class="rider-row">
+      <input type="text" class="rider-name" placeholder="Name">
+
+      <select class="rider-team">
+        <option value="CLS">CLS</option>
+        <option value="Opponent">Opponent</option>
+      </select>
+
+      <input type="number" class="rider-sprint" placeholder="Sprint">
+      <input type="number" class="rider-punch" placeholder="Punch">
+      <input type="number" class="rider-climb" placeholder="Climb">
+      <input type="number" class="rider-pursuit" placeholder="Pursuit">
+      <input type="number" class="rider-tt" placeholder="TT">
+      <input type="number" class="rider-endurance" placeholder="Endurance">
+
+      <button class="remove-rider">X</button>
+    </div>
+
+  </div>
 
   <button id="add-cls-btn">Add CLS Rider</button>
 
@@ -25,7 +46,28 @@
        ============================ -->
   <h2>Opponent Riders</h2>
 
-  <div id="opp-container"></div>
+  <div id="opp-container">
+
+    <!-- Default Opponent Rider -->
+    <div class="rider-row">
+      <input type="text" class="rider-name" placeholder="Name">
+
+      <select class="rider-team">
+        <option value="CLS">CLS</option>
+        <option value="Opponent" selected>Opponent</option>
+      </select>
+
+      <input type="number" class="rider-sprint" placeholder="Sprint">
+      <input type="number" class="rider-punch" placeholder="Punch">
+      <input type="number" class="rider-climb" placeholder="Climb">
+      <input type="number" class="rider-pursuit" placeholder="Pursuit">
+      <input type="number" class="rider-tt" placeholder="TT">
+      <input type="number" class="rider-endurance" placeholder="Endurance">
+
+      <button class="remove-rider">X</button>
+    </div>
+
+  </div>
 
   <button id="add-opp-btn">Add Opponent Rider</button>
 

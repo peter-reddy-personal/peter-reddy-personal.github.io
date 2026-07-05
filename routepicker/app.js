@@ -1,4 +1,18 @@
 //---------------------------------------------------------
+// Version control banner
+//---------------------------------------------------------
+
+const jsVersion = "2026‑07‑05 20:07";  // manually update this when committing
+
+window.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("version-banner");
+  if (banner) {
+    banner.textContent = "RoutePicker JS build: " + jsVersion;
+  }
+});
+
+
+//---------------------------------------------------------
 // GLOBAL ROUTES VARIABLE
 //---------------------------------------------------------
 let routes = [];

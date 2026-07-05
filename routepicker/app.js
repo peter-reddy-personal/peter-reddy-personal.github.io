@@ -297,8 +297,11 @@ function rankRoutes(routes, riders) {
   });
 
   return {
-    bestCLS: scored.sort((a, b) => b.avgCLS - a.avgCLS),
-    bestOpp: scored.sort((a, b) => b.avgOpp - a.avgOpp)
+    // CLS routes sorted by biggest CLS advantage
+    bestCLS: scored.sort((a, b) => b.diff - a.diff),
+
+    // Opponent routes sorted by biggest Opponent advantage
+    bestOpp: scored.sort((a, b) => a.diff - b.diff)
   };
 }
 

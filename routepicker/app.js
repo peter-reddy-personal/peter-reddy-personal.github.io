@@ -5,6 +5,29 @@ let routes = [];
 
 
 //---------------------------------------------------------
+// DOMContentLoaded — ensures all buttons bind correctly
+//---------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Bind Add Rider buttons
+  document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
+  document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
+
+  // Bind Save Team
+  document.getElementById('save-team-btn').onclick = saveTeam;
+
+  // Bind Calculate
+  document.getElementById('calculate-btn').onclick = calculateRoutes;
+
+  // Bind remove buttons for default riders
+  document.querySelectorAll('.remove-rider').forEach(btn => {
+    btn.onclick = () => btn.parentElement.remove();
+  });
+
+});
+
+
+//---------------------------------------------------------
 // 1. Add Rider Row (CLS or Opponent)
 //---------------------------------------------------------
 
@@ -32,13 +55,11 @@ function addRiderRow(sectionId) {
     <button class="remove-rider">X</button>
   `;
 
+  // Remove button
   row.querySelector('.remove-rider').onclick = () => row.remove();
 
   container.appendChild(row);
 }
-
-document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
-document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
 
 
 //---------------------------------------------------------
@@ -75,8 +96,6 @@ function saveTeam() {
   localStorage.setItem('routepicker_team', JSON.stringify(riders));
   alert('Team saved!');
 }
-
-document.getElementById('save-team-btn').onclick = saveTeam;
 
 
 //---------------------------------------------------------
@@ -143,6 +162,7 @@ function renderResults(routes) {
   bestBody.innerHTML = '';
   worstBody.innerHTML = '';
 
+  // Top 10 best routes
   routes.slice(0, 10).forEach(r => {
     bestBody.innerHTML += `
       <tr>
@@ -154,6 +174,7 @@ function renderResults(routes) {
     `;
   });
 
+  // Bottom 10 worst routes
   routes.slice(-10).forEach(r => {
     worstBody.innerHTML += `
       <tr>
@@ -177,5 +198,3 @@ async function calculateRoutes() {
   const ranked = rankRoutes(routes, riders);
   renderResults(ranked);
 }
-
-document.getElementById('calculate-btn').onclick = calculateRoutes;

@@ -134,5 +134,27 @@
        ============================ -->
   <script src="app.js"></script>
 
+  <!-- DOMContentLoaded binding to ensure buttons work -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // Bind Add Rider buttons
+      document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
+      document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
+
+      // Bind Save Team
+      document.getElementById('save-team-btn').onclick = saveTeam;
+
+      // Bind Calculate
+      document.getElementById('calculate-btn').onclick = calculateRoutes;
+
+      // Bind remove buttons for default riders
+      document.querySelectorAll('.remove-rider').forEach(btn => {
+        btn.onclick = () => btn.parentElement.remove();
+      });
+
+    });
+  </script>
+
 </body>
 </html>

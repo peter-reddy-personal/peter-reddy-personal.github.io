@@ -315,10 +315,14 @@ function renderResults(result) {
   clsBody.innerHTML = '';
   oppBody.innerHTML = '';
 
+  // Best CLS routes
   result.bestCLS.slice(0, 10).forEach(r => {
     clsBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
+        <td>${r.Length}</td>
+        <td>${r.Elevation}</td>
+        <td>${r.LeadIn}</td>
         <td>${r.avgCLS.toFixed(2)}</td>
         <td>${r.avgOpp.toFixed(2)}</td>
         <td>${r.diff.toFixed(2)}</td>
@@ -326,10 +330,14 @@ function renderResults(result) {
     `;
   });
 
+  // Best Opponent routes
   result.bestOpp.slice(0, 10).forEach(r => {
     oppBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
+        <td>${r.Length}</td>
+        <td>${r.Elevation}</td>
+        <td>${r.LeadIn}</td>
         <td>${r.avgOpp.toFixed(2)}</td>
         <td>${r.avgCLS.toFixed(2)}</td>
         <td>${r.diff.toFixed(2)}</td>

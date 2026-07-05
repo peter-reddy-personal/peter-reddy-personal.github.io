@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Bind Calculate
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 
-  // Bind remove + autosave for DEFAULT riders already in HTML
+  // Bind remove + autosave + paste handler for DEFAULT riders
   document.querySelectorAll('.rider-row').forEach(row => {
 
     row.querySelector('.remove-rider').onclick = () => {
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     attachAutoSave(row);
+    attachPasteHandler(row);
   });
 
 });
@@ -66,6 +67,8 @@ function addRiderRow(sectionId) {
   };
 
   attachAutoSave(row);
+  attachPasteHandler(row);
+
   container.appendChild(row);
   autoSaveTeam();
 }
@@ -113,7 +116,50 @@ function attachAutoSave(row) {
 
 
 //---------------------------------------------------------
-// 4. Load Saved Team on Page Load
+// 4. Multi-line paste handler (fills all 6 stats)
+//---------------------------------------------------------
+
+function attachPasteHandler(row) {
+
+  const fields = [
+    row.querySelector('.rider-sprint'),
+    row.querySelector('.rider-punch'),
+    row.querySelector('.rider-climb'),
+    row.querySelector('.rider-pursuit'),
+    row.querySelector('.rider-tt'),
+    row.querySelector('.rider-endurance')
+  ];
+
+  fields.forEach(field => {
+    field.addEventListener('paste', (event) => {
+      event.preventDefault();
+
+      const text = event.clipboardData.getData('text');
+      const lines = text.trim().split(/\s+/);
+
+      if (lines.length !== 6) {
+        field.value = text; // normal paste fallback
+        autoSaveTeam();
+        return;
+      }
+
+      const nums = lines.map(n => Number(n));
+
+      fields[0].value = nums[0];
+      fields[1].value = nums[1];
+      fields[2].value = nums[2];
+      fields[3].value = nums[3];
+      fields[4].value = nums[4];
+      fields[5].value = nums[5];
+
+      autoSaveTeam();
+    });
+  });
+}
+
+
+//---------------------------------------------------------
+// 5. Load Saved Team on Page Load
 //---------------------------------------------------------
 
 function loadSavedTeam() {
@@ -153,13 +199,15 @@ function loadSavedTeam() {
     };
 
     attachAutoSave(row);
+    attachPasteHandler(row);
+
     container.appendChild(row);
   });
 }
 
 
 //---------------------------------------------------------
-// 5. Load Routes JSON
+// 6. Load Routes JSON
 //---------------------------------------------------------
 
 async function loadRoutes() {
@@ -170,7 +218,7 @@ async function loadRoutes() {
 
 
 //---------------------------------------------------------
-// 6. Compute vELO Score for a single rider
+// 7. Compute vELO Score for a single rider
 //---------------------------------------------------------
 
 function computeSingleScore(route, r) {
@@ -186,7 +234,7 @@ function computeSingleScore(route, r) {
 
 
 //---------------------------------------------------------
-// 7. Compute CLS / Opponent averages + difference
+// 8. Compute CLS / Opponent averages + difference
 //---------------------------------------------------------
 
 function computeRouteScores(route, riders) {
@@ -209,7 +257,7 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
-// 8. Rank Routes separately for CLS and Opponent
+// 9. Rank Routes separately for CLS and Opponent
 //---------------------------------------------------------
 
 function rankRoutes(routes, riders) {
@@ -238,7 +286,7 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// 9. Render Results
+// 10. Render Results
 //---------------------------------------------------------
 
 function renderResults(result) {
@@ -274,7 +322,7 @@ function renderResults(result) {
 
 
 //---------------------------------------------------------
-// 10. Main Calculate Function
+// 11. Main Calculate Function
 //---------------------------------------------------------
 
 async function calculateRoutes() {

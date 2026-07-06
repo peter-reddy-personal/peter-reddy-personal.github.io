@@ -194,6 +194,15 @@ button {
   font-size: 12px;
 }
 
+#team-averages td {
+  text-align: center;
+}
+
+.highlight-cell {
+  background: #d4f4dd;   /* soft green */
+  font-weight: bold;
+}
+
 /* Tables */
 
 .results-table {

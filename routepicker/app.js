@@ -412,7 +412,26 @@ function renderAverages(riders) {
     endurance: avg(opp, "endurance")
   };
 
+  const diff = {
+    sprint: clsAvg.sprint - oppAvg.sprint,
+    punch: clsAvg.punch - oppAvg.punch,
+    climb: clsAvg.climb - oppAvg.climb,
+    tt: clsAvg.tt - oppAvg.tt,
+    pursuit: clsAvg.pursuit - oppAvg.pursuit,
+    endurance: clsAvg.endurance - oppAvg.endurance
+  };
+
+  // Find biggest CLS advantage (max positive diff)
+  const maxKey = Object.keys(diff).reduce((best, key) =>
+    diff[key] > diff[best] ? key : best
+  );
+
   const tbody = document.getElementById("team-averages");
+
+  function highlight(key) {
+    return key === maxKey ? 'class="highlight-cell"' : "";
+  }
+
   tbody.innerHTML = `
     <tr>
       <td>CLS</td>
@@ -431,6 +450,15 @@ function renderAverages(riders) {
       <td>${oppAvg.tt.toFixed(0)}</td>
       <td>${oppAvg.pursuit.toFixed(0)}</td>
       <td>${oppAvg.endurance.toFixed(0)}</td>
+    </tr>
+    <tr>
+      <td>Difference</td>
+      <td ${highlight("sprint")}>${diff.sprint.toFixed(0)}</td>
+      <td ${highlight("punch")}>${diff.punch.toFixed(0)}</td>
+      <td ${highlight("climb")}>${diff.climb.toFixed(0)}</td>
+      <td ${highlight("tt")}>${diff.tt.toFixed(0)}</td>
+      <td ${highlight("pursuit")}>${diff.pursuit.toFixed(0)}</td>
+      <td ${highlight("endurance")}>${diff.endurance.toFixed(0)}</td>
     </tr>
   `;
 }

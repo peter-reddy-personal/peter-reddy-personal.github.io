@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 08:25";
+const jsVersion = "2026‑07‑06 08:55";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -22,22 +22,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadSavedTeam();
 
-  // Ladder filter ON by default
   document.getElementById('ladder-slider').checked = true;
 
-  // Add rider buttons
   document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
   document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
 
-  // Calculate button
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 
-  // Bind autosave + paste for default riders
   document.querySelectorAll('.rider-row').forEach(row => {
-    row.querySelector('.remove-rider').onclick = () => {
-      row.remove();
-      autoSaveTeam();
-    };
+    const removeBtn = row.querySelector('.remove-rider');
+    if (removeBtn) {
+      removeBtn.onclick = () => {
+        row.remove();
+        autoSaveTeam();
+      };
+    }
     attachAutoSave(row);
     attachPasteHandler(row);
   });
@@ -56,19 +55,14 @@ function addRiderRow(sectionId) {
   row.innerHTML = `
     <input type="text" class="rider-name" placeholder="Name">
 
-    <select class="rider-team">
-      <option value="CLS">CLS</option>
-      <option value="Opponent">Opponent</option>
-    </select>
-
     <input type="number" class="rider-likelihood" placeholder="% Likelihood" value="100" min="0" max="100">
 
-    <input type="number" class="rider-sprint" placeholder="Sprint">
-    <input type="number" class="rider-punch" placeholder="Punch">
-    <input type="number" class="rider-climb" placeholder="Climb">
-    <input type="number" class="rider-pursuit" placeholder="Pursuit">
+    <input type="number" class="rider-sprint" placeholder="SPR">
+    <input type="number" class="rider-punch" placeholder="PUN">
+    <input type="number" class="rider-climb" placeholder="CLI">
+    <input type="number" class="rider-pursuit" placeholder="PUR">
     <input type="number" class="rider-tt" placeholder="TT">
-    <input type="number" class="rider-endurance" placeholder="Endurance">
+    <input type="number" class="rider-endurance" placeholder="END">
 
     <button class="remove-rider">X</button>
   `;
@@ -94,9 +88,12 @@ function getRiders() {
   const riders = [];
 
   rows.forEach(row => {
+    const parentId = row.parentElement.id;
+    const team = parentId === "cls-container" ? "CLS" : "Opponent";
+
     riders.push({
       name: row.querySelector('.rider-name').value,
-      team: row.querySelector('.rider-team').value,
+      team: team,
       likelihood: Number(row.querySelector('.rider-likelihood').value) || 0,
       sprint: Number(row.querySelector('.rider-sprint').value),
       punch: Number(row.querySelector('.rider-punch').value),
@@ -120,7 +117,7 @@ function autoSaveTeam() {
 }
 
 function attachAutoSave(row) {
-  row.querySelectorAll('input, select').forEach(el => {
+  row.querySelectorAll('input').forEach(el => {
     el.oninput = () => {
       if (el.classList.contains('rider-likelihood')) {
         if (el.value < 0) el.value = 0;
@@ -177,30 +174,24 @@ function attachPasteHandler(row) {
 //---------------------------------------------------------
 // 5. Load Saved Team
 //---------------------------------------------------------
-
 function loadSavedTeam() {
   const saved = localStorage.getItem('routepicker_team');
   if (!saved) return;
 
   const riders = JSON.parse(saved);
 
-  const clsContainer = document.getElementById('cls-container');
-  const oppContainer = document.getElementById('opp-container');
-
-  clsContainer.innerHTML = '';
-  oppContainer.innerHTML = '';
+  document.getElementById('cls-container').innerHTML = '';
+  document.getElementById('opp-container').innerHTML = '';
 
   riders.forEach(r => {
+    const sectionId = r.team === 'CLS' ? 'cls-container' : 'opp-container';
+    const container = document.getElementById(sectionId);
+
     const row = document.createElement('div');
     row.classList.add('rider-row');
 
     row.innerHTML = `
       <input type="text" class="rider-name" value="${r.name}">
-      
-      <select class="rider-team">
-        <option value="CLS">CLS</option>
-        <option value="Opponent">Opponent</option>
-      </select>
 
       <input type="number" class="rider-likelihood" value="${r.likelihood}" min="0" max="100">
 
@@ -213,26 +204,18 @@ function loadSavedTeam() {
       <button class="remove-rider">X</button>
     `;
 
-    // Append to correct container FIRST
-    const container = r.team === 'CLS' ? clsContainer : oppContainer;
-    container.appendChild(row);
-
-    // Now safely set the team value AFTER DOM insertion
-    row.querySelector('.rider-team').value = r.team;
-
-    // Attach remove handler
     row.querySelector('.remove-rider').onclick = () => {
       row.remove();
       autoSaveTeam();
     };
 
-    // Attach auto-save AFTER the correct value is set
     attachAutoSave(row);
-
-    // Your paste handler (unchanged)
     attachPasteHandler(row);
+
+    container.appendChild(row);
   });
 }
+
 
 //---------------------------------------------------------
 // 6. Load Routes JSON
@@ -336,9 +319,9 @@ function renderResults(result) {
         <td>${r.Length}</td>
         <td>${r.Elevation}</td>
         <td>${r.LeadIn}</td>
-        <td>${r.avgCLS.toFixed(2)}</td>
-        <td>${r.avgOpp.toFixed(2)}</td>
-        <td>${r.diff.toFixed(2)}</td>
+        <td>${r.avgCLS.toFixed(0)}</td>
+        <td>${r.avgOpp.toFixed(0)}</td>
+        <td>${r.diff.toFixed(0)}</td>
       </tr>
     `;
   });
@@ -350,9 +333,9 @@ function renderResults(result) {
         <td>${r.Length}</td>
         <td>${r.Elevation}</td>
         <td>${r.LeadIn}</td>
-        <td>${r.avgOpp.toFixed(2)}</td>
-        <td>${r.avgCLS.toFixed(2)}</td>
-        <td>${r.diff.toFixed(2)}</td>
+        <td>${r.avgOpp.toFixed(0)}</td>
+        <td>${r.avgCLS.toFixed(0)}</td>
+        <td>${r.diff.toFixed(0)}</td>
       </tr>
     `;
   });

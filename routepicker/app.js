@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 10:55";
+const jsVersion = "2026‑07‑06 11:30";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -350,7 +350,7 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// Render Results (CLS → Opp → diff + km/m units)
+// Render Results (CLS → Opp → diff + km/m units + Lead_in)
 //---------------------------------------------------------
 function renderResults(result) {
 
@@ -367,7 +367,7 @@ function renderResults(result) {
         <td>${r.Route}</td>
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
-        <td>${r.LeadInKm} km</td>
+        <td>${r.Lead_in} km</td>
         <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
@@ -382,7 +382,7 @@ function renderResults(result) {
         <td>${r.Route}</td>
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
-        <td>${r.LeadInKm} km</td>
+        <td>${r.Lead_in} km</td>
         <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>

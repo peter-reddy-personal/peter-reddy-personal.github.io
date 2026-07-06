@@ -41,18 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedTeam();
   updateRiderCounts();
 
-  // Ladder toggle button
-  const ladderBtn = document.getElementById("ladder-toggle");
-  ladderBtn.dataset.mode = "ladder";
-  ladderBtn.textContent = "Ladder routes only";
+  // Ladder checkbox
+  const ladderToggle = document.getElementById("ladder-toggle");
+  const toggleText = document.getElementById("toggle-text");
 
-  ladderBtn.onclick = () => {
-    const current = ladderBtn.dataset.mode;
-    const newMode = current === "ladder" ? "all" : "ladder";
-    ladderBtn.dataset.mode = newMode;
-    ladderBtn.textContent = newMode === "ladder" ? "Ladder routes only" : "All routes";
-    calculateRoutes();
-  };
+  ladderToggle.addEventListener("change", () => {
+    if (ladderToggle.checked) {
+      toggleText.textContent = "Ladder routes only";
+    } else {
+      toggleText.textContent = "All routes";
+    }
+  calculateRoutes();
+  });
+
 
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');
@@ -358,8 +359,8 @@ function computeRouteScores(route, riders) {
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
-  const mode = document.getElementById("ladder-toggle").dataset.mode;
-  const ladderOnly = mode === "ladder";
+  const ladderOnly = document.getElementById("ladder-toggle").checked;
+
 
   const filtered = ladderOnly
     ? routes.filter(r => r.Ladder === true)

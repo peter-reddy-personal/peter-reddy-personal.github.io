@@ -192,6 +192,56 @@ button {
   font-weight: 600;
 }
 
+/* Toggle container */
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+/* Hide the checkbox */
+.toggle input {
+  display: none;
+}
+
+/* Slider background */
+.slider {
+  width: 50px;
+  height: 26px;
+  background: #ccc;
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+/* Slider knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s ease;
+}
+
+/* Checked state */
+.toggle input:checked + .slider {
+  background: #1f3b5c;
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* Label text */
+.toggle-label {
+  font-size: 16px;
+}
+
 /* Version banner */
 
 #version-banner {

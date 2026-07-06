@@ -16,12 +16,14 @@
 
     <section class="panel">
       <div id="controls">
-        <label>
-          <input type="checkbox" id="ladder-slider" checked>
-          Ladder routes only
+        <label class="toggle">
+          <input type="checkbox" id="ladder-toggle" checked>
+          <span class="slider"></span>
+          <span class="toggle-label" id="toggle-text">Ladder routes only</span>
         </label>
       </div>
     </section>
+
 
     <section class="panel cls-panel">
       <div class="panel-header">
@@ -43,74 +45,8 @@
       <div id="cls-container"></div>
 
       <button id="add-cls-btn" class="secondary-btn">Add CLS Rider</button>
+      <button id="reset-cls-btn" class="secondary-btn">Reset CLS</button>
     </section>
 
     <section class="panel opp-panel">
       <div class="panel-header">
-        <h2>Opponent Riders</h2>
-        <span id="opp-count" class="rider-count">0 riders</span>
-      </div>
-
-      <div class="input-headings">
-        <span>Name</span>
-        <span>Lik%</span>
-        <span>SPR</span>
-        <span>PUN</span>
-        <span>CLI</span>
-        <span>TT</span>
-        <span>PUR</span>
-        <span>END</span>
-      </div>
-
-      <div id="opp-container"></div>
-
-      <button id="add-opp-btn" class="secondary-btn">Add Opponent Rider</button>
-    </section>
-
-    <section class="panel">
-      <button id="calculate-btn" class="primary-btn">Calculate Routes</button>
-    </section>
-
-    <section class="panel">
-      <h2>Best CLS Routes</h2>
-      <table class="results-table">
-        <thead>
-          <tr>
-            <th>Route</th>
-            <th>Length (ex lead-in)</th>
-            <th>Elevation</th>
-            <th>Lead-in</th>
-            <th>vELO av CLS</th>
-            <th>vELO av Opp</th>
-            <th>vELO diff</th>
-          </tr>
-        </thead>
-        <tbody id="best-routes"></tbody>
-      </table>
-    </section>
-
-    <section class="panel">
-      <h2>Best Opponent Routes</h2>
-      <table class="results-table">
-        <thead>
-          <tr>
-            <th>Route</th>
-            <th>Length (ex lead-in)</th>
-            <th>Elevation</th>
-            <th>Lead-in</th>
-            <th>vELO av Opp</th>
-            <th>vELO av CLS</th>
-            <th>vELO diff</th>
-          </tr>
-        </thead>
-        <tbody id="worst-routes"></tbody>
-      </table>
-    </section>
-
-  </main>
-
-  <div id="version-banner">Loading JS…</div>
-
-  <script src="app.js?v=5004"></script>
-</body>
-</html>

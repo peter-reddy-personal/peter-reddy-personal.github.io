@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 15:10";
+const jsVersion = "2026‑07‑06 15:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -41,19 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedTeam();
   updateRiderCounts();
 
-  // Ladder checkbox
-  const ladderToggle = document.getElementById("ladder-toggle");
-  const toggleText = document.getElementById("toggle-text");
-
-  ladderToggle.addEventListener("change", () => {
-    if (ladderToggle.checked) {
-      toggleText.textContent = "Ladder routes only";
-    } else {
-      toggleText.textContent = "All routes";
-    }
-  calculateRoutes();
+  // Ladder checkbox (original behaviour)
+  const ladderCheckbox = document.getElementById("ladder-slider");
+  ladderCheckbox.addEventListener("change", () => {
+    calculateRoutes();
   });
-
 
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');
@@ -359,8 +351,7 @@ function computeRouteScores(route, riders) {
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
-  const ladderOnly = document.getElementById("ladder-toggle").checked;
-
+  const ladderOnly = document.getElementById("ladder-slider").checked;
 
   const filtered = ladderOnly
     ? routes.filter(r => r.Ladder === true)
@@ -384,7 +375,7 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// Render Results (CLS → Opp → diff + km/m units + Lead_in)
+// Render Results
 //---------------------------------------------------------
 function renderResults(result) {
 

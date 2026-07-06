@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>RoutePicker</title>
-  <link rel="stylesheet" href="styles.css?v=5005">
+  <link rel="stylesheet" href="styles.css?v=5001">
 </head>
 
 <body>
@@ -14,17 +14,17 @@
 
   <main class="app-main">
 
+    <!-- Ladder toggle (original checkbox) -->
     <section class="panel">
       <div id="controls">
-        <label class="toggle">
-          <input type="checkbox" id="ladder-toggle" checked>
-          <span class="slider"></span>
-          <span class="toggle-label" id="toggle-text">Ladder routes only</span>
+        <label>
+          <input type="checkbox" id="ladder-slider" checked>
+          Ladder routes only
         </label>
       </div>
     </section>
 
-
+    <!-- CLS Riders -->
     <section class="panel cls-panel">
       <div class="panel-header">
         <h2>CLS Riders</h2>
@@ -48,5 +48,76 @@
       <button id="reset-cls-btn" class="secondary-btn">Reset CLS</button>
     </section>
 
+    <!-- Opponent Riders -->
     <section class="panel opp-panel">
       <div class="panel-header">
+        <h2>Opponent Riders</h2>
+        <span id="opp-count" class="rider-count">0 riders</span>
+      </div>
+
+      <div class="input-headings">
+        <span>Name</span>
+        <span>Lik%</span>
+        <span>SPR</span>
+        <span>PUN</span>
+        <span>CLI</span>
+        <span>TT</span>
+        <span>PUR</span>
+        <span>END</span>
+      </div>
+
+      <div id="opp-container"></div>
+
+      <button id="add-opp-btn" class="secondary-btn">Add Opponent Rider</button>
+    </section>
+
+    <!-- Calculate -->
+    <section class="panel">
+      <button id="calculate-btn" class="primary-btn">Calculate Routes</button>
+    </section>
+
+    <!-- Best CLS Routes -->
+    <section class="panel">
+      <h2>Best CLS Routes</h2>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Length (ex lead-in)</th>
+            <th>Elevation</th>
+            <th>Lead-in</th>
+            <th>vELO av CLS</th>
+            <th>vELO av Opp</th>
+            <th>vELO diff</th>
+          </tr>
+        </thead>
+        <tbody id="best-routes"></tbody>
+      </table>
+    </section>
+
+    <!-- Best Opponent Routes -->
+    <section class="panel">
+      <h2>Best Opponent Routes</h2>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Length (ex lead-in)</th>
+            <th>Elevation</th>
+            <th>Lead-in</th>
+            <th>vELO av Opp</th>
+            <th>vELO av CLS</th>
+            <th>vELO diff</th>
+          </tr>
+        </thead>
+        <tbody id="worst-routes"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <div id="version-banner">Loading JS…</div>
+
+  <script src="app.js?v=6002"></script>
+</body>
+</html>

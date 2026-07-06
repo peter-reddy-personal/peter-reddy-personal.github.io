@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 10:30";
+const jsVersion = "2026‑07‑06 10:55";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -321,7 +321,7 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
-// Rank Routes
+// Rank Routes (fixed sorting logic)
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
@@ -341,15 +341,16 @@ function rankRoutes(routes, riders) {
     };
   });
 
-  return {
-    bestCLS: scored.sort((a, b) => b.diff - a.diff),
-    bestOpp: scored.sort((a, b) => a.diff - b.diff)
-  };
+  // FIX: clone array before sorting
+  const bestCLS = [...scored].sort((a, b) => b.diff - a.diff); // CLS advantage
+  const bestOpp = [...scored].sort((a, b) => a.diff - b.diff); // Opp advantage
+
+  return { bestCLS, bestOpp };
 }
 
 
 //---------------------------------------------------------
-// Render Results (with diff colouring)
+// Render Results (CLS → Opp → diff + km/m units)
 //---------------------------------------------------------
 function renderResults(result) {
 
@@ -364,9 +365,9 @@ function renderResults(result) {
     clsBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
-        <td>${r.Length}</td>
-        <td>${r.Elevation}</td>
-        <td>${r.LeadIn}</td>
+        <td>${r.Length} km</td>
+        <td>${r.Elevation} m</td>
+        <td>${r.LeadInKm} km</td>
         <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
@@ -379,11 +380,11 @@ function renderResults(result) {
     oppBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
-        <td>${r.Length}</td>
-        <td>${r.Elevation}</td>
-        <td>${r.LeadIn}</td>
-        <td>${r.avgOpp.toFixed(0)}</td>
+        <td>${r.Length} km</td>
+        <td>${r.Elevation} m</td>
+        <td>${r.LeadInKm} km</td>
         <td>${r.avgCLS.toFixed(0)}</td>
+        <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
       </tr>
     `;

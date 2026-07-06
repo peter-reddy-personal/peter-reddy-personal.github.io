@@ -382,6 +382,61 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
+// Render average ELO comparison
+//---------------------------------------------------------
+
+function renderAverages(riders) {
+  const cls = riders.filter(r => r.team === "CLS");
+  const opp = riders.filter(r => r.team === "Opponent");
+
+  function avg(team, key) {
+    if (team.length === 0) return 0;
+    return team.reduce((sum, r) => sum + r[key], 0) / team.length;
+  }
+
+  const clsAvg = {
+    sprint: avg(cls, "sprint"),
+    punch: avg(cls, "punch"),
+    climb: avg(cls, "climb"),
+    tt: avg(cls, "tt"),
+    pursuit: avg(cls, "pursuit"),
+    endurance: avg(cls, "endurance")
+  };
+
+  const oppAvg = {
+    sprint: avg(opp, "sprint"),
+    punch: avg(opp, "punch"),
+    climb: avg(opp, "climb"),
+    tt: avg(opp, "tt"),
+    pursuit: avg(opp, "pursuit"),
+    endurance: avg(opp, "endurance")
+  };
+
+  const tbody = document.getElementById("team-averages");
+  tbody.innerHTML = `
+    <tr>
+      <td>CLS</td>
+      <td>${clsAvg.sprint.toFixed(0)}</td>
+      <td>${clsAvg.punch.toFixed(0)}</td>
+      <td>${clsAvg.climb.toFixed(0)}</td>
+      <td>${clsAvg.tt.toFixed(0)}</td>
+      <td>${clsAvg.pursuit.toFixed(0)}</td>
+      <td>${clsAvg.endurance.toFixed(0)}</td>
+    </tr>
+    <tr>
+      <td>Opponent</td>
+      <td>${oppAvg.sprint.toFixed(0)}</td>
+      <td>${oppAvg.punch.toFixed(0)}</td>
+      <td>${oppAvg.climb.toFixed(0)}</td>
+      <td>${oppAvg.tt.toFixed(0)}</td>
+      <td>${oppAvg.pursuit.toFixed(0)}</td>
+      <td>${oppAvg.endurance.toFixed(0)}</td>
+    </tr>
+  `;
+}
+
+
+//---------------------------------------------------------
 // Render Results
 //---------------------------------------------------------
 function renderResults(result) {
@@ -431,5 +486,7 @@ async function calculateRoutes() {
   await loadRoutes();
   const riders = getRiders();
   const ranked = rankRoutes(routes, riders);
+  renderAverages(riders);   // NEW
   renderResults(ranked);
 }
+

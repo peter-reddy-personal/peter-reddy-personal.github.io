@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RoutePicker</title>
+  <title>Zwift Ladder route picker</title>
   <link rel="stylesheet" href="styles.css?v=5001">
 </head>
 
@@ -34,15 +34,16 @@
       </div>
 
       <div class="input-headings">
-        <span>Name</span>
-        <span>Lik%</span>
-        <span>SPR</span>
-        <span>PUN</span>
-        <span>CLI</span>
-        <span>TT</span>
-        <span>PUR</span>
-        <span>END</span>
+        <span class="name-col">Name</span>
+        <span class="lik-col">Lik%</span>
+        <span class="spr-col">SPR</span>
+        <span class="pun-col">PUN</span>
+        <span class="cli-col">CLI</span>
+        <span class="tt-col">TT</span>
+        <span class="pur-col">PUR</span>
+        <span class="end-col">END</span>
       </div>
+
 
       <div id="cls-container"></div>
 
@@ -77,6 +78,27 @@
     <section class="panel">
       <button id="calculate-btn" class="primary-btn">Calculate Routes</button>
     </section>
+
+
+    <!-- Compare vELO average -->
+    <section class="panel">
+      <h2>Team Averages</h2>
+      <table class="results-table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>SPR</th>
+          <th>PUN</th>
+          <th>CLI</th>
+          <th>TT</th>
+          <th>PUR</th>
+          <th>END</th>
+        </tr>
+      </thead>
+      <tbody id="team-averages"></tbody>
+      </table>
+    </section>
+
 
     <!-- Best CLS Routes -->
     <section class="panel">

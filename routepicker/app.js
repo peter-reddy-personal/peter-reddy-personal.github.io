@@ -13,17 +13,17 @@ window.addEventListener("DOMContentLoaded", () => {
 // DEFAULT CLS RIDERS
 //---------------------------------------------------------
 const defaultCLS = [
-  { name: "Anthony", team: "CLS", likelihood: 100, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
-  { name: "Chris",   team: "CLS", likelihood: 10,  sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
-  { name: "Florian", team: "CLS", likelihood: 10,  sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
-  { name: "James",   team: "CLS", likelihood: 10,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kestas",  team: "CLS", likelihood: 10,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kev",     team: "CLS", likelihood: 25,  sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
-  { name: "Kris",    team: "CLS", likelihood: 10,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
-  { name: "Mike",    team: "CLS", likelihood: 10,  sprint: 702, punch: 654, climb: 618, tt: 586, pursuit: 615, endurance: 606 },
-  { name: "Pete",    team: "CLS", likelihood: 10,  sprint: 861, punch: 818, climb: 656, tt: 678, pursuit: 581, endurance: 580 },
-  { name: "Rich",    team: "CLS", likelihood: 10,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
-  { name: "Trev",    team: "CLS", likelihood: 100, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+  { name: "Anthony", team: "CLS", likelihood: 80, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
+  { name: "Chris",   team: "CLS", likelihood: 0,  sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
+  { name: "Florian", team: "CLS", likelihood: 80,  sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
+  { name: "James",   team: "CLS", likelihood: 80,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kestas",  team: "CLS", likelihood: 0,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kev",     team: "CLS", likelihood: 0,  sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
+  { name: "Kris",    team: "CLS", likelihood: 0,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
+  { name: "Mike",    team: "CLS", likelihood: 80,  sprint: 702, punch: 654, climb: 618, tt: 586, pursuit: 615, endurance: 606 },
+  { name: "Pete",    team: "CLS", likelihood: 80,  sprint: 861, punch: 818, climb: 656, tt: 678, pursuit: 581, endurance: 580 },
+  { name: "Rich",    team: "CLS", likelihood: 0,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
+  { name: "Trev",    team: "CLS", likelihood: 80, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
 ];
 
 
@@ -250,6 +250,7 @@ function resetCLS() {
   document.getElementById('opp-container').innerHTML = '';
 
   defaultCLS.forEach(r => addRiderRowWithData(r));
+  defaultOpponents.forEach(r => addRiderRowWithData(r));
 
   autoSaveTeam();
   updateRiderCounts();
@@ -268,6 +269,7 @@ function loadSavedTeam() {
     document.getElementById('opp-container').innerHTML = '';
 
     defaultCLS.forEach(r => addRiderRowWithData(r));
+    defaultOpponents.forEach(r => addRiderRowWithData(r));
 
     autoSaveTeam();
     return;
@@ -420,6 +422,56 @@ function renderAverages(riders) {
     pursuit: clsAvg.pursuit - oppAvg.pursuit,
     endurance: clsAvg.endurance - oppAvg.endurance
   };
+
+  // Find min and max differences for gradient scaling
+  const values = Object.values(diff);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+
+  function gradientStyle(value) {
+    // Normalise between 0 and 1
+    const t = (value - min) / (max - min);
+
+    // Interpolate between red → green
+    const r = Math.round(255 * (1 - t));
+    const g = Math.round(255 * t);
+    const b = 200;
+
+    return `background-color: rgb(${r}, ${g}, ${b});`;
+  }
+
+  const tbody = document.getElementById("team-averages");
+
+  tbody.innerHTML = `
+    <tr>
+      <td>CLS</td>
+      <td>${clsAvg.sprint.toFixed(0)}</td>
+      <td>${clsAvg.punch.toFixed(0)}</td>
+      <td>${clsAvg.climb.toFixed(0)}</td>
+      <td>${clsAvg.tt.toFixed(0)}</td>
+      <td>${clsAvg.pursuit.toFixed(0)}</td>
+      <td>${clsAvg.endurance.toFixed(0)}</td>
+    </tr>
+    <tr>
+      <td>Opponent</td>
+      <td>${oppAvg.sprint.toFixed(0)}</td>
+      <td>${oppAvg.punch.toFixed(0)}</td>
+      <td>${oppAvg.climb.toFixed(0)}</td>
+      <td>${oppAvg.tt.toFixed(0)}</td>
+      <td>${oppAvg.pursuit.toFixed(0)}</td>
+      <td>${oppAvg.endurance.toFixed(0)}</td>
+    </tr>
+    <tr>
+      <td>Difference</td>
+      <td class="diff-cell" style="${gradientStyle(diff.sprint)}">${diff.sprint.toFixed(0)}</td>
+      <td class="diff-cell" style="${gradientStyle(diff.punch)}">${diff.punch.toFixed(0)}</td>
+      <td class="diff-cell" style="${gradientStyle(diff.climb)}">${diff.climb.toFixed(0)}</td>
+      <td class="diff-cell" style="${gradientStyle(diff.tt)}">${diff.tt.toFixed(0)}</td>
+      <td class="diff-cell" style="${gradientStyle(diff.pursuit)}">${diff.pursuit.toFixed(0)}</td>
+      <td class="diff-cell" style="${gradientStyle(diff.endurance)}">${diff.endurance.toFixed(0)}</td>
+    </tr>
+  `;
+}
 
   // Find biggest CLS advantage (max positive diff)
   const maxKey = Object.keys(diff).reduce((best, key) =>

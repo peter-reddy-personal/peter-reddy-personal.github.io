@@ -1,16 +1,16 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 11:30";
+const jsVersion = "2026‑07‑06 12:19";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
-  if (banner) banner.textContent = "RoutePicker JS build: " + jsVersion;
+  if (banner) banner.textContent = "Zwift Ladder Route Picker — JS build: " + jsVersion;
 });
 
 
 //---------------------------------------------------------
-// DEFAULT CLS RIDERS (loaded only if no saved team exists)
+// DEFAULT CLS RIDERS
 //---------------------------------------------------------
 const defaultCLS = [
   { name: "Anthony", team: "CLS", likelihood: 100, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
@@ -41,7 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedTeam();
   updateRiderCounts();
 
-  document.getElementById('ladder-slider').checked = true;
+  // Ladder toggle button
+  const ladderBtn = document.getElementById("ladder-toggle");
+  ladderBtn.dataset.mode = "ladder";
+  ladderBtn.textContent = "Ladder routes only";
+
+  ladderBtn.onclick = () => {
+    const current = ladderBtn.dataset.mode;
+    const newMode = current === "ladder" ? "all" : "ladder";
+    ladderBtn.dataset.mode = newMode;
+    ladderBtn.textContent = newMode === "ladder" ? "Ladder routes only" : "All routes";
+    calculateRoutes();
+  };
 
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');
@@ -52,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     addRiderRow('opp-container');
     updateRiderCounts();
   };
+
+  document.getElementById('reset-cls-btn').onclick = resetCLS;
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 });
@@ -69,7 +82,9 @@ function addRiderRow(sectionId) {
   row.innerHTML = `
     <input type="text" class="rider-name" placeholder="Name">
 
-    <input type="number" class="rider-likelihood" placeholder="% Likelihood" value="100" min="0" max="100">
+    <input type="number" class="rider-likelihood likelihood-field" placeholder="% Likelihood" value="100" min="0" max="100">
+
+    <div class="factor-gap"></div>
 
     <input type="number" class="rider-sprint" placeholder="SPR">
     <input type="number" class="rider-punch" placeholder="PUN">
@@ -107,7 +122,9 @@ function addRiderRowWithData(r) {
 
   row.innerHTML = `
     <input type="text" class="rider-name" value="${r.name}">
-    <input type="number" class="rider-likelihood" value="${r.likelihood}" min="0" max="100">
+    <input type="number" class="rider-likelihood likelihood-field" value="${r.likelihood}" min="0" max="100">
+
+    <div class="factor-gap"></div>
 
     <input type="number" class="rider-sprint" value="${r.sprint}">
     <input type="number" class="rider-punch" value="${r.punch}">
@@ -225,6 +242,22 @@ function attachPasteHandler(row) {
 
 
 //---------------------------------------------------------
+// Reset CLS team to defaults
+//---------------------------------------------------------
+function resetCLS() {
+
+  document.getElementById('cls-container').innerHTML = '';
+  document.getElementById('opp-container').innerHTML = '';
+
+  defaultCLS.forEach(r => addRiderRowWithData(r));
+
+  autoSaveTeam();
+  updateRiderCounts();
+  calculateRoutes();
+}
+
+
+//---------------------------------------------------------
 // Load Saved Team OR Default CLS Riders
 //---------------------------------------------------------
 function loadSavedTeam() {
@@ -325,7 +358,8 @@ function computeRouteScores(route, riders) {
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
-  const ladderOnly = document.getElementById('ladder-slider').checked;
+  const mode = document.getElementById("ladder-toggle").dataset.mode;
+  const ladderOnly = mode === "ladder";
 
   const filtered = ladderOnly
     ? routes.filter(r => r.Ladder === true)
@@ -341,9 +375,8 @@ function rankRoutes(routes, riders) {
     };
   });
 
-  // FIX: clone array before sorting
-  const bestCLS = [...scored].sort((a, b) => b.diff - a.diff); // CLS advantage
-  const bestOpp = [...scored].sort((a, b) => a.diff - b.diff); // Opp advantage
+  const bestCLS = [...scored].sort((a, b) => b.diff - a.diff);
+  const bestOpp = [...scored].sort((a, b) => a.diff - b.diff);
 
   return { bestCLS, bestOpp };
 }

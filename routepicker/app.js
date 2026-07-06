@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 09:30";
+const jsVersion = "2026‑07‑06 09:50";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -21,11 +21,18 @@ let routes = [];
 document.addEventListener("DOMContentLoaded", () => {
 
   loadSavedTeam();
+  updateRiderCounts();
 
   document.getElementById('ladder-slider').checked = true;
 
-  document.getElementById('add-cls-btn').onclick = () => addRiderRow('cls-container');
-  document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
+  document.getElementById('add-cls-btn').onclick = () => {
+    addRiderRow('cls-container');
+    updateRiderCounts();
+  };
+  document.getElementById('add-opp-btn').onclick = () => {
+    addRiderRow('opp-container');
+    updateRiderCounts();
+  };
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 });
@@ -58,6 +65,7 @@ function addRiderRow(sectionId) {
   row.querySelector('.remove-rider').onclick = () => {
     row.remove();
     autoSaveTeam();
+    updateRiderCounts();
   };
 
   attachAutoSave(row);
@@ -102,6 +110,7 @@ function getRiders() {
 function autoSaveTeam() {
   const riders = getRiders();
   localStorage.setItem('routepicker_team', JSON.stringify(riders));
+  updateRiderCounts();
 }
 
 function attachAutoSave(row) {
@@ -195,6 +204,7 @@ function loadSavedTeam() {
     row.querySelector('.remove-rider').onclick = () => {
       row.remove();
       autoSaveTeam();
+      updateRiderCounts();
     };
 
     attachAutoSave(row);
@@ -206,7 +216,22 @@ function loadSavedTeam() {
 
 
 //---------------------------------------------------------
-// 6. Load Routes JSON
+// 6. Rider counts
+//---------------------------------------------------------
+function updateRiderCounts() {
+  const clsCount = document.querySelectorAll('#cls-container .rider-row').length;
+  const oppCount = document.querySelectorAll('#opp-container .rider-row').length;
+
+  const clsLabel = document.getElementById('cls-count');
+  const oppLabel = document.getElementById('opp-count');
+
+  if (clsLabel) clsLabel.textContent = `${clsCount} rider${clsCount === 1 ? '' : 's'}`;
+  if (oppLabel) oppLabel.textContent = `${oppCount} rider${oppCount === 1 ? '' : 's'}`;
+}
+
+
+//---------------------------------------------------------
+// 7. Load Routes JSON
 //---------------------------------------------------------
 async function loadRoutes() {
   const response = await fetch('./routes.json');
@@ -216,7 +241,7 @@ async function loadRoutes() {
 
 
 //---------------------------------------------------------
-// 7. Compute Single Rider Score (TT before PUR)
+// 8. Compute Single Rider Score (TT before PUR)
 //---------------------------------------------------------
 function computeSingleScore(route, r) {
   return (
@@ -231,7 +256,7 @@ function computeSingleScore(route, r) {
 
 
 //---------------------------------------------------------
-// 8. Weighted CLS / Opponent Averages
+// 9. Weighted CLS / Opponent Averages
 //---------------------------------------------------------
 function computeRouteScores(route, riders) {
 
@@ -262,7 +287,7 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
-// 9. Rank Routes
+// 10. Rank Routes
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
@@ -290,7 +315,7 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// 10. Render Results
+// 11. Render Results (with diff colouring)
 //---------------------------------------------------------
 function renderResults(result) {
 
@@ -301,6 +326,7 @@ function renderResults(result) {
   oppBody.innerHTML = '';
 
   result.bestCLS.slice(0, 10).forEach(r => {
+    const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
     clsBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
@@ -309,12 +335,13 @@ function renderResults(result) {
         <td>${r.LeadIn}</td>
         <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
-        <td>${r.diff.toFixed(0)}</td>
+        <td class="${diffClass}">${r.diff.toFixed(0)}</td>
       </tr>
     `;
   });
 
   result.bestOpp.slice(0, 10).forEach(r => {
+    const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
     oppBody.innerHTML += `
       <tr>
         <td>${r.Route}</td>
@@ -323,7 +350,7 @@ function renderResults(result) {
         <td>${r.LeadIn}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
         <td>${r.avgCLS.toFixed(0)}</td>
-        <td>${r.diff.toFixed(0)}</td>
+        <td class="${diffClass}">${r.diff.toFixed(0)}</td>
       </tr>
     `;
   });
@@ -331,7 +358,7 @@ function renderResults(result) {
 
 
 //---------------------------------------------------------
-// 11. Main Calculate Function
+// 12. Main Calculate Function
 //---------------------------------------------------------
 async function calculateRoutes() {
   await loadRoutes();

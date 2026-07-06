@@ -203,6 +203,10 @@ button {
   font-weight: bold;
 }
 
+#team-averages th {
+  text-align: center;
+}
+
 /* Tables */
 
 .results-table {

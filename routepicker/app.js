@@ -176,6 +176,16 @@ function getRiders() {
   return riders;
 }
 
+//---------------------------------------------------------
+// DEFAULT OPPONENT RIDERS
+//---------------------------------------------------------
+const defaultOpponents = [
+  { name: "Larsson", team: "Opponent", likelihood: 100, sprint: 846, punch: 887, climb: 673, tt: 650, pursuit: 666, endurance: 619 },
+  { name: "Hoff", team: "Opponent", likelihood: 100, sprint: 806, punch: 815, climb: 691, tt: 675, pursuit: 697, endurance: 692 },
+  { name: "Martinsson", team: "Opponent", likelihood: 100, sprint: 879, punch: 774, climb: 603, tt: 667, pursuit: 620, endurance: 614 },
+  { name: "Hansson", team: "Opponent", likelihood: 100, sprint: 574, punch: 690, climb: 695, tt: 704, pursuit: 712, endurance: 666 }
+];
+
 
 //---------------------------------------------------------
 // Auto-save Team

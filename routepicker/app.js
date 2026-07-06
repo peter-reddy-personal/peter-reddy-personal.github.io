@@ -1,12 +1,30 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 09:50";
+const jsVersion = "2026‑07‑06 10:30";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
   if (banner) banner.textContent = "RoutePicker JS build: " + jsVersion;
 });
+
+
+//---------------------------------------------------------
+// DEFAULT CLS RIDERS (loaded only if no saved team exists)
+//---------------------------------------------------------
+const defaultCLS = [
+  { name: "Anthony", team: "CLS", likelihood: 100, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
+  { name: "Chris",   team: "CLS", likelihood: 10,  sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
+  { name: "Florian", team: "CLS", likelihood: 10,  sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
+  { name: "James",   team: "CLS", likelihood: 10,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kestas",  team: "CLS", likelihood: 10,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kev",     team: "CLS", likelihood: 25,  sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
+  { name: "Kris",    team: "CLS", likelihood: 10,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
+  { name: "Mike",    team: "CLS", likelihood: 10,  sprint: 702, punch: 654, climb: 618, tt: 586, pursuit: 615, endurance: 606 },
+  { name: "Pete",    team: "CLS", likelihood: 10,  sprint: 861, punch: 818, climb: 656, tt: 678, pursuit: 581, endurance: 580 },
+  { name: "Rich",    team: "CLS", likelihood: 10,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
+  { name: "Trev",    team: "CLS", likelihood: 100, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+];
 
 
 //---------------------------------------------------------
@@ -29,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addRiderRow('cls-container');
     updateRiderCounts();
   };
+
   document.getElementById('add-opp-btn').onclick = () => {
     addRiderRow('opp-container');
     updateRiderCounts();
@@ -39,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //---------------------------------------------------------
-// 1. Add Rider Row
+// Add Rider Row (empty)
 //---------------------------------------------------------
 function addRiderRow(sectionId) {
   const container = document.getElementById(sectionId);
@@ -77,7 +96,44 @@ function addRiderRow(sectionId) {
 
 
 //---------------------------------------------------------
-// 2. Read Rider Inputs
+// Add Rider Row With Pre-Filled Data
+//---------------------------------------------------------
+function addRiderRowWithData(r) {
+  const sectionId = r.team === "CLS" ? "cls-container" : "opp-container";
+  const container = document.getElementById(sectionId);
+
+  const row = document.createElement('div');
+  row.classList.add('rider-row');
+
+  row.innerHTML = `
+    <input type="text" class="rider-name" value="${r.name}">
+    <input type="number" class="rider-likelihood" value="${r.likelihood}" min="0" max="100">
+
+    <input type="number" class="rider-sprint" value="${r.sprint}">
+    <input type="number" class="rider-punch" value="${r.punch}">
+    <input type="number" class="rider-climb" value="${r.climb}">
+    <input type="number" class="rider-tt" value="${r.tt}">
+    <input type="number" class="rider-pursuit" value="${r.pursuit}">
+    <input type="number" class="rider-endurance" value="${r.endurance}">
+
+    <button class="remove-rider">X</button>
+  `;
+
+  row.querySelector('.remove-rider').onclick = () => {
+    row.remove();
+    autoSaveTeam();
+    updateRiderCounts();
+  };
+
+  attachAutoSave(row);
+  attachPasteHandler(row);
+
+  container.appendChild(row);
+}
+
+
+//---------------------------------------------------------
+// Read Rider Inputs
 //---------------------------------------------------------
 function getRiders() {
   const rows = document.querySelectorAll('.rider-row');
@@ -105,7 +161,7 @@ function getRiders() {
 
 
 //---------------------------------------------------------
-// 3. Auto-save Team
+// Auto-save Team
 //---------------------------------------------------------
 function autoSaveTeam() {
   const riders = getRiders();
@@ -127,7 +183,7 @@ function attachAutoSave(row) {
 
 
 //---------------------------------------------------------
-// 4. Multi-line Paste Handler (TT before PUR)
+// Multi-line Paste Handler (TT before PUR)
 //---------------------------------------------------------
 function attachPasteHandler(row) {
 
@@ -169,54 +225,32 @@ function attachPasteHandler(row) {
 
 
 //---------------------------------------------------------
-// 5. Load Saved Team
+// Load Saved Team OR Default CLS Riders
 //---------------------------------------------------------
 function loadSavedTeam() {
   const saved = localStorage.getItem('routepicker_team');
-  if (!saved) return;
+
+  if (!saved) {
+    document.getElementById('cls-container').innerHTML = '';
+    document.getElementById('opp-container').innerHTML = '';
+
+    defaultCLS.forEach(r => addRiderRowWithData(r));
+
+    autoSaveTeam();
+    return;
+  }
 
   const riders = JSON.parse(saved);
 
   document.getElementById('cls-container').innerHTML = '';
   document.getElementById('opp-container').innerHTML = '';
 
-  riders.forEach(r => {
-    const sectionId = r.team === 'CLS' ? 'cls-container' : 'opp-container';
-    const container = document.getElementById(sectionId);
-
-    const row = document.createElement('div');
-    row.classList.add('rider-row');
-
-    row.innerHTML = `
-      <input type="text" class="rider-name" value="${r.name}">
-
-      <input type="number" class="rider-likelihood" value="${r.likelihood}" min="0" max="100">
-
-      <input type="number" class="rider-sprint" value="${r.sprint}">
-      <input type="number" class="rider-punch" value="${r.punch}">
-      <input type="number" class="rider-climb" value="${r.climb}">
-      <input type="number" class="rider-tt" value="${r.tt}">
-      <input type="number" class="rider-pursuit" value="${r.pursuit}">
-      <input type="number" class="rider-endurance" value="${r.endurance}">
-      <button class="remove-rider">X</button>
-    `;
-
-    row.querySelector('.remove-rider').onclick = () => {
-      row.remove();
-      autoSaveTeam();
-      updateRiderCounts();
-    };
-
-    attachAutoSave(row);
-    attachPasteHandler(row);
-
-    container.appendChild(row);
-  });
+  riders.forEach(r => addRiderRowWithData(r));
 }
 
 
 //---------------------------------------------------------
-// 6. Rider counts
+// Rider counts
 //---------------------------------------------------------
 function updateRiderCounts() {
   const clsCount = document.querySelectorAll('#cls-container .rider-row').length;
@@ -231,7 +265,7 @@ function updateRiderCounts() {
 
 
 //---------------------------------------------------------
-// 7. Load Routes JSON
+// Load Routes JSON
 //---------------------------------------------------------
 async function loadRoutes() {
   const response = await fetch('./routes.json');
@@ -241,7 +275,7 @@ async function loadRoutes() {
 
 
 //---------------------------------------------------------
-// 8. Compute Single Rider Score (TT before PUR)
+// Compute Single Rider Score (TT before PUR)
 //---------------------------------------------------------
 function computeSingleScore(route, r) {
   return (
@@ -256,7 +290,7 @@ function computeSingleScore(route, r) {
 
 
 //---------------------------------------------------------
-// 9. Weighted CLS / Opponent Averages
+// Weighted CLS / Opponent Averages
 //---------------------------------------------------------
 function computeRouteScores(route, riders) {
 
@@ -287,7 +321,7 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
-// 10. Rank Routes
+// Rank Routes
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
@@ -315,7 +349,7 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// 11. Render Results (with diff colouring)
+// Render Results (with diff colouring)
 //---------------------------------------------------------
 function renderResults(result) {
 
@@ -358,7 +392,7 @@ function renderResults(result) {
 
 
 //---------------------------------------------------------
-// 12. Main Calculate Function
+// Main Calculate Function
 //---------------------------------------------------------
 async function calculateRoutes() {
   await loadRoutes();

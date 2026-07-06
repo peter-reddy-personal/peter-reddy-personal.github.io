@@ -41,11 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedTeam();
   updateRiderCounts();
 
+
   // Ladder checkbox (original behaviour)
   const ladderCheckbox = document.getElementById("ladder-slider");
-  ladderCheckbox.addEventListener("change", () => {
-    calculateRoutes();
-  });
+const toggleText = document.getElementById("toggle-text");
+
+ladderCheckbox.addEventListener("change", () => {
+  toggleText.textContent = ladderCheckbox.checked
+    ? "Ladder routes only"
+    : "All routes";
+  calculateRoutes();
+});
+
 
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');

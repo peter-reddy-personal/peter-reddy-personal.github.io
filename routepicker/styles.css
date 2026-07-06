@@ -87,9 +87,10 @@ body {
 }
 
 .rider-row {
-  display: grid;
-  grid-template-columns: 140px 70px repeat(6, 60px) 30px;
-  gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
   margin-bottom: 6px;
   padding: 6px 8px;
   background: #ffffff;
@@ -101,6 +102,27 @@ body {
   font-size: 12px;
   padding: 4px;
   box-sizing: border-box;
+}
+
+.rider-row .rider-name {
+  width: 120px;
+}
+
+.rider-row .rider-likelihood {
+  width: 70px;
+}
+
+.rider-row .rider-sprint,
+.rider-row .rider-punch,
+.rider-row .rider-climb,
+.rider-row .rider-tt,
+.rider-row .rider-pursuit,
+.rider-row .rider-endurance {
+  width: 60px;
+}
+
+.factor-gap {
+  width: 10px;
 }
 
 .rider-likelihood {
@@ -241,6 +263,52 @@ button {
 .toggle-label {
   font-size: 16px;
 }
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.toggle input {
+  display: none;
+}
+
+.slider {
+  width: 50px;
+  height: 26px;
+  background: #ccc;
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.toggle input:checked + .slider {
+  background: #1f3b5c;
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+.toggle-label {
+  font-size: 16px;
+}
+
+
 
 /* Version banner */
 

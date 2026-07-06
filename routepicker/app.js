@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 08:55";
+const jsVersion = "2026‑07‑06 09:30";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -28,18 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('add-opp-btn').onclick = () => addRiderRow('opp-container');
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
-
-  document.querySelectorAll('.rider-row').forEach(row => {
-    const removeBtn = row.querySelector('.remove-rider');
-    if (removeBtn) {
-      removeBtn.onclick = () => {
-        row.remove();
-        autoSaveTeam();
-      };
-    }
-    attachAutoSave(row);
-    attachPasteHandler(row);
-  });
 });
 
 
@@ -60,8 +48,8 @@ function addRiderRow(sectionId) {
     <input type="number" class="rider-sprint" placeholder="SPR">
     <input type="number" class="rider-punch" placeholder="PUN">
     <input type="number" class="rider-climb" placeholder="CLI">
-    <input type="number" class="rider-pursuit" placeholder="PUR">
     <input type="number" class="rider-tt" placeholder="TT">
+    <input type="number" class="rider-pursuit" placeholder="PUR">
     <input type="number" class="rider-endurance" placeholder="END">
 
     <button class="remove-rider">X</button>
@@ -98,8 +86,8 @@ function getRiders() {
       sprint: Number(row.querySelector('.rider-sprint').value),
       punch: Number(row.querySelector('.rider-punch').value),
       climb: Number(row.querySelector('.rider-climb').value),
-      pursuit: Number(row.querySelector('.rider-pursuit').value),
       tt: Number(row.querySelector('.rider-tt').value),
+      pursuit: Number(row.querySelector('.rider-pursuit').value),
       endurance: Number(row.querySelector('.rider-endurance').value)
     });
   });
@@ -130,7 +118,7 @@ function attachAutoSave(row) {
 
 
 //---------------------------------------------------------
-// 4. Multi-line Paste Handler
+// 4. Multi-line Paste Handler (TT before PUR)
 //---------------------------------------------------------
 function attachPasteHandler(row) {
 
@@ -138,8 +126,8 @@ function attachPasteHandler(row) {
     row.querySelector('.rider-sprint'),
     row.querySelector('.rider-punch'),
     row.querySelector('.rider-climb'),
-    row.querySelector('.rider-pursuit'),
     row.querySelector('.rider-tt'),
+    row.querySelector('.rider-pursuit'),
     row.querySelector('.rider-endurance')
   ];
 
@@ -161,8 +149,8 @@ function attachPasteHandler(row) {
       fields[0].value = nums[0];
       fields[1].value = nums[1];
       fields[2].value = nums[2];
-      fields[3].value = nums[3];
-      fields[4].value = nums[4];
+      fields[3].value = nums[3]; // TT
+      fields[4].value = nums[4]; // PUR
       fields[5].value = nums[5];
 
       autoSaveTeam();
@@ -198,8 +186,8 @@ function loadSavedTeam() {
       <input type="number" class="rider-sprint" value="${r.sprint}">
       <input type="number" class="rider-punch" value="${r.punch}">
       <input type="number" class="rider-climb" value="${r.climb}">
-      <input type="number" class="rider-pursuit" value="${r.pursuit}">
       <input type="number" class="rider-tt" value="${r.tt}">
+      <input type="number" class="rider-pursuit" value="${r.pursuit}">
       <input type="number" class="rider-endurance" value="${r.endurance}">
       <button class="remove-rider">X</button>
     `;
@@ -228,15 +216,15 @@ async function loadRoutes() {
 
 
 //---------------------------------------------------------
-// 7. Compute Single Rider Score
+// 7. Compute Single Rider Score (TT before PUR)
 //---------------------------------------------------------
 function computeSingleScore(route, r) {
   return (
     r.sprint    * route.Sprint +
     r.punch     * route.Punch +
     r.climb     * route.Climb +
-    r.pursuit   * route.Pursuit +
     r.tt        * route.TT +
+    r.pursuit   * route.Pursuit +
     r.endurance * route.Endurance
   );
 }

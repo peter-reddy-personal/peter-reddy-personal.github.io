@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑05 22:40";
+const jsVersion = "2026‑07‑06 08:25";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -177,27 +177,29 @@ function attachPasteHandler(row) {
 //---------------------------------------------------------
 // 5. Load Saved Team
 //---------------------------------------------------------
+
 function loadSavedTeam() {
   const saved = localStorage.getItem('routepicker_team');
   if (!saved) return;
 
   const riders = JSON.parse(saved);
 
-  document.getElementById('cls-container').innerHTML = '';
-  document.getElementById('opp-container').innerHTML = '';
+  const clsContainer = document.getElementById('cls-container');
+  const oppContainer = document.getElementById('opp-container');
+
+  clsContainer.innerHTML = '';
+  oppContainer.innerHTML = '';
 
   riders.forEach(r => {
-    const sectionId = r.team === 'CLS' ? 'cls-container' : 'opp-container';
-    const container = document.getElementById(sectionId);
-
     const row = document.createElement('div');
     row.classList.add('rider-row');
 
     row.innerHTML = `
       <input type="text" class="rider-name" value="${r.name}">
+      
       <select class="rider-team">
-        <option value="CLS" ${r.team === 'CLS' ? 'selected' : ''}>CLS</option>
-        <option value="Opponent" ${r.team === 'Opponent' ? 'selected' : ''}>Opponent</option>
+        <option value="CLS">CLS</option>
+        <option value="Opponent">Opponent</option>
       </select>
 
       <input type="number" class="rider-likelihood" value="${r.likelihood}" min="0" max="100">
@@ -211,18 +213,26 @@ function loadSavedTeam() {
       <button class="remove-rider">X</button>
     `;
 
+    // Append to correct container FIRST
+    const container = r.team === 'CLS' ? clsContainer : oppContainer;
+    container.appendChild(row);
+
+    // Now safely set the team value AFTER DOM insertion
+    row.querySelector('.rider-team').value = r.team;
+
+    // Attach remove handler
     row.querySelector('.remove-rider').onclick = () => {
       row.remove();
       autoSaveTeam();
     };
 
+    // Attach auto-save AFTER the correct value is set
     attachAutoSave(row);
-    attachPasteHandler(row);
 
-    container.appendChild(row);
+    // Your paste handler (unchanged)
+    attachPasteHandler(row);
   });
 }
-
 
 //---------------------------------------------------------
 // 6. Load Routes JSON

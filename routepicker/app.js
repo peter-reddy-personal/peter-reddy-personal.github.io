@@ -435,15 +435,24 @@ function renderAverages(riders) {
   const max = Math.max(...values);
 
   function gradientStyle(value) {
-    if (max === min) {
-      return `background-color: rgb(230, 230, 230);`;
-    }
-    const t = (value - min) / (max - min);
-    const r = Math.round(255 * (1 - t));
-    const g = Math.round(255 * t);
-    const b = 200;
-    return `background-color: rgb(${r}, ${g}, ${b});`;
+  if (max === min) {
+    return `background-color: rgb(235, 235, 235);`;
   }
+
+  // Normalise 0 → 1
+  const t = (value - min) / (max - min);
+
+  // Soft green → soft red
+  const start = { r: 210, g: 245, b: 225 }; // CLS advantage
+  const end   = { r: 250, g: 215, b: 215 }; // Opp advantage
+
+  const r = Math.round(start.r + (end.r - start.r) * (1 - t));
+  const g = Math.round(start.g + (end.g - start.g) * (1 - t));
+  const b = Math.round(start.b + (end.b - start.b) * (1 - t));
+
+  return `background-color: rgb(${r}, ${g}, ${b});`;
+}
+
 
   const tbody = document.getElementById("team-averages");
 

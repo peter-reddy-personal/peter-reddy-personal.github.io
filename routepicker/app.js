@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 21:25";
+const jsVersion = "2026‑07‑06 21:45";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -13,17 +13,27 @@ window.addEventListener("DOMContentLoaded", () => {
 // DEFAULT CLS RIDERS
 //---------------------------------------------------------
 const defaultCLS = [
-  { name: "Anthony", team: "CLS", likelihood: 80, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
-  { name: "Chris",   team: "CLS", likelihood: 0,  sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
-  { name: "Florian", team: "CLS", likelihood: 80,  sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
-  { name: "James",   team: "CLS", likelihood: 80,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kestas",  team: "CLS", likelihood: 0,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kev",     team: "CLS", likelihood: 0,  sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
-  { name: "Kris",    team: "CLS", likelihood: 0,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
-  { name: "Mike",    team: "CLS", likelihood: 80,  sprint: 702, punch: 654, climb: 618, tt: 586, pursuit: 615, endurance: 606 },
-  { name: "Pete",    team: "CLS", likelihood: 80,  sprint: 861, punch: 818, climb: 656, tt: 678, pursuit: 581, endurance: 580 },
-  { name: "Rich",    team: "CLS", likelihood: 0,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
-  { name: "Trev",    team: "CLS", likelihood: 80, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+  { name: "Anthony",   team: "CLS",      likelihood: 80, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
+  { name: "Chris",     team: "CLS",      likelihood: 0,  sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
+  { name: "Florian",   team: "CLS",      likelihood: 80, sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
+  { name: "James",     team: "CLS",      likelihood: 80, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kestas",    team: "CLS",      likelihood: 0,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kev",       team: "CLS",      likelihood: 0,  sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
+  { name: "Kris",      team: "CLS",      likelihood: 0,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
+  { name: "Mike",      team: "CLS",      likelihood: 80, sprint: 702, punch: 654, climb: 618, tt: 586, pursuit: 615, endurance: 606 },
+  { name: "Pete",      team: "CLS",      likelihood: 80, sprint: 861, punch: 818, climb: 656, tt: 678, pursuit: 581, endurance: 580 },
+  { name: "Rich",      team: "CLS",      likelihood: 0,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
+  { name: "Trev",      team: "CLS",      likelihood: 80, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+];
+
+//---------------------------------------------------------
+// DEFAULT OPPONENT RIDERS
+//---------------------------------------------------------
+const defaultOpponents = [
+  { name: "Larsson",    team: "Opponent", likelihood: 100, sprint: 846, punch: 887, climb: 673, tt: 650, pursuit: 666, endurance: 619 },
+  { name: "Hoff",       team: "Opponent", likelihood: 100, sprint: 806, punch: 815, climb: 691, tt: 675, pursuit: 697, endurance: 692 },
+  { name: "Martinsson", team: "Opponent", likelihood: 100, sprint: 879, punch: 774, climb: 603, tt: 667, pursuit: 620, endurance: 614 },
+  { name: "Hansson",    team: "Opponent", likelihood: 100, sprint: 574, punch: 690, climb: 695, tt: 704, pursuit: 712, endurance: 666 }
 ];
 
 
@@ -41,18 +51,21 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedTeam();
   updateRiderCounts();
 
-
-  // Ladder checkbox (original behaviour)
   const ladderCheckbox = document.getElementById("ladder-slider");
-const toggleText = document.getElementById("toggle-text");
+  const toggleText = document.getElementById("toggle-text");
 
-ladderCheckbox.addEventListener("change", () => {
-  toggleText.textContent = ladderCheckbox.checked
-    ? "Ladder routes only"
-    : "All routes";
-  calculateRoutes();
-});
+  if (ladderCheckbox && toggleText) {
+    toggleText.textContent = ladderCheckbox.checked
+      ? "Ladder routes only"
+      : "All routes";
 
+    ladderCheckbox.addEventListener("change", () => {
+      toggleText.textContent = ladderCheckbox.checked
+        ? "Ladder routes only"
+        : "All routes";
+      calculateRoutes();
+    });
+  }
 
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');
@@ -75,13 +88,13 @@ ladderCheckbox.addEventListener("change", () => {
 //---------------------------------------------------------
 function addRiderRow(sectionId) {
   const container = document.getElementById(sectionId);
+  if (!container) return;
 
   const row = document.createElement('div');
   row.classList.add('rider-row');
 
   row.innerHTML = `
     <input type="text" class="rider-name" placeholder="Name">
-
     <input type="number" class="rider-likelihood likelihood-field" placeholder="% Likelihood" value="100" min="0" max="100">
 
     <div class="factor-gap"></div>
@@ -116,6 +129,7 @@ function addRiderRow(sectionId) {
 function addRiderRowWithData(r) {
   const sectionId = r.team === "CLS" ? "cls-container" : "opp-container";
   const container = document.getElementById(sectionId);
+  if (!container) return;
 
   const row = document.createElement('div');
   row.classList.add('rider-row');
@@ -175,16 +189,6 @@ function getRiders() {
 
   return riders;
 }
-
-//---------------------------------------------------------
-// DEFAULT OPPONENT RIDERS
-//---------------------------------------------------------
-const defaultOpponents = [
-  { name: "Larsson", team: "Opponent", likelihood: 100, sprint: 846, punch: 887, climb: 673, tt: 650, pursuit: 666, endurance: 619 },
-  { name: "Hoff", team: "Opponent", likelihood: 100, sprint: 806, punch: 815, climb: 691, tt: 675, pursuit: 697, endurance: 692 },
-  { name: "Martinsson", team: "Opponent", likelihood: 100, sprint: 879, punch: 774, climb: 603, tt: 667, pursuit: 620, endurance: 614 },
-  { name: "Hansson", team: "Opponent", likelihood: 100, sprint: 574, punch: 690, climb: 695, tt: 704, pursuit: 712, endurance: 666 }
-];
 
 
 //---------------------------------------------------------
@@ -250,9 +254,8 @@ function attachPasteHandler(row) {
   });
 }
 
-
 //---------------------------------------------------------
-// Reset CLS team to defaults
+// Reset CLS + Opponent teams to defaults
 //---------------------------------------------------------
 function resetCLS() {
 
@@ -269,27 +272,22 @@ function resetCLS() {
 
 
 //---------------------------------------------------------
-// Load Saved Team OR Default CLS Riders
+// Load Saved Team OR Defaults
 //---------------------------------------------------------
 function loadSavedTeam() {
   const saved = localStorage.getItem('routepicker_team');
 
-  if (!saved) {
-    document.getElementById('cls-container').innerHTML = '';
-    document.getElementById('opp-container').innerHTML = '';
+  document.getElementById('cls-container').innerHTML = '';
+  document.getElementById('opp-container').innerHTML = '';
 
+  if (!saved) {
     defaultCLS.forEach(r => addRiderRowWithData(r));
     defaultOpponents.forEach(r => addRiderRowWithData(r));
-
     autoSaveTeam();
     return;
   }
 
   const riders = JSON.parse(saved);
-
-  document.getElementById('cls-container').innerHTML = '';
-  document.getElementById('opp-container').innerHTML = '';
-
   riders.forEach(r => addRiderRowWithData(r));
 }
 
@@ -335,7 +333,7 @@ function computeSingleScore(route, r) {
 
 
 //---------------------------------------------------------
-// Weighted CLS / Opponent Averages
+// Weighted CLS / Opponent Averages per route
 //---------------------------------------------------------
 function computeRouteScores(route, riders) {
 
@@ -366,7 +364,7 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
-// Rank Routes (fixed sorting logic)
+// Rank Routes
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
 
@@ -394,9 +392,8 @@ function rankRoutes(routes, riders) {
 
 
 //---------------------------------------------------------
-// Render average ELO comparison
+// Render Team Averages with gradient differences
 //---------------------------------------------------------
-
 function renderAverages(riders) {
   const cls = riders.filter(r => r.team === "CLS");
   const opp = riders.filter(r => r.team === "Opponent");
@@ -433,20 +430,18 @@ function renderAverages(riders) {
     endurance: clsAvg.endurance - oppAvg.endurance
   };
 
-  // Find min and max differences for gradient scaling
   const values = Object.values(diff);
   const min = Math.min(...values);
   const max = Math.max(...values);
 
   function gradientStyle(value) {
-    // Normalise between 0 and 1
+    if (max === min) {
+      return `background-color: rgb(230, 230, 230);`;
+    }
     const t = (value - min) / (max - min);
-
-    // Interpolate between red → green
     const r = Math.round(255 * (1 - t));
     const g = Math.round(255 * t);
     const b = 200;
-
     return `background-color: rgb(${r}, ${g}, ${b});`;
   }
 
@@ -483,51 +478,9 @@ function renderAverages(riders) {
   `;
 }
 
-  // Find biggest CLS advantage (max positive diff)
-  const maxKey = Object.keys(diff).reduce((best, key) =>
-    diff[key] > diff[best] ? key : best
-  );
-
-  const tbody = document.getElementById("team-averages");
-
-  function highlight(key) {
-    return key === maxKey ? 'class="highlight-cell"' : "";
-  }
-
-  tbody.innerHTML = `
-    <tr>
-      <td>CLS</td>
-      <td>${clsAvg.sprint.toFixed(0)}</td>
-      <td>${clsAvg.punch.toFixed(0)}</td>
-      <td>${clsAvg.climb.toFixed(0)}</td>
-      <td>${clsAvg.tt.toFixed(0)}</td>
-      <td>${clsAvg.pursuit.toFixed(0)}</td>
-      <td>${clsAvg.endurance.toFixed(0)}</td>
-    </tr>
-    <tr>
-      <td>Opponent</td>
-      <td>${oppAvg.sprint.toFixed(0)}</td>
-      <td>${oppAvg.punch.toFixed(0)}</td>
-      <td>${oppAvg.climb.toFixed(0)}</td>
-      <td>${oppAvg.tt.toFixed(0)}</td>
-      <td>${oppAvg.pursuit.toFixed(0)}</td>
-      <td>${oppAvg.endurance.toFixed(0)}</td>
-    </tr>
-    <tr>
-      <td>Difference</td>
-      <td ${highlight("sprint")}>${diff.sprint.toFixed(0)}</td>
-      <td ${highlight("punch")}>${diff.punch.toFixed(0)}</td>
-      <td ${highlight("climb")}>${diff.climb.toFixed(0)}</td>
-      <td ${highlight("tt")}>${diff.tt.toFixed(0)}</td>
-      <td ${highlight("pursuit")}>${diff.pursuit.toFixed(0)}</td>
-      <td ${highlight("endurance")}>${diff.endurance.toFixed(0)}</td>
-    </tr>
-  `;
-}
-
 
 //---------------------------------------------------------
-// Render Results
+// Render Route Results
 //---------------------------------------------------------
 function renderResults(result) {
 
@@ -576,7 +529,6 @@ async function calculateRoutes() {
   await loadRoutes();
   const riders = getRiders();
   const ranked = rankRoutes(routes, riders);
-  renderAverages(riders);   // NEW
+  renderAverages(riders);
   renderResults(ranked);
 }
-

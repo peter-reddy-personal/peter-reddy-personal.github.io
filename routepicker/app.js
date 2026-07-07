@@ -509,6 +509,7 @@ function renderResults(result) {
   clsBody.innerHTML = '';
   oppBody.innerHTML = '';
 
+  // Best CLS Routes
   result.bestCLS.slice(0, 10).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
     clsBody.innerHTML += `
@@ -523,7 +524,9 @@ function renderResults(result) {
         <td class="weights-cell">${formatWeights(r)}</td>
       </tr>
     `;
+  });
 
+  // Best Opponent Routes
   result.bestOpp.slice(0, 10).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
     oppBody.innerHTML += `

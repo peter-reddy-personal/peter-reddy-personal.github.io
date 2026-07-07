@@ -24,6 +24,20 @@ body {
   padding: 0 16px;
 }
 
+details summary {
+  cursor: pointer;
+  font-size: 15px;
+  padding: 6px 0;
+}
+
+details[open] summary {
+  margin-bottom: 8px;
+}
+
+details p {
+  margin: 6px 0;
+}
+
 .panel {
   background: #fff;
   border-radius: 8px;

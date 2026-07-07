@@ -14,6 +14,18 @@
 
   <main class="app-main">
 
+  <section class="panel">
+    <h2>What this tool does</h2>
+    <p>
+      The Zwift Ladder Route Picker helps you choose the best race route based on
+      the strengths of your team and the likely riders who will be racing with you.
+      Enter your CLS riders and your expected opponents, set how likely each rider
+      is to race, and the tool will analyse every Zwift route to show where your
+      team has the biggest advantage.
+    </p>
+  </section>
+
+
     <!-- Ladder toggle (original checkbox) -->
     <section class="panel">
       <div id="controls">
@@ -25,19 +37,24 @@
       </div>
     </section>
 
-  <section class="panel">
-    <h2>What does Lik% mean?</h2>
-    <p>
-      <strong>Likelihood (%)</strong> is your estimate of how likely each rider is to
-      race with you on the day. A rider with <strong>100%</strong> is almost certain
-      to be there, while a rider with <strong>0%</strong> is very unlikely.
-    </p>
-    <p>
-      The Route Picker uses these percentages to weight each rider’s strengths.
-      Riders who are more likely to race have a bigger influence on the route
-      recommendations.
-    </p>
-  </section>
+    <!-- Collapsible likelihood explanation -->
+    <section class="panel">
+    <details>
+      <summary><strong>What does Lik% mean?</strong></summary>
+      <p>
+        Likelihood (%) is your estimate of how likely each rider is to race with
+        you on the day. A rider with <strong>100%</strong> is almost certain to be
+        there, while a rider with <strong>0%</strong> is very unlikely.
+      </p>
+      <p>
+        The Route Picker uses these percentages to weight each rider’s strengths.
+        Riders who are more likely to race have a bigger influence on the route
+        recommendations. This helps the tool reflect your real‑world lineup rather
+        than assuming every rider is equally important.
+      </p>
+    </details>
+    </section>
+
 
     <!-- CLS Riders -->
     <section class="panel cls-panel">

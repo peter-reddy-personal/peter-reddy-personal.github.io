@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑06 21:45";
+const jsVersion = "2026‑07‑07 11:50";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -52,20 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
   updateRiderCounts();
 
   const ladderCheckbox = document.getElementById("ladder-slider");
-  const toggleText = document.getElementById("toggle-text");
 
-  if (ladderCheckbox && toggleText) {
-    toggleText.textContent = ladderCheckbox.checked
-      ? "Ladder routes only"
-      : "All routes";
+  ladderCheckbox.addEventListener("change", () => {
+    calculateRoutes();
+  });
 
-    ladderCheckbox.addEventListener("change", () => {
-      toggleText.textContent = ladderCheckbox.checked
-        ? "Ladder routes only"
-        : "All routes";
-      calculateRoutes();
-    });
-  }
+
+  document.getElementById("ladder-only").addEventListener("change", () => {
+    calculateRoutes();
+  });
+
+  document.getElementById("all-routes").addEventListener("change", () => {
+    calculateRoutes();
+  });
+
 
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('reset-cls-btn').onclick = resetCLS;
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
-});
+  });
 
 
 //---------------------------------------------------------

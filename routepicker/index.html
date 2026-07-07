@@ -33,14 +33,19 @@
 
     <!-- Ladder toggle (original checkbox) -->
     <section class="panel">
-      <div id="controls">
-        <label class="toggle">
-          <input type="checkbox" id="ladder-slider" checked>
-          <span class="slider"></span>
-          <span class="toggle-label" id="toggle-text">Ladder routes only</span>
+      <div class="ladder-toggle">
+        <span class="ladder-left">Ladder routes only</span>
+
+        <label class="switch">
+          <input type="checkbox" id="ladder-slider">
+          <span class="slider round"></span>
         </label>
+
+        <span class="ladder-right">All routes</span>
       </div>
+
     </section>
+
 
     <!-- Collapsible likelihood explanation -->
     <section class="panel">
@@ -60,6 +65,14 @@
       </p>
     </details>
     </section>
+
+
+    <!-- Reset riders button -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <button id="reset-cls-btn" class="action-btn">
+        Reset to default riders
+      </button>
+    </div>
 
 
     <!-- CLS Riders -->
@@ -84,7 +97,6 @@
       <div id="cls-container"></div>
 
       <button id="add-cls-btn" class="secondary-btn">Add CLS Rider</button>
-      <button id="reset-cls-btn" class="secondary-btn">Reset CLS</button>
     </section>
 
     <!-- Opponent Riders -->

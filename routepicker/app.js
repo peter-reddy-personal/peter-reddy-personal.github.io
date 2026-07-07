@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑07 12:50";
+const jsVersion = "2026‑07‑07 16:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -391,28 +391,36 @@ function renderAverages(riders) {
   const cls = riders.filter(r => r.team === "CLS");
   const opp = riders.filter(r => r.team === "Opponent");
 
-  function avg(team, key) {
-    if (team.length === 0) return 0;
-    return team.reduce((sum, r) => sum + r[key], 0) / team.length;
+  function weightedAvg(team, key) {
+  const totalWeight = team.reduce((sum, r) => sum + r.likelihood, 0);
+  if (totalWeight === 0) return 0;
+
+  const weightedSum = team.reduce((sum, r) => {
+    return sum + (r[key] * r.likelihood);
+  }, 0);
+
+  return weightedSum / totalWeight;
   }
 
+
   const clsAvg = {
-    sprint: avg(cls, "sprint"),
-    punch: avg(cls, "punch"),
-    climb: avg(cls, "climb"),
-    tt: avg(cls, "tt"),
-    pursuit: avg(cls, "pursuit"),
-    endurance: avg(cls, "endurance")
+    sprint: weightedAvg(cls, "sprint"),
+    punch: weightedAvg(cls, "punch"),
+    climb: weightedAvg(cls, "climb"),
+    tt: weightedAvg(cls, "tt"),
+    pursuit: weightedAvg(cls, "pursuit"),
+    endurance: weightedAvg(cls, "endurance")
   };
 
   const oppAvg = {
-    sprint: avg(opp, "sprint"),
-    punch: avg(opp, "punch"),
-    climb: avg(opp, "climb"),
-    tt: avg(opp, "tt"),
-    pursuit: avg(opp, "pursuit"),
-    endurance: avg(opp, "endurance")
+    sprint: weightedAvg(opp, "sprint"),
+    punch: weightedAvg(opp, "punch"),
+    climb: weightedAvg(opp, "climb"),
+    tt: weightedAvg(opp, "tt"),
+    pursuit: weightedAvg(opp, "pursuit"),
+    endurance: weightedAvg(opp, "endurance")
   };
+
 
   const diff = {
     sprint: clsAvg.sprint - oppAvg.sprint,
@@ -496,7 +504,7 @@ function renderResults(result) {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
     clsBody.innerHTML += `
       <tr>
-        <td>${r.Route}</td>
+        <td><a href="${r.URL}" target="_blank">${r.Route}</a></td>
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
         <td>${r.Lead_in} km</td>
@@ -511,7 +519,7 @@ function renderResults(result) {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
     oppBody.innerHTML += `
       <tr>
-        <td>${r.Route}</td>
+        <td><a href="${r.URL}" target="_blank">${r.Route}</a></td>
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
         <td>${r.Lead_in} km</td>

@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑07 11:50";
+const jsVersion = "2026‑07‑07 12:50";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -51,22 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedTeam();
   updateRiderCounts();
 
+  // Ladder slider
   const ladderCheckbox = document.getElementById("ladder-slider");
+  if (ladderCheckbox) {
+    ladderCheckbox.addEventListener("change", () => {
+      calculateRoutes();
+    });
+  }
 
-  ladderCheckbox.addEventListener("change", () => {
-    calculateRoutes();
-  });
-
-
-  document.getElementById("ladder-only").addEventListener("change", () => {
-    calculateRoutes();
-  });
-
-  document.getElementById("all-routes").addEventListener("change", () => {
-    calculateRoutes();
-  });
-
-
+  // Buttons
   document.getElementById('add-cls-btn').onclick = () => {
     addRiderRow('cls-container');
     updateRiderCounts();
@@ -80,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('reset-cls-btn').onclick = resetCLS;
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
-  });
+});
 
 
 //---------------------------------------------------------

@@ -149,44 +149,70 @@
 
 
     <!-- Best CLS Routes -->
-    <section class="panel">
-      <h2>Best CLS Routes</h2>
-      <table class="results-table">
-        <thead>
-          <tr>
-            <th>Route</th>
-            <th>Length (ex lead-in)</th>
-            <th>Elevation</th>
-            <th>Lead-in</th>
-            <th>vELO CLS</th>
-            <th>vELO Opp</th>
-            <th>vELO diff</th>
-	    <th>Weights</th>
-          </tr>
-        </thead>
-        <tbody id="best-routes"></tbody>
-      </table>
-    </section>
+<section class="panel">
+  <h2>Best CLS Routes</h2>
+  <table class="results-table">
 
-    <!-- Best Opponent Routes -->
-    <section class="panel">
-      <h2>Best Opponent Routes</h2>
-      <table class="results-table">
-        <thead>
-          <tr>
-            <th>Route</th>
-            <th>Length (ex lead-in)</th>
-            <th>Elevation</th>
-            <th>Lead-in</th>
-            <th>vELO Opp</th>
-            <th>vELO CLS</th>
-            <th>vELO diff</th>
-	    <th>Weights</th>
-          </tr>
-        </thead>
-        <tbody id="worst-routes"></tbody>
-      </table>
-    </section>
+    <colgroup>
+      <col style="width: 200px;">  <!-- Route -->
+      <col style="width: 70px;">   <!-- Length -->
+      <col style="width: 70px;">   <!-- Elevation -->
+      <col style="width: 70px;">   <!-- Lead-in -->
+      <col style="width: 60px;">   <!-- vELO CLS -->
+      <col style="width: 60px;">   <!-- vELO Opp -->
+      <col style="width: 60px;">   <!-- vELO diff -->
+      <col style="width: 240px;">  <!-- Weights -->
+    </colgroup>
+
+    <thead>
+      <tr>
+        <th>Route</th>
+        <th>Length (ex lead-in)</th>
+        <th>Elevation</th>
+        <th>Lead-in</th>
+        <th>vELO CLS</th>
+        <th>vELO Opp</th>
+        <th>vELO diff</th>
+        <th>Weights</th>
+      </tr>
+    </thead>
+    <tbody id="best-routes"></tbody>
+  </table>
+</section>
+
+
+  <!-- Best Opponent Routes -->
+  <section class="panel">
+    <h2>Best Opponent Routes</h2>
+    <table class="results-table">
+
+      <colgroup>
+        <col style="width: 200px;">  <!-- Route -->
+        <col style="width: 70px;">   <!-- Length -->
+        <col style="width: 70px;">   <!-- Elevation -->
+        <col style="width: 70px;">   <!-- Lead-in -->
+        <col style="width: 60px;">   <!-- vELO Opp -->
+        <col style="width: 60px;">   <!-- vELO CLS -->
+        <col style="width: 60px;">   <!-- vELO diff -->
+        <col style="width: 240px;">  <!-- Weights -->
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Length (ex lead-in)</th>
+          <th>Elevation</th>
+          <th>Lead-in</th>
+          <th>vELO Opp</th>
+          <th>vELO CLS</th>
+          <th>vELO diff</th>
+          <th>Weights</th>
+        </tr>
+      </thead>
+      <tbody id="worst-routes"></tbody>
+    </table>
+  </section>
+
 
   </main>
 

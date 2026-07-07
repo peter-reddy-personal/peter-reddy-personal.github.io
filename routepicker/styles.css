@@ -264,6 +264,33 @@ button {
   text-align: right;
 }
 
+/* Compact numeric columns */
+.results-table td:nth-child(2),
+.results-table td:nth-child(3),
+.results-table td:nth-child(4) {
+  width: 55px;
+}
+
+/* Route column */
+.results-table td:nth-child(1) {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Weights column */
+.weights-cell {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* Slightly tighter padding */
+.results-table thead th,
+.results-table tbody td {
+  padding: 4px 3px;
+}
+
 .diff-positive {
   color: #008000;
   font-weight: 600;
@@ -306,6 +333,11 @@ button {
   color: #1f3b5c;
 }
 
+.weights-cell {
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
 
 
 /* Slider background */

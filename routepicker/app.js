@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑07 16:15";
+const jsVersion = "2026‑07‑07 16:45";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -357,6 +357,15 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
+// Format output tables with route weightings
+//---------------------------------------------------------
+function formatWeights(r) {
+  const pct = x => (x * 100).toFixed(0) + "%";
+  return `SPR ${pct(r.Sprint)}, PUN ${pct(r.Punch)}, CLI ${pct(r.Climb)}, PUR ${pct(r.Pursuit)}, END ${pct(r.Endurance)}`;
+}
+
+
+//---------------------------------------------------------
 // Rank Routes
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
@@ -511,9 +520,9 @@ function renderResults(result) {
         <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+        <td class="weights-cell">${formatWeights(r)}</td>
       </tr>
     `;
-  });
 
   result.bestOpp.slice(0, 10).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
@@ -523,9 +532,10 @@ function renderResults(result) {
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
         <td>${r.Lead_in} km</td>
-        <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
+        <td>${r.avgCLS.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+        <td class="weights-cell">${formatWeights(r)}</td>
       </tr>
     `;
   });

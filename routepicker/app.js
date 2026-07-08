@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑07 16:45";
+const jsVersion = "2026‑07‑08 17:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -524,14 +524,14 @@ function renderResults(result) {
 
     return weights.map(w => {
       const cls = w == maxVal ? 'weight-strong' : '';
-      return `<td class="${cls}">${w}</td>`;
+      return `<td class="${cls}">${w}%</td>`;
     }).join('');
   }
 
   // -----------------------------
   // Best CLS Routes
   // -----------------------------
-  result.bestCLS.slice(0, 10).forEach(r => {
+  result.bestCLS.slice(0, 20).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
 
     clsBody.innerHTML += `
@@ -554,7 +554,7 @@ function renderResults(result) {
   // -----------------------------
   // Best Opponent Routes
   // -----------------------------
-  result.bestOpp.slice(0, 10).forEach(r => {
+  result.bestOpp.slice(0, 20).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
 
     oppBody.innerHTML += `
@@ -564,8 +564,8 @@ function renderResults(result) {
         <td>${r.Elevation} m</td>
         <td>${r.Lead_in} km</td>
 
-        <td>${r.avgOpp.toFixed(0)}</td>
         <td>${r.avgCLS.toFixed(0)}</td>
+        <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
 
         ${weightCells(r)}

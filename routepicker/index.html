@@ -37,7 +37,7 @@
         <span class="ladder-left">All routes</span>
 
         <label class="switch">
-          <input type="checkbox" id="ladder-slider">
+          <input type="checkbox" id="ladder-slider" checked>
           <span class="slider round"></span>
         </label>
 
@@ -154,64 +154,92 @@
   <table class="results-table">
 
     <colgroup>
-      <col style="width: 200px;">  <!-- Route -->
+      <col style="width: 150px;">  <!-- Route -->
       <col style="width: 70px;">   <!-- Length -->
       <col style="width: 70px;">   <!-- Elevation -->
       <col style="width: 70px;">   <!-- Lead-in -->
       <col style="width: 60px;">   <!-- vELO CLS -->
       <col style="width: 60px;">   <!-- vELO Opp -->
       <col style="width: 60px;">   <!-- vELO diff -->
-      <col style="width: 240px;">  <!-- Weights -->
+
+      <!-- Split weights -->
+      <col style="width: 58px;">   <!-- SPR -->
+      <col style="width: 58px;">   <!-- PUN -->
+      <col style="width: 58px;">   <!-- CLI -->
+      <col style="width: 58px;">   <!-- PUR -->
+      <col style="width: 58px;">   <!-- END -->
     </colgroup>
 
     <thead>
       <tr>
         <th>Route</th>
-        <th>Length (ex lead-in)</th>
+        <th>Length</th>
         <th>Elevation</th>
         <th>Lead-in</th>
         <th>vELO CLS</th>
         <th>vELO Opp</th>
         <th>vELO diff</th>
-        <th>Weights</th>
+
+        <!-- New weight headers -->
+        <th>SPR</th>
+        <th>PUN</th>
+        <th>CLI</th>
+        <th>PUR</th>
+        <th>END</th>
       </tr>
     </thead>
+
     <tbody id="best-routes"></tbody>
   </table>
 </section>
 
 
-  <!-- Best Opponent Routes -->
-  <section class="panel">
-    <h2>Best Opponent Routes</h2>
-    <table class="results-table">
 
-      <colgroup>
-        <col style="width: 200px;">  <!-- Route -->
-        <col style="width: 70px;">   <!-- Length -->
-        <col style="width: 70px;">   <!-- Elevation -->
-        <col style="width: 70px;">   <!-- Lead-in -->
-        <col style="width: 60px;">   <!-- vELO Opp -->
-        <col style="width: 60px;">   <!-- vELO CLS -->
-        <col style="width: 60px;">   <!-- vELO diff -->
-        <col style="width: 240px;">  <!-- Weights -->
-      </colgroup>
+<!-- Best Opponent Routes -->
+<section class="panel">
+  <h2>Best Opponent Routes</h2>
+  <table class="results-table">
 
-      <thead>
-        <tr>
-          <th>Route</th>
-          <th>Length (ex lead-in)</th>
-          <th>Elevation</th>
-          <th>Lead-in</th>
-          <th>vELO Opp</th>
-          <th>vELO CLS</th>
-          <th>vELO diff</th>
-          <th>Weights</th>
-        </tr>
-      </thead>
-      <tbody id="worst-routes"></tbody>
-    </table>
-  </section>
+    <colgroup>
+      <col style="width: 150px;">  <!-- Route -->
+      <col style="width: 70px;">   <!-- Length -->
+      <col style="width: 70px;">   <!-- Elevation -->
+      <col style="width: 70px;">   <!-- Lead-in -->
+      <col style="width: 60px;">   <!-- vELO Opp -->
+      <col style="width: 60px;">   <!-- vELO CLS -->
+      <col style="width: 60px;">   <!-- vELO diff -->
+
+      <!-- Split weights -->
+      <col style="width: 58px;">   <!-- SPR -->
+      <col style="width: 58px;">   <!-- PUN -->
+      <col style="width: 58px;">   <!-- CLI -->
+      <col style="width: 58px;">   <!-- PUR -->
+      <col style="width: 58px;">   <!-- END -->
+    </colgroup>
+
+    <thead>
+      <tr>
+        <th>Route</th>
+        <th>Length</th>
+        <th>Elevation</th>
+        <th>Lead-in</th>
+        <th>vELO Opp</th>
+        <th>vELO CLS</th>
+        <th>vELO diff</th>
+
+        <!-- New weight headers -->
+        <th>SPR</th>
+        <th>PUN</th>
+        <th>CLI</th>
+        <th>PUR</th>
+        <th>END</th>
+      </tr>
+    </thead>
+
+    <tbody id="worst-routes"></tbody>
+  </table>
+</section>
+
 
 
   </main>

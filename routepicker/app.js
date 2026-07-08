@@ -499,7 +499,7 @@ function renderAverages(riders) {
 
 
 //---------------------------------------------------------
-// Render Route Results
+// Render Route Results (with split weight columns + highlight strongest)
 //---------------------------------------------------------
 function renderResults(result) {
 
@@ -509,36 +509,66 @@ function renderResults(result) {
   clsBody.innerHTML = '';
   oppBody.innerHTML = '';
 
+  const pct = x => (x * 100).toFixed(0);
+
+  function weightCells(r) {
+    const weights = [
+      pct(r.Sprint),
+      pct(r.Punch),
+      pct(r.Climb),
+      pct(r.Pursuit),
+      pct(r.Endurance)
+    ];
+
+    const maxVal = Math.max(...weights);
+
+    return weights.map(w => {
+      const cls = w == maxVal ? 'weight-strong' : '';
+      return `<td class="${cls}">${w}</td>`;
+    }).join('');
+  }
+
+  // -----------------------------
   // Best CLS Routes
+  // -----------------------------
   result.bestCLS.slice(0, 10).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
+
     clsBody.innerHTML += `
       <tr>
         <td><a href="${r.URL}" target="_blank">${r.Route}</a></td>
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
         <td>${r.Lead_in} km</td>
+
         <td>${r.avgCLS.toFixed(0)}</td>
         <td>${r.avgOpp.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
-        <td class="weights-cell">${formatWeights(r)}</td>
+
+        ${weightCells(r)}
       </tr>
     `;
   });
 
+
+  // -----------------------------
   // Best Opponent Routes
+  // -----------------------------
   result.bestOpp.slice(0, 10).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
+
     oppBody.innerHTML += `
       <tr>
         <td><a href="${r.URL}" target="_blank">${r.Route}</a></td>
         <td>${r.Length} km</td>
         <td>${r.Elevation} m</td>
         <td>${r.Lead_in} km</td>
+
         <td>${r.avgOpp.toFixed(0)}</td>
         <td>${r.avgCLS.toFixed(0)}</td>
         <td class="${diffClass}">${r.diff.toFixed(0)}</td>
-        <td class="weights-cell">${formatWeights(r)}</td>
+
+        ${weightCells(r)}
       </tr>
     `;
   });

@@ -248,7 +248,7 @@ button {
   padding: 5px 4px;
   font-weight: 600;
   border-bottom: 1px solid #d0d4e0;
-  text-align: center;
+  text-align: center !important;
   white-space: nowrap;
 }
 
@@ -293,22 +293,28 @@ button {
 .results-table td:nth-child(5),
 .results-table td:nth-child(6),
 .results-table td:nth-child(7) {
-  width: 38px;          /* Hard width */
-  max-width: 38px;      /* Prevents expansion */
-  text-align: right;
+  width: 38px;
+  max-width: 38px;
+  text-align: center;   /* FIXED */
   font-size: 12px;
   font-weight: 600;
-  padding-right: 2px;   /* Removes invisible right-align buffer */
+  padding-right: 0;     /* no need for right buffer now */
 }
 
-/* Weights column */
-.weights-cell {
-  width: 72px;          /* Hard width */
-  max-width: 72px;
-  font-size: 11px;
-  opacity: 0.75;
-  white-space: nowrap;
-  text-align: left;
+/* Individual weight columns (SPR, PUN, CLI, PUR, END) */
+.results-table td:nth-child(8),
+.results-table td:nth-child(9),
+.results-table td:nth-child(10),
+.results-table td:nth-child(11),
+.results-table td:nth-child(12) {
+  text-align: center;   /* FIXED */
+  font-size: 12px;
+}
+
+
+.weight-strong {
+  background: #e8f4ff;   /* soft blue */
+  font-weight: 600;
 }
 
 /* Diff colouring */

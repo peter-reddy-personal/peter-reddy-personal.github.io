@@ -38,6 +38,64 @@ details p {
   margin: 6px 0;
 }
 
+
+.collapsible-container {
+  margin-top: 15px;
+}
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e9edf5;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1f3b5c;
+}
+
+.collapsible-header:hover {
+  background: #dfe4ef;
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+}
+
+.collapsible-content {
+  display: none;
+  padding: 12px 14px;
+  background: #f7f9fc;
+  border-left: 3px solid #1f3b5c;
+  border-radius: 0 0 6px 6px;
+  margin-top: 0;
+}
+
+/* Container for toggle + reset button */
+.controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 18px 0 22px 0;
+}
+
+/* Reset button styling */
+.reset-btn {
+  background: #1f3b5c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: #24476f;
+}
+
+
 .panel {
   background: #fff;
   border-radius: 8px;

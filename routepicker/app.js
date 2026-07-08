@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑08 17:15";
+const jsVersion = "2026‑07‑08 18:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -13,28 +13,31 @@ window.addEventListener("DOMContentLoaded", () => {
 // DEFAULT CLS RIDERS
 //---------------------------------------------------------
 const defaultCLS = [
-  { name: "Anthony",   team: "CLS",      likelihood: 80, sprint: 781, punch: 731, climb: 624, tt: 608, pursuit: 593, endurance: 577 },
-  { name: "Chris",     team: "CLS",      likelihood: 0,  sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
-  { name: "Florian",   team: "CLS",      likelihood: 80, sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
-  { name: "James",     team: "CLS",      likelihood: 80, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kestas",    team: "CLS",      likelihood: 0,  sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kev",       team: "CLS",      likelihood: 0,  sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
-  { name: "Kris",      team: "CLS",      likelihood: 0,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
-  { name: "Mike",      team: "CLS",      likelihood: 80, sprint: 702, punch: 654, climb: 618, tt: 586, pursuit: 615, endurance: 606 },
-  { name: "Pete",      team: "CLS",      likelihood: 80, sprint: 861, punch: 818, climb: 656, tt: 678, pursuit: 581, endurance: 580 },
-  { name: "Rich",      team: "CLS",      likelihood: 0,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
-  { name: "Trev",      team: "CLS",      likelihood: 80, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+  { name: "Anthony", team: "CLS", likelihood: 80, sprint: 784, punch: 735, climb: 653, tt: 577, pursuit: 610, endurance: 551 },
+  { name: "Chris",   team: "CLS", likelihood: 80, sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
+  { name: "Florian", team: "CLS", likelihood: 80, sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
+  { name: "James",   team: "CLS", likelihood: 80, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kestas",  team: "CLS", likelihood: 80, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kev",     team: "CLS", likelihood: 80, sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
+  { name: "Kris",    team: "CLS", likelihood: 0,  sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
+  { name: "Mike",    team: "CLS", likelihood: 0,  sprint: 699, punch: 735, climb: 648, tt: 649, pursuit: 655, endurance: 657 },
+  { name: "Pete",    team: "CLS", likelihood: 0,  sprint: 867, punch: 858, climb: 662, tt: 581, pursuit: 680, endurance: 569 },
+  { name: "Rich",    team: "CLS", likelihood: 0,  sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
+  { name: "Trev",    team: "CLS", likelihood: 0,  sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
 ];
+
 
 //---------------------------------------------------------
 // DEFAULT OPPONENT RIDERS
 //---------------------------------------------------------
 const defaultOpponents = [
-  { name: "Larsson",    team: "Opponent", likelihood: 100, sprint: 846, punch: 887, climb: 673, tt: 650, pursuit: 666, endurance: 619 },
-  { name: "Hoff",       team: "Opponent", likelihood: 100, sprint: 806, punch: 815, climb: 691, tt: 675, pursuit: 697, endurance: 692 },
-  { name: "Martinsson", team: "Opponent", likelihood: 100, sprint: 879, punch: 774, climb: 603, tt: 667, pursuit: 620, endurance: 614 },
-  { name: "Hansson",    team: "Opponent", likelihood: 100, sprint: 574, punch: 690, climb: 695, tt: 704, pursuit: 712, endurance: 666 }
+  { name: "SprintyA",   team: "Opponent", likelihood: 100, sprint: 846, punch: 687, climb: 673, tt: 650, pursuit: 666, endurance: 619 },
+  { name: "SprintyB",   team: "Opponent", likelihood: 100, sprint: 806, punch: 715, climb: 691, tt: 675, pursuit: 697, endurance: 692 },
+  { name: "PunchyC",    team: "Opponent", likelihood: 100, sprint: 579, punch: 774, climb: 603, tt: 667, pursuit: 620, endurance: 614 },
+  { name: "ClimbyD",    team: "Opponent", likelihood: 100, sprint: 574, punch: 690, climb: 715, tt: 500, pursuit: 512, endurance: 572 },
+  { name: "DeadlastE",  team: "Opponent", likelihood: 100, sprint: 504, punch: 564, climb: 533, tt: 553, pursuit: 563, endurance: 473 }
 ];
+
 
 
 //---------------------------------------------------------
@@ -74,6 +77,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 });
+
+
+//---------------------------------------------------------
+// vELO2 and lik% text toggle
+//---------------------------------------------------------
+function toggleVelo2() {
+  const content = document.getElementById('velo2-content');
+  const chev = document.getElementById('velo2-chevron');
+
+  if (content.style.display === 'block') {
+    content.style.display = 'none';
+    chev.style.transform = 'rotate(0deg)';
+  } else {
+    content.style.display = 'block';
+    chev.style.transform = 'rotate(180deg)';
+  }
+}
+
+function toggleLik() {
+  const content = document.getElementById('lik-content');
+  const chev = document.getElementById('lik-chevron');
+
+  if (content.style.display === 'block') {
+    content.style.display = 'none';
+    chev.style.transform = 'rotate(0deg)';
+  } else {
+    content.style.display = 'block';
+    chev.style.transform = 'rotate(180deg)';
+  }
+}
 
 
 //---------------------------------------------------------

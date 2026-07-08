@@ -28,21 +28,32 @@
       profile on ZwiftRacing.app, and copy-paste their most recent vELO2 scores
       (paste into the SPR box and they should fill across).
     </p>
+    
+  </section>
 
-    <h3>vELO2 explained</h3>
+<!-- vELO2 explanation ABOVE the toggle -->
+<div class="collapsible-container">
+  <div class="collapsible-header" onclick="toggleVelo2()">
+    <span>vELO2 explained</span>
+    <span class="chevron" id="velo2-chevron">▼</span>
+  </div>
+
+  <div class="collapsible-content" id="velo2-content">
     <p>
       vELO2 scores every rider and route across six performance factors: 
-      <b>sprint</b>, <b>punch</b>, <b>climb</b>, <b>TT</b>, <b>pursuit</b>, and <b>endurance</b>.
+      <b>sprint</b>, <b>punch</b>, <b>climb</b>, <b>TT</b>, <b>pursuit</b>, and <b>endurance</b>. 
+      The route weighting is split approx 50% between sprint, punch and climb based on the finish profile of 
+      the route, and approx 50% between pursuit and endurance based on its length/overall difficulty. 
+      TT is not used in team racing. 
     </p>
 
     <p>
-      The first three — sprint, punch, and climb — are determined by the route’s finish profile. 
       A flat finish such as  
       <a href="https://zwiftinsider.com/route/glasgow-crit-circuit/" target="_blank">Glasgow Crit Circuit</a> 
       emphasises sprint and punch, while a 5 minute wall finish like 
       <a href="https://zwiftinsider.com/route/petite-douleur/" target="_blank">Petite Douleur</a> 
-      is almost entirely weighted toward climbing. TT is not used in team racing. Pursuit and endurance
-      measure how well a rider maintains speed and survives the demands of shorter versus longer races.
+      is entirely weighted toward climbing. Pursuit and endurance measure how well a rider survives the 
+      demands of shorter v. longer races.
     </p>
 
     <p>
@@ -51,52 +62,45 @@
       <b>average vELO2 advantage</b> between the two teams, selecting the routes where each team has the 
       strongest statistical edge.
     </p>
-
-  </section>
-
-
-    <!-- Ladder toggle (original checkbox) -->
-    <section class="panel">
-      <div class="ladder-toggle">
-        <span class="ladder-left">All routes</span>
-
-        <label class="switch">
-          <input type="checkbox" id="ladder-slider" checked>
-          <span class="slider round"></span>
-        </label>
-
-        <span class="ladder-right">Ladder routes only</span>
-      </div>
-    </section>
+  </div>
+</div>
 
 
+    <!-- Lik% explanation ABOVE the toggle -->
+<div class="lik-container">
+  <div class="collapsible-header" onclick="toggleLik()">
+    <span>What does Lik% mean?</span>
+    <span class="chevron" id="lik-chevron">▼</span>
+  </div>
 
-    <!-- Collapsible likelihood explanation -->
-    <section class="panel">
-    <details>
-      <summary><strong>What does Lik% mean?</strong></summary>
-      <p>
-        Likelihood (%) is your estimate of how likely each rider is to race. 
-        A rider with <strong>100%</strong> is almost certain to be there,
-        while a rider with <strong>0%</strong> is very unlikely.
-      </p>
-      <p>
-        The Route Picker uses these percentages to weight each team’s strengths.
-        Riders who are more likely to race have a bigger influence on the route
-        recommendations. You can make up realistic values based on your own
-	guesses, or set each rider to 100% (or any non-zero %) to not think 
-	about it.
-      </p>
-    </details>
-    </section>
+  <div class="collapsible-content" id="lik-content">
+    <p>
+      Lik% is the percentage likelihood that a rider will race. 
+      It lets you include riders who are uncertain or unlikely to race without removing them entirely.
+      A rider with 50% Lik contributes half their vELO2 score to the team average.
+    </p>
+    <p>
+      You can make up realistic values based on your own guesses, or set each rider to 100% (or use any 
+      non-zero % for all riders) to not think about it.
+    </p>
+  </div>
+</div>
 
+<!-- Toggle + Reset grouped together -->
+<div class="controls-container">
+  <div class="ladder-toggle">
+    <span class="ladder-left">All routes</span>
 
-    <!-- Reset riders button -->
-    <div class="panel" style="margin-bottom: 20px;">
-      <button id="reset-cls-btn" class="action-btn">
-        Reset to default riders
-      </button>
-    </div>
+    <label class="switch">
+      <input type="checkbox" id="ladder-slider" checked>
+      <span class="slider"></span>
+    </label>
+
+    <span class="ladder-right">Ladder routes only</span>
+  </div>
+
+  <button id="reset-cls-btn" class="reset-btn">Reset to default riders</button>
+</div>
 
 
     <!-- CLS Riders -->

@@ -232,12 +232,16 @@ button {
    Results Tables — Final Compact Version
    ============================ */
 
+/* ============================
+   Results Tables — Final Compact Version
+   ============================ */
+
 .results-table {
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-  table-layout: fixed;          /* Forces width constraints to apply */
+  table-layout: fixed;
 }
 
 /* Header */
@@ -295,25 +299,24 @@ button {
 .results-table td:nth-child(7) {
   width: 38px;
   max-width: 38px;
-  text-align: center;   /* FIXED */
+  text-align: center;
   font-size: 12px;
   font-weight: 600;
-  padding-right: 0;     /* no need for right buffer now */
 }
 
-/* Individual weight columns (SPR, PUN, CLI, PUR, END) */
+/* Individual weight columns */
 .results-table td:nth-child(8),
 .results-table td:nth-child(9),
 .results-table td:nth-child(10),
 .results-table td:nth-child(11),
 .results-table td:nth-child(12) {
-  text-align: center;   /* FIXED */
+  text-align: center;
   font-size: 12px;
 }
 
-
+/* Strongest weight highlight */
 .weight-strong {
-  background: #e8f4ff;   /* soft blue */
+  background: #e8f4ff;
   font-weight: 600;
 }
 
@@ -325,6 +328,13 @@ button {
 .diff-negative {
   color: #cc0000;
 }
+
+/* Vertical separators between column groups */
+.group-break {
+  border-left: 2px solid #d0d4e0;
+}
+
+
 
 /* Toggle container */
 .toggle {

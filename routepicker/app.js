@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // DEFAULT CLS RIDERS
 //---------------------------------------------------------
 const defaultCLS = [
-  { name: "Anthony", team: "CLS", likelihood: 0, sprint: 784, punch: 735, climb: 653, tt: 577, pursuit: 610, endurance: 551 },
+  { name: "Anthony", team: "CLS", likelihood: 100, sprint: 784, punch: 735, climb: 653, tt: 577, pursuit: 610, endurance: 551 },
   { name: "Chris",   team: "CLS", likelihood: 0,   sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
   { name: "Florian", team: "CLS", likelihood: 100, sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
   { name: "James",   team: "CLS", likelihood: 0,   sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
@@ -23,7 +23,7 @@ const defaultCLS = [
   { name: "Mike",    team: "CLS", likelihood: 0,   sprint: 699, punch: 735, climb: 648, tt: 649, pursuit: 655, endurance: 657 },
   { name: "Pete",    team: "CLS", likelihood: 100,  sprint: 867, punch: 858, climb: 662, tt: 581, pursuit: 680, endurance: 569 },
   { name: "Rich",    team: "CLS", likelihood: 100, sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
-  { name: "Trev",    team: "CLS", likelihood: 100,  sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+  { name: "Trev",    team: "CLS", likelihood: 0,  sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
 ];
 
 

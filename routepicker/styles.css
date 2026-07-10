@@ -401,6 +401,22 @@ button {
   line-height: 1.3;
 }
 
+/* Clickable/collapsible table rows */
+.elevation-wrapper {
+  overflow: hidden;
+}
+
+.elevation-img {
+  width: auto;        /* let SVG keep its aspect ratio */
+  height: 300px;      /* or 250px, 280px, 320px — tune this */
+  display: block;
+}
+
+
+img.onerror = () => {
+  img.src = "fallback-elevation.png"; // or leave blank
+};
+
 
 /* Toggle container */
 .toggle {
@@ -501,3 +517,4 @@ input:checked + .slider:before {
   pointer-events: none;
   user-select: none;
 }
+

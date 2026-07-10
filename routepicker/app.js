@@ -83,6 +83,65 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 });
 
+//---------------------------------------------------------
+// clickable rows in output tables
+//---------------------------------------------------------
+document.addEventListener("click", (e) => {
+  try {
+    // If clicking the ZwiftInsider link, do NOT toggle
+    if (e.target.closest(".route-link")) return;
+
+    const row = e.target.closest(".route-row");
+    if (!row) return;
+
+    const route = row.dataset.route;
+    const rawWorld = row.dataset.world;
+
+    const worldMap = {
+      "Watopia": "watopia",
+      "France": "france",
+      "Makuri Islands": "makuri-islands",
+      "Scotland": "scotland",
+      "London": "london",
+      "Yorkshire": "yorkshire",
+      "Innsbruck": "innsbruck",
+      "Richmond": "richmond",
+      "Paris": "paris",
+      "Crit City": "crit-city",
+      "Bologna": "bologna",
+      "New York": "new-york"
+    };
+
+    const world = worldMap[rawWorld] || "watopia";
+
+    const collapseRow = row.nextElementSibling;
+    if (!collapseRow) return;
+
+    const img = collapseRow.querySelector(".elevation-img");
+    if (!img) return;
+
+    // Remove multi-lap prefixes like "2x ", "3x ", "4x "
+    const cleanedRoute = route.replace(/^\d+x\s+/i, "");
+
+    // Convert to ZwiftInsider slug
+    const safeRoute = cleanedRoute
+      .toLowerCase()
+      .replace(/[^a-z0-9\- ]/g, "")
+      .replace(/ /g, "-");
+
+    const svgUrl =
+      `https://zwiftinsider.com/wp-content/routes/${world}/${safeRoute}.svg`;
+
+    img.src = svgUrl;
+
+    collapseRow.style.display =
+      collapseRow.style.display === "none" ? "table-row" : "none";
+
+  } catch (err) {
+    console.warn("Route SVG failed or row structure missing:", err);
+  }
+});
+
 
 //---------------------------------------------------------
 // vELO2 and lik% text toggle
@@ -566,27 +625,43 @@ function renderResults(result) {
     }).join('');
   }
 
-  // -----------------------------
-  // Best CLS Routes
-  // -----------------------------
-  result.bestCLS.slice(0, 20).forEach(r => {
-    const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
+// -----------------------------
+// Best CLS Routes
+// -----------------------------
+result.bestCLS.slice(0, 20).forEach(r => {
+  const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
 
-    clsBody.innerHTML += `
-      <tr>
-        <td><a href="${r.URL}" target="_blank">${r.Route}</a></td>
-        <td>${r.Length} km</td>
-        <td>${r.Elevation} m</td>
-        <td>${r.Lead_in} km</td>
+  // Main clickable route row
+  clsBody.innerHTML += `
+    <tr class="route-row" data-route="${r.Route}" data-world="${r.World}">
+      <td>
+        <a href="${r.URL}" target="_blank" class="route-link">${r.Route}</a>
+      </td>
 
-        <td>${r.avgCLS.toFixed(0)}</td>
-        <td>${r.avgOpp.toFixed(0)}</td>
-        <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+      <td>${r.Length} km</td>
+      <td>${r.Elevation} m</td>
+      <td>${r.Lead_in} km</td>
 
-        ${weightCells(r)}
-      </tr>
-    `;
-  });
+      <td>${r.avgCLS.toFixed(0)}</td>
+      <td>${r.avgOpp.toFixed(0)}</td>
+      <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+
+      ${weightCells(r)}
+    </tr>
+
+    <!-- Collapsible elevation profile row -->
+    <tr class="collapse-row" style="display:none;">
+      <td colspan="12">
+        <div class="elevation-wrapper">
+        <div class="elevation-scale">
+          <img class="elevation-img">
+        </div>
+        </div>
+      </td>
+    </tr>
+  `;
+});
+
 
 
   // -----------------------------
@@ -596,20 +671,33 @@ function renderResults(result) {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
 
     oppBody.innerHTML += `
-      <tr>
-        <td><a href="${r.URL}" target="_blank">${r.Route}</a></td>
-        <td>${r.Length} km</td>
-        <td>${r.Elevation} m</td>
-        <td>${r.Lead_in} km</td>
+      <tr class="route-row" data-route="${r.Route}" data-world="${r.World}">
+      <td>
+        <a href="${r.URL}" target="_blank" class="route-link">${r.Route}</a>
+      </td>
+      <td>${r.Length} km</td>
+      <td>${r.Elevation} m</td>
+      <td>${r.Lead_in} km</td>
 
-        <td>${r.avgCLS.toFixed(0)}</td>
-        <td>${r.avgOpp.toFixed(0)}</td>
-        <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+      <td>${r.avgCLS.toFixed(0)}</td>
+      <td>${r.avgOpp.toFixed(0)}</td>
+      <td class="${diffClass}">${r.diff.toFixed(0)}</td>
 
-        ${weightCells(r)}
-      </tr>
-    `;
-  });
+      ${weightCells(r)}
+    </tr>
+
+    <!-- Collapsible elevation profile row -->
+    <tr class="collapse-row" style="display:none;">
+      <td colspan="12">
+        <div class="elevation-wrapper">
+        <div class="elevation-scale">
+          <img class="elevation-img">
+        </div>
+        </div>
+      </td>
+    </tr>
+  `;
+});
 }
 
 

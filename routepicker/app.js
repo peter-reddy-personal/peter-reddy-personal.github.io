@@ -13,36 +13,38 @@ window.addEventListener("DOMContentLoaded", () => {
 // DEFAULT CLS RIDERS
 //---------------------------------------------------------
 const defaultCLS = [
-  { name: "Anthony", team: "CLS", likelihood: 100, sprint: 784, punch: 735, climb: 653, tt: 577, pursuit: 610, endurance: 551 },
-  { name: "Chris",   team: "CLS", likelihood: 0,   sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
-  { name: "Florian", team: "CLS", likelihood: 100, sprint: 512, punch: 523, climb: 614, tt: 587, pursuit: 682, endurance: 671 },
-  { name: "James",   team: "CLS", likelihood: 0,   sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kestas",  team: "CLS", likelihood: 0,   sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kev",     team: "CLS", likelihood: 0,   sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
-  { name: "Kris",    team: "CLS", likelihood: 0,   sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
-  { name: "Mike",    team: "CLS", likelihood: 0,   sprint: 699, punch: 735, climb: 648, tt: 649, pursuit: 655, endurance: 657 },
-  { name: "Pete",    team: "CLS", likelihood: 100,  sprint: 867, punch: 858, climb: 662, tt: 581, pursuit: 680, endurance: 569 },
-  { name: "Rich",    team: "CLS", likelihood: 100, sprint: 729, punch: 779, climb: 669, tt: 696, pursuit: 712, endurance: 722 },
-  { name: "Trev",    team: "CLS", likelihood: 0,  sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
+  { name: "Anthony", team: "CLS", likelihood: 100, sprint: 789, punch: 739, climb: 653, tt: 577, pursuit: 614, endurance: 552 },
+  { name: "Chris", team: "CLS", likelihood: 0, sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
+  { name: "Florian", team: "CLS", likelihood: 100, sprint: 638, punch: 541, climb: 623, tt: 700, pursuit: 613, endurance: 607 },
+  { name: "James", team: "CLS", likelihood: 0, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kestas", team: "CLS", likelihood: 0, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
+  { name: "Kev", team: "CLS", likelihood: 100, sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
+  { name: "Kris", team: "CLS", likelihood: 0, sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
+  { name: "Mike", team: "CLS", likelihood: 100, sprint: 699, punch: 735, climb: 648, tt: 649, pursuit: 655, endurance: 657 },
+  { name: "Pete", team: "CLS", likelihood: 100, sprint: 892, punch: 861, climb: 662, tt: 581, pursuit: 683, endurance: 570 },
+  { name: "Rich", team: "CLS", likelihood: 0, sprint: 726, punch: 708, climb: 663, tt: 710, pursuit: 653, endurance: 664 },
+  { name: "Trev", team: "CLS", likelihood: 0, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
 ];
-
 
 //---------------------------------------------------------
 // DEFAULT OPPONENT RIDERS
 //---------------------------------------------------------
 const defaultOpponents = [
-  { name: "Darrin Mackie Coalition",     team: "Opponent", likelihood: 100, sprint: 669, punch: 690, climb: 605, tt: 571, pursuit: 618, endurance: 508 },
-  { name: "Rob Tomei",                   team: "Opponent", likelihood: 100, sprint: 747, punch: 736, climb: 684, tt: 628, pursuit: 665, endurance: 632 },
-  { name: "Ed H (Coalition)",            team: "Opponent", likelihood: 100, sprint: 867, punch: 800, climb: 649, tt: 635, pursuit: 645, endurance: 628 },
-  { name: "D aveG (COALITION)",          team: "Opponent", likelihood: 100, sprint: 721, punch: 758, climb: 627, tt: 647, pursuit: 629, endurance: 610 },
-  { name: "Colin Mandy (COALITION)",     team: "Opponent", likelihood: 100, sprint: 804, punch: 765, climb: 687, tt: 635, pursuit: 646, endurance: 604 },
-  { name: "Andrew Broadmoore",           team: "Opponent", likelihood: 100, sprint: 669, punch: 862, climb: 682, tt: 630, pursuit: 667, endurance: 622 },
-  { name: "S N (COALITION)",             team: "Opponent", likelihood: 40, sprint: 846, punch: 762, climb: 649, tt: 681, pursuit: 659, endurance: 680 },
-  { name: "Nikolas Daniel",              team: "Opponent", likelihood: 10,  sprint: 821, punch: 803, climb: 674, tt: 632, pursuit: 660, endurance: 664 },
-  { name: "M att W (COALITION)",         team: "Opponent", likelihood: 100, sprint: 884, punch: 842, climb: 673, tt: 633, pursuit: 662, endurance: 571 },
-  { name: "Tom HAMLYN (COALITION)",      team: "Opponent", likelihood: 100, sprint: 787, punch: 759, climb: 687, tt: 638, pursuit: 727, endurance: 617 }
+  { name: "Florian Wou ⚡️ [Foudre]", team: "Opponent", likelihood: 100, sprint: 879, punch: 720, climb: 583, tt: 687, pursuit: 599, endurance: 546 },
+  { name: "C Amaury⚡Foudre", team: "Opponent", likelihood: 50, sprint: 823, punch: 790, climb: 663, tt: 670, pursuit: 665, endurance: 636 },
+  { name: "Fred Nicaise ( Foudre )", team: "Opponent", likelihood: 10, sprint: 824, punch: 872, climb: 704, tt: 711, pursuit: 741, endurance: 719 },
+  { name: "jf Morfin [Foudre]", team: "Opponent", likelihood: 100, sprint: 696, punch: 753, climb: 634, tt: 593, pursuit: 618, endurance: 593 },
+  { name: "Marc Dagry (Foudre)", team: "Opponent", likelihood: 100, sprint: 744, punch: 692, climb: 713, tt: 689, pursuit: 672, endurance: 702 },
+  { name: "Julien AUVRAY [FOUDRE -issy Tri]", team: "Opponent", likelihood: 100, sprint: 642, punch: 676, climb: 716, tt: 700, pursuit: 680, endurance: 716 },
+  { name: "F red_JBL ⚡️(Foudre)", team: "Opponent", likelihood: 100, sprint: 768, punch: 760, climb: 694, tt: 611, pursuit: 699, endurance: 591 },
+  { name: "Via Esapis.Via(Foudre)", team: "Opponent", likelihood: 100, sprint: 673, punch: 701, climb: 663, tt: 582, pursuit: 606, endurance: 575 },
+  { name: "Yann BAP 85 🔥 ⚡️Foudre⚡️", team: "Opponent", likelihood: 50, sprint: 716, punch: 684, climb: 673, tt: 644, pursuit: 658, endurance: 632 },
+  { name: "Martin Renard [Foudre ⚡️]", team: "Opponent", likelihood: 100, sprint: 897, punch: 843, climb: 687, tt: 700, pursuit: 721, endurance: 709 },
+  { name: "Jf Kohl (foudre)", team: "Opponent", likelihood: 100, sprint: 724, punch: 663, climb: 538, tt: 705, pursuit: 626, endurance: 537 },
+  { name: "K nightRider[Foudre]", team: "Opponent", likelihood: 10, sprint: 638, punch: 746, climb: 678, tt: 660, pursuit: 661, endurance: 651 },
+  { name: "J. ISR [ Foudre⚡️]", team: "Opponent", likelihood: 100, sprint: 692, punch: 608, climb: 544, tt: 564, pursuit: 557, endurance: 511 },
+  { name: "Sébastien Lessire⚡[Foudre]", team: "Opponent", likelihood: 100, sprint: 856, punch: 830, climb: 665, tt: 627, pursuit: 676, endurance: 600 }
 ];
-
 
 
 //---------------------------------------------------------

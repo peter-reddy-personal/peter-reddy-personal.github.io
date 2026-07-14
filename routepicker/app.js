@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑08 22:15";
+const jsVersion = "2026‑07‑14 16:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -9,170 +9,252 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//---------------------------------------------------------
-// DEFAULT CLS RIDERS
-//---------------------------------------------------------
-const defaultCLS = [
-  { name: "Anthony", team: "CLS", likelihood: 100, sprint: 789, punch: 739, climb: 653, tt: 577, pursuit: 614, endurance: 552 },
-  { name: "Chris", team: "CLS", likelihood: 0, sprint: 648, punch: 610, climb: 511, tt: 514, pursuit: 550, endurance: 482 },
-  { name: "Florian", team: "CLS", likelihood: 100, sprint: 638, punch: 541, climb: 623, tt: 700, pursuit: 613, endurance: 607 },
-  { name: "James", team: "CLS", likelihood: 0, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kestas", team: "CLS", likelihood: 0, sprint: 739, punch: 709, climb: 565, tt: 559, pursuit: 603, endurance: 564 },
-  { name: "Kev", team: "CLS", likelihood: 100, sprint: 641, punch: 642, climb: 616, tt: 530, pursuit: 579, endurance: 550 },
-  { name: "Kris", team: "CLS", likelihood: 0, sprint: 781, punch: 713, climb: 548, tt: 574, pursuit: 604, endurance: 558 },
-  { name: "Mike", team: "CLS", likelihood: 100, sprint: 699, punch: 735, climb: 648, tt: 649, pursuit: 655, endurance: 657 },
-  { name: "Pete", team: "CLS", likelihood: 100, sprint: 892, punch: 861, climb: 662, tt: 581, pursuit: 683, endurance: 570 },
-  { name: "Rich", team: "CLS", likelihood: 0, sprint: 726, punch: 708, climb: 663, tt: 710, pursuit: 653, endurance: 664 },
-  { name: "Trev", team: "CLS", likelihood: 0, sprint: 540, punch: 592, climb: 650, tt: 610, pursuit: 707, endurance: 648 }
-];
+// ---------------------------------------------------------
+// GLOBAL STATE
+// ---------------------------------------------------------
 
-//---------------------------------------------------------
-// DEFAULT OPPONENT RIDERS
-//---------------------------------------------------------
-const defaultOpponents = [
-  { name: "Florian Wou ⚡️ [Foudre]", team: "Opponent", likelihood: 100, sprint: 879, punch: 720, climb: 583, tt: 687, pursuit: 599, endurance: 546 },
-  { name: "C Amaury⚡Foudre", team: "Opponent", likelihood: 50, sprint: 823, punch: 790, climb: 663, tt: 670, pursuit: 665, endurance: 636 },
-  { name: "Fred Nicaise ( Foudre )", team: "Opponent", likelihood: 10, sprint: 824, punch: 872, climb: 704, tt: 711, pursuit: 741, endurance: 719 },
-  { name: "jf Morfin [Foudre]", team: "Opponent", likelihood: 100, sprint: 696, punch: 753, climb: 634, tt: 593, pursuit: 618, endurance: 593 },
-  { name: "Marc Dagry (Foudre)", team: "Opponent", likelihood: 100, sprint: 744, punch: 692, climb: 713, tt: 689, pursuit: 672, endurance: 702 },
-  { name: "Julien AUVRAY [FOUDRE -issy Tri]", team: "Opponent", likelihood: 100, sprint: 642, punch: 676, climb: 716, tt: 700, pursuit: 680, endurance: 716 },
-  { name: "F red_JBL ⚡️(Foudre)", team: "Opponent", likelihood: 100, sprint: 768, punch: 760, climb: 694, tt: 611, pursuit: 699, endurance: 591 },
-  { name: "Via Esapis.Via(Foudre)", team: "Opponent", likelihood: 100, sprint: 673, punch: 701, climb: 663, tt: 582, pursuit: 606, endurance: 575 },
-  { name: "Yann BAP 85 🔥 ⚡️Foudre⚡️", team: "Opponent", likelihood: 50, sprint: 716, punch: 684, climb: 673, tt: 644, pursuit: 658, endurance: 632 },
-  { name: "Martin Renard [Foudre ⚡️]", team: "Opponent", likelihood: 100, sprint: 897, punch: 843, climb: 687, tt: 700, pursuit: 721, endurance: 709 },
-  { name: "Jf Kohl (foudre)", team: "Opponent", likelihood: 100, sprint: 724, punch: 663, climb: 538, tt: 705, pursuit: 626, endurance: 537 },
-  { name: "K nightRider[Foudre]", team: "Opponent", likelihood: 10, sprint: 638, punch: 746, climb: 678, tt: 660, pursuit: 661, endurance: 651 },
-  { name: "J. ISR [ Foudre⚡️]", team: "Opponent", likelihood: 100, sprint: 692, punch: 608, climb: 544, tt: 564, pursuit: 557, endurance: 511 },
-  { name: "Sébastien Lessire⚡[Foudre]", team: "Opponent", likelihood: 100, sprint: 856, punch: 830, climb: 665, tt: 627, pursuit: 676, endurance: 600 }
-];
+let allTeams = [];
+let clsTeam = null;          // team n=63
+let clsRiders = [];
+let opponentRiders = [];
+let routes = [];             // loaded from routes.json
 
 
-//---------------------------------------------------------
-// GLOBAL ROUTES VARIABLE
-//---------------------------------------------------------
-let routes = [];
+// ---------------------------------------------------------
+// LOAD TEAMS.JSON
+// ---------------------------------------------------------
 
+async function loadTeams() {
+  console.log("Loading teams.json...");
 
-//---------------------------------------------------------
-// DOMContentLoaded — bind buttons + load saved team
-//---------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
+  const res = await fetch("teams.json");
+  console.log("Fetch status:", res.status);
 
-  loadSavedTeam();
-  updateRiderCounts();
+  allTeams = await res.json();
+  console.log("Teams loaded:", allTeams.length);
 
-  // Ladder slider
-  const ladderCheckbox = document.getElementById("ladder-slider");
-  if (ladderCheckbox) {
-    ladderCheckbox.addEventListener("change", () => {
-      calculateRoutes();
-    });
+  clsTeam = allTeams.find(t => t.number === 63);
+  console.log("CLS team found:", clsTeam);
+}
+
+// ---------------------------------------------------------
+// FETCH ZWIFTRACING DATA FOR A RIDER
+// ---------------------------------------------------------
+
+async function fetchZwiftRacingRider(riderId) {
+  console.log("Fetching ZR via Worker for:", riderId);
+
+  const url = `https://zwiftracingappdata.peter-reddy95.workers.dev/${riderId}`;
+
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    console.error("Worker fetch failed:", res.status);
+    return null;
   }
 
-  // Buttons
-  document.getElementById('add-cls-btn').onclick = () => {
-    addRiderRow('cls-container');
-    updateRiderCounts();
-  };
+  const data = await res.json();
+
+  // NEW: ZwiftRacing data is inside data.props.pageProps.rider
+  const rider = data?.props?.pageProps?.rider;
+
+  if (!rider) {
+    console.error("No rider object found in Worker JSON");
+    return null;
+  }
+
+  console.log("ZR rider:", rider);
+  return rider;
+}
+
+
+// ---------------------------------------------------------
+// ENRICH A TEAM WITH ZWIFTRACING DATA
+// ---------------------------------------------------------
+
+async function enrichTeam(team) {
+  const enriched = [];
+
+  for (const rider of team.riders) {
+    const zr = await fetchZwiftRacingRider(rider.id);
+    enriched.push({ ...rider, zr });
+  }
+
+  return enriched;
+}
+
+// ---------------------------------------------------------
+// AUTO‑LOAD CLS RIDERS
+// ---------------------------------------------------------
+
+async function renderCLS() {
+  console.log("Rendering CLS...");
+  console.log("clsTeam:", clsTeam);
+
+  if (!clsTeam) {
+    console.error("CLS team not found — cannot render.");
+    return;
+  }
+
+  clsRiders = await enrichTeam(clsTeam);
+  console.log("CLS enriched:", clsRiders);
+
+  renderUnifiedCLSTable(clsRiders);
+}
+
+// ---------------------------------------------------------
+// POPULATE OPPONENT DROPDOWN
+// ---------------------------------------------------------
+
+function populateOpponentDropdown() {
+  console.log("Populating opponent dropdown...");
+  console.log("Teams available:", allTeams.length);
+
+  const select = document.getElementById("opponentSelect");
+
+  allTeams.forEach(team => {
+    if (team.number !== 63) {
+      const opt = document.createElement("option");
+      opt.value = team.number;
+      opt.textContent = team.name;
+      select.appendChild(opt);
+    }
+  });
+
+  console.log("Dropdown populated.");
+}
+
+// ---------------------------------------------------------
+// WHEN OPPONENT SELECTED → LOAD THEIR RIDERS
+// ---------------------------------------------------------
+
+async function onOpponentSelected() {
+  const select = document.getElementById("opponentSelect");
+  const teamNumber = parseInt(select.value, 10);
+
+  const opponentTeam = allTeams.find(t => t.number === teamNumber);
+  opponentRiders = await enrichTeam(opponentTeam);
+
+  renderUnifiedOpponentTable(opponentRiders);
+}
+
+// ---------------------------------------------------------
+// RENDER UNIFIED CLS TABLE
+// ---------------------------------------------------------
+
+function renderUnifiedCLSTable(riders) {
+  const div = document.getElementById("cls-table");
+  div.innerHTML = "";
+
+  // Table header
+  const header = document.createElement("div");
+  header.className = "input-headings";
+  header.innerHTML = `
+    <div>Name</div>
+    <div>Lik%</div>
+    <div>SPR</div>
+    <div>PUN</div>
+    <div>CLI</div>
+    <div>TT</div>
+    <div>PUR</div>
+    <div>END</div>
+    <div></div>
+  `;
+  div.appendChild(header);
+
+  riders.forEach(r => {
+    const zr = r.zr || {};
+
+    const factors = zr.velo?.factors || {};
+
+    const row = document.createElement("div");
+    row.className = "rider-row";
+
+    row.innerHTML = `
+      <input class="rider-name" value="${r.name}">
+      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
+      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
+      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
+      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
+      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
+      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
+      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
+      <button class="remove-rider">X</button>
+    `;
+
+    div.appendChild(row);
+  });
+}
+
+// ---------------------------------------------------------
+// RENDER UNIFIED Opponent TABLE
+// ---------------------------------------------------------
+
+function renderUnifiedOpponentTable(riders) {
+  const div = document.getElementById("opp-table");
+  div.innerHTML = "";
+
+  // Header row
+  const header = document.createElement("div");
+  header.className = "input-headings";
+  header.innerHTML = `
+    <div>Name</div>
+    <div>Lik%</div>
+    <div>SPR</div>
+    <div>PUN</div>
+    <div>CLI</div>
+    <div>TT</div>
+    <div>PUR</div>
+    <div>END</div>
+    <div></div>
+  `;
+  div.appendChild(header);
+
+  riders.forEach(r => {
+    const zr = r.zr || {};
+    const factors = zr.velo?.factors || {};
+
+    const row = document.createElement("div");
+    row.className = "rider-row";
+
+    row.innerHTML = `
+      <input class="rider-name" value="${r.name}">
+      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
+      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
+      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
+      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
+      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
+      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
+      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
+      <button class="remove-rider">X</button>
+    `;
+
+    div.appendChild(row);
+  });
+}
+
+// ---------------------------------------------------------
+// SINGLE PAGE LOAD BLOCK
+// ---------------------------------------------------------
+
+window.addEventListener("DOMContentLoaded", async () => {
+  await loadTeams();
+  populateOpponentDropdown();
+  await renderCLS();
+
+  const resRoutes = await fetch("routes.json");
+  routes = await resRoutes.json();
+  console.log("Routes loaded:", routes.length);
+
+  document.getElementById("opponentSelect")
+    .addEventListener("change", onOpponentSelected);
 
   document.getElementById('add-opp-btn').onclick = () => {
-    addRiderRow('opp-container');
-    updateRiderCounts();
+    addRiderRow('opp-table');
   };
-
-  document.getElementById('reset-cls-btn').onclick = resetCLS;
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 });
-
-//---------------------------------------------------------
-// clickable rows in output tables
-//---------------------------------------------------------
-document.addEventListener("click", (e) => {
-  try {
-    // If clicking the ZwiftInsider link, do NOT toggle
-    if (e.target.closest(".route-link")) return;
-
-    const row = e.target.closest(".route-row");
-    if (!row) return;
-
-    const route = row.dataset.route;
-    const rawWorld = row.dataset.world;
-
-    const worldMap = {
-      "Watopia": "watopia",
-      "France": "france",
-      "Makuri Islands": "makuri-islands",
-      "Scotland": "scotland",
-      "London": "london",
-      "Yorkshire": "yorkshire",
-      "Innsbruck": "innsbruck",
-      "Richmond": "richmond",
-      "Paris": "paris",
-      "Crit City": "crit-city",
-      "Bologna": "bologna",
-      "New York": "new-york"
-    };
-
-    const world = worldMap[rawWorld] || "watopia";
-
-    const collapseRow = row.nextElementSibling;
-    if (!collapseRow) return;
-
-    const img = collapseRow.querySelector(".elevation-img");
-    if (!img) return;
-
-    // Remove multi-lap prefixes like "2x ", "3x ", "4x "
-    const cleanedRoute = route.replace(/^\d+x\s+/i, "");
-
-    // Convert to ZwiftInsider slug
-    const safeRoute = cleanedRoute
-      .toLowerCase()
-      .replace(/[^a-z0-9\- ]/g, "")
-      .replace(/ /g, "-");
-
-    const svgUrl =
-      `https://zwiftinsider.com/wp-content/routes/${world}/${safeRoute}.svg`;
-
-    img.src = svgUrl;
-
-    collapseRow.style.display =
-      collapseRow.style.display === "none" ? "table-row" : "none";
-
-  } catch (err) {
-    console.warn("Route SVG failed or row structure missing:", err);
-  }
-});
-
-
-//---------------------------------------------------------
-// vELO2 and lik% text toggle
-//---------------------------------------------------------
-function toggleVelo2() {
-  const content = document.getElementById('velo2-content');
-  const chev = document.getElementById('velo2-chevron');
-
-  if (content.style.display === 'block') {
-    content.style.display = 'none';
-    chev.style.transform = 'rotate(0deg)';
-  } else {
-    content.style.display = 'block';
-    chev.style.transform = 'rotate(180deg)';
-  }
-}
-
-function toggleLik() {
-  const content = document.getElementById('lik-content');
-  const chev = document.getElementById('lik-chevron');
-
-  if (content.style.display === 'block') {
-    content.style.display = 'none';
-    chev.style.transform = 'rotate(0deg)';
-  } else {
-    content.style.display = 'block';
-    chev.style.transform = 'rotate(180deg)';
-  }
-}
 
 
 //---------------------------------------------------------
@@ -203,8 +285,6 @@ function addRiderRow(sectionId) {
 
   row.querySelector('.remove-rider').onclick = () => {
     row.remove();
-    autoSaveTeam();
-    updateRiderCounts();
   };
 
   attachAutoSave(row);
@@ -212,46 +292,6 @@ function addRiderRow(sectionId) {
 
   container.appendChild(row);
   autoSaveTeam();
-}
-
-
-//---------------------------------------------------------
-// Add Rider Row With Pre-Filled Data
-//---------------------------------------------------------
-function addRiderRowWithData(r) {
-  const sectionId = r.team === "CLS" ? "cls-container" : "opp-container";
-  const container = document.getElementById(sectionId);
-  if (!container) return;
-
-  const row = document.createElement('div');
-  row.classList.add('rider-row');
-
-  row.innerHTML = `
-    <input type="text" class="rider-name" value="${r.name}">
-    <input type="number" class="rider-likelihood likelihood-field" value="${r.likelihood}" min="0" max="100">
-
-    <div class="factor-gap"></div>
-
-    <input type="number" class="rider-sprint" value="${r.sprint}">
-    <input type="number" class="rider-punch" value="${r.punch}">
-    <input type="number" class="rider-climb" value="${r.climb}">
-    <input type="number" class="rider-tt" value="${r.tt}">
-    <input type="number" class="rider-pursuit" value="${r.pursuit}">
-    <input type="number" class="rider-endurance" value="${r.endurance}">
-
-    <button class="remove-rider">X</button>
-  `;
-
-  row.querySelector('.remove-rider').onclick = () => {
-    row.remove();
-    autoSaveTeam();
-    updateRiderCounts();
-  };
-
-  attachAutoSave(row);
-  attachPasteHandler(row);
-
-  container.appendChild(row);
 }
 
 
@@ -264,7 +304,7 @@ function getRiders() {
 
   rows.forEach(row => {
     const parentId = row.parentElement.id;
-    const team = parentId === "cls-container" ? "CLS" : "Opponent";
+    const team = parentId === "cls-table" ? "CLS" : "Opponent";
 
     riders.push({
       name: row.querySelector('.rider-name').value,
@@ -289,7 +329,6 @@ function getRiders() {
 function autoSaveTeam() {
   const riders = getRiders();
   localStorage.setItem('routepicker_team', JSON.stringify(riders));
-  updateRiderCounts();
 }
 
 function attachAutoSave(row) {
@@ -345,69 +384,6 @@ function attachPasteHandler(row) {
     });
   });
 }
-
-//---------------------------------------------------------
-// Reset CLS + Opponent teams to defaults
-//---------------------------------------------------------
-function resetCLS() {
-
-  document.getElementById('cls-container').innerHTML = '';
-  document.getElementById('opp-container').innerHTML = '';
-
-  defaultCLS.forEach(r => addRiderRowWithData(r));
-  defaultOpponents.forEach(r => addRiderRowWithData(r));
-
-  autoSaveTeam();
-  updateRiderCounts();
-  calculateRoutes();
-}
-
-
-//---------------------------------------------------------
-// Load Saved Team OR Defaults
-//---------------------------------------------------------
-function loadSavedTeam() {
-  const saved = localStorage.getItem('routepicker_team');
-
-  document.getElementById('cls-container').innerHTML = '';
-  document.getElementById('opp-container').innerHTML = '';
-
-  if (!saved) {
-    defaultCLS.forEach(r => addRiderRowWithData(r));
-    defaultOpponents.forEach(r => addRiderRowWithData(r));
-    autoSaveTeam();
-    return;
-  }
-
-  const riders = JSON.parse(saved);
-  riders.forEach(r => addRiderRowWithData(r));
-}
-
-
-//---------------------------------------------------------
-// Rider counts
-//---------------------------------------------------------
-function updateRiderCounts() {
-  const clsCount = document.querySelectorAll('#cls-container .rider-row').length;
-  const oppCount = document.querySelectorAll('#opp-container .rider-row').length;
-
-  const clsLabel = document.getElementById('cls-count');
-  const oppLabel = document.getElementById('opp-count');
-
-  if (clsLabel) clsLabel.textContent = `${clsCount} rider${clsCount === 1 ? '' : 's'}`;
-  if (oppLabel) oppLabel.textContent = `${oppCount} rider${oppCount === 1 ? '' : 's'}`;
-}
-
-
-//---------------------------------------------------------
-// Load Routes JSON
-//---------------------------------------------------------
-async function loadRoutes() {
-  const response = await fetch('./routes.json');
-  routes = await response.json();
-  return routes;
-}
-
 
 //---------------------------------------------------------
 // Compute Single Rider Score (TT before PUR)
@@ -707,7 +683,6 @@ result.bestCLS.slice(0, 20).forEach(r => {
 // Main Calculate Function
 //---------------------------------------------------------
 async function calculateRoutes() {
-  await loadRoutes();
   const riders = getRiders();
   const ranked = rankRoutes(routes, riders);
   renderAverages(riders);

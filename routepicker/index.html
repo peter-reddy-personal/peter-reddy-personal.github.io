@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Zwift Ladder route picker</title>
-  <link rel="stylesheet" href="styles.css?v=5010">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -103,53 +103,46 @@
   <button id="reset-cls-btn" class="reset-btn">Reset to v. Foudre Picodon</button>
 </div>
 
+<!-- CLS ZR container -->
+<section class="panel cls-panel">
+  <h2>CLS Riders</h2>
+  <div id="cls-table"></div>
+</section>
 
-    <!-- CLS Riders -->
-    <section class="panel cls-panel">
-      <div class="panel-header">
-        <h2>CLS Riders</h2>
-        <span id="cls-count" class="rider-count">0 riders</span>
-      </div>
+<!-- Opponent Team Selector -->
+<section class="panel opp-panel">
+  <div class="panel-header">
+    <h2>Select Opponent Team</h2>
+  </div>
 
-      <div class="input-headings">
-        <span class="name-col">Name</span>
-        <span class="lik-col">Lik%</span>
-        <span class="spr-col">SPR</span>
-        <span class="pun-col">PUN</span>
-        <span class="cli-col">CLI</span>
-        <span class="tt-col">TT</span>
-        <span class="pur-col">PUR</span>
-        <span class="end-col">END</span>
-      </div>
+  <select id="opponentSelect" class="team-dropdown">
+    <option value="">-- Choose a team --</option>
+  </select>
+</section>
 
+<!-- Opponent Riders -->
+<section class="panel opp-panel">
+  <div class="panel-header">
+    <h2>Opponent Riders</h2>
+    <span id="opp-count" class="rider-count">0 riders</span>
+  </div>
 
-      <div id="cls-container"></div>
+  <div class="input-headings">
+    <span>Name</span>
+    <span>Lik%</span>
+    <span>SPR</span>
+    <span>PUN</span>
+    <span>CLI</span>
+    <span>TT</span>
+    <span>PUR</span>
+    <span>END</span>
+  </div>
 
-      <button id="add-cls-btn" class="secondary-btn">Add CLS Rider</button>
-    </section>
+  <div id="opp-table"></div>
 
-    <!-- Opponent Riders -->
-    <section class="panel opp-panel">
-      <div class="panel-header">
-        <h2>Opponent Riders</h2>
-        <span id="opp-count" class="rider-count">0 riders</span>
-      </div>
+  <button id="add-opp-btn" class="secondary-btn">Add Opponent Rider</button>
+</section>
 
-      <div class="input-headings">
-        <span>Name</span>
-        <span>Lik%</span>
-        <span>SPR</span>
-        <span>PUN</span>
-        <span>CLI</span>
-        <span>TT</span>
-        <span>PUR</span>
-        <span>END</span>
-      </div>
-
-      <div id="opp-container"></div>
-
-      <button id="add-opp-btn" class="secondary-btn">Add Opponent Rider</button>
-    </section>
 
     <!-- Calculate -->
     <section class="panel">
@@ -286,6 +279,6 @@
 
   <div id="version-banner">Loading JS…</div>
 
-  <script src="app.js?v=6035"></script>
+  <script src="app.js"></script>
 </body>
 </html>

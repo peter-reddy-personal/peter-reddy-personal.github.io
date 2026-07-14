@@ -87,26 +87,20 @@
   </div>
 </div>
 
-<!-- Toggle + Reset grouped together -->
-<div class="controls-container">
-  <div class="ladder-toggle">
-    <span class="ladder-left">All routes</span>
-
-    <label class="switch">
-      <input type="checkbox" id="ladder-slider" checked>
-      <span class="slider"></span>
-    </label>
-
-    <span class="ladder-right">Ladder routes only</span>
-  </div>
-
-  <button id="reset-cls-btn" class="reset-btn">Reset to v. Foudre Picodon</button>
-</div>
-
 <!-- CLS ZR container -->
 <section class="panel cls-panel">
   <h2>CLS Riders</h2>
+
+ <div class="power-toggle-wrapper">
+  <label class="toggle">
+    <input type="checkbox" id="power-toggle">
+    <span class="slider"></span>
+  </label>
+  <span class="toggle-label">Power</span>
+</div>
+
   <div id="cls-table"></div>
+  <button id="add-cls-btn" class="secondary-btn">Add CLS Rider</button>
 </section>
 
 <!-- Opponent Team Selector -->
@@ -126,6 +120,14 @@
     <h2>Opponent Riders</h2>
     <span id="opp-count" class="rider-count">0 riders</span>
   </div>
+  
+  <div class="power-toggle-wrapper">
+  <label class="toggle">
+    <input type="checkbox" id="power-toggle">
+    <span class="slider"></span>
+  </label>
+  <span class="toggle-label">Power</span>
+</div>
 
   <div class="input-headings">
     <span>Name</span>
@@ -169,6 +171,19 @@
       </table>
     </section>
 
+<!-- Toggle routes button -->
+<div class="controls-container">
+  <div class="ladder-toggle">
+    <span class="ladder-left">All routes</span>
+
+    <label class="switch">
+      <input type="checkbox" id="ladder-slider" checked>
+      <span class="slider"></span>
+    </label>
+
+    <span class="ladder-right">Ladder routes only</span>
+  </div>
+</div>
 
     <!-- Best CLS Routes -->
 <section class="panel">

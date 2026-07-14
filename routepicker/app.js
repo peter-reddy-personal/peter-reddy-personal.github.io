@@ -143,95 +143,171 @@ async function onOpponentSelected() {
 // ---------------------------------------------------------
 
 function renderUnifiedCLSTable(riders) {
+  const showPower = document.getElementById("power-toggle").checked;
+
   const div = document.getElementById("cls-table");
   div.innerHTML = "";
 
-  // Table header
+  // Header changes depending on mode
   const header = document.createElement("div");
   header.className = "input-headings";
-  header.innerHTML = `
-    <div>Name</div>
-    <div>Lik%</div>
-    <div>SPR</div>
-    <div>PUN</div>
-    <div>CLI</div>
-    <div>TT</div>
-    <div>PUR</div>
-    <div>END</div>
-    <div></div>
-  `;
+
+  header.innerHTML = showPower
+    ? `
+      <div>Name</div>
+      <div>CP</div>
+      <div>5m</div>
+      <div>1m</div>
+      <div>15s</div>
+      <div>Phenotype</div>
+      <div>Rating</div>
+      <div></div>
+    `
+    : `
+      <div>Name</div>
+      <div>Lik%</div>
+      <div>SPR</div>
+      <div>PUN</div>
+      <div>CLI</div>
+      <div>TT</div>
+      <div>PUR</div>
+      <div>END</div>
+      <div></div>
+    `;
+
   div.appendChild(header);
 
   riders.forEach(r => {
     const zr = r.zr || {};
-
     const factors = zr.velo?.factors || {};
+    const power = zr.power || {};
 
     const row = document.createElement("div");
     row.className = "rider-row";
 
-    row.innerHTML = `
-      <input class="rider-name" value="${r.name}">
-      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
-      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
-      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
-      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
-      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
-      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
-      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-      <button class="remove-rider">X</button>
-    `;
+    const nameCell = r.zr
+      ? `<a href="https://zwiftracing.app/riders/${r.id}"
+           target="_blank"
+           class="rider-link">${r.name}</a>`
+      : `<input class="rider-name" value="${r.name}">`;
+
+    if (showPower) {
+      // POWER MODE
+      row.innerHTML = `
+        ${nameCell}
+        <div class="profile-cell">${power.CP ?? "N/A"}</div>
+        <div class="profile-cell">${power.P5 ?? "N/A"}</div>
+        <div class="profile-cell">${power.P1 ?? "N/A"}</div>
+        <div class="profile-cell">${power.P15 ?? "N/A"}</div>
+        <div class="profile-cell">${zr.phenotype?.value ?? "Unknown"}</div>
+        <div class="profile-cell">${zr.race?.rating ?? "N/A"}</div>
+        <button class="remove-rider">X</button>
+      `;
+    } else {
+      // FACTORS MODE
+      row.innerHTML = `
+        ${nameCell}
+        <input class="rider-likelihood" value="${r.likelihood ?? 100}">
+        <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
+        <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
+        <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
+        <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
+        <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
+        <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
+        <button class="remove-rider">X</button>
+      `;
+    }
 
     div.appendChild(row);
   });
 }
+
 
 // ---------------------------------------------------------
 // RENDER UNIFIED Opponent TABLE
 // ---------------------------------------------------------
 
 function renderUnifiedOpponentTable(riders) {
+  const showPower = document.getElementById("power-toggle").checked;
+
   const div = document.getElementById("opp-table");
   div.innerHTML = "";
 
-  // Header row
+  // Header row (changes depending on mode)
   const header = document.createElement("div");
   header.className = "input-headings";
-  header.innerHTML = `
-    <div>Name</div>
-    <div>Lik%</div>
-    <div>SPR</div>
-    <div>PUN</div>
-    <div>CLI</div>
-    <div>TT</div>
-    <div>PUR</div>
-    <div>END</div>
-    <div></div>
-  `;
+
+  header.innerHTML = showPower
+    ? `
+      <div>Name</div>
+      <div>CP</div>
+      <div>5m</div>
+      <div>1m</div>
+      <div>15s</div>
+      <div>Phenotype</div>
+      <div>Rating</div>
+      <div></div>
+    `
+    : `
+      <div>Name</div>
+      <div>Lik%</div>
+      <div>SPR</div>
+      <div>PUN</div>
+      <div>CLI</div>
+      <div>TT</div>
+      <div>PUR</div>
+      <div>END</div>
+      <div></div>
+    `;
+
   div.appendChild(header);
 
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
+    const power = zr.power || {};
 
     const row = document.createElement("div");
     row.className = "rider-row";
 
-    row.innerHTML = `
-      <input class="rider-name" value="${r.name}">
-      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
-      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
-      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
-      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
-      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
-      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
-      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-      <button class="remove-rider">X</button>
-    `;
+    // Opponent links styled red via CSS (.opp-panel .rider-link)
+    const nameCell = r.zr
+      ? `<a href="https://zwiftracing.app/riders/${r.id}"
+           target="_blank"
+           class="rider-link">${r.name}</a>`
+      : `<input class="rider-name" value="${r.name}">`;
+
+    if (showPower) {
+      // POWER MODE
+      row.innerHTML = `
+        ${nameCell}
+        <div class="profile-cell">${power.CP ?? "N/A"}</div>
+        <div class="profile-cell">${power.P5 ?? "N/A"}</div>
+        <div class="profile-cell">${power.P1 ?? "N/A"}</div>
+        <div class="profile-cell">${power.P15 ?? "N/A"}</div>
+        <div class="profile-cell">${zr.phenotype?.value ?? "Unknown"}</div>
+        <div class="profile-cell">${zr.race?.rating ?? "N/A"}</div>
+        <button class="remove-rider">X</button>
+      `;
+    } else {
+      // FACTORS MODE
+      row.innerHTML = `
+        ${nameCell}
+        <input class="rider-likelihood" value="${r.likelihood ?? 100}">
+        <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
+        <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
+        <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
+        <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
+        <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
+        <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
+        <button class="remove-rider">X</button>
+      `;
+    }
 
     div.appendChild(row);
   });
 }
+
 
 // ---------------------------------------------------------
 // SINGLE PAGE LOAD BLOCK
@@ -249,11 +325,21 @@ window.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("opponentSelect")
     .addEventListener("change", onOpponentSelected);
 
+  document.getElementById('add-cls-btn').onclick = () => {
+  addRiderRow('cls-table');
+};
+
   document.getElementById('add-opp-btn').onclick = () => {
     addRiderRow('opp-table');
   };
 
   document.getElementById('calculate-btn').onclick = calculateRoutes;
+
+  document.getElementById("power-toggle").addEventListener("change", () => {
+  renderUnifiedCLSTable(clsRiders);
+  renderUnifiedOpponentTable(opponentRiders);
+});
+
 });
 
 
@@ -270,9 +356,6 @@ function addRiderRow(sectionId) {
   row.innerHTML = `
     <input type="text" class="rider-name" placeholder="Name">
     <input type="number" class="rider-likelihood likelihood-field" placeholder="% Likelihood" value="100" min="0" max="100">
-
-    <div class="factor-gap"></div>
-
     <input type="number" class="rider-sprint" placeholder="SPR">
     <input type="number" class="rider-punch" placeholder="PUN">
     <input type="number" class="rider-climb" placeholder="CLI">

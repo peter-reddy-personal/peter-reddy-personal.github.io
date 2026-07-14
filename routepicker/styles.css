@@ -95,6 +95,37 @@ details p {
   background: #24476f;
 }
 
+/* CLS rider links */
+.cls-panel .rider-link {
+  display: inline-block;
+  width: 260px;
+  padding: 6px 4px;
+  font-size: 0.9rem;
+  color: #2a6ecb;      /* same blue as your route links */
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cls-panel .rider-link:hover {
+  text-decoration: underline;
+}
+
+/* Opponent rider links */
+.opp-panel .rider-link {
+  display: inline-block;
+  width: 260px;
+  padding: 6px 4px;
+  font-size: 0.9rem;
+  color: #c0392b;      /* a clean, readable red */
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.opp-panel .rider-link:hover {
+  text-decoration: underline;
+}
 
 .panel {
   background: #fff;
@@ -199,9 +230,6 @@ details p {
   box-sizing: border-box;
 }
 
-.rider-row .rider-name {
-  width: 120px;
-}
 
 .rider-row .rider-likelihood {
   width: 70px;
@@ -225,6 +253,28 @@ details p {
   border: 2px solid #4a90e2;
   border-radius: 4px;
 }
+
+.rider-profile-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  padding: 4px 0 10px 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.rider-link,
+.rider-name {
+  width: 260px;
+  white-space: nowrap;
+}
+
+.profile-cell {
+  padding: 6px 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
 
 /* Buttons */
 
@@ -265,6 +315,67 @@ button {
   border-radius: 4px;
   font-size: 12px;
 }
+
+/* Toggle wrapper */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-left: 10px;
+}
+
+/* Hide the raw checkbox */
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider background */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+/* Slider knob */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.power-toggle-wrapper {
+  display: flex;
+  justify-content: flex-end;   /* pushes toggle to the right */
+  align-items: center;
+  margin-bottom: 10px;
+  padding-right: 10px;         /* optional spacing */
+}
+
+
+/* Checked state */
+.toggle input:checked + .slider {
+  background-color: #2a6ecb; /* CLS blue */
+}
+
+.toggle input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
 
 #team-averages td {
   text-align: center;

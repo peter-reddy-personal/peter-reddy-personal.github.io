@@ -1,18 +1,19 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑14 16:15";
+const jsVersion = "2026‑07‑15 16:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
-  if (banner) banner.textContent = "Zwift Ladder Route Picker — JS build: " + jsVersion;
+  if (banner) {
+    banner.textContent = `Zwift Ladder Route Picker — JS build: ${jsVersion}`;
+  }
 });
 
 
 // ---------------------------------------------------------
 // GLOBAL STATE
 // ---------------------------------------------------------
-
 let allTeams = [];
 let clsTeam = null;          // team n=63
 let clsRiders = [];
@@ -23,7 +24,6 @@ let routes = [];             // loaded from routes.json
 // ---------------------------------------------------------
 // LOAD TEAMS.JSON
 // ---------------------------------------------------------
-
 async function loadTeams() {
   console.log("Loading teams.json...");
 
@@ -37,30 +37,46 @@ async function loadTeams() {
   console.log("CLS team found:", clsTeam);
 }
 
+
+// ---------------------------------------------------------
+// UNIVERSAL COLLAPSIBLE HANDLER
+// ---------------------------------------------------------
+function initCollapsibles() {
+  document.querySelectorAll(".collapsible").forEach(section => {
+    const header = section.querySelector(".collapsible-header");
+    const chevron = section.querySelector(".chevron");
+    const targetId = section.dataset.target;
+    const content = document.getElementById(targetId);
+
+    header.addEventListener("click", () => {
+      const isOpen = content.style.display === "block";
+      content.style.display = isOpen ? "none" : "block";
+      chevron.textContent = isOpen ? "▼" : "▲";
+    });
+  });
+}
+
+
 // ---------------------------------------------------------
 // FETCH ZWIFTRACING DATA FOR A RIDER
 // ---------------------------------------------------------
-
 async function fetchZwiftRacingRider(riderId) {
   console.log("Fetching ZR via Worker for:", riderId);
 
   const url = `https://zwiftracingappdata.peter-reddy95.workers.dev/${riderId}`;
-
   const res = await fetch(url);
 
   if (!res.ok) {
-    console.error("Worker fetch failed:", res.status);
-    return null;
+    console.warn("Worker fetch failed:", res.status);
+    return { error: true };
   }
 
   const data = await res.json();
-
-  // NEW: ZwiftRacing data is inside data.props.pageProps.rider
   const rider = data?.props?.pageProps?.rider;
 
   if (!rider) {
-    console.error("No rider object found in Worker JSON");
-    return null;
+    console.warn("No rider object found in Worker JSON");
+    return { error: true };
   }
 
   console.log("ZR rider:", rider);
@@ -71,7 +87,6 @@ async function fetchZwiftRacingRider(riderId) {
 // ---------------------------------------------------------
 // ENRICH A TEAM WITH ZWIFTRACING DATA
 // ---------------------------------------------------------
-
 async function enrichTeam(team) {
   const enriched = [];
 
@@ -83,11 +98,19 @@ async function enrichTeam(team) {
   return enriched;
 }
 
+
 // ---------------------------------------------------------
 // AUTO‑LOAD CLS RIDERS
 // ---------------------------------------------------------
-
 async function renderCLS() {
+  const div = document.getElementById("cls-table");
+
+  // Show loading message immediately
+  div.innerHTML = `<div class="loading-msg">Loading CLS riders…</div>`;
+
+  // Allow browser to paint the loading message
+  await Promise.resolve();
+
   console.log("Rendering CLS...");
   console.log("clsTeam:", clsTeam);
 
@@ -96,16 +119,26 @@ async function renderCLS() {
     return;
   }
 
+  // Load + enrich riders (async)
   clsRiders = await enrichTeam(clsTeam);
   console.log("CLS enriched:", clsRiders);
 
+  // Replace loading message with the real table
   renderUnifiedCLSTable(clsRiders);
 }
+
+
+// ---------------------------------------------------------
+// Trim rider name to 26 char
+// ---------------------------------------------------------
+function trimName(name, max = 26) {
+  return name.length > max ? name.slice(0, max) + "…" : name;
+}
+
 
 // ---------------------------------------------------------
 // POPULATE OPPONENT DROPDOWN
 // ---------------------------------------------------------
-
 function populateOpponentDropdown() {
   console.log("Populating opponent dropdown...");
   console.log("Teams available:", allTeams.length);
@@ -124,10 +157,10 @@ function populateOpponentDropdown() {
   console.log("Dropdown populated.");
 }
 
+
 // ---------------------------------------------------------
 // WHEN OPPONENT SELECTED → LOAD THEIR RIDERS
 // ---------------------------------------------------------
-
 async function onOpponentSelected() {
   const select = document.getElementById("opponentSelect");
   const teamNumber = parseInt(select.value, 10);
@@ -138,87 +171,100 @@ async function onOpponentSelected() {
   renderUnifiedOpponentTable(opponentRiders);
 }
 
+
 // ---------------------------------------------------------
 // RENDER UNIFIED CLS TABLE
 // ---------------------------------------------------------
 
 function renderUnifiedCLSTable(riders) {
-  const showPower = document.getElementById("power-toggle").checked;
+  const toggle = document.querySelector(".power-toggle");
+  const showPower = toggle ? toggle.checked : false;
 
   const div = document.getElementById("cls-table");
   div.innerHTML = "";
 
-  // Header changes depending on mode
-  const header = document.createElement("div");
-  header.className = "input-headings";
+  // FACTORS HEADER
+  const factorHeader = document.createElement("div");
+  factorHeader.className = "input-headings factors-mode factors-grid";
+  factorHeader.innerHTML = `
+    <div>Name</div>
+    <div>Lik%</div>
+    <div>SPR</div>
+    <div>PUN</div>
+    <div>CLI</div>
+    <div>TT</div>
+    <div>PUR</div>
+    <div>END</div>
+    <div></div>
+  `;
 
-  header.innerHTML = showPower
-    ? `
-      <div>Name</div>
-      <div>CP</div>
-      <div>5m</div>
-      <div>1m</div>
-      <div>15s</div>
-      <div>Phenotype</div>
-      <div>Rating</div>
-      <div></div>
-    `
-    : `
-      <div>Name</div>
-      <div>Lik%</div>
-      <div>SPR</div>
-      <div>PUN</div>
-      <div>CLI</div>
-      <div>TT</div>
-      <div>PUR</div>
-      <div>END</div>
-      <div></div>
-    `;
+  // POWER HEADER
+  const powerHeader = document.createElement("div");
+  powerHeader.className = "input-headings power-mode power-grid";
+  powerHeader.innerHTML = `
+    <div>Name</div>
+    <div>Weight</div>
+    <div>Phenotype</div>
+    <div>5s</div>
+    <div>15s</div>
+    <div>30s</div>
+    <div>1m</div>
+    <div>2m</div>
+    <div>5m</div>
+    <div>20m</div>
+    <div></div>
+  `;
 
-  div.appendChild(header);
+  div.appendChild(factorHeader);
+  div.appendChild(powerHeader);
 
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
     const power = zr.power || {};
 
-    const row = document.createElement("div");
-    row.className = "rider-row";
+    // FACTOR ROW
+    const factorRow = document.createElement("div");
+    factorRow.className = "rider-row factors-mode factors-grid";
+    factorRow.innerHTML = `
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
+      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
+      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
+      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
+      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
+      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
+      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
+      <button class="remove-rider">X</button>
+    `;
 
-    const nameCell = r.zr
-      ? `<a href="https://zwiftracing.app/riders/${r.id}"
-           target="_blank"
-           class="rider-link">${r.name}</a>`
-      : `<input class="rider-name" value="${r.name}">`;
+    // POWER ROW
+    const powerRow = document.createElement("div");
+    powerRow.className = "rider-row power-mode power-grid";
+    powerRow.innerHTML = `
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <div class="profile-cell weight">${zr.weight ?? "N/A"}</div>
+      <div class="profile-cell phenotype">${zr.phenotype?.value ?? "Unknown"}</div>
+      <div class="profile-cell wkg5">${power.wkg5?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg15">${power.wkg15?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg30">${power.wkg30?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg60">${power.wkg60?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg120">${power.wkg120?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg300">${power.wkg300?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg1200">${power.wkg1200?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <button class="remove-rider">X</button>
+    `;
 
-    if (showPower) {
-      // POWER MODE
-      row.innerHTML = `
-        ${nameCell}
-        <div class="profile-cell">${power.CP ?? "N/A"}</div>
-        <div class="profile-cell">${power.P5 ?? "N/A"}</div>
-        <div class="profile-cell">${power.P1 ?? "N/A"}</div>
-        <div class="profile-cell">${power.P15 ?? "N/A"}</div>
-        <div class="profile-cell">${zr.phenotype?.value ?? "Unknown"}</div>
-        <div class="profile-cell">${zr.race?.rating ?? "N/A"}</div>
-        <button class="remove-rider">X</button>
-      `;
-    } else {
-      // FACTORS MODE
-      row.innerHTML = `
-        ${nameCell}
-        <input class="rider-likelihood" value="${r.likelihood ?? 100}">
-        <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
-        <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
-        <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
-        <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
-        <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
-        <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-        <button class="remove-rider">X</button>
-      `;
-    }
+    div.appendChild(factorRow);
+    div.appendChild(powerRow);
+  });
 
-    div.appendChild(row);
+  // Toggle visibility
+  document.querySelectorAll(".factors-mode").forEach(el => {
+    el.style.display = showPower ? "none" : "grid";
+  });
+  document.querySelectorAll(".power-mode").forEach(el => {
+    el.style.display = showPower ? "grid" : "none";
   });
 }
 
@@ -228,83 +274,94 @@ function renderUnifiedCLSTable(riders) {
 // ---------------------------------------------------------
 
 function renderUnifiedOpponentTable(riders) {
-  const showPower = document.getElementById("power-toggle").checked;
+  const toggle = document.querySelector(".power-toggle");
+  const showPower = toggle ? toggle.checked : false;
 
   const div = document.getElementById("opp-table");
   div.innerHTML = "";
 
-  // Header row (changes depending on mode)
-  const header = document.createElement("div");
-  header.className = "input-headings";
+  // FACTORS HEADER
+  const factorHeader = document.createElement("div");
+  factorHeader.className = "input-headings factors-mode factors-grid";
+  factorHeader.innerHTML = `
+    <div>Name</div>
+    <div>Lik%</div>
+    <div>SPR</div>
+    <div>PUN</div>
+    <div>CLI</div>
+    <div>TT</div>
+    <div>PUR</div>
+    <div>END</div>
+    <div></div>
+  `;
 
-  header.innerHTML = showPower
-    ? `
-      <div>Name</div>
-      <div>CP</div>
-      <div>5m</div>
-      <div>1m</div>
-      <div>15s</div>
-      <div>Phenotype</div>
-      <div>Rating</div>
-      <div></div>
-    `
-    : `
-      <div>Name</div>
-      <div>Lik%</div>
-      <div>SPR</div>
-      <div>PUN</div>
-      <div>CLI</div>
-      <div>TT</div>
-      <div>PUR</div>
-      <div>END</div>
-      <div></div>
-    `;
+  // POWER HEADER
+  const powerHeader = document.createElement("div");
+  powerHeader.className = "input-headings power-mode power-grid";
+  powerHeader.innerHTML = `
+    <div>Name</div>
+    <div>Weight</div>
+    <div>Phenotype</div>
+    <div>5s</div>
+    <div>15s</div>
+    <div>30s</div>
+    <div>1m</div>
+    <div>2m</div>
+    <div>5m</div>
+    <div>20m</div>
+    <div></div>
+  `;
 
-  div.appendChild(header);
+  div.appendChild(factorHeader);
+  div.appendChild(powerHeader);
 
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
     const power = zr.power || {};
 
-    const row = document.createElement("div");
-    row.className = "rider-row";
+    // FACTOR ROW
+    const factorRow = document.createElement("div");
+    factorRow.className = "rider-row factors-mode factors-grid";
+    factorRow.innerHTML = `
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
+      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
+      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
+      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
+      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
+      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
+      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
+      <button class="remove-rider">X</button>
+    `;
 
-    // Opponent links styled red via CSS (.opp-panel .rider-link)
-    const nameCell = r.zr
-      ? `<a href="https://zwiftracing.app/riders/${r.id}"
-           target="_blank"
-           class="rider-link">${r.name}</a>`
-      : `<input class="rider-name" value="${r.name}">`;
+    // POWER ROW
+    const powerRow = document.createElement("div");
+    powerRow.className = "rider-row power-mode power-grid";
+    powerRow.innerHTML = `
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <div class="profile-cell weight">${zr.weight ?? "N/A"}</div>
+      <div class="profile-cell phenotype">${zr.phenotype?.value ?? "Unknown"}</div>
+      <div class="profile-cell wkg5">${power.wkg5?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg15">${power.wkg15?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg30">${power.wkg30?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg60">${power.wkg60?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg120">${power.wkg120?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg300">${power.wkg300?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg1200">${power.wkg1200?.[0]?.toFixed(1) ?? "N/A"}</div>
+      <button class="remove-rider">X</button>
+    `;
 
-    if (showPower) {
-      // POWER MODE
-      row.innerHTML = `
-        ${nameCell}
-        <div class="profile-cell">${power.CP ?? "N/A"}</div>
-        <div class="profile-cell">${power.P5 ?? "N/A"}</div>
-        <div class="profile-cell">${power.P1 ?? "N/A"}</div>
-        <div class="profile-cell">${power.P15 ?? "N/A"}</div>
-        <div class="profile-cell">${zr.phenotype?.value ?? "Unknown"}</div>
-        <div class="profile-cell">${zr.race?.rating ?? "N/A"}</div>
-        <button class="remove-rider">X</button>
-      `;
-    } else {
-      // FACTORS MODE
-      row.innerHTML = `
-        ${nameCell}
-        <input class="rider-likelihood" value="${r.likelihood ?? 100}">
-        <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
-        <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
-        <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
-        <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
-        <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
-        <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-        <button class="remove-rider">X</button>
-      `;
-    }
+    div.appendChild(factorRow);
+    div.appendChild(powerRow);
+  });
 
-    div.appendChild(row);
+  // Toggle visibility
+  document.querySelectorAll(".factors-mode").forEach(el => {
+    el.style.display = showPower ? "none" : "grid";
+  });
+  document.querySelectorAll(".power-mode").forEach(el => {
+    el.style.display = showPower ? "grid" : "none";
   });
 }
 
@@ -314,33 +371,55 @@ function renderUnifiedOpponentTable(riders) {
 // ---------------------------------------------------------
 
 window.addEventListener("DOMContentLoaded", async () => {
+
+  // Enable collapsibles immediately
+  initCollapsibles();
+
+  // Show CLS loading message
+  document.getElementById("cls-table").innerHTML =
+    `<div class="loading-msg">Loading CLS riders…</div>`;
+  
+  // Load teams + CLS
   await loadTeams();
   populateOpponentDropdown();
   await renderCLS();
 
+  // Load routes
   const resRoutes = await fetch("routes.json");
   routes = await resRoutes.json();
   console.log("Routes loaded:", routes.length);
 
+  // Opponent team selection
   document.getElementById("opponentSelect")
     .addEventListener("change", onOpponentSelected);
 
+  // Add rider buttons
   document.getElementById('add-cls-btn').onclick = () => {
-  addRiderRow('cls-table');
-};
+    addRiderRow('cls-table');
+  };
 
   document.getElementById('add-opp-btn').onclick = () => {
     addRiderRow('opp-table');
   };
 
+  // Calculate button
   document.getElementById('calculate-btn').onclick = calculateRoutes;
 
-  document.getElementById("power-toggle").addEventListener("change", () => {
-  renderUnifiedCLSTable(clsRiders);
-  renderUnifiedOpponentTable(opponentRiders);
+  // ⭐ Unified power toggle handler
+  document.querySelectorAll(".power-toggle").forEach(t => {
+    t.addEventListener("change", () => {
+      const checked = t.checked;
+
+      // Sync all toggles
+      document.querySelectorAll(".power-toggle").forEach(x => x.checked = checked);
+
+      // Re-render both tables
+      renderUnifiedCLSTable(clsRiders);
+      renderUnifiedOpponentTable(opponentRiders);
+    });
+  });
 });
 
-});
 
 
 //---------------------------------------------------------
@@ -350,25 +429,40 @@ function addRiderRow(sectionId) {
   const container = document.getElementById(sectionId);
   if (!container) return;
 
+  const showPower = document.getElementById("power-toggle").checked;
+
   const row = document.createElement('div');
-  row.classList.add('rider-row');
+  row.className = showPower
+    ? "rider-row power-mode"
+    : "rider-row factors-mode";
 
-  row.innerHTML = `
-    <input type="text" class="rider-name" placeholder="Name">
-    <input type="number" class="rider-likelihood likelihood-field" placeholder="% Likelihood" value="100" min="0" max="100">
-    <input type="number" class="rider-sprint" placeholder="SPR">
-    <input type="number" class="rider-punch" placeholder="PUN">
-    <input type="number" class="rider-climb" placeholder="CLI">
-    <input type="number" class="rider-tt" placeholder="TT">
-    <input type="number" class="rider-pursuit" placeholder="PUR">
-    <input type="number" class="rider-endurance" placeholder="END">
+  row.innerHTML = showPower
+    ? `
+      <input type="text" class="rider-name" placeholder="Name">
+      <input type="number" class="profile-cell" placeholder="Weight">
+      <input type="text" class="profile-cell" placeholder="Phenotype">
+      <input type="number" class="profile-cell" placeholder="5s">
+      <input type="number" class="profile-cell" placeholder="15s">
+      <input type="number" class="profile-cell" placeholder="30s">
+      <input type="number" class="profile-cell" placeholder="1m">
+      <input type="number" class="profile-cell" placeholder="2m">
+      <input type="number" class="profile-cell" placeholder="5m">
+      <input type="number" class="profile-cell" placeholder="20m">
+      <button class="remove-rider">X</button>
+    `
+    : `
+      <input type="text" class="rider-name" placeholder="Name">
+      <input type="number" class="rider-likelihood likelihood-field" placeholder="% Likelihood" value="100" min="0" max="100">
+      <input type="number" class="rider-sprint" placeholder="SPR">
+      <input type="number" class="rider-punch" placeholder="PUN">
+      <input type="number" class="rider-climb" placeholder="CLI">
+      <input type="number" class="rider-tt" placeholder="TT">
+      <input type="number" class="rider-pursuit" placeholder="PUR">
+      <input type="number" class="rider-endurance" placeholder="END">
+      <button class="remove-rider">X</button>
+    `;
 
-    <button class="remove-rider">X</button>
-  `;
-
-  row.querySelector('.remove-rider').onclick = () => {
-    row.remove();
-  };
+  row.querySelector('.remove-rider').onclick = () => row.remove();
 
   attachAutoSave(row);
   attachPasteHandler(row);
@@ -376,7 +470,6 @@ function addRiderRow(sectionId) {
   container.appendChild(row);
   autoSaveTeam();
 }
-
 
 //---------------------------------------------------------
 // Read Rider Inputs
@@ -389,22 +482,24 @@ function getRiders() {
     const parentId = row.parentElement.id;
     const team = parentId === "cls-table" ? "CLS" : "Opponent";
 
-    riders.push({
-      name: row.querySelector('.rider-name').value,
-      team: team,
-      likelihood: Number(row.querySelector('.rider-likelihood').value) || 0,
-      sprint: Number(row.querySelector('.rider-sprint').value),
-      punch: Number(row.querySelector('.rider-punch').value),
-      climb: Number(row.querySelector('.rider-climb').value),
-      tt: Number(row.querySelector('.rider-tt').value),
-      pursuit: Number(row.querySelector('.rider-pursuit').value),
-      endurance: Number(row.querySelector('.rider-endurance').value)
-    });
+    // Only read FACTOR MODE rows
+    if (!row.classList.contains("power-mode")) {
+      riders.push({
+        name: row.querySelector('.rider-name')?.value || "",
+        team: team,
+        likelihood: Number(row.querySelector('.rider-likelihood')?.value) || 0,
+        sprint: Number(row.querySelector('.rider-sprint')?.value) || 0,
+        punch: Number(row.querySelector('.rider-punch')?.value) || 0,
+        climb: Number(row.querySelector('.rider-climb')?.value) || 0,
+        tt: Number(row.querySelector('.rider-tt')?.value) || 0,
+        pursuit: Number(row.querySelector('.rider-pursuit')?.value) || 0,
+        endurance: Number(row.querySelector('.rider-endurance')?.value) || 0
+      });
+    }
   });
 
   return riders;
 }
-
 
 //---------------------------------------------------------
 // Auto-save Team
@@ -527,8 +622,11 @@ function formatWeights(r) {
 // Rank Routes
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
+  const powerToggle = document.getElementById("power-toggle");
+  const showPower = powerToggle?.checked ?? false;
 
-  const ladderOnly = document.getElementById("ladder-slider").checked;
+  const ladderToggle = document.getElementById("ladder-toggle");
+  const ladderOnly = ladderToggle?.checked ?? false;
 
   const filtered = ladderOnly
     ? routes.filter(r => r.Ladder === true)
@@ -549,7 +647,6 @@ function rankRoutes(routes, riders) {
 
   return { bestCLS, bestOpp };
 }
-
 
 //---------------------------------------------------------
 // Render Team Averages with gradient differences
@@ -760,7 +857,6 @@ result.bestCLS.slice(0, 20).forEach(r => {
   `;
 });
 }
-
 
 //---------------------------------------------------------
 // Main Calculate Function

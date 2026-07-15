@@ -1,3 +1,7 @@
+/* ============================
+   Base Layout
+   ============================ */
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -24,6 +28,10 @@ body {
   padding: 0 16px;
 }
 
+/* ============================
+   Collapsible Sections
+   ============================ */
+
 details summary {
   cursor: pointer;
   font-size: 15px;
@@ -37,7 +45,6 @@ details[open] summary {
 details p {
   margin: 6px 0;
 }
-
 
 .collapsible-container {
   margin-top: 15px;
@@ -69,63 +76,11 @@ details p {
   background: #f7f9fc;
   border-left: 3px solid #1f3b5c;
   border-radius: 0 0 6px 6px;
-  margin-top: 0;
 }
 
-/* Container for toggle + reset button */
-.controls-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 18px 0 22px 0;
-}
-
-/* Reset button styling */
-.reset-btn {
-  background: #1f3b5c;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.reset-btn:hover {
-  background: #24476f;
-}
-
-/* CLS rider links */
-.cls-panel .rider-link {
-  display: inline-block;
-  width: 260px;
-  padding: 6px 4px;
-  font-size: 0.9rem;
-  color: #2a6ecb;      /* same blue as your route links */
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.cls-panel .rider-link:hover {
-  text-decoration: underline;
-}
-
-/* Opponent rider links */
-.opp-panel .rider-link {
-  display: inline-block;
-  width: 260px;
-  padding: 6px 4px;
-  font-size: 0.9rem;
-  color: #c0392b;      /* a clean, readable red */
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.opp-panel .rider-link:hover {
-  text-decoration: underline;
-}
+/* ============================
+   Panels
+   ============================ */
 
 .panel {
   background: #fff;
@@ -133,23 +88,6 @@ details p {
   padding: 16px 18px;
   margin-bottom: 18px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
-}
-
-.panel-header h2 {
-  margin: 0;
-  font-size: 18px;
-}
-
-.rider-count {
-  font-size: 12px;
-  color: #666;
 }
 
 .cls-panel {
@@ -160,123 +98,286 @@ details p {
   background: #fff6f6;
 }
 
-.danger-btn {
-  background: #ffdddd;
-  color: #a00;
-}
-
-.danger-btn:hover {
-  background: #ffcccc;
-}
-
-#controls {
+.panel-header,
+.section-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 12px;
 }
 
-#controls label {
-  font-size: 14px;
+.panel-header h2,
+.section-header h2 {
+  margin: 0;
+  font-size: 18px;
 }
 
-/* Rider headings + rows */
+.rider-count {
+  font-size: 12px;
+  color: #666;
+}
 
-.input-headings {
+.loading-msg {
+  padding: 12px;
+  font-size: 0.95rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* ============================
+   Toggle (Power / Factors)
+   ============================ */
+
+.power-toggle-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 6px;
-  padding-left: 8px;
 }
 
-.input-headings span {
-  font-weight: bold;
-  font-size: 12px;
-  text-align: center;
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
 }
 
-.input-headings .name-col {
-  width: 120px;
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-.input-headings .lik-col {
-  width: 70px;
+/* Ladder toggle (separate from Power toggle) */
+.ladder-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
 }
 
-.input-headings .spr-col,
-.input-headings .pun-col,
-.input-headings .cli-col,
-.input-headings .tt-col,
-.input-headings .pur-col,
-.input-headings .end-col {
-  width: 60px;
+.ladder-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ladder-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.ladder-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.ladder-switch input:checked + .ladder-slider {
+  background-color: #1f3b5c;
+}
+
+.ladder-switch input:checked + .ladder-slider:before {
+  transform: translateX(26px);
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .slider {
+  background-color: #2a6ecb;
+}
+
+.toggle input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* ============================
+   Rider Tables
+   ============================ */
+
+/* ---------- Shared styles ---------- */
+
+.input-headings {
+  display: grid;
+  font-weight: 600;
+  padding: 6px 8px;     /* match rider-row */
+  margin-bottom: 4px;   /* match rider-row spacing */
 }
 
 
 .rider-row {
-  display: flex;
+  display: grid;
   align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  margin-bottom: 6px;
+  gap: 4px;
+  margin-bottom: 4px;
   padding: 6px 8px;
   background: #ffffff;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 
-.rider-row input {
-  font-size: 12px;
-  padding: 4px;
-  box-sizing: border-box;
+/* ---------- Factors Mode (9 columns) ---------- */
+
+/* Stronger selector */
+div.input-headings.factors-mode {
+  display: grid;
+  grid-template-columns:
+    240px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    40px;
+}
+
+div.rider-row.factors-mode {
+  display: grid;
+  grid-template-columns:
+    240px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    40px;
 }
 
 
-.rider-row .rider-likelihood {
-  width: 70px;
+/* ---------- Power Mode (11 columns) ---------- */
+
+div.input-headings.power-mode {
+  display: grid;
+  grid-template-columns:
+    240px
+    80px
+    120px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    40px;
 }
 
-.rider-row .rider-sprint,
-.rider-row .rider-punch,
-.rider-row .rider-climb,
-.rider-row .rider-tt,
-.rider-row .rider-pursuit,
-.rider-row .rider-endurance {
-  width: 60px;
+div.rider-row.power-mode {
+  display: grid;
+  grid-template-columns:
+    240px
+    80px
+    120px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    60px
+    40px;
 }
 
-.factor-gap {
-  width: 10px;
+.input-headings > div {
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
+/* ---------- Name cells ---------- */
+
+.rider-link,
+.rider-name {
+  width: 240px;
+  white-space: nowrap;
+}
+
+/* CLS links */
+.cls-panel .rider-link {
+  color: #2a6ecb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cls-panel .rider-link:hover {
+  text-decoration: underline;
+}
+
+/* Opponent links */
+.opp-panel .rider-link {
+  color: #c0392b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.opp-panel .rider-link:hover {
+  text-decoration: underline;
+}
+
+/* Likelihood input */
 .rider-likelihood {
   background: #eef6ff;
   border: 2px solid #4a90e2;
   border-radius: 4px;
 }
 
-.rider-profile-row {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 6px;
-  padding: 4px 0 10px 0;
-  font-size: 0.85rem;
-  color: #555;
-}
-
-.rider-link,
-.rider-name {
-  width: 260px;
-  white-space: nowrap;
-}
-
+/* Power mode cells */
 .profile-cell {
   padding: 6px 4px;
   font-size: 0.9rem;
   white-space: nowrap;
 }
 
+/* Remove button */
+.remove-rider {
+  background: #ffdddd;
+  color: #a00;
+  border-radius: 4px;
+  font-size: 12px;
+}
 
-/* Buttons */
+
+/* ============================
+   Buttons
+   ============================ */
 
 button {
   border: none;
@@ -309,111 +410,17 @@ button {
   background: #d2d7e2;
 }
 
-.remove-rider {
-  background: #ffdddd;
-  color: #a00;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-/* Toggle wrapper */
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
-  margin-left: 10px;
-}
-
-/* Hide the raw checkbox */
-.toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Slider background */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.3s;
-  border-radius: 26px;
-}
-
-/* Slider knob */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: 0.3s;
-  border-radius: 50%;
-}
-
-.power-toggle-wrapper {
-  display: flex;
-  justify-content: flex-end;   /* pushes toggle to the right */
-  align-items: center;
-  margin-bottom: 10px;
-  padding-right: 10px;         /* optional spacing */
-}
-
-
-/* Checked state */
-.toggle input:checked + .slider {
-  background-color: #2a6ecb; /* CLS blue */
-}
-
-.toggle input:checked + .slider:before {
-  transform: translateX(24px);
-}
-
-
-#team-averages td {
-  text-align: center;
-}
-
-.highlight-cell {
-  background: #d4f4dd;   /* soft green */
-  font-weight: bold;
-}
-
-#team-averages th {
-  text-align: center;
-}
-
-.diff-cell {
-  font-weight: bold;
-  text-align: center;
-  transition: background 0.3s ease;
-}
-
-
 /* ============================
-   Results Tables — Final Compact Version
-   ============================ */
-
-/* ============================
-   Results Tables — Final Compact Version
+   Results Tables (unchanged)
    ============================ */
 
 .results-table {
   width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
   font-size: 13px;
   table-layout: fixed;
 }
 
-/* Header */
 .results-table thead th {
   position: sticky;
   top: 0;
@@ -421,11 +428,10 @@ button {
   padding: 5px 4px;
   font-weight: 600;
   border-bottom: 1px solid #d0d4e0;
-  text-align: center !important;
+  text-align: center;
   white-space: nowrap;
 }
 
-/* Body cells */
 .results-table tbody td {
   padding: 5px 4px;
   border-bottom: 1px solid #eee;
@@ -433,63 +439,19 @@ button {
   text-overflow: ellipsis;
 }
 
-/* Zebra striping */
 .results-table tbody tr:nth-child(even) {
   background: #fafbff;
 }
 
-/* Hover highlight */
 .results-table tbody tr:hover {
   background: #eef3ff;
 }
 
-/* Route column */
-.results-table td:nth-child(1) {
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Length, Elevation, Lead-in */
-.results-table td:nth-child(2),
-.results-table td:nth-child(3),
-.results-table td:nth-child(4) {
-  width: 48px;
-  max-width: 48px;
-  font-size: 12px;
-  opacity: 0.85;
-  text-align: center;
-}
-
-/* vELO CLS, vELO Opp, diff */
-.results-table td:nth-child(5),
-.results-table td:nth-child(6),
-.results-table td:nth-child(7) {
-  width: 38px;
-  max-width: 38px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* Individual weight columns */
-.results-table td:nth-child(8),
-.results-table td:nth-child(9),
-.results-table td:nth-child(10),
-.results-table td:nth-child(11),
-.results-table td:nth-child(12) {
-  text-align: center;
-  font-size: 12px;
-}
-
-/* Strongest weight highlight */
 .weight-strong {
   background: #e8f4ff;
   font-weight: 600;
 }
 
-/* Diff colouring */
 .diff-positive {
   color: #008000;
 }
@@ -498,125 +460,9 @@ button {
   color: #cc0000;
 }
 
-/* Vertical separators between column groups */
-.group-break {
-  border-left: 2px solid #d0d4e0;
-}
-
-.table-notes {
-  text-align: right;
-  font-size: 11px;
-  color: #8a93a5;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-
-/* Clickable/collapsible table rows */
-.elevation-wrapper {
-  overflow: hidden;
-}
-
-.elevation-img {
-  width: auto;        /* let SVG keep its aspect ratio */
-  height: 300px;      /* or 250px, 280px, 320px — tune this */
-  display: block;
-}
-
-
-img.onerror = () => {
-  img.src = "fallback-elevation.png"; // or leave blank
-};
-
-
-/* Toggle container */
-.toggle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
-
-/* Hide the checkbox */
-.toggle input {
-  display: none;
-}
-
-.ladder-toggle {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
-}
-
-.ladder-toggle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.ladder-left,
-.ladder-right {
-  font-size: 14px;
-  color: #1f3b5c;
-}
-
-.weights-cell {
-  font-size: 0.85rem;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-
-/* Slider background */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 24px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #1f3b5c;
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
-
-
-/* Version banner */
+/* ============================
+   Version Banner
+   ============================ */
 
 #version-banner {
   position: fixed;
@@ -628,4 +474,3 @@ input:checked + .slider:before {
   pointer-events: none;
   user-select: none;
 }
-

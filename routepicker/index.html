@@ -18,24 +18,29 @@
     <h2>What this tool does</h2>
     <p>
       The Zwift Ladder Route Picker helps choose the best race route based on the
-      strengths of your team and the likely riders who will be racing with you.
-      Enter your CLS riders and your expected opponents, set how likely each rider
-      is to race, and the tool uses the input vELO2 scores to analyse every Zwift 
-      route to show where your team has the biggest advantage.
+      strengths of your team and the potential riders racing against you. Enter your
+      CLS riders and expected opponents, set how likely each rider is to race, and the
+      tool uses the input vELO2 scores to analyse every Zwift route to show where your
+      team has the biggest advantage.
     </p>
     <p>
-      To input vELO2 scores you can type them in manually, or go to a rider's 
-      profile on ZwiftRacing.app, and copy-paste their most recent vELO2 scores
-      (paste into the SPR box and they should fill across).
+      vELO and power data is input automatically from ZwiftRacing.app. Team rosters are
+      taken from a cached version of the Club Ladder site, and may miss newly added or
+      removed riders. If a rider is missing, you can add them manually.
+    </p>
+    <p>
+      You can add a rider by clicking the Add Rider button, then going to the rider's 
+      profile on ZwiftRacing.app and copy-pasting their most recent vELO2 scores (paste
+      into the SPR box and they should fill across).
     </p>
     
   </section>
 
-<!-- vELO2 explanation ABOVE the toggle -->
-<div class="collapsible-container">
-  <div class="collapsible-header" onclick="toggleVelo2()">
+  <!-- Collapsible: vELO2 explained -->
+<div class="collapsible" data-target="velo2-content">
+  <div class="collapsible-header">
     <span>vELO2 explained</span>
-    <span class="chevron" id="velo2-chevron">▼</span>
+    <span class="chevron">▼</span>
   </div>
 
   <div class="collapsible-content" id="velo2-content">
@@ -54,7 +59,7 @@
       <a href="https://zwiftinsider.com/route/petite-douleur/" target="_blank">Petite Douleur</a> 
       is entirely weighted toward climbing. Pursuit and endurance measure how well a rider survives the 
       demands of shorter v. longer races. There is a list of all the route weightings
-      <a href="https://www.zwiftracing.app/reference/routes" target="_blank">here</a> for reference.
+      <a href="https://www.zwiftracing.app/reference/routes" target="_blank">here</a>.
     </p>
 
     <p>
@@ -67,11 +72,11 @@
 </div>
 
 
-    <!-- Lik% explanation ABOVE the toggle -->
-<div class="lik-container">
-  <div class="collapsible-header" onclick="toggleLik()">
+<!-- Collapsible: Lik% explained -->
+<div class="collapsible" data-target="lik-content">
+  <div class="collapsible-header">
     <span>What does Lik% mean?</span>
-    <span class="chevron" id="lik-chevron">▼</span>
+    <span class="chevron">▼</span>
   </div>
 
   <div class="collapsible-content" id="lik-content">
@@ -80,6 +85,7 @@
       It lets you include riders who are uncertain or unlikely to race without removing them entirely.
       A rider with 50% Lik contributes half their vELO2 score to the team average.
     </p>
+
     <p>
       You can make up realistic values based on your own guesses, or set each rider to 100% (or use any 
       non-zero % for all riders) to not think about it.
@@ -89,15 +95,21 @@
 
 <!-- CLS ZR container -->
 <section class="panel cls-panel">
+<div class="section-header">
   <h2>CLS Riders</h2>
 
- <div class="power-toggle-wrapper">
+  <div class="power-toggle-wrapper">
+    <span class="toggle-label-left">Factors</span>
+
   <label class="toggle">
-    <input type="checkbox" id="power-toggle">
+    <input type="checkbox" class="power-toggle">
     <span class="slider"></span>
   </label>
-  <span class="toggle-label">Power</span>
+
+  <span class="toggle-label-right">Power</span>
+  </div>
 </div>
+
 
   <div id="cls-table"></div>
   <button id="add-cls-btn" class="secondary-btn">Add CLS Rider</button>
@@ -116,29 +128,21 @@
 
 <!-- Opponent Riders -->
 <section class="panel opp-panel">
-  <div class="panel-header">
-    <h2>Opponent Riders</h2>
-    <span id="opp-count" class="rider-count">0 riders</span>
-  </div>
-  
+<div class="section-header">
+  <h2>Opponent Riders</h2>
+
   <div class="power-toggle-wrapper">
-  <label class="toggle">
-    <input type="checkbox" id="power-toggle">
-    <span class="slider"></span>
-  </label>
-  <span class="toggle-label">Power</span>
+    <span class="toggle-label-left">Factors</span>
+
+    <label class="toggle">
+      <input type="checkbox" class="power-toggle">
+      <span class="slider"></span>
+    </label>
+
+    <span class="toggle-label-right">Power</span>
+  </div>
 </div>
 
-  <div class="input-headings">
-    <span>Name</span>
-    <span>Lik%</span>
-    <span>SPR</span>
-    <span>PUN</span>
-    <span>CLI</span>
-    <span>TT</span>
-    <span>PUR</span>
-    <span>END</span>
-  </div>
 
   <div id="opp-table"></div>
 
@@ -176,9 +180,9 @@
   <div class="ladder-toggle">
     <span class="ladder-left">All routes</span>
 
-    <label class="switch">
-      <input type="checkbox" id="ladder-slider" checked>
-      <span class="slider"></span>
+    <label class="ladder-switch">
+      <input type="checkbox" id="ladder-toggle" checked>
+      <span class="ladder-slider"></span>
     </label>
 
     <span class="ladder-right">Ladder routes only</span>

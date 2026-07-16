@@ -236,12 +236,16 @@ details p {
   font-weight: 600;
   padding: 6px 8px;     /* match rider-row */
   margin-bottom: 4px;   /* match rider-row spacing */
+  align-items: stretch;
+  padding: 6px 8px;
+  gap: 4px;
 }
 
 
 .rider-row {
   display: grid;
-  align-items: center;
+  height: 28px;        /* or whatever height you prefer */
+  align-items: center; /* ensure vertical centering */
   gap: 4px;
   margin-bottom: 4px;
   padding: 6px 8px;
@@ -250,21 +254,19 @@ details p {
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 
-/* ---------- Factors Mode (9 columns) ---------- */
+/* ---------- Factors Mode (8 columns) ---------- */
 
-/* Stronger selector */
 div.input-headings.factors-mode {
   display: grid;
   grid-template-columns:
-    240px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    40px;
+    240px     /* Name */
+    60px      /* SPR */
+    60px      /* PUN */
+    60px      /* CLI */
+    60px      /* TT */
+    60px      /* PUR */
+    60px     /* END */
+    80px;     /* Remove button */
 }
 
 div.rider-row.factors-mode {
@@ -277,8 +279,11 @@ div.rider-row.factors-mode {
     60px
     60px
     60px
-    60px
-    40px;
+    80px;     /* Remove button */
+}
+
+div.rider-row.factors-mode {
+  display: grid;
 }
 
 
@@ -287,17 +292,17 @@ div.rider-row.factors-mode {
 div.input-headings.power-mode {
   display: grid;
   grid-template-columns:
-    240px
-    80px
-    120px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    40px;
+    240px     /* Name */
+    80px      /* Weight */
+    120px     /* Phenotype */
+    60px      /* 5s */
+    60px      /* 15s */
+    60px      /* 30s */
+    60px      /* 1m */
+    60px      /* 2m */
+    60px      /* 5m */
+    60px      /* 20m */
+    80px;     /* Remove button */
 }
 
 div.rider-row.power-mode {
@@ -313,7 +318,7 @@ div.rider-row.power-mode {
     60px
     60px
     60px
-    40px;
+    80px;   
 }
 
 .input-headings > div {
@@ -341,6 +346,13 @@ div.rider-row.power-mode {
   text-decoration: underline;
 }
 
+/* Power colouring */
+.profile-cell {
+  color: #111;
+  font-weight: 600;
+}
+
+
 /* Opponent links */
 .opp-panel .rider-link {
   color: #c0392b;
@@ -366,13 +378,6 @@ div.rider-row.power-mode {
   white-space: nowrap;
 }
 
-/* Remove button */
-.remove-rider {
-  background: #ffdddd;
-  color: #a00;
-  border-radius: 4px;
-  font-size: 12px;
-}
 
 
 /* ============================

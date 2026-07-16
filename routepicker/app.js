@@ -11,6 +11,85 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
+//---------------------------------------------------------
+// MAIN APP INITIALISATION (this block was missing)
+//---------------------------------------------------------
+window.addEventListener("DOMContentLoaded", async () => {
+
+  // Enable collapsibles immediately
+  initCollapsibles();
+
+  // Show CLS loading message
+  document.getElementById("cls-table").innerHTML =
+    `<div class="loading-msg">Loading CLS riders…</div>`;
+
+  // Load teams + CLS
+  await loadTeams();
+  populateOpponentDropdown();
+  await renderCLS();
+
+  // Load routes
+  const resRoutes = await fetch("routes.json");
+  routes = await resRoutes.json();
+  console.log("Routes loaded:", routes.length);
+
+  // Opponent team selection
+  document.getElementById("opponentSelect")
+    .addEventListener("change", onOpponentSelected);
+
+  // ---------------------------------------------------------
+  // REMOVE RIDER (works for both CLS and Opponent tables)
+  // ---------------------------------------------------------
+
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("remove-rider")) {
+
+      // Remove the FACTOR row
+      const factorRow = e.target.closest(".rider-row");
+
+      // Remove the POWER row (always the next sibling)
+      const powerRow = factorRow.nextElementSibling;
+      if (powerRow && powerRow.classList.contains("power-mode")) {
+        powerRow.remove();
+      }
+
+      factorRow.remove();
+
+      // Recalculate averages and routes after removal
+      const riders = getRiders();
+      renderAverages(riders);
+    }
+  });
+
+  // Reset CLS button
+  document.getElementById("reset-cls").addEventListener("click", () => {
+    renderCLS();  
+  });
+
+  // Reset opponent button
+  document.getElementById("reset-opp").addEventListener("click", () => {
+    onOpponentSelected(); 
+  });
+
+  // Calculate button
+  document.getElementById('calculate-btn').onclick = calculateRoutes;
+
+  // Unified power toggle handler
+  document.querySelectorAll(".power-toggle").forEach(t => {
+    t.addEventListener("change", () => {
+      const checked = t.checked;
+
+      // Sync all toggles
+      document.querySelectorAll(".power-toggle").forEach(x => x.checked = checked);
+
+      // Re-render both tables
+      renderUnifiedCLSTable(clsRiders);
+      renderUnifiedOpponentTable(opponentRiders);
+    });
+  });
+});
+
+
 // ---------------------------------------------------------
 // GLOBAL STATE
 // ---------------------------------------------------------
@@ -135,7 +214,6 @@ function trimName(name, max = 26) {
   return name.length > max ? name.slice(0, max) + "…" : name;
 }
 
-
 // ---------------------------------------------------------
 // POPULATE OPPONENT DROPDOWN
 // ---------------------------------------------------------
@@ -157,18 +235,40 @@ function populateOpponentDropdown() {
   console.log("Dropdown populated.");
 }
 
-
 // ---------------------------------------------------------
-// WHEN OPPONENT SELECTED → LOAD THEIR RIDERS
+// LOAD + RENDER OPPONENT TEAM (only when selected)
 // ---------------------------------------------------------
 async function onOpponentSelected() {
+  const div = document.getElementById("opp-table");
   const select = document.getElementById("opponentSelect");
   const teamNumber = parseInt(select.value, 10);
 
+  // No team selected → clear table
+  if (!teamNumber) {
+    div.innerHTML = `<div class="loading-msg">No opponent team selected.</div>`;
+    return;
+  }
+
+  // Show loading message
+  div.innerHTML = `<div class="loading-msg">Loading opponent riders…</div>`;
+  await Promise.resolve(); // allow browser to paint
+
+  // Find team
   const opponentTeam = allTeams.find(t => t.number === teamNumber);
+  if (!opponentTeam) {
+    div.innerHTML = `<div class="loading-msg">Opponent team not found.</div>`;
+    return;
+  }
+
+  // Fetch + enrich riders
   opponentRiders = await enrichTeam(opponentTeam);
 
+  // Render table
   renderUnifiedOpponentTable(opponentRiders);
+
+  // Update averages (CLS + Opp combined)
+  const allRiders = getRiders();
+  renderAverages(allRiders);
 }
 
 
@@ -180,25 +280,64 @@ function renderUnifiedCLSTable(riders) {
   const toggle = document.querySelector(".power-toggle");
   const showPower = toggle ? toggle.checked : false;
 
+  // SOFT PASTEL COLOR MAPPING (green → red)
+  function lerpColor(min, max, value) {
+    if (
+      value === "N/A" ||
+      value === undefined ||
+      value === null ||
+      !isFinite(min) ||
+      !isFinite(max) ||
+      min === max
+    ) {
+      return "#f3f3f3"; // neutral
+    }
+
+    const t = (value - min) / (max - min);
+
+    const start = { r: 220, g: 250, b: 230 };
+    const end   = { r: 255, g: 225, b: 225 };
+
+    const r = Math.round(start.r + (end.r - start.r) * t);
+    const g = Math.round(start.g + (end.g - start.g) * t);
+    const b = Math.round(start.b + (end.b - start.b) * t);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  // COLLECT MIN/MAX FOR EACH POWER COLUMN
+  const powerStats = ["wkg5", "wkg15", "wkg30", "wkg60", "wkg120", "wkg300", "wkg1200"];
+  const columnMin = {};
+  const columnMax = {};
+
+  powerStats.forEach(stat => {
+    const values = riders
+      .map(r => r.zr?.power?.[stat]?.[0])
+      .filter(v => typeof v === "number");
+
+    columnMin[stat] = values.length ? Math.min(...values) : NaN;
+    columnMax[stat] = values.length ? Math.max(...values) : NaN;
+  });
+
+  // BUILD TABLE
   const div = document.getElementById("cls-table");
   div.innerHTML = "";
 
-  // FACTORS HEADER
+  // FACTORS HEADER (7 columns)
   const factorHeader = document.createElement("div");
   factorHeader.className = "input-headings factors-mode factors-grid";
   factorHeader.innerHTML = `
     <div>Name</div>
-    <div>Lik%</div>
     <div>SPR</div>
     <div>PUN</div>
     <div>CLI</div>
     <div>TT</div>
     <div>PUR</div>
     <div>END</div>
-    <div></div>
+    <div></div>   <!-- Remove button column -->
   `;
 
-  // POWER HEADER
+  // POWER HEADER (10 columns)
   const powerHeader = document.createElement("div");
   powerHeader.className = "input-headings power-mode power-grid";
   powerHeader.innerHTML = `
@@ -212,12 +351,13 @@ function renderUnifiedCLSTable(riders) {
     <div>2m</div>
     <div>5m</div>
     <div>20m</div>
-    <div></div>
+    <div></div>   <!-- Remove button column -->
   `;
 
   div.appendChild(factorHeader);
   div.appendChild(powerHeader);
 
+  // ROWS
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
@@ -228,38 +368,48 @@ function renderUnifiedCLSTable(riders) {
     factorRow.className = "rider-row factors-mode factors-grid";
     factorRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
-      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
       <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
       <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
       <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
       <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
       <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
       <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-      <button class="remove-rider">X</button>
+      <button class="remove-rider">Remove</button>
     `;
 
     // POWER ROW
+    const v5    = power.wkg5?.[0];
+    const v15   = power.wkg15?.[0];
+    const v30   = power.wkg30?.[0];
+    const v60   = power.wkg60?.[0];
+    const v120  = power.wkg120?.[0];
+    const v300  = power.wkg300?.[0];
+    const v1200 = power.wkg1200?.[0];
+
     const powerRow = document.createElement("div");
     powerRow.className = "rider-row power-mode power-grid";
     powerRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
-      <div class="profile-cell weight">${zr.weight ?? "N/A"}</div>
+
+      <div class="profile-cell weight">${Math.round(zr.weight) ?? "N/A"}</div>
       <div class="profile-cell phenotype">${zr.phenotype?.value ?? "Unknown"}</div>
-      <div class="profile-cell wkg5">${power.wkg5?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg15">${power.wkg15?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg30">${power.wkg30?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg60">${power.wkg60?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg120">${power.wkg120?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg300">${power.wkg300?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg1200">${power.wkg1200?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <button class="remove-rider">X</button>
+
+      <div class="profile-cell wkg5"   style="background:${lerpColor(columnMin.wkg5,   columnMax.wkg5,   v5)};">${v5?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg15"  style="background:${lerpColor(columnMin.wkg15,  columnMax.wkg15,  v15)};">${v15?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg30"  style="background:${lerpColor(columnMin.wkg30,  columnMax.wkg30,  v30)};">${v30?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg60"  style="background:${lerpColor(columnMin.wkg60,  columnMax.wkg60,  v60)};">${v60?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg120" style="background:${lerpColor(columnMin.wkg120, columnMax.wkg120, v120)};">${v120?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg300" style="background:${lerpColor(columnMin.wkg300, columnMax.wkg300, v300)};">${v300?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg1200" style="background:${lerpColor(columnMin.wkg1200, columnMax.wkg1200, v1200)};">${v1200?.toFixed(1) ?? "N/A"}</div>
+
+      <button class="remove-rider">Remove</button>
     `;
 
     div.appendChild(factorRow);
     div.appendChild(powerRow);
   });
 
-  // Toggle visibility
+  // TOGGLE VISIBILITY
   document.querySelectorAll(".factors-mode").forEach(el => {
     el.style.display = showPower ? "none" : "grid";
   });
@@ -277,25 +427,63 @@ function renderUnifiedOpponentTable(riders) {
   const toggle = document.querySelector(".power-toggle");
   const showPower = toggle ? toggle.checked : false;
 
+  // SOFT PASTEL COLOR MAPPING (green → red)
+  function lerpColor(min, max, value) {
+    if (
+      value === "N/A" ||
+      value === undefined ||
+      value === null ||
+      !isFinite(min) ||
+      !isFinite(max) ||
+      min === max
+    ) {
+      return "#f3f3f3"; // neutral
+    }
+
+    const t = (value - min) / (max - min);
+
+    const start = { r: 220, g: 250, b: 230 };
+    const end   = { r: 255, g: 225, b: 225 };
+
+    const r = Math.round(start.r + (end.r - start.r) * t);
+    const g = Math.round(start.g + (end.g - start.g) * t);
+    const b = Math.round(start.b + (end.b - start.b) * t);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  // COLLECT MIN/MAX FOR EACH POWER COLUMN
+  const powerStats = ["wkg5", "wkg15", "wkg30", "wkg60", "wkg120", "wkg300", "wkg1200"];
+  const columnMin = {};
+  const columnMax = {};
+
+  powerStats.forEach(stat => {
+    const values = riders
+      .map(r => r.zr?.power?.[stat]?.[0])
+      .filter(v => typeof v === "number");
+
+    columnMin[stat] = values.length ? Math.min(...values) : NaN;
+    columnMax[stat] = values.length ? Math.max(...values) : NaN;
+  });
+
   const div = document.getElementById("opp-table");
   div.innerHTML = "";
 
-  // FACTORS HEADER
+  // FACTORS HEADER (7 columns + remove)
   const factorHeader = document.createElement("div");
   factorHeader.className = "input-headings factors-mode factors-grid";
   factorHeader.innerHTML = `
     <div>Name</div>
-    <div>Lik%</div>
     <div>SPR</div>
     <div>PUN</div>
     <div>CLI</div>
     <div>TT</div>
     <div>PUR</div>
     <div>END</div>
-    <div></div>
+    <div></div> <!-- Remove button -->
   `;
 
-  // POWER HEADER
+  // POWER HEADER (10 columns + remove)
   const powerHeader = document.createElement("div");
   powerHeader.className = "input-headings power-mode power-grid";
   powerHeader.innerHTML = `
@@ -309,12 +497,13 @@ function renderUnifiedOpponentTable(riders) {
     <div>2m</div>
     <div>5m</div>
     <div>20m</div>
-    <div></div>
+    <div></div> <!-- Remove button -->
   `;
 
   div.appendChild(factorHeader);
   div.appendChild(powerHeader);
 
+  // ROWS
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
@@ -325,38 +514,48 @@ function renderUnifiedOpponentTable(riders) {
     factorRow.className = "rider-row factors-mode factors-grid";
     factorRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
-      <input class="rider-likelihood" value="${r.likelihood ?? 100}">
       <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
       <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
       <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
       <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
       <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
       <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-      <button class="remove-rider">X</button>
+      <button class="remove-rider">Remove</button>
     `;
 
     // POWER ROW
+    const v5    = power.wkg5?.[0];
+    const v15   = power.wkg15?.[0];
+    const v30   = power.wkg30?.[0];
+    const v60   = power.wkg60?.[0];
+    const v120  = power.wkg120?.[0];
+    const v300  = power.wkg300?.[0];
+    const v1200 = power.wkg1200?.[0];
+
     const powerRow = document.createElement("div");
     powerRow.className = "rider-row power-mode power-grid";
     powerRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
-      <div class="profile-cell weight">${zr.weight ?? "N/A"}</div>
+
+      <div class="profile-cell weight">${Math.round(zr.weight) ?? "N/A"}</div>
       <div class="profile-cell phenotype">${zr.phenotype?.value ?? "Unknown"}</div>
-      <div class="profile-cell wkg5">${power.wkg5?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg15">${power.wkg15?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg30">${power.wkg30?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg60">${power.wkg60?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg120">${power.wkg120?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg300">${power.wkg300?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <div class="profile-cell wkg1200">${power.wkg1200?.[0]?.toFixed(1) ?? "N/A"}</div>
-      <button class="remove-rider">X</button>
+
+      <div class="profile-cell wkg5"   style="background:${lerpColor(columnMin.wkg5,   columnMax.wkg5,   v5)};">${v5?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg15"  style="background:${lerpColor(columnMin.wkg15,  columnMax.wkg15,  v15)};">${v15?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg30"  style="background:${lerpColor(columnMin.wkg30,  columnMax.wkg30,  v30)};">${v30?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg60"  style="background:${lerpColor(columnMin.wkg60,  columnMax.wkg60,  v60)};">${v60?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg120" style="background:${lerpColor(columnMin.wkg120, columnMax.wkg120, v120)};">${v120?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg300" style="background:${lerpColor(columnMin.wkg300, columnMax.wkg300, v300)};">${v300?.toFixed(1) ?? "N/A"}</div>
+      <div class="profile-cell wkg1200" style="background:${lerpColor(columnMin.wkg1200, columnMax.wkg1200, v1200)};">${v1200?.toFixed(1) ?? "N/A"}</div>
+
+      <button class="remove-rider">Remove</button>
     `;
 
     div.appendChild(factorRow);
     div.appendChild(powerRow);
   });
 
-  // Toggle visibility
+  // TOGGLE VISIBILITY
   document.querySelectorAll(".factors-mode").forEach(el => {
     el.style.display = showPower ? "none" : "grid";
   });
@@ -366,111 +565,6 @@ function renderUnifiedOpponentTable(riders) {
 }
 
 
-// ---------------------------------------------------------
-// SINGLE PAGE LOAD BLOCK
-// ---------------------------------------------------------
-
-window.addEventListener("DOMContentLoaded", async () => {
-
-  // Enable collapsibles immediately
-  initCollapsibles();
-
-  // Show CLS loading message
-  document.getElementById("cls-table").innerHTML =
-    `<div class="loading-msg">Loading CLS riders…</div>`;
-  
-  // Load teams + CLS
-  await loadTeams();
-  populateOpponentDropdown();
-  await renderCLS();
-
-  // Load routes
-  const resRoutes = await fetch("routes.json");
-  routes = await resRoutes.json();
-  console.log("Routes loaded:", routes.length);
-
-  // Opponent team selection
-  document.getElementById("opponentSelect")
-    .addEventListener("change", onOpponentSelected);
-
-  // Add rider buttons
-  document.getElementById('add-cls-btn').onclick = () => {
-    addRiderRow('cls-table');
-  };
-
-  document.getElementById('add-opp-btn').onclick = () => {
-    addRiderRow('opp-table');
-  };
-
-  // Calculate button
-  document.getElementById('calculate-btn').onclick = calculateRoutes;
-
-  // ⭐ Unified power toggle handler
-  document.querySelectorAll(".power-toggle").forEach(t => {
-    t.addEventListener("change", () => {
-      const checked = t.checked;
-
-      // Sync all toggles
-      document.querySelectorAll(".power-toggle").forEach(x => x.checked = checked);
-
-      // Re-render both tables
-      renderUnifiedCLSTable(clsRiders);
-      renderUnifiedOpponentTable(opponentRiders);
-    });
-  });
-});
-
-
-
-//---------------------------------------------------------
-// Add Rider Row (empty)
-//---------------------------------------------------------
-function addRiderRow(sectionId) {
-  const container = document.getElementById(sectionId);
-  if (!container) return;
-
-  const showPower = document.getElementById("power-toggle").checked;
-
-  const row = document.createElement('div');
-  row.className = showPower
-    ? "rider-row power-mode"
-    : "rider-row factors-mode";
-
-  row.innerHTML = showPower
-    ? `
-      <input type="text" class="rider-name" placeholder="Name">
-      <input type="number" class="profile-cell" placeholder="Weight">
-      <input type="text" class="profile-cell" placeholder="Phenotype">
-      <input type="number" class="profile-cell" placeholder="5s">
-      <input type="number" class="profile-cell" placeholder="15s">
-      <input type="number" class="profile-cell" placeholder="30s">
-      <input type="number" class="profile-cell" placeholder="1m">
-      <input type="number" class="profile-cell" placeholder="2m">
-      <input type="number" class="profile-cell" placeholder="5m">
-      <input type="number" class="profile-cell" placeholder="20m">
-      <button class="remove-rider">X</button>
-    `
-    : `
-      <input type="text" class="rider-name" placeholder="Name">
-      <input type="number" class="rider-likelihood likelihood-field" placeholder="% Likelihood" value="100" min="0" max="100">
-      <input type="number" class="rider-sprint" placeholder="SPR">
-      <input type="number" class="rider-punch" placeholder="PUN">
-      <input type="number" class="rider-climb" placeholder="CLI">
-      <input type="number" class="rider-tt" placeholder="TT">
-      <input type="number" class="rider-pursuit" placeholder="PUR">
-      <input type="number" class="rider-endurance" placeholder="END">
-      <button class="remove-rider">X</button>
-    `;
-
-  row.querySelector('.remove-rider').onclick = () => row.remove();
-
-  attachAutoSave(row);
-  attachPasteHandler(row);
-
-  container.appendChild(row);
-  autoSaveTeam();
-}
-
 //---------------------------------------------------------
 // Read Rider Inputs
 //---------------------------------------------------------
@@ -479,15 +573,22 @@ function getRiders() {
   const riders = [];
 
   rows.forEach(row => {
-    const parentId = row.parentElement.id;
-    const team = parentId === "cls-table" ? "CLS" : "Opponent";
-
-    // Only read FACTOR MODE rows
+    // Only read FACTOR MODE rows (correct)
     if (!row.classList.contains("power-mode")) {
+
+      const parentId = row.parentElement.id;
+      const team = parentId === "cls-table" ? "CLS" : "Opponent";
+
       riders.push({
-        name: row.querySelector('.rider-name')?.value || "",
         team: team,
-        likelihood: Number(row.querySelector('.rider-likelihood')?.value) || 0,
+
+        // Checkbox selection (default true)
+        selected: row.querySelector('.rider-select')?.checked ?? true,
+
+        // Name from link text (since name is not an <input>)
+        name: row.querySelector('.rider-link')?.textContent.trim() || "",
+
+        // Factor values
         sprint: Number(row.querySelector('.rider-sprint')?.value) || 0,
         punch: Number(row.querySelector('.rider-punch')?.value) || 0,
         climb: Number(row.querySelector('.rider-climb')?.value) || 0,
@@ -499,26 +600,6 @@ function getRiders() {
   });
 
   return riders;
-}
-
-//---------------------------------------------------------
-// Auto-save Team
-//---------------------------------------------------------
-function autoSaveTeam() {
-  const riders = getRiders();
-  localStorage.setItem('routepicker_team', JSON.stringify(riders));
-}
-
-function attachAutoSave(row) {
-  row.querySelectorAll('input').forEach(el => {
-    el.oninput = () => {
-      if (el.classList.contains('rider-likelihood')) {
-        if (el.value < 0) el.value = 0;
-        if (el.value > 100) el.value = 100;
-      }
-      autoSaveTeam();
-    };
-  });
 }
 
 
@@ -545,7 +626,6 @@ function attachPasteHandler(row) {
 
       if (lines.length !== 6) {
         field.value = text;
-        autoSaveTeam();
         return;
       }
 
@@ -557,8 +637,6 @@ function attachPasteHandler(row) {
       fields[3].value = nums[3]; // TT
       fields[4].value = nums[4]; // PUR
       fields[5].value = nums[5];
-
-      autoSaveTeam();
     });
   });
 }
@@ -583,23 +661,22 @@ function computeSingleScore(route, r) {
 //---------------------------------------------------------
 function computeRouteScores(route, riders) {
 
-  const cls = riders.filter(r => r.team === 'CLS');
-  const opp = riders.filter(r => r.team === 'Opponent');
+  // Split into teams
+  const cls = riders.filter(r => r.team === 'CLS' && r.selected !== false);
+  const opp = riders.filter(r => r.team === 'Opponent' && r.selected !== false);
 
-  function weightedAvg(team) {
-    const totalWeight = team.reduce((sum, r) => sum + r.likelihood, 0);
-    if (totalWeight === 0) return 0;
+  function avgScore(team) {
+    if (team.length === 0) return 0;
 
-    const weightedSum = team.reduce((sum, r) => {
-      const score = computeSingleScore(route, r);
-      return sum + score * r.likelihood;
+    const total = team.reduce((sum, r) => {
+      return sum + computeSingleScore(route, r);
     }, 0);
 
-    return weightedSum / totalWeight;
+    return total / team.length;
   }
 
-  const avgCLS = weightedAvg(cls);
-  const avgOpp = weightedAvg(opp);
+  const avgCLS = avgScore(cls);
+  const avgOpp = avgScore(opp);
 
   return {
     avgCLS,
@@ -652,46 +729,44 @@ function rankRoutes(routes, riders) {
 // Render Team Averages with gradient differences
 //---------------------------------------------------------
 function renderAverages(riders) {
-  const cls = riders.filter(r => r.team === "CLS");
-  const opp = riders.filter(r => r.team === "Opponent");
+  // Only include selected riders
+  const cls = riders.filter(r => r.team === "CLS" && r.selected !== false);
+  const opp = riders.filter(r => r.team === "Opponent" && r.selected !== false);
 
-  function weightedAvg(team, key) {
-  const totalWeight = team.reduce((sum, r) => sum + r.likelihood, 0);
-  if (totalWeight === 0) return 0;
+  function avg(team, key) {
+    if (team.length === 0) return 0;
 
-  const weightedSum = team.reduce((sum, r) => {
-    return sum + (r[key] * r.likelihood);
-  }, 0);
+    const total = team.reduce((sum, r) => {
+      return sum + (r[key] || 0);
+    }, 0);
 
-  return weightedSum / totalWeight;
+    return total / team.length;
   }
 
-
   const clsAvg = {
-    sprint: weightedAvg(cls, "sprint"),
-    punch: weightedAvg(cls, "punch"),
-    climb: weightedAvg(cls, "climb"),
-    tt: weightedAvg(cls, "tt"),
-    pursuit: weightedAvg(cls, "pursuit"),
-    endurance: weightedAvg(cls, "endurance")
+    sprint:    avg(cls, "sprint"),
+    punch:     avg(cls, "punch"),
+    climb:     avg(cls, "climb"),
+    tt:        avg(cls, "tt"),
+    pursuit:   avg(cls, "pursuit"),
+    endurance: avg(cls, "endurance")
   };
 
   const oppAvg = {
-    sprint: weightedAvg(opp, "sprint"),
-    punch: weightedAvg(opp, "punch"),
-    climb: weightedAvg(opp, "climb"),
-    tt: weightedAvg(opp, "tt"),
-    pursuit: weightedAvg(opp, "pursuit"),
-    endurance: weightedAvg(opp, "endurance")
+    sprint:    avg(opp, "sprint"),
+    punch:     avg(opp, "punch"),
+    climb:     avg(opp, "climb"),
+    tt:        avg(opp, "tt"),
+    pursuit:   avg(opp, "pursuit"),
+    endurance: avg(opp, "endurance")
   };
 
-
   const diff = {
-    sprint: clsAvg.sprint - oppAvg.sprint,
-    punch: clsAvg.punch - oppAvg.punch,
-    climb: clsAvg.climb - oppAvg.climb,
-    tt: clsAvg.tt - oppAvg.tt,
-    pursuit: clsAvg.pursuit - oppAvg.pursuit,
+    sprint:    clsAvg.sprint    - oppAvg.sprint,
+    punch:     clsAvg.punch     - oppAvg.punch,
+    climb:     clsAvg.climb     - oppAvg.climb,
+    tt:        clsAvg.tt        - oppAvg.tt,
+    pursuit:   clsAvg.pursuit   - oppAvg.pursuit,
     endurance: clsAvg.endurance - oppAvg.endurance
   };
 
@@ -700,24 +775,22 @@ function renderAverages(riders) {
   const max = Math.max(...values);
 
   function gradientStyle(value) {
-  if (max === min) {
-    return `background-color: rgb(235, 235, 235);`;
+    if (max === min) {
+      return `background-color: rgb(235, 235, 235);`;
+    }
+
+    const t = (value - min) / (max - min);
+
+    // Soft green → soft red
+    const start = { r: 210, g: 245, b: 225 }; // CLS advantage
+    const end   = { r: 250, g: 215, b: 215 }; // Opp advantage
+
+    const r = Math.round(start.r + (end.r - start.r) * (1 - t));
+    const g = Math.round(start.g + (end.g - start.g) * (1 - t));
+    const b = Math.round(start.b + (end.b - start.b) * (1 - t));
+
+    return `background-color: rgb(${r}, ${g}, ${b});`;
   }
-
-  // Normalise 0 → 1
-  const t = (value - min) / (max - min);
-
-  // Soft green → soft red
-  const start = { r: 210, g: 245, b: 225 }; // CLS advantage
-  const end   = { r: 250, g: 215, b: 215 }; // Opp advantage
-
-  const r = Math.round(start.r + (end.r - start.r) * (1 - t));
-  const g = Math.round(start.g + (end.g - start.g) * (1 - t));
-  const b = Math.round(start.b + (end.b - start.b) * (1 - t));
-
-  return `background-color: rgb(${r}, ${g}, ${b});`;
-}
-
 
   const tbody = document.getElementById("team-averages");
 

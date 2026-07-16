@@ -19,21 +19,16 @@
     <p>
       The Zwift Ladder Route Picker helps choose the best race route based on the
       strengths of your team and the potential riders racing against you. Enter your
-      CLS riders and expected opponents, set how likely each rider is to race, and the
-      tool uses the input vELO2 scores to analyse every Zwift route to show where your
-      team has the biggest advantage.
+      opponents, remove riders not racing, and the tool uses the input vELO2 scores
+      to analyse every Zwift route to show where your team has the biggest advantage.
     </p>
     <p>
-      vELO and power data is input automatically from ZwiftRacing.app. Team rosters are
-      taken from a cached version of the Club Ladder site, and may miss newly added or
-      removed riders. If a rider is missing, you can add them manually.
-    </p>
+      Team rosters are taken from a cached version of the Club Ladder site, and may 
+      miss newly added or removed riders (within the last few days).
+    </p> 
     <p>
-      You can add a rider by clicking the Add Rider button, then going to the rider's 
-      profile on ZwiftRacing.app and copy-pasting their most recent vELO2 scores (paste
-      into the SPR box and they should fill across).
-    </p>
-    
+      vELO2 (current) and power data (90d best) is input automatically from ZwiftRacing.app.
+    </p>   
   </section>
 
   <!-- Collapsible: vELO2 explained -->
@@ -72,27 +67,6 @@
 </div>
 
 
-<!-- Collapsible: Lik% explained -->
-<div class="collapsible" data-target="lik-content">
-  <div class="collapsible-header">
-    <span>What does Lik% mean?</span>
-    <span class="chevron">▼</span>
-  </div>
-
-  <div class="collapsible-content" id="lik-content">
-    <p>
-      Lik% is the percentage likelihood that a rider will race. 
-      It lets you include riders who are uncertain or unlikely to race without removing them entirely.
-      A rider with 50% Lik contributes half their vELO2 score to the team average.
-    </p>
-
-    <p>
-      You can make up realistic values based on your own guesses, or set each rider to 100% (or use any 
-      non-zero % for all riders) to not think about it.
-    </p>
-  </div>
-</div>
-
 <!-- CLS ZR container -->
 <section class="panel cls-panel">
 <div class="section-header">
@@ -110,9 +84,9 @@
   </div>
 </div>
 
-
   <div id="cls-table"></div>
-  <button id="add-cls-btn" class="secondary-btn">Add CLS Rider</button>
+  <button id="reset-cls" class="secondary-btn">Reset CLS Team</button>
+
 </section>
 
 <!-- Opponent Team Selector -->
@@ -143,10 +117,8 @@
   </div>
 </div>
 
-
   <div id="opp-table"></div>
-
-  <button id="add-opp-btn" class="secondary-btn">Add Opponent Rider</button>
+  <button id="reset-opp" class="secondary-btn">Reset Opponent Team</button>
 </section>
 
 

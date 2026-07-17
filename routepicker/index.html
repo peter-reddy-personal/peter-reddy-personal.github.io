@@ -19,15 +19,15 @@
     <p>
       The Zwift Ladder Route Picker helps choose the best race route based on the
       strengths of your team and the potential riders racing against you. Enter your
-      opponents, remove riders not racing, and the tool uses the input vELO2 scores
-      to analyse every Zwift route to show where your team has the biggest advantage.
+      opponents, remove riders not racing, and the tool uses ZwiftRacing.app vELO2 scores
+      to analyse every Zwift route and show where your team has the biggest advantage.
     </p>
     <p>
       Team rosters are taken from a cached version of the Club Ladder site, and may 
       miss newly added or removed riders (within the last few days).
     </p> 
     <p>
-      vELO2 (current) and power data (90d best) is input automatically from ZwiftRacing.app.
+      vELO2 (current) and power data (90d best) is taken from ZwiftRacing.app.
     </p>   
   </section>
 
@@ -53,8 +53,9 @@
       emphasises sprint and punch, while a 5 minute wall finish like 
       <a href="https://zwiftinsider.com/route/petite-douleur/" target="_blank">Petite Douleur</a> 
       is entirely weighted toward climbing. Pursuit and endurance measure how well a rider survives the 
-      demands of shorter v. longer races. There is a list of all the route weightings
-      <a href="https://www.zwiftracing.app/reference/routes" target="_blank">here</a>.
+      demands of shorter v. longer races. <a href="https://www.zwiftracing.app/reference/routes" target="_blank">Here</a> 
+      is a list of all the route weightings.
+      
     </p>
 
     <p>
@@ -73,7 +74,7 @@
   <h2>CLS Riders</h2>
 
   <div class="power-toggle-wrapper">
-    <span class="toggle-label-left">Factors</span>
+    <span class="toggle-label-left">vELO Factors</span>
 
   <label class="toggle">
     <input type="checkbox" class="power-toggle">
@@ -106,7 +107,7 @@
   <h2>Opponent Riders</h2>
 
   <div class="power-toggle-wrapper">
-    <span class="toggle-label-left">Factors</span>
+    <span class="toggle-label-left">vELO Factors</span>
 
     <label class="toggle">
       <input type="checkbox" class="power-toggle">
@@ -122,10 +123,7 @@
 </section>
 
 
-    <!-- Calculate -->
-    <section class="panel">
-      <button id="calculate-btn" class="primary-btn">Calculate Routes</button>
-    </section>
+
 
 
     <!-- Compare vELO average -->
@@ -147,19 +145,28 @@
       </table>
     </section>
 
-<!-- Toggle routes button -->
-<div class="controls-container">
-  <div class="ladder-toggle">
-    <span class="ladder-left">All routes</span>
+    <!-- Calculate routes -->
+    <section class="panel route-controls">
 
-    <label class="ladder-switch">
-      <input type="checkbox" id="ladder-toggle" checked>
-      <span class="ladder-slider"></span>
-    </label>
+      <!-- Main action button -->
+      <button id="calculate-btn" class="primary-btn">
+        Calculate Routes
+      </button>
 
-    <span class="ladder-right">Ladder routes only</span>
-  </div>
-</div>
+      <!-- Ladder toggle -->
+      <div class="ladder-row">
+        <span class="ladder-label">All routes</span>
+
+        <label class="ladder-switch">
+          <input type="checkbox" id="ladder-toggle" checked>
+          <span class="ladder-slider"></span>
+        </label>
+
+        <span class="ladder-label">Ladder routes only</span>
+      </div>
+
+    </section>
+
 
     <!-- Best CLS Routes -->
 <section class="panel">

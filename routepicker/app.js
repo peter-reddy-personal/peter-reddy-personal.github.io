@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑15 16:15";
+const jsVersion = "2026‑07‑17 16:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 //---------------------------------------------------------
-// MAIN APP INITIALISATION (this block was missing)
+// MAIN APP INITIALISATION
 //---------------------------------------------------------
 window.addEventListener("DOMContentLoaded", async () => {
 
@@ -42,24 +42,33 @@ window.addEventListener("DOMContentLoaded", async () => {
   // ---------------------------------------------------------
 
   document.addEventListener("click", e => {
-    if (e.target.classList.contains("remove-rider")) {
+  if (!e.target.classList.contains("remove-rider")) return;
 
-      // Remove the FACTOR row
-      const factorRow = e.target.closest(".rider-row");
+  const factorRow = e.target.closest(".rider-row");
+  const powerRow = factorRow.nextElementSibling;
 
-      // Remove the POWER row (always the next sibling)
-      const powerRow = factorRow.nextElementSibling;
-      if (powerRow && powerRow.classList.contains("power-mode")) {
-        powerRow.remove();
-      }
+  const team = factorRow.dataset.team;   // "cls" or "opp"
+  const id = factorRow.dataset.id;       // rider id as string
 
-      factorRow.remove();
+  if (team === "cls") {
+    clsRiders = clsRiders.filter(r => String(r.id) !== id);
+  } else if (team === "opp") {
+    opponentRiders = opponentRiders.filter(r => String(r.id) !== id);
+  }
 
-      // Recalculate averages and routes after removal
-      const riders = getRiders();
-      renderAverages(riders);
-    }
-  });
+  if (powerRow && powerRow.classList.contains("power-mode")) {
+    powerRow.remove();
+  }
+  factorRow.remove();
+
+  // Re-render tables from updated arrays
+  renderUnifiedCLSTable(clsRiders);
+  renderUnifiedOpponentTable(opponentRiders);
+
+  // 🔁 Recalculate team averages
+  calculateRoutes();
+});
+
 
   // Reset CLS button
   document.getElementById("reset-cls").addEventListener("click", () => {
@@ -87,6 +96,38 @@ window.addEventListener("DOMContentLoaded", async () => {
       renderUnifiedOpponentTable(opponentRiders);
     });
   });
+
+  document.addEventListener("click", e => {
+  const row = e.target.closest(".route-row");
+  if (!row) return;
+
+  const collapseRow = row.nextElementSibling;
+  if (!collapseRow || !collapseRow.classList.contains("collapse-row")) return;
+
+  const isOpen = collapseRow.style.display !== "none";
+  collapseRow.style.display = isOpen ? "none" : "table-row";
+
+  if (!isOpen) {
+    const img = collapseRow.querySelector(".elevation-img");
+    if (!img) {
+      console.warn("No .elevation-img found in collapse row");
+      return;
+    }
+
+    const worldRaw = row.dataset.world || "";
+    const routeRaw = row.dataset.route || "";
+
+    const world = slugify(worldRaw);
+    const cleanedRoute = cleanRouteName(routeRaw);
+    const route = slugify(cleanedRoute);
+
+    const url = `https://zwiftinsider.com/wp-content/routes/${world}/${route}.svg`;
+    console.log("Elevation URL:", url);
+
+    img.src = url;
+  }
+});
+
 });
 
 
@@ -206,7 +247,6 @@ async function renderCLS() {
   renderUnifiedCLSTable(clsRiders);
 }
 
-
 // ---------------------------------------------------------
 // Trim rider name to 26 char
 // ---------------------------------------------------------
@@ -215,7 +255,23 @@ function trimName(name, max = 26) {
 }
 
 // ---------------------------------------------------------
-// POPULATE OPPONENT DROPDOWN
+// Clean route name (remove leading "2x ", "3x ", etc.)
+// ---------------------------------------------------------
+function slugify(str) {
+  return String(str)
+    .toLowerCase()
+    .replace(/['"]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function cleanRouteName(name) {
+  // Remove leading "2x ", "3x ", etc.
+  return String(name).replace(/^\d+x\s+/i, "");
+}
+
+// ---------------------------------------------------------
+// POPULATE OPPONENT DROPDOWN (alphabetical)
 // ---------------------------------------------------------
 function populateOpponentDropdown() {
   console.log("Populating opponent dropdown...");
@@ -223,13 +279,17 @@ function populateOpponentDropdown() {
 
   const select = document.getElementById("opponentSelect");
 
-  allTeams.forEach(team => {
-    if (team.number !== 63) {
-      const opt = document.createElement("option");
-      opt.value = team.number;
-      opt.textContent = team.name;
-      select.appendChild(opt);
-    }
+  // Sort teams alphabetically by name
+  const sortedTeams = [...allTeams]
+    .filter(team => team.number !== 63)   // remove CLS
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  // Populate dropdown
+  sortedTeams.forEach(team => {
+    const opt = document.createElement("option");
+    opt.value = team.number;
+    opt.textContent = team.name;
+    select.appendChild(opt);
   });
 
   console.log("Dropdown populated.");
@@ -280,7 +340,6 @@ function renderUnifiedCLSTable(riders) {
   const toggle = document.querySelector(".power-toggle");
   const showPower = toggle ? toggle.checked : false;
 
-  // SOFT PASTEL COLOR MAPPING (green → red)
   function lerpColor(min, max, value) {
     if (
       value === "N/A" ||
@@ -290,7 +349,7 @@ function renderUnifiedCLSTable(riders) {
       !isFinite(max) ||
       min === max
     ) {
-      return "#f3f3f3"; // neutral
+      return "#f3f3f3";
     }
 
     const t = (value - min) / (max - min);
@@ -305,7 +364,6 @@ function renderUnifiedCLSTable(riders) {
     return `rgb(${r}, ${g}, ${b})`;
   }
 
-  // COLLECT MIN/MAX FOR EACH POWER COLUMN
   const powerStats = ["wkg5", "wkg15", "wkg30", "wkg60", "wkg120", "wkg300", "wkg1200"];
   const columnMin = {};
   const columnMax = {};
@@ -319,11 +377,9 @@ function renderUnifiedCLSTable(riders) {
     columnMax[stat] = values.length ? Math.max(...values) : NaN;
   });
 
-  // BUILD TABLE
   const div = document.getElementById("cls-table");
   div.innerHTML = "";
 
-  // FACTORS HEADER (7 columns)
   const factorHeader = document.createElement("div");
   factorHeader.className = "input-headings factors-mode factors-grid";
   factorHeader.innerHTML = `
@@ -334,10 +390,9 @@ function renderUnifiedCLSTable(riders) {
     <div>TT</div>
     <div>PUR</div>
     <div>END</div>
-    <div></div>   <!-- Remove button column -->
+    <div></div>
   `;
 
-  // POWER HEADER (10 columns)
   const powerHeader = document.createElement("div");
   powerHeader.className = "input-headings power-mode power-grid";
   powerHeader.innerHTML = `
@@ -351,13 +406,12 @@ function renderUnifiedCLSTable(riders) {
     <div>2m</div>
     <div>5m</div>
     <div>20m</div>
-    <div></div>   <!-- Remove button column -->
+    <div></div>
   `;
 
   div.appendChild(factorHeader);
   div.appendChild(powerHeader);
 
-  // ROWS
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
@@ -366,6 +420,8 @@ function renderUnifiedCLSTable(riders) {
     // FACTOR ROW
     const factorRow = document.createElement("div");
     factorRow.className = "rider-row factors-mode factors-grid";
+    factorRow.dataset.team = "cls";
+    factorRow.dataset.id = String(r.id);
     factorRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
       <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
@@ -388,6 +444,8 @@ function renderUnifiedCLSTable(riders) {
 
     const powerRow = document.createElement("div");
     powerRow.className = "rider-row power-mode power-grid";
+    powerRow.dataset.team = "cls";
+    powerRow.dataset.id = String(r.id);
     powerRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
 
@@ -409,7 +467,6 @@ function renderUnifiedCLSTable(riders) {
     div.appendChild(powerRow);
   });
 
-  // TOGGLE VISIBILITY
   document.querySelectorAll(".factors-mode").forEach(el => {
     el.style.display = showPower ? "none" : "grid";
   });
@@ -427,7 +484,6 @@ function renderUnifiedOpponentTable(riders) {
   const toggle = document.querySelector(".power-toggle");
   const showPower = toggle ? toggle.checked : false;
 
-  // SOFT PASTEL COLOR MAPPING (green → red)
   function lerpColor(min, max, value) {
     if (
       value === "N/A" ||
@@ -437,7 +493,7 @@ function renderUnifiedOpponentTable(riders) {
       !isFinite(max) ||
       min === max
     ) {
-      return "#f3f3f3"; // neutral
+      return "#f3f3f3";
     }
 
     const t = (value - min) / (max - min);
@@ -452,7 +508,6 @@ function renderUnifiedOpponentTable(riders) {
     return `rgb(${r}, ${g}, ${b})`;
   }
 
-  // COLLECT MIN/MAX FOR EACH POWER COLUMN
   const powerStats = ["wkg5", "wkg15", "wkg30", "wkg60", "wkg120", "wkg300", "wkg1200"];
   const columnMin = {};
   const columnMax = {};
@@ -469,7 +524,6 @@ function renderUnifiedOpponentTable(riders) {
   const div = document.getElementById("opp-table");
   div.innerHTML = "";
 
-  // FACTORS HEADER (7 columns + remove)
   const factorHeader = document.createElement("div");
   factorHeader.className = "input-headings factors-mode factors-grid";
   factorHeader.innerHTML = `
@@ -480,10 +534,9 @@ function renderUnifiedOpponentTable(riders) {
     <div>TT</div>
     <div>PUR</div>
     <div>END</div>
-    <div></div> <!-- Remove button -->
+    <div></div>
   `;
 
-  // POWER HEADER (10 columns + remove)
   const powerHeader = document.createElement("div");
   powerHeader.className = "input-headings power-mode power-grid";
   powerHeader.innerHTML = `
@@ -497,13 +550,12 @@ function renderUnifiedOpponentTable(riders) {
     <div>2m</div>
     <div>5m</div>
     <div>20m</div>
-    <div></div> <!-- Remove button -->
+    <div></div>
   `;
 
   div.appendChild(factorHeader);
   div.appendChild(powerHeader);
 
-  // ROWS
   riders.forEach(r => {
     const zr = r.zr || {};
     const factors = zr.velo?.factors || {};
@@ -512,6 +564,8 @@ function renderUnifiedOpponentTable(riders) {
     // FACTOR ROW
     const factorRow = document.createElement("div");
     factorRow.className = "rider-row factors-mode factors-grid";
+    factorRow.dataset.team = "opp";
+    factorRow.dataset.id = String(r.id);
     factorRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
       <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
@@ -534,6 +588,8 @@ function renderUnifiedOpponentTable(riders) {
 
     const powerRow = document.createElement("div");
     powerRow.className = "rider-row power-mode power-grid";
+    powerRow.dataset.team = "opp";
+    powerRow.dataset.id = String(r.id);
     powerRow.innerHTML = `
       <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
 
@@ -555,7 +611,6 @@ function renderUnifiedOpponentTable(riders) {
     div.appendChild(powerRow);
   });
 
-  // TOGGLE VISIBILITY
   document.querySelectorAll(".factors-mode").forEach(el => {
     el.style.display = showPower ? "none" : "grid";
   });
@@ -892,7 +947,6 @@ result.bestCLS.slice(0, 20).forEach(r => {
     </tr>
   `;
 });
-
 
 
   // -----------------------------

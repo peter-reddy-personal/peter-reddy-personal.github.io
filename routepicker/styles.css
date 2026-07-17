@@ -1,6 +1,6 @@
-/* ============================
+/* =========================================================
    Base Layout
-   ============================ */
+   ========================================================= */
 
 body {
   margin: 0;
@@ -28,27 +28,9 @@ body {
   padding: 0 16px;
 }
 
-/* ============================
+/* =========================================================
    Collapsible Sections
-   ============================ */
-
-details summary {
-  cursor: pointer;
-  font-size: 15px;
-  padding: 6px 0;
-}
-
-details[open] summary {
-  margin-bottom: 8px;
-}
-
-details p {
-  margin: 6px 0;
-}
-
-.collapsible-container {
-  margin-top: 15px;
-}
+   ========================================================= */
 
 .collapsible-header {
   display: flex;
@@ -78,9 +60,9 @@ details p {
   border-radius: 0 0 6px 6px;
 }
 
-/* ============================
+/* =========================================================
    Panels
-   ============================ */
+   ========================================================= */
 
 .panel {
   background: #fff;
@@ -90,31 +72,27 @@ details p {
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.cls-panel {
-  background: #f4f8ff;
+/* Only panels that need layout get flex */
+.panel.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.opp-panel {
-  background: #fff6f6;
-}
+.cls-panel { background: #f4f8ff; }
+.opp-panel { background: #fff6f6; }
 
 .panel-header,
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
 }
 
 .panel-header h2,
 .section-header h2 {
-  margin: 0;
+  margin: 0 0 10px 0;   /* top 0, right 0, bottom 10px, left 0 */
   font-size: 18px;
-}
-
-.rider-count {
-  font-size: 12px;
-  color: #666;
 }
 
 .loading-msg {
@@ -124,30 +102,27 @@ details p {
   font-style: italic;
 }
 
-/* ============================
-   Toggle (Power / Factors)
-   ============================ */
+/* =========================================================
+   Route Controls (Calculate + Ladder Toggle)
+   ========================================================= */
 
-.power-toggle-wrapper {
+.ladder-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
+.ladder-label {
+  font-size: 0.9rem;
+  color: #333;
 }
 
-.toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+/* =========================================================
+   Toggles (Unified System)
+   ========================================================= */
 
-/* Ladder toggle (separate from Power toggle) */
+/* Base toggle wrapper */
+.toggle,
 .ladder-switch {
   position: relative;
   display: inline-block;
@@ -155,97 +130,73 @@ details p {
   height: 24px;
 }
 
+/* Hide checkbox */
+.toggle input,
 .ladder-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
+/* Slider track */
+.slider,
 .ladder-slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.3s;
   border-radius: 24px;
 }
 
-.ladder-slider:before {
-  position: absolute;
+/* Slider knob */
+.slider::before,
+.ladder-slider::before {
   content: "";
+  position: absolute;
   height: 18px;
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
-  transition: .4s;
+  background: white;
   border-radius: 50%;
-}
-
-.ladder-switch input:checked + .ladder-slider {
-  background-color: #1f3b5c;
-}
-
-.ladder-switch input:checked + .ladder-slider:before {
-  transform: translateX(26px);
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
   transition: 0.3s;
-  border-radius: 26px;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: 0.3s;
-  border-radius: 50%;
-}
-
+/* Power toggle active */
 .toggle input:checked + .slider {
   background-color: #2a6ecb;
 }
 
-.toggle input:checked + .slider:before {
+.toggle input:checked + .slider::before {
   transform: translateX(24px);
 }
 
-/* ============================
-   Rider Tables
-   ============================ */
+/* Ladder toggle active */
+.ladder-switch input:checked + .ladder-slider {
+  background-color: #1f3b5c;
+}
 
-/* ---------- Shared styles ---------- */
+.ladder-switch input:checked + .ladder-slider::before {
+  transform: translateX(26px);
+}
+
+/* =========================================================
+   Rider Tables
+   ========================================================= */
 
 .input-headings {
   display: grid;
   font-weight: 600;
-  padding: 6px 8px;     /* match rider-row */
-  margin-bottom: 4px;   /* match rider-row spacing */
-  align-items: stretch;
   padding: 6px 8px;
+  margin-bottom: 4px;
   gap: 4px;
 }
 
-
 .rider-row {
   display: grid;
-  height: 28px;        /* or whatever height you prefer */
-  align-items: center; /* ensure vertical centering */
+  height: 28px;
+  align-items: center;
   gap: 4px;
   margin-bottom: 4px;
   padding: 6px 8px;
@@ -254,80 +205,25 @@ details p {
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 
-/* ---------- Factors Mode (8 columns) ---------- */
-
-div.input-headings.factors-mode {
-  display: grid;
-  grid-template-columns:
-    240px     /* Name */
-    60px      /* SPR */
-    60px      /* PUN */
-    60px      /* CLI */
-    60px      /* TT */
-    60px      /* PUR */
-    60px     /* END */
-    80px;     /* Remove button */
-}
-
-div.rider-row.factors-mode {
-  display: grid;
+/* Factors mode */
+.input-headings.factors-mode,
+.rider-row.factors-mode {
   grid-template-columns:
     240px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    80px;     /* Remove button */
+    60px 60px 60px 60px 60px 60px
+    80px;
 }
 
-div.rider-row.factors-mode {
-  display: grid;
-}
-
-
-/* ---------- Power Mode (11 columns) ---------- */
-
-div.input-headings.power-mode {
-  display: grid;
-  grid-template-columns:
-    240px     /* Name */
-    80px      /* Weight */
-    120px     /* Phenotype */
-    60px      /* 5s */
-    60px      /* 15s */
-    60px      /* 30s */
-    60px      /* 1m */
-    60px      /* 2m */
-    60px      /* 5m */
-    60px      /* 20m */
-    80px;     /* Remove button */
-}
-
-div.rider-row.power-mode {
-  display: grid;
+/* Power mode */
+.input-headings.power-mode,
+.rider-row.power-mode {
   grid-template-columns:
     240px
     80px
     120px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    60px
-    80px;   
+    60px 60px 60px 60px 60px 60px 60px
+    80px;
 }
-
-.input-headings > div {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-/* ---------- Name cells ---------- */
 
 .rider-link,
 .rider-name {
@@ -335,7 +231,6 @@ div.rider-row.power-mode {
   white-space: nowrap;
 }
 
-/* CLS links */
 .cls-panel .rider-link {
   color: #2a6ecb;
   font-weight: 600;
@@ -346,14 +241,6 @@ div.rider-row.power-mode {
   text-decoration: underline;
 }
 
-/* Power colouring */
-.profile-cell {
-  color: #111;
-  font-weight: 600;
-}
-
-
-/* Opponent links */
 .opp-panel .rider-link {
   color: #c0392b;
   font-weight: 600;
@@ -364,25 +251,16 @@ div.rider-row.power-mode {
   text-decoration: underline;
 }
 
-/* Likelihood input */
-.rider-likelihood {
-  background: #eef6ff;
-  border: 2px solid #4a90e2;
-  border-radius: 4px;
-}
-
-/* Power mode cells */
 .profile-cell {
   padding: 6px 4px;
   font-size: 0.9rem;
   white-space: nowrap;
+  font-weight: 600;
 }
 
-
-
-/* ============================
+/* =========================================================
    Buttons
-   ============================ */
+   ========================================================= */
 
 button {
   border: none;
@@ -396,6 +274,7 @@ button {
   padding: 10px 22px;
   border-radius: 6px;
   font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .primary-btn:hover {
@@ -408,16 +287,16 @@ button {
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 13px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .secondary-btn:hover {
   background: #d2d7e2;
 }
 
-/* ============================
-   Results Tables (unchanged)
-   ============================ */
+/* =========================================================
+   Results Tables
+   ========================================================= */
 
 .results-table {
   width: 100%;
@@ -457,17 +336,19 @@ button {
   font-weight: 600;
 }
 
-.diff-positive {
-  color: #008000;
+.diff-positive { color: #008000; }
+.diff-negative { color: #cc0000; }
+
+.elevation-img {
+  width: 40%;
+  max-width: 40%;
+  height: auto;
 }
 
-.diff-negative {
-  color: #cc0000;
-}
 
-/* ============================
+/* =========================================================
    Version Banner
-   ============================ */
+   ========================================================= */
 
 #version-banner {
   position: fixed;

@@ -751,7 +751,7 @@ function formatWeights(r) {
 
 
 //---------------------------------------------------------
-// Rank Routes
+// Rank Routes (with controlled randomness)
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
   const powerToggle = document.getElementById("power-toggle");
@@ -766,11 +766,15 @@ function rankRoutes(routes, riders) {
 
   const scored = filtered.map(route => {
     const scores = computeRouteScores(route, riders);
+
+    // ⭐ Controlled randomness: ±5 variation
+    const jitter = (Math.random() - 0.5) * 10;   // range: -5 to +5
+
     return {
       ...route,
       avgCLS: scores.avgCLS,
       avgOpp: scores.avgOpp,
-      diff: scores.diff
+      diff: scores.diff + jitter   // ⭐ apply jitter here
     };
   });
 
@@ -779,6 +783,7 @@ function rankRoutes(routes, riders) {
 
   return { bestCLS, bestOpp };
 }
+
 
 //---------------------------------------------------------
 // Render Team Averages with gradient differences

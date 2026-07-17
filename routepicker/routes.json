@@ -12,7 +12,8 @@
    "Length": 8,
    "Elevation": "236",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Downtown Dolphin",
@@ -27,7 +28,8 @@
    "Length": 2,
    "Elevation": "17",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "The Bell Lap",
@@ -42,7 +44,8 @@
    "Length": 2,
    "Elevation": "17",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Bon Voyage",
@@ -57,7 +60,8 @@
    "Length": 28.2,
    "Elevation": "132",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Casse-Pattes",
@@ -72,7 +76,8 @@
    "Length": 22.9,
    "Elevation": "155",
    "Lead_in": 0.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Climb Portal - Mont Saint-Michel",
@@ -87,7 +92,8 @@
    "Length": 2.5,
    "Elevation": "11",
    "Lead_in": 6.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "Croissant",
@@ -102,7 +108,8 @@
    "Length": 9.3,
    "Elevation": "49",
    "Lead_in": 3.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Douce France",
@@ -117,7 +124,8 @@
    "Length": 24,
    "Elevation": "133",
    "Lead_in": 0.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "France Classic Fondo",
@@ -132,7 +140,8 @@
    "Length": 145.4,
    "Elevation": "1,099",
    "Lead_in": 1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Gentil 8",
@@ -147,7 +156,8 @@
    "Length": 23.2,
    "Elevation": "243",
    "Lead_in": 2.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Hell of the North",
@@ -162,7 +172,8 @@
    "Length": 19.8,
    "Elevation": "241",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Knights of the Roundabout",
@@ -177,7 +188,8 @@
    "Length": 51.2,
    "Elevation": "336",
    "Lead_in": 3.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "La Reine",
@@ -192,7 +204,8 @@
    "Length": 22.5,
    "Elevation": "1,201",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Macaron",
@@ -207,7 +220,8 @@
    "Length": 2.4,
    "Elevation": "13",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Peaky Pavé",
@@ -222,7 +236,8 @@
    "Length": 30.6,
    "Elevation": "369",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Petit Boucle",
@@ -237,7 +252,8 @@
    "Length": 60.8,
    "Elevation": "483",
    "Lead_in": 0.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Petite Douleur",
@@ -252,7 +268,8 @@
    "Length": 13.9,
    "Elevation": "194",
    "Lead_in": 10.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "R.G.V.",
@@ -267,7 +284,8 @@
    "Length": 24,
    "Elevation": "133",
    "Lead_in": 0.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Roule Ma Poule",
@@ -282,7 +300,8 @@
    "Length": 22.9,
    "Elevation": "155",
    "Lead_in": 3.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Sacre Bleu",
@@ -297,7 +316,8 @@
    "Length": 71.2,
    "Elevation": "396",
    "Lead_in": 2.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Three Musketeers",
@@ -312,7 +332,8 @@
    "Length": 35.2,
    "Elevation": "195",
    "Lead_in": 2.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Tire-Bouchon",
@@ -327,7 +348,8 @@
    "Length": 60.8,
    "Elevation": "479",
    "Lead_in": 3.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Ven-10",
@@ -342,7 +364,8 @@
    "Length": 10,
    "Elevation": "780",
    "Lead_in": 1.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Ven-Top",
@@ -357,7 +380,8 @@
    "Length": 20.7,
    "Elevation": "1,535",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Gravel Mountain Reverse",
@@ -372,7 +396,8 @@
    "Length": 5.2,
    "Elevation": "53",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Red Rock Loop",
@@ -387,7 +412,8 @@
    "Length": 2.1,
    "Elevation": "21",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Red Rock Loop Arcade",
@@ -402,7 +428,8 @@
    "Length": 2.1,
    "Elevation": "21",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "Red Rock Loop Reverse",
@@ -417,7 +444,8 @@
    "Length": 2.1,
    "Elevation": "21",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "Red Rock Run",
@@ -432,7 +460,8 @@
    "Length": 5.2,
    "Elevation": "53",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "2018 Worlds Short Lap",
@@ -447,7 +476,8 @@
    "Length": 23.7,
    "Elevation": "495",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Mountainous"
  },
  {
    "Route": "Achterbahn",
@@ -462,7 +492,8 @@
    "Length": 47.4,
    "Elevation": "989",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Innsbruck KOM After Party",
@@ -477,7 +508,8 @@
    "Length": 37,
    "Elevation": "657",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "InnsbruckConti",
@@ -492,7 +524,8 @@
    "Length": 12.5,
    "Elevation": "480",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Mountainous"
  },
  {
    "Route": "Innsbruckring",
@@ -507,7 +540,8 @@
    "Length": 8.8,
    "Elevation": "77",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Lutscher",
@@ -522,7 +556,8 @@
    "Length": 13.7,
    "Elevation": "402",
    "Lead_in": 10.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Lutscher CCW",
@@ -537,7 +572,8 @@
    "Length": 13.7,
    "Elevation": "402",
    "Lead_in": 8.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Greater London 8",
@@ -552,7 +588,8 @@
    "Length": 23.8,
    "Elevation": "276",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Greater London Flat",
@@ -567,7 +604,8 @@
    "Length": 11.7,
    "Elevation": "53",
    "Lead_in": 5.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Greater London Loop",
@@ -582,7 +620,8 @@
    "Length": 21,
    "Elevation": "255",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Greater London Loop Reverse",
@@ -597,7 +636,8 @@
    "Length": 21,
    "Elevation": "255",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Greatest London Flat",
@@ -612,7 +652,8 @@
    "Length": 23.6,
    "Elevation": "164",
    "Lead_in": 7.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Greatest London Loop",
@@ -627,7 +668,8 @@
    "Length": 25.7,
    "Elevation": "355",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Greatest London Loop Reverse",
@@ -642,7 +684,8 @@
    "Length": 25.7,
    "Elevation": "355",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Keith Hill After Party",
@@ -657,7 +700,8 @@
    "Length": 36.2,
    "Elevation": "431",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Leith Hill After Party",
@@ -672,7 +716,8 @@
    "Length": 41.5,
    "Elevation": "434",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "London 8",
@@ -687,7 +732,8 @@
    "Length": 20.3,
    "Elevation": "256",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "London 8 Reverse",
@@ -702,7 +748,8 @@
    "Length": 20.3,
    "Elevation": "256",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "London Calling",
@@ -717,7 +764,8 @@
    "Length": 31.2,
    "Elevation": "207",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "London Classique",
@@ -732,7 +780,8 @@
    "Length": 5.5,
    "Elevation": "25",
    "Lead_in": 5.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "London Classique Reverse",
@@ -747,7 +796,8 @@
    "Length": 5.5,
    "Elevation": "25",
    "Lead_in": 7.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "London Flat",
@@ -762,7 +812,8 @@
    "Length": 12,
    "Elevation": "115",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "London Loop",
@@ -777,7 +828,8 @@
    "Length": 14.9,
    "Elevation": "231",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "London Loop Reverse",
@@ -792,7 +844,8 @@
    "Length": 14.8,
    "Elevation": "231",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "London PRL FULL",
@@ -807,7 +860,8 @@
    "Length": 173.3,
    "Elevation": "2,624",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "London PRL Half",
@@ -822,7 +876,8 @@
    "Length": 69.2,
    "Elevation": "1,009",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "London Uprising",
@@ -837,7 +892,8 @@
    "Length": 20.6,
    "Elevation": "356",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Surrey Hills",
@@ -852,7 +908,8 @@
    "Length": 39.1,
    "Elevation": "877",
    "Lead_in": 5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "The London Pretzel",
@@ -867,7 +924,8 @@
    "Length": 55.7,
    "Elevation": "572",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Triple Loops",
@@ -882,7 +940,8 @@
    "Length": 40.9,
    "Elevation": "565",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "ZG25 Climb Champs",
@@ -897,7 +956,8 @@
    "Length": 4.6,
    "Elevation": "156",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Bridges and Boardwalks",
@@ -912,7 +972,8 @@
    "Length": 6.3,
    "Elevation": "60",
    "Lead_in": 1.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Castle Crit",
@@ -927,7 +988,8 @@
    "Length": 3.5,
    "Elevation": "43",
    "Lead_in": 1.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Castle Crit Run",
@@ -942,7 +1004,8 @@
    "Length": 3.5,
    "Elevation": "43",
    "Lead_in": 1.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Castle to Castle",
@@ -957,7 +1020,8 @@
    "Length": 22.4,
    "Elevation": "140",
    "Lead_in": 0.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Chain Chomper",
@@ -972,7 +1036,8 @@
    "Length": 13.6,
    "Elevation": "183",
    "Lead_in": 2.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Chasing the Sun",
@@ -987,7 +1052,8 @@
    "Length": 35.1,
    "Elevation": "315",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Country to Coastal",
@@ -1002,7 +1068,8 @@
    "Length": 33.4,
    "Elevation": "274",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Countryside Tour",
@@ -1017,7 +1084,8 @@
    "Length": 15.8,
    "Elevation": "185",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Electric Break",
@@ -1032,7 +1100,8 @@
    "Length": 17.8,
    "Elevation": "190",
    "Lead_in": 1.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Electric Loop",
@@ -1047,7 +1116,8 @@
    "Length": 8.9,
    "Elevation": "42",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Farmland Loop",
@@ -1062,7 +1132,8 @@
    "Length": 7.8,
    "Elevation": "57",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Fine and Sandy",
@@ -1077,7 +1148,8 @@
    "Length": 10.7,
    "Elevation": "77",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Flatland Loop",
@@ -1092,7 +1164,8 @@
    "Length": 12.9,
    "Elevation": "99",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Island Hopper",
@@ -1107,7 +1180,8 @@
    "Length": 18,
    "Elevation": "129",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Island Outskirts",
@@ -1122,7 +1196,8 @@
    "Length": 11.4,
    "Elevation": "90",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Kappa Quest",
@@ -1137,7 +1212,8 @@
    "Length": 9.1,
    "Elevation": "140",
    "Lead_in": 3.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Kappa Quest Reverse",
@@ -1152,7 +1228,8 @@
    "Length": 9.1,
    "Elevation": "140",
    "Lead_in": 5.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Kaze Kicker",
@@ -1167,7 +1244,8 @@
    "Length": 16.9,
    "Elevation": "134",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Makuri 40",
@@ -1182,7 +1260,8 @@
    "Length": 40.1,
    "Elevation": "307",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Makuri Madness",
@@ -1197,7 +1276,8 @@
    "Length": 15.9,
    "Elevation": "85",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Makuri Pretzel",
@@ -1212,7 +1292,8 @@
    "Length": 77.6,
    "Elevation": "618",
    "Lead_in": 1.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Mech Isle Loop",
@@ -1227,7 +1308,8 @@
    "Length": 4,
    "Elevation": "39",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Neokyo All-Nighter",
@@ -1242,7 +1324,8 @@
    "Length": 24.3,
    "Elevation": "168",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Neokyo Crit Course",
@@ -1257,7 +1340,8 @@
    "Length": 3.9,
    "Elevation": "20",
    "Lead_in": 0.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Neon After Party",
@@ -1272,7 +1356,8 @@
    "Length": 16.2,
    "Elevation": "137",
    "Lead_in": 1.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Neon Flats",
@@ -1287,7 +1372,8 @@
    "Length": 14.7,
    "Elevation": "72",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Neon Shore Loop",
@@ -1302,7 +1388,8 @@
    "Length": 33,
    "Elevation": "253",
    "Lead_in": 1.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Railways and Rooftops",
@@ -1317,7 +1404,8 @@
    "Length": 6.2,
    "Elevation": "70",
    "Lead_in": 2.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Red Zone Repeats",
@@ -1332,7 +1420,8 @@
    "Length": 19.4,
    "Elevation": "87",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Rooftop Rendezvous",
@@ -1347,7 +1436,8 @@
    "Length": 3.7,
    "Elevation": "56",
    "Lead_in": 2.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Sea to Tree",
@@ -1362,7 +1452,8 @@
    "Length": 3.3,
    "Elevation": "108",
    "Lead_in": 0.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Shisa Shakedown",
@@ -1377,7 +1468,8 @@
    "Length": 49.4,
    "Elevation": "495",
    "Lead_in": 4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Sleepless City",
@@ -1392,7 +1484,8 @@
    "Length": 9.6,
    "Elevation": "43",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Spirit Forest",
@@ -1407,7 +1500,8 @@
    "Length": 8.4,
    "Elevation": "135",
    "Lead_in": 4.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Sprinter's Playground",
@@ -1422,7 +1516,8 @@
    "Length": 12.4,
    "Elevation": "67",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Suki's Playground",
@@ -1437,7 +1532,8 @@
    "Length": 18.3,
    "Elevation": "150",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Temples and Towers",
@@ -1452,7 +1548,8 @@
    "Length": 32.6,
    "Elevation": "318",
    "Lead_in": 0.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Three Village Loop",
@@ -1467,7 +1564,8 @@
    "Length": 10.6,
    "Elevation": "93",
    "Lead_in": 2.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Tropic Rush",
@@ -1482,7 +1580,8 @@
    "Length": 41.3,
    "Elevation": "327",
    "Lead_in": 1.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Turf N Surf",
@@ -1497,7 +1596,8 @@
    "Length": 24.6,
    "Elevation": "196",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Twilight Harbor",
@@ -1512,7 +1612,8 @@
    "Length": 6.9,
    "Elevation": "33",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Two Village Loop",
@@ -1527,7 +1628,8 @@
    "Length": 12.8,
    "Elevation": "88",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Valley to Mountaintop",
@@ -1542,7 +1644,8 @@
    "Length": 5,
    "Elevation": "131",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Wandering Flats",
@@ -1557,7 +1660,8 @@
    "Length": 25.1,
    "Elevation": "146",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Yumezi Grit",
@@ -1572,12 +1676,13 @@
    "Length": 7.5,
    "Elevation": "83",
    "Lead_in": 4.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "2022 Cycling Esports World Championships Route",
    "URL": "https://zwiftinsider.com/route/2022-cycling-esports-world-championships-route/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0006,
    "Punch": 0.0497,
    "Climb": 0.1997,
@@ -1587,12 +1692,13 @@
    "Length": 54.7,
    "Elevation": "941",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Astoria Line 8",
    "URL": "https://zwiftinsider.com/route/astoria-line-8/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.2682,
    "Punch": 0.2426,
    "Climb": 0.0256,
@@ -1602,12 +1708,13 @@
    "Length": 11.6,
    "Elevation": "141",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Avon Flyer",
    "URL": "https://zwiftinsider.com/route/avon-flyer/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0168,
    "Punch": 0.5674,
    "Climb": 0,
@@ -1617,12 +1724,13 @@
    "Length": 3.3,
    "Elevation": "25",
    "Lead_in": 1.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Double Parked",
    "URL": "https://zwiftinsider.com/route/double-parked/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.1835,
    "Punch": 0.1609,
    "Climb": 0.0226,
@@ -1632,12 +1740,13 @@
    "Length": 42.2,
    "Elevation": "330",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Double Span Spin",
    "URL": "https://zwiftinsider.com/route/double-span-spin/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0067,
    "Punch": 0.4901,
    "Climb": 0.038,
@@ -1647,12 +1756,13 @@
    "Length": 7,
    "Elevation": "80",
    "Lead_in": 5.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Empire Elevation",
    "URL": "https://zwiftinsider.com/route/empire-elevation/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0017,
    "Punch": 0.0916,
    "Climb": 0.3715,
@@ -1662,12 +1772,13 @@
    "Length": 24.2,
    "Elevation": "261",
    "Lead_in": 1.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Everything Bagel",
    "URL": "https://zwiftinsider.com/route/everything-bagel/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0421,
    "Punch": 0.2183,
    "Climb": 0.1083,
@@ -1677,12 +1788,13 @@
    "Length": 34.3,
    "Elevation": "545",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Fuhgeddaboudit",
    "URL": "https://zwiftinsider.com/route/fuhgeddaboudit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.125,
    "Punch": 0.0878,
    "Climb": 0.0372,
@@ -1692,12 +1804,13 @@
    "Length": 78.9,
    "Elevation": "838",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Gotham Grind",
    "URL": "https://zwiftinsider.com/route/gotham-grind/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0549,
    "Punch": 0.5013,
    "Climb": 0,
@@ -1707,12 +1820,13 @@
    "Length": 9.3,
    "Elevation": "96",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Gotham Grind Reverse",
    "URL": "https://zwiftinsider.com/route/gotham-grind-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.3669,
    "Punch": 0.1891,
    "Climb": 0,
@@ -1722,12 +1836,13 @@
    "Length": 9.3,
    "Elevation": "96",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Grand Central Circuit",
    "URL": "https://zwiftinsider.com/route/grand-central-circuit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0109,
    "Punch": 0.2908,
    "Climb": 0.2521,
@@ -1737,12 +1852,13 @@
    "Length": 6.9,
    "Elevation": "144",
    "Lead_in": 1.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Grand Central Circuit Reverse",
    "URL": "https://zwiftinsider.com/route/grand-central-circuit-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.1299,
    "Punch": 0.0186,
    "Climb": 0.4018,
@@ -1752,12 +1868,13 @@
    "Length": 6.9,
    "Elevation": "144",
    "Lead_in": 2.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Green to Screen",
    "URL": "https://zwiftinsider.com/route/green-to-screen/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.2259,
    "Punch": 0.19,
    "Climb": 0.036,
@@ -1767,12 +1884,13 @@
    "Length": 28.4,
    "Elevation": "207",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Hudson Hustle",
    "URL": "https://zwiftinsider.com/route/hudson-hustle/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.4846,
    "Climb": 0.0047,
@@ -1782,12 +1900,13 @@
    "Length": 20.3,
    "Elevation": "216",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Issendorf Express",
    "URL": "https://zwiftinsider.com/route/issendorf-express/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0274,
    "Punch": 0.544,
    "Climb": 0,
@@ -1797,12 +1916,13 @@
    "Length": 7.2,
    "Elevation": "53",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Knickerbocker",
    "URL": "https://zwiftinsider.com/route/knickerbocker/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.3314,
    "Climb": 0.1185,
@@ -1812,12 +1932,13 @@
    "Length": 22.5,
    "Elevation": "365",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Knickerbocker Reverse",
    "URL": "https://zwiftinsider.com/route/knickerbocker-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0503,
    "Punch": 0.29,
    "Climb": 0.1083,
@@ -1827,12 +1948,13 @@
    "Length": 22.5,
    "Elevation": "365",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "LaGuardia After Party",
    "URL": "https://zwiftinsider.com/route/laguardia-after-party/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0048,
    "Punch": 0.0017,
    "Climb": 0.4727,
@@ -1842,12 +1964,13 @@
    "Length": 20.7,
    "Elevation": "295",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "LaGuardia Loop",
    "URL": "https://zwiftinsider.com/route/laguardia-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0106,
    "Punch": 0.5774,
    "Climb": 0,
@@ -1857,12 +1980,13 @@
    "Length": 2.8,
    "Elevation": "26",
    "Lead_in": 1.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "LaGuardia Loop Reverse",
    "URL": "https://zwiftinsider.com/route/laguardia-loop-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.2554,
    "Punch": 0.3286,
    "Climb": 0,
@@ -1872,12 +1996,13 @@
    "Length": 2.8,
    "Elevation": "26",
    "Lead_in": 2.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Lady Liberty",
    "URL": "https://zwiftinsider.com/route/lady-liberty/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0606,
    "Punch": 0.2965,
    "Climb": 0.1681,
@@ -1887,12 +2012,13 @@
    "Length": 12.4,
    "Elevation": "206",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Mighty Metropolitan",
    "URL": "https://zwiftinsider.com/route/mighty-metropolitan/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.3273,
    "Climb": 0.1419,
@@ -1902,12 +2028,13 @@
    "Length": 20.1,
    "Elevation": "318",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "NYC KOM After Party",
    "URL": "https://zwiftinsider.com/route/nyc-kom-after-party/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0007,
    "Punch": 0.1518,
    "Climb": 0.22,
@@ -1917,12 +2044,13 @@
    "Length": 36.6,
    "Elevation": "475",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "No Sleep Till Brooklyn",
    "URL": "https://zwiftinsider.com/route/no-sleep-till-brooklyn/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0054,
    "Punch": 0.3951,
    "Climb": 0.031,
@@ -1932,12 +2060,13 @@
    "Length": 31.8,
    "Elevation": "251",
    "Lead_in": 0.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Park Perimeter Loop",
    "URL": "https://zwiftinsider.com/route/park-perimeter-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.5475,
    "Climb": 0,
@@ -1947,12 +2076,13 @@
    "Length": 9.8,
    "Elevation": "126",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Park Perimeter Reverse",
    "URL": "https://zwiftinsider.com/route/park-perimeter-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0576,
    "Punch": 0.4898,
    "Climb": 0,
@@ -1962,12 +2092,13 @@
    "Length": 9.8,
    "Elevation": "126",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Prospect Park Loop",
    "URL": "https://zwiftinsider.com/route/prospect-park-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0279,
    "Punch": 0.5557,
    "Climb": 0,
@@ -1977,12 +2108,13 @@
    "Length": 5.4,
    "Elevation": "37",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Rising Empire",
    "URL": "https://zwiftinsider.com/route/rising-empire/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.2372,
    "Climb": 0.2231,
@@ -1992,12 +2124,13 @@
    "Length": 20.8,
    "Elevation": "377",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Spinfinity",
    "URL": "https://zwiftinsider.com/route/spinfinity/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0443,
    "Punch": 0.1981,
    "Climb": 0.2574,
@@ -2007,12 +2140,13 @@
    "Length": 19.3,
    "Elevation": "155",
    "Lead_in": 0.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Spinfinity Ultra",
    "URL": "https://zwiftinsider.com/route/spinfinity-ultra/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0347,
    "Punch": 0.1779,
    "Climb": 0.1921,
@@ -2022,12 +2156,13 @@
    "Length": 35,
    "Elevation": "291",
    "Lead_in": 0.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Stay Puft Pursuit",
    "URL": "https://zwiftinsider.com/route/stay-puft-pursuit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.2021,
    "Punch": 0.0454,
    "Climb": 0.1567,
@@ -2037,12 +2172,13 @@
    "Length": 31.2,
    "Elevation": "416",
    "Lead_in": 0.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "The 6 Train",
    "URL": "https://zwiftinsider.com/route/the-6-train/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0567,
    "Punch": 0.5165,
    "Climb": 0,
@@ -2052,12 +2188,13 @@
    "Length": 6.5,
    "Elevation": "69",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The 6 Train Reverse",
    "URL": "https://zwiftinsider.com/route/the-6-train-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.5729,
    "Climb": 0,
@@ -2067,12 +2204,13 @@
    "Length": 6.5,
    "Elevation": "69",
    "Lead_in": 0.4,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Double Borough",
    "URL": "https://zwiftinsider.com/route/the-double-borough/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.254,
    "Punch": 0.2037,
    "Climb": 0.0503,
@@ -2082,12 +2220,13 @@
    "Length": 17.8,
    "Elevation": "147",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Greenway",
    "URL": "https://zwiftinsider.com/route/the-greenway/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.1948,
    "Punch": 0.178,
    "Climb": 0.0167,
@@ -2097,12 +2236,13 @@
    "Length": 36.2,
    "Elevation": "290",
    "Lead_in": 0.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Highline",
    "URL": "https://zwiftinsider.com/route/the-highline/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0012,
    "Punch": 0.0592,
    "Climb": 0.4078,
@@ -2112,12 +2252,13 @@
    "Length": 10.5,
    "Elevation": "179",
    "Lead_in": 10,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "The Highline Reverse",
    "URL": "https://zwiftinsider.com/route/the-highline-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0046,
    "Punch": 0.1217,
    "Climb": 0.3371,
@@ -2127,12 +2268,13 @@
    "Length": 10.5,
    "Elevation": "179",
    "Lead_in": 10.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Times Square Circuit",
    "URL": "https://zwiftinsider.com/route/times-square-circuit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0897,
    "Punch": 0.3619,
    "Climb": 0.1424,
@@ -2142,12 +2284,13 @@
    "Length": 3.5,
    "Elevation": "20",
    "Lead_in": 0.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Toefield Tornado",
    "URL": "https://zwiftinsider.com/route/toefield-tornado/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.173,
    "Punch": 0.3837,
    "Climb": 0,
@@ -2157,12 +2300,13 @@
    "Length": 10.2,
    "Elevation": "53",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Watts the Limit",
    "URL": "https://zwiftinsider.com/route/watts-the-limit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0095,
    "Punch": 0.4342,
    "Climb": 0,
@@ -2172,7 +2316,8 @@
    "Length": 29.5,
    "Elevation": "200",
    "Lead_in": 1.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Champs-Élysées",
@@ -2187,7 +2332,8 @@
    "Length": 6.6,
    "Elevation": "39",
    "Lead_in": 3.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Cirque du Suffer",
@@ -2202,7 +2348,8 @@
    "Length": 20.8,
    "Elevation": "29",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "NA"
  },
  {
    "Route": "Crêpe Escape",
@@ -2217,7 +2364,8 @@
    "Length": 16.4,
    "Elevation": "113",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "NA"
  },
  {
    "Route": "Double Espresso",
@@ -2232,7 +2380,8 @@
    "Length": 30.5,
    "Elevation": "221",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "NA"
  },
  {
    "Route": "Heart of Montmartre",
@@ -2247,7 +2396,8 @@
    "Length": 74.5,
    "Elevation": "500",
    "Lead_in": 3.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "La Boucle",
@@ -2262,7 +2412,8 @@
    "Length": 16,
    "Elevation": "117",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "NA"
  },
  {
    "Route": "Loop de loop de loop",
@@ -2277,7 +2428,8 @@
    "Length": 7.2,
    "Elevation": "36",
    "Lead_in": 3.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "Lutece Express",
@@ -2292,7 +2444,8 @@
    "Length": 6.6,
    "Elevation": "39",
    "Lead_in": 3.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Montmartre Mixer",
@@ -2307,7 +2460,8 @@
    "Length": 25.1,
    "Elevation": "190",
    "Lead_in": 2.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "NA"
  },
  {
    "Route": "Paris Toujours",
@@ -2322,7 +2476,8 @@
    "Length": 69.2,
    "Elevation": "448",
    "Lead_in": 3.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "NA"
  },
  {
    "Route": "Cobbled Climbs",
@@ -2337,7 +2492,8 @@
    "Length": 9.2,
    "Elevation": "134",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Cobbled Climbs Reverse",
@@ -2352,7 +2508,8 @@
    "Length": 9.2,
    "Elevation": "134",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Cobbled Crown",
@@ -2367,7 +2524,8 @@
    "Length": 24,
    "Elevation": "288",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Libby Hill After Party",
@@ -2382,7 +2540,8 @@
    "Length": 32.9,
    "Elevation": "160",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Richmond 2015 Worlds Reverse",
@@ -2397,7 +2556,8 @@
    "Length": 16.2,
    "Elevation": "158",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Richmond Loop Around",
@@ -2412,7 +2572,8 @@
    "Length": 42.6,
    "Elevation": "556",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Richmond Rollercoaster",
@@ -2427,7 +2588,8 @@
    "Length": 5.1,
    "Elevation": "20",
    "Lead_in": 12.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Richmond UCI Worlds",
@@ -2442,7 +2604,8 @@
    "Length": 16.2,
    "Elevation": "158",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "The Fan Flats",
@@ -2457,7 +2620,8 @@
    "Length": 5.1,
    "Elevation": "20",
    "Lead_in": 4.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "BRAEk-fast Crits and Grits",
@@ -2472,7 +2636,8 @@
    "Length": 20.8,
    "Elevation": "226",
    "Lead_in": 1.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "City and the Sgurr",
@@ -2487,7 +2652,8 @@
    "Length": 5.9,
    "Elevation": "103",
    "Lead_in": 2.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Dùn Dash",
@@ -2502,7 +2668,8 @@
    "Length": 12.4,
    "Elevation": "138",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Glasgow Crit Circuit",
@@ -2517,7 +2684,8 @@
    "Length": 3,
    "Elevation": "33",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Glasgow Crit Six",
@@ -2532,7 +2700,8 @@
    "Length": 18.1,
    "Elevation": "199",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Glasgow Reverse",
@@ -2547,7 +2716,8 @@
    "Length": 3,
    "Elevation": "33",
    "Lead_in": 1.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Loch Loop",
@@ -2562,7 +2732,8 @@
    "Length": 8.1,
    "Elevation": "71",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Outer Scotland",
@@ -2577,7 +2748,8 @@
    "Length": 11.1,
    "Elevation": "104",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Rolling Highlands",
@@ -2592,7 +2764,8 @@
    "Length": 9,
    "Elevation": "77",
    "Lead_in": 5.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Scotland After Party",
@@ -2607,7 +2780,8 @@
    "Length": 13.6,
    "Elevation": "189",
    "Lead_in": 1.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Scotland Smash",
@@ -2622,7 +2796,8 @@
    "Length": 17.8,
    "Elevation": "167",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Epiloch",
@@ -2637,7 +2812,8 @@
    "Length": 8.1,
    "Elevation": "71",
    "Lead_in": 3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Muckle Yin",
@@ -2652,7 +2828,8 @@
    "Length": 23.4,
    "Elevation": "282",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Accelerate to Elevate",
@@ -2667,7 +2844,8 @@
    "Length": 41.3,
    "Elevation": "1,152",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Beach Island Loop",
@@ -2682,7 +2860,8 @@
    "Length": 12.8,
    "Elevation": "49",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Big Flat 8",
@@ -2697,7 +2876,8 @@
    "Length": 29.2,
    "Elevation": "103",
    "Lead_in": 2.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Big Foot Hills",
@@ -2712,7 +2892,8 @@
    "Length": 67.6,
    "Elevation": "708",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Big Loop",
@@ -2727,7 +2908,8 @@
    "Length": 42.6,
    "Elevation": "662",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Big Loop Reverse",
@@ -2742,7 +2924,8 @@
    "Length": 42.6,
    "Elevation": "658",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Bigger Loop",
@@ -2757,7 +2940,8 @@
    "Length": 53.2,
    "Elevation": "691",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Canopies and Coastlines",
@@ -2772,7 +2956,8 @@
    "Length": 22.6,
    "Elevation": "124",
    "Lead_in": 5.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Climb Control",
@@ -2787,7 +2972,8 @@
    "Length": 23.7,
    "Elevation": "191",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Climb Portal - Volcano",
@@ -2802,7 +2988,8 @@
    "Length": 7.4,
    "Elevation": "20",
    "Lead_in": 2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Climber's Gambit",
@@ -2817,7 +3004,8 @@
    "Length": 27.8,
    "Elevation": "671",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Coast Crusher",
@@ -2832,7 +3020,8 @@
    "Length": 34.6,
    "Elevation": "175",
    "Lead_in": 8.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Coast to Coast",
@@ -2847,7 +3036,8 @@
    "Length": 24.1,
    "Elevation": "154",
    "Lead_in": 2.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Coastal Crown Loop",
@@ -2862,7 +3052,8 @@
    "Length": 15.1,
    "Elevation": "185",
    "Lead_in": 8.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Mountainous"
  },
  {
    "Route": "Danger Noodle",
@@ -2877,7 +3068,8 @@
    "Length": 32.1,
    "Elevation": "414",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Deca Dash",
@@ -2892,7 +3084,8 @@
    "Length": 48.3,
    "Elevation": "484",
    "Lead_in": 4.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Downtown Eruption",
@@ -2907,7 +3100,8 @@
    "Length": 19.4,
    "Elevation": "275",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Mountainous"
  },
  {
    "Route": "Downtown Titans",
@@ -2922,7 +3116,8 @@
    "Length": 24.6,
    "Elevation": "292",
    "Lead_in": 0.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Dust In The Wind",
@@ -2937,7 +3132,8 @@
    "Length": 52.1,
    "Elevation": "583",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Eastern Eight",
@@ -2952,7 +3148,8 @@
    "Length": 51.7,
    "Elevation": "407",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Elevation Evaluation",
@@ -2967,7 +3164,8 @@
    "Length": 24.6,
    "Elevation": "396",
    "Lead_in": 3.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Mountainous"
  },
  {
    "Route": "Flat Out Fast",
@@ -2982,7 +3180,8 @@
    "Length": 21.4,
    "Elevation": "46",
    "Lead_in": 0.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Flat Route Reverse",
@@ -2997,7 +3196,8 @@
    "Length": 10.3,
    "Elevation": "61",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Four Horsemen",
@@ -3012,7 +3212,8 @@
    "Length": 89.8,
    "Elevation": "2,109",
    "Lead_in": 0.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Glyph Heights",
@@ -3027,7 +3228,8 @@
    "Length": 25.4,
    "Elevation": "537",
    "Lead_in": 8.6,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Going Coastal",
@@ -3042,7 +3244,8 @@
    "Length": 16.4,
    "Elevation": "63",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Handful Of Gravel",
@@ -3057,7 +3260,8 @@
    "Length": 6.1,
    "Elevation": "75",
    "Lead_in": 4.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Hilltop Hustle",
@@ -3072,7 +3276,8 @@
    "Length": 13.6,
    "Elevation": "336",
    "Lead_in": 2.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Hilly Route Reverse",
@@ -3087,7 +3292,8 @@
    "Length": 9.2,
    "Elevation": "109",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Hot Laps",
@@ -3102,7 +3308,8 @@
    "Length": 23.3,
    "Elevation": "149",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Itza Climb Finish",
@@ -3117,7 +3324,8 @@
    "Length": 30.1,
    "Elevation": "290",
    "Lead_in": 0.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Itza Party",
@@ -3132,7 +3340,8 @@
    "Length": 45.8,
    "Elevation": "506",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Jarvis Seaside Sprint",
@@ -3147,7 +3356,8 @@
    "Length": 12.5,
    "Elevation": "95",
    "Lead_in": 2.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Jungle Circuit",
@@ -3162,7 +3372,8 @@
    "Length": 7.9,
    "Elevation": "83",
    "Lead_in": 5.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Jungle Circuit Reverse",
@@ -3177,7 +3388,8 @@
    "Length": 7.9,
    "Elevation": "83",
    "Lead_in": 6.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Jurassic Coast",
@@ -3192,7 +3404,8 @@
    "Length": 19.3,
    "Elevation": "212",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Legends and Lava",
@@ -3207,7 +3420,8 @@
    "Length": 24.5,
    "Elevation": "352",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Loop de Loop",
@@ -3222,7 +3436,8 @@
    "Length": 12.4,
    "Elevation": "144",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Loopin Lava",
@@ -3237,7 +3452,8 @@
    "Length": 14.2,
    "Elevation": "196",
    "Lead_in": 4.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Mayan 8",
@@ -3252,7 +3468,8 @@
    "Length": 23.1,
    "Elevation": "241",
    "Lead_in": 3.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Mayan Mash",
@@ -3267,7 +3484,8 @@
    "Length": 34.6,
    "Elevation": "755",
    "Lead_in": 3.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Mayan San Remo",
@@ -3282,7 +3500,8 @@
    "Length": 21.1,
    "Elevation": "217",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Mountain Mash",
@@ -3297,7 +3516,8 @@
    "Length": 5.8,
    "Elevation": "335",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Muir And The Mountain",
@@ -3312,7 +3532,8 @@
    "Length": 34.1,
    "Elevation": "792",
    "Lead_in": 5.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Navig8",
@@ -3327,7 +3548,8 @@
    "Length": 63.9,
    "Elevation": "417",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Ocean Lava Cliffside Loop",
@@ -3342,7 +3564,8 @@
    "Length": 19.1,
    "Elevation": "156",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Oh Hill No",
@@ -3357,7 +3580,8 @@
    "Length": 7.9,
    "Elevation": "306",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Out And Back Again",
@@ -3372,7 +3596,8 @@
    "Length": 39.9,
    "Elevation": "328",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Peak Performance",
@@ -3387,7 +3612,8 @@
    "Length": 45.8,
    "Elevation": "726",
    "Lead_in": 0.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Power Punches",
@@ -3402,7 +3628,8 @@
    "Length": 23.5,
    "Elevation": "205",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Power to the Portal",
@@ -3417,7 +3644,8 @@
    "Length": 17.6,
    "Elevation": "99",
    "Lead_in": 0.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Power to the Tower",
@@ -3432,7 +3660,8 @@
    "Length": 44.7,
    "Elevation": "1,493",
    "Lead_in": 0.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Quatch Quest",
@@ -3447,7 +3676,8 @@
    "Length": 46.5,
    "Elevation": "1,706",
    "Lead_in": 0.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Radio Rendezvous",
@@ -3462,7 +3692,8 @@
    "Length": 20.5,
    "Elevation": "736",
    "Lead_in": 3.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Repack Rush",
@@ -3477,7 +3708,8 @@
    "Length": 2.8,
    "Elevation": "28",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Road To Ruins Reverse",
@@ -3492,7 +3724,8 @@
    "Length": 29.6,
    "Elevation": "275",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Road to Ruins",
@@ -3507,7 +3740,8 @@
    "Length": 29.6,
    "Elevation": "275",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Road to Sky",
@@ -3522,7 +3756,8 @@
    "Length": 17.5,
    "Elevation": "1,044",
    "Lead_in": 0.1,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Sand And Sequoias",
@@ -3537,7 +3772,8 @@
    "Length": 20.1,
    "Elevation": "175",
    "Lead_in": 2.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Seaside Sprint",
@@ -3552,7 +3788,8 @@
    "Length": 6.3,
    "Elevation": "47",
    "Lead_in": 3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Serpentine 8",
@@ -3567,7 +3804,8 @@
    "Length": 19.3,
    "Elevation": "206",
    "Lead_in": 7.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Shorelines and Summits",
@@ -3582,7 +3820,8 @@
    "Length": 46.2,
    "Elevation": "773",
    "Lead_in": 4.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Snowman",
@@ -3597,7 +3836,8 @@
    "Length": 44,
    "Elevation": "578",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Southern Coast Cruise",
@@ -3612,7 +3852,8 @@
    "Length": 23.6,
    "Elevation": "136",
    "Lead_in": 2.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Spiral into the Volcano",
@@ -3627,7 +3868,8 @@
    "Length": 55.6,
    "Elevation": "355",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Sugar Cookie",
@@ -3642,7 +3884,8 @@
    "Length": 33.6,
    "Elevation": "250",
    "Lead_in": 5.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Tair Dringfa Fechan",
@@ -3657,7 +3900,8 @@
    "Length": 31.1,
    "Elevation": "372",
    "Lead_in": 0.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Temple Trek",
@@ -3672,7 +3916,8 @@
    "Length": 6.5,
    "Elevation": "25",
    "Lead_in": 4.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Tempus Fugit",
@@ -3687,7 +3932,8 @@
    "Length": 17.2,
    "Elevation": "26",
    "Lead_in": 2.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "The Big Ring",
@@ -3702,7 +3948,8 @@
    "Length": 48.9,
    "Elevation": "268",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Classic",
@@ -3717,7 +3964,8 @@
    "Length": 4.8,
    "Elevation": "48",
    "Lead_in": 4.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Magnificent 8",
@@ -3732,7 +3980,8 @@
    "Length": 28.9,
    "Elevation": "155",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "The Mega Pretzel",
@@ -3747,7 +3996,8 @@
    "Length": 107.3,
    "Elevation": "1,638",
    "Lead_in": 3.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "The Uber Pretzel",
@@ -3762,7 +4012,8 @@
    "Length": 128.3,
    "Elevation": "2,380",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Three Little Sisters",
@@ -3777,7 +4028,8 @@
    "Length": 37.7,
    "Elevation": "435",
    "Lead_in": 0.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Three Sisters",
@@ -3792,7 +4044,8 @@
    "Length": 48,
    "Elevation": "896",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Three Sisters Reverse",
@@ -3807,7 +4060,8 @@
    "Length": 45.7,
    "Elevation": "878",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Three Step Sisters",
@@ -3822,7 +4076,8 @@
    "Length": 37.9,
    "Elevation": "586",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Tick Tock",
@@ -3837,7 +4092,8 @@
    "Length": 16.9,
    "Elevation": "53",
    "Lead_in": 2.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Tides and Temples",
@@ -3852,7 +4108,8 @@
    "Length": 36.5,
    "Elevation": "460",
    "Lead_in": 2.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Tour of Fire and Ice",
@@ -3867,7 +4124,8 @@
    "Length": 25.4,
    "Elevation": "1,164",
    "Lead_in": 2.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Triple Flat Loops",
@@ -3882,7 +4140,8 @@
    "Length": 34,
    "Elevation": "157",
    "Lead_in": 2.3,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Triple Twist",
@@ -3897,7 +4156,8 @@
    "Length": 19.9,
    "Elevation": "180",
    "Lead_in": 4.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "Two Bridges Loop",
@@ -3912,7 +4172,8 @@
    "Length": 7.1,
    "Elevation": "81",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Volcano Circuit",
@@ -3927,7 +4188,8 @@
    "Length": 4.1,
    "Elevation": "20",
    "Lead_in": 2.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Volcano Circuit CCW",
@@ -3942,7 +4204,8 @@
    "Length": 4.1,
    "Elevation": "20",
    "Lead_in": 4.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Volcano Climb",
@@ -3957,7 +4220,8 @@
    "Length": 22.9,
    "Elevation": "203",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Volcano Climb After Party",
@@ -3972,7 +4236,8 @@
    "Length": 39.9,
    "Elevation": "285",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Volcano Flat",
@@ -3987,7 +4252,8 @@
    "Length": 12.3,
    "Elevation": "50",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Volcano Flat Reverse",
@@ -4002,7 +4268,8 @@
    "Length": 12.3,
    "Elevation": "50",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "WBR Climbing Series",
@@ -4017,7 +4284,8 @@
    "Length": 43.2,
    "Elevation": "1,116",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Waisted 8",
@@ -4032,7 +4300,8 @@
    "Length": 30.7,
    "Elevation": "144",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Watopia Figure 8",
@@ -4047,7 +4316,8 @@
    "Length": 29.7,
    "Elevation": "254",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Watopia Figure 8 Reverse",
@@ -4062,7 +4332,8 @@
    "Length": 29.7,
    "Elevation": "254",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Watopia Flat Route",
@@ -4077,7 +4348,8 @@
    "Length": 10.3,
    "Elevation": "61",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Flat"
  },
  {
    "Route": "Watopia Hilly Route",
@@ -4092,7 +4364,8 @@
    "Length": 9.2,
    "Elevation": "109",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Watopia Mountain 8",
@@ -4107,7 +4380,8 @@
    "Length": 32.3,
    "Elevation": "691",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Watopia Mountain Route",
@@ -4122,7 +4396,8 @@
    "Length": 29.7,
    "Elevation": "683",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Watopia Pretzel",
@@ -4137,7 +4412,8 @@
    "Length": 72.5,
    "Elevation": "1,361",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Watopia's Waistband",
@@ -4152,7 +4428,8 @@
    "Length": 25.5,
    "Elevation": "95",
    "Lead_in": 2.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "Watts of the Wild",
@@ -4167,7 +4444,8 @@
    "Length": 42,
    "Elevation": "309",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Whole Lotta Lava",
@@ -4182,7 +4460,8 @@
    "Length": 12.3,
    "Elevation": "161",
    "Lead_in": 4.8,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "ZG25 Queen",
@@ -4197,7 +4476,8 @@
    "Length": 44.6,
    "Elevation": "894",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Zwift Bambino Fondo",
@@ -4212,7 +4492,8 @@
    "Length": 51.9,
    "Elevation": "580",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Zwift Bambino Fondo 2022",
@@ -4227,7 +4508,8 @@
    "Length": 53.1,
    "Elevation": "397",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Zwift Games 2024 Epic",
@@ -4242,7 +4524,8 @@
    "Length": 79.7,
    "Elevation": "822",
    "Lead_in": 1.9,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Zwift Gran Fondo",
@@ -4257,7 +4540,8 @@
    "Length": 97.5,
    "Elevation": "1,193",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Zwift Gran Fondo 2022",
@@ -4272,7 +4556,8 @@
    "Length": 92.6,
    "Elevation": "1,114",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Zwift Medio Fondo",
@@ -4287,7 +4572,8 @@
    "Length": 72.5,
    "Elevation": "1,006",
    "Lead_in": 0.5,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "Zwift Medio Fondo 2022",
@@ -4302,7 +4588,8 @@
    "Length": 79.1,
    "Elevation": "918",
    "Lead_in": 0.2,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Mountainous"
  },
  {
    "Route": "2019 Worlds Harrogate Circuit",
@@ -4317,7 +4604,8 @@
    "Length": 13.8,
    "Elevation": "245",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Duchy Estate",
@@ -4332,7 +4620,8 @@
    "Length": 3,
    "Elevation": "41",
    "Lead_in": 1.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Harrogate Circuit Reverse",
@@ -4347,7 +4636,8 @@
    "Length": 13.8,
    "Elevation": "245",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Queen's Highway",
@@ -4362,7 +4652,8 @@
    "Length": 3,
    "Elevation": "41",
    "Lead_in": 2.7,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Rolling"
  },
  {
    "Route": "Queen's Highway After Party",
@@ -4377,7 +4668,8 @@
    "Length": 17.1,
    "Elevation": "259",
    "Lead_in": 2.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Royal Pump Room 8",
@@ -4392,7 +4684,8 @@
    "Length": 27.7,
    "Elevation": "491",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Tour Of Tewit Well",
@@ -4407,7 +4700,8 @@
    "Length": 10.9,
    "Elevation": "205",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "Yorkshire Double Loop",
@@ -4422,7 +4716,8 @@
    "Length": 29.6,
    "Elevation": "547",
    "Lead_in": 0,
-   "Ladder": false
+   "Ladder": false,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Rolling Highlands",
@@ -4437,12 +4732,13 @@
    "Length": 23,
    "Elevation": "183",
    "Lead_in": 5.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x LaGuardia Loop",
    "URL": "https://zwiftinsider.com/route/laguardia-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.009,
    "Punch": 0.509,
    "Climb": 0,
@@ -4452,12 +4748,13 @@
    "Length": 15.4,
    "Elevation": "151",
    "Lead_in": 1.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "6x LaGuardia Loop",
    "URL": "https://zwiftinsider.com/route/laguardia-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.009,
    "Punch": 0.492,
    "Climb": 0,
@@ -4467,12 +4764,13 @@
    "Length": 18.2,
    "Elevation": "177",
    "Lead_in": 1.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "8x LaGuardia Loop Reverse",
    "URL": "https://zwiftinsider.com/route/laguardia-loop-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.2315,
    "Punch": 0.2315,
    "Climb": 0,
@@ -4482,7 +4780,8 @@
    "Length": 24.7,
    "Elevation": "230",
    "Lead_in": 2.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "4x The Classic",
@@ -4497,7 +4796,8 @@
    "Length": 23.5,
    "Elevation": "210",
    "Lead_in": 4.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x The Classic",
@@ -4512,7 +4812,8 @@
    "Length": 28.4,
    "Elevation": "258",
    "Lead_in": 4.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x 2019 Worlds Harrogate Circuit",
@@ -4527,7 +4828,8 @@
    "Length": 27.8,
    "Elevation": "492",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Innsbruckring",
@@ -4542,7 +4844,8 @@
    "Length": 17.8,
    "Elevation": "155",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Innsbruckring",
@@ -4557,7 +4860,8 @@
    "Length": 26.6,
    "Elevation": "232",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Croissant",
@@ -4572,7 +4876,8 @@
    "Length": 21.8,
    "Elevation": "122",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Croissant",
@@ -4587,7 +4892,8 @@
    "Length": 31.3,
    "Elevation": "171",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Jungle Circuit",
@@ -4602,7 +4908,8 @@
    "Length": 21.4,
    "Elevation": "175",
    "Lead_in": 5.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x Jungle Circuit",
@@ -4617,7 +4924,8 @@
    "Length": 29.2,
    "Elevation": "258",
    "Lead_in": 5.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Sprinter's Playground",
@@ -4632,7 +4940,8 @@
    "Length": 24.9,
    "Elevation": "135",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "6x Glasgow Reverse",
@@ -4647,7 +4956,8 @@
    "Length": 19.3,
    "Elevation": "205",
    "Lead_in": 1.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "7x Glasgow Reverse",
@@ -4662,7 +4972,8 @@
    "Length": 22.3,
    "Elevation": "238",
    "Lead_in": 1.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "8x Glasgow Reverse",
@@ -4677,7 +4988,8 @@
    "Length": 25.3,
    "Elevation": "271",
    "Lead_in": 1.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "9x Glasgow Reverse",
@@ -4692,7 +5004,8 @@
    "Length": 28.3,
    "Elevation": "304",
    "Lead_in": 1.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Volcano Flat",
@@ -4707,7 +5020,8 @@
    "Length": 25.2,
    "Elevation": "101",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Volcano Flat Reverse",
@@ -4722,7 +5036,8 @@
    "Length": 24.9,
    "Elevation": "100",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Cobbled Climbs",
@@ -4737,7 +5052,8 @@
    "Length": 18.6,
    "Elevation": "270",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x Cobbled Climbs Reverse",
@@ -4752,7 +5068,8 @@
    "Length": 27.6,
    "Elevation": "401",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Watopia Hilly Route",
@@ -4767,7 +5084,8 @@
    "Length": 18.9,
    "Elevation": "218",
    "Lead_in": 0.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x Seaside Sprint",
@@ -4782,7 +5100,8 @@
    "Length": 21.8,
    "Elevation": "177",
    "Lead_in": 3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x Seaside Sprint",
@@ -4797,12 +5116,13 @@
    "Length": 28.1,
    "Elevation": "224",
    "Lead_in": 3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Grand Central Circuit",
    "URL": "https://zwiftinsider.com/route/grand-central-circuit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.01,
    "Punch": 0.239,
    "Climb": 0.252,
@@ -4812,7 +5132,8 @@
    "Length": 15.1,
    "Elevation": "307",
    "Lead_in": 1.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Outer Scotland",
@@ -4827,12 +5148,13 @@
    "Length": 22.5,
    "Elevation": "209",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x Issendorf Express",
    "URL": "https://zwiftinsider.com/route/issendorf-express/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0235,
    "Punch": 0.459,
    "Climb": 0,
@@ -4842,12 +5164,13 @@
    "Length": 21.8,
    "Elevation": "158",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "4x Issendorf Express",
    "URL": "https://zwiftinsider.com/route/issendorf-express/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.021,
    "Punch": 0.416,
    "Climb": 0,
@@ -4857,12 +5180,13 @@
    "Length": 29,
    "Elevation": "211",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x The 6 Train",
    "URL": "https://zwiftinsider.com/route/the-6-train/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0485,
    "Punch": 0.438,
    "Climb": 0,
@@ -4872,12 +5196,13 @@
    "Length": 19.5,
    "Elevation": "207",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "4x The 6 Train Reverse",
    "URL": "https://zwiftinsider.com/route/the-6-train-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.447,
    "Climb": 0,
@@ -4887,7 +5212,8 @@
    "Length": 26.2,
    "Elevation": "277",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "8x The Bell Lap",
@@ -4902,7 +5228,8 @@
    "Length": 15.8,
    "Elevation": "135",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "10x The Bell Lap",
@@ -4917,7 +5244,8 @@
    "Length": 19.7,
    "Elevation": "169",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "12x The Bell Lap",
@@ -4932,7 +5260,8 @@
    "Length": 23.7,
    "Elevation": "202",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x London Classique",
@@ -4947,12 +5276,13 @@
    "Length": 22,
    "Elevation": "120",
    "Lead_in": 5.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Double Span Spin",
    "URL": "https://zwiftinsider.com/route/double-span-spin/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.006,
    "Punch": 0.438,
    "Climb": 0.039,
@@ -4962,12 +5292,13 @@
    "Length": 19.6,
    "Elevation": "200",
    "Lead_in": 5.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Park Perimeter Loop",
    "URL": "https://zwiftinsider.com/route/park-perimeter-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.48,
    "Climb": 0,
@@ -4977,12 +5308,13 @@
    "Length": 19.9,
    "Elevation": "255",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x Park Perimeter Loop",
    "URL": "https://zwiftinsider.com/route/park-perimeter-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0,
    "Punch": 0.411,
    "Climb": 0,
@@ -4992,12 +5324,13 @@
    "Length": 29.7,
    "Elevation": "381",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Park Perimeter Reverse",
    "URL": "https://zwiftinsider.com/route/park-perimeter-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.0505,
    "Punch": 0.427,
    "Climb": 0,
@@ -5007,7 +5340,8 @@
    "Length": 19.7,
    "Elevation": "252",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Hilly Route Reverse",
@@ -5022,7 +5356,8 @@
    "Length": 18.6,
    "Elevation": "218",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "7x Downtown Dolphin",
@@ -5037,7 +5372,8 @@
    "Length": 13.8,
    "Elevation": "119",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "9x Downtown Dolphin",
@@ -5052,7 +5388,8 @@
    "Length": 17.7,
    "Elevation": "153",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "10x Downtown Dolphin",
@@ -5067,7 +5404,8 @@
    "Length": 19.7,
    "Elevation": "170",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "11x Downtown Dolphin",
@@ -5082,7 +5420,8 @@
    "Length": 21.7,
    "Elevation": "187",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "5x Mech Isle Loop",
@@ -5097,7 +5436,8 @@
    "Length": 20.2,
    "Elevation": "194",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "5x Glasgow Crit Circuit",
@@ -5112,7 +5452,8 @@
    "Length": 15.3,
    "Elevation": "166",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "6x Glasgow Crit Circuit",
@@ -5127,7 +5468,8 @@
    "Length": 18.3,
    "Elevation": "199",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "7x Glasgow Crit Circuit",
@@ -5142,7 +5484,8 @@
    "Length": 21.3,
    "Elevation": "232",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "8x Glasgow Crit Circuit",
@@ -5157,12 +5500,13 @@
    "Length": 23.4,
    "Elevation": "265",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Toefield Tornado",
    "URL": "https://zwiftinsider.com/route/toefield-tornado/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.1555,
    "Punch": 0.343,
    "Climb": 0,
@@ -5172,7 +5516,8 @@
    "Length": 20.5,
    "Elevation": "106",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Champs-Élysées",
@@ -5187,7 +5532,8 @@
    "Length": 16.4,
    "Elevation": "92",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Champs-Élysées",
@@ -5202,7 +5548,8 @@
    "Length": 23,
    "Elevation": "132",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x Champs-Élysées",
@@ -5217,7 +5564,8 @@
    "Length": 29.7,
    "Elevation": "171",
    "Lead_in": 3.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Lutece Express",
@@ -5232,7 +5580,8 @@
    "Length": 23.4,
    "Elevation": "144",
    "Lead_in": 3.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x Lutece Express",
@@ -5247,7 +5596,8 @@
    "Length": 30,
    "Elevation": "184",
    "Lead_in": 3.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Sprinter's Playground",
@@ -5262,7 +5612,8 @@
    "Length": 24.9,
    "Elevation": "135",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Beach Island Loop",
@@ -5277,7 +5628,8 @@
    "Length": 25.8,
    "Elevation": "98",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Loop de Loop",
@@ -5292,12 +5644,13 @@
    "Length": 25,
    "Elevation": "289",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Astoria Line 8",
    "URL": "https://zwiftinsider.com/route/astoria-line-8/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.229,
    "Punch": 0.21,
    "Climb": 0.018,
@@ -5307,7 +5660,8 @@
    "Length": 23.6,
    "Elevation": "286",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x Volcano Circuit",
@@ -5322,7 +5676,8 @@
    "Length": 23.3,
    "Elevation": "122",
    "Lead_in": 2.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x Volcano Circuit CCW",
@@ -5337,7 +5692,8 @@
    "Length": 21.3,
    "Elevation": "111",
    "Lead_in": 4.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "5x Volcano Circuit CCW",
@@ -5352,7 +5708,8 @@
    "Length": 24.5,
    "Elevation": "132",
    "Lead_in": 4.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Yumezi Grit",
@@ -5367,7 +5724,8 @@
    "Length": 19.2,
    "Elevation": "234",
    "Lead_in": 4.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Yumezi Grit",
@@ -5382,12 +5740,13 @@
    "Length": 26.7,
    "Elevation": "317",
    "Lead_in": 4.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x Prospect Park Loop",
    "URL": "https://zwiftinsider.com/route/prospect-park-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.023,
    "Punch": 0.464,
    "Climb": 0,
@@ -5397,12 +5756,13 @@
    "Length": 21.8,
    "Elevation": "149",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x Prospect Park Loop",
    "URL": "https://zwiftinsider.com/route/prospect-park-loop/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.022,
    "Punch": 0.433,
    "Climb": 0,
@@ -5412,7 +5772,8 @@
    "Length": 27.2,
    "Elevation": "187",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x Duchy Estate",
@@ -5427,7 +5788,8 @@
    "Length": 16.7,
    "Elevation": "232",
    "Lead_in": 1.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "6x Duchy Estate",
@@ -5442,12 +5804,29 @@
    "Length": 19.7,
    "Elevation": "273",
    "Lead_in": 1.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
+ },
+ {
+   "Route": "7x Duchy Estate",
+   "URL": "https://zwiftinsider.com/route/duchy-estate/",
+   "World": "Yorkshire",
+   "Sprint": 0.002,
+   "Punch": 0.438,
+   "Climb": 0,
+   "TT": 0,
+   "Pursuit": 0.056,
+   "Endurance": 0.504,
+   "Length": 22.7,
+   "Elevation": "313",
+   "Lead_in": 1.7,
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Gotham Grind",
    "URL": "https://zwiftinsider.com/route/gotham-grind/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.049,
    "Punch": 0.446,
    "Climb": 0,
@@ -5457,12 +5836,13 @@
    "Length": 18.6,
    "Elevation": "193",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Gotham Grind Reverse",
    "URL": "https://zwiftinsider.com/route/gotham-grind-reverse/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.248,
    "Punch": 0.248,
    "Climb": 0,
@@ -5472,7 +5852,8 @@
    "Length": 18.9,
    "Elevation": "194",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Jarvis Seaside Sprint",
@@ -5487,7 +5868,8 @@
    "Length": 27.8,
    "Elevation": "226",
    "Lead_in": 2.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x The Epiloch",
@@ -5502,7 +5884,8 @@
    "Length": 19.2,
    "Elevation": "165",
    "Lead_in": 3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x Castle Crit",
@@ -5517,7 +5900,8 @@
    "Length": 18.9,
    "Elevation": "261",
    "Lead_in": 1.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "6x Castle Crit",
@@ -5532,7 +5916,8 @@
    "Length": 22.3,
    "Elevation": "305",
    "Lead_in": 1.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "7x Castle Crit",
@@ -5547,7 +5932,8 @@
    "Length": 25.8,
    "Elevation": "348",
    "Lead_in": 1.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "8x Castle Crit",
@@ -5562,12 +5948,13 @@
    "Length": 29.3,
    "Elevation": "392",
    "Lead_in": 1.5,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x Avon Flyer",
    "URL": "https://zwiftinsider.com/route/avon-flyer/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.015,
    "Punch": 0.489,
    "Climb": 0,
@@ -5577,12 +5964,13 @@
    "Length": 18.4,
    "Elevation": "129",
    "Lead_in": 1.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "6x Avon Flyer",
    "URL": "https://zwiftinsider.com/route/avon-flyer/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.014,
    "Punch": 0.469,
    "Climb": 0,
@@ -5592,7 +5980,8 @@
    "Length": 21.7,
    "Elevation": "154",
    "Lead_in": 1.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Fine and Sandy",
@@ -5607,7 +5996,8 @@
    "Length": 21.4,
    "Elevation": "155",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "3x The Fan Flats",
@@ -5622,7 +6012,8 @@
    "Length": 19.4,
    "Elevation": "80",
    "Lead_in": 4.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x The Fan Flats",
@@ -5637,7 +6028,8 @@
    "Length": 24.5,
    "Elevation": "99",
    "Lead_in": 4.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x London Flat",
@@ -5652,7 +6044,8 @@
    "Length": 24.4,
    "Elevation": "230",
    "Lead_in": 0.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Loch Loop",
@@ -5667,7 +6060,8 @@
    "Length": 24.2,
    "Elevation": "212",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "5x Neokyo Crit Course",
@@ -5682,7 +6076,8 @@
    "Length": 20.2,
    "Elevation": "103",
    "Lead_in": 0.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "6x Neokyo Crit Course",
@@ -5697,7 +6092,8 @@
    "Length": 24.1,
    "Elevation": "123",
    "Lead_in": 0.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Twilight Harbor",
@@ -5712,7 +6108,8 @@
    "Length": 20.8,
    "Elevation": "103",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Farmland Loop",
@@ -5727,7 +6124,8 @@
    "Length": 15.7,
    "Elevation": "115",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x City and the Sgurr",
@@ -5742,7 +6140,8 @@
    "Length": 20.5,
    "Elevation": "371",
    "Lead_in": 2.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "3x Two Bridges Loop",
@@ -5757,7 +6156,8 @@
    "Length": 21.5,
    "Elevation": "242",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Tour Of Tewit Well",
@@ -5772,7 +6172,8 @@
    "Length": 21.8,
    "Elevation": "409",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Sleepless City",
@@ -5787,7 +6188,8 @@
    "Length": 19.2,
    "Elevation": "85",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Sleepless City",
@@ -5802,12 +6204,13 @@
    "Length": 28.7,
    "Elevation": "128",
    "Lead_in": 0.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "5x Times Square Circuit",
    "URL": "https://zwiftinsider.com/route/times-square-circuit/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.153,
    "Punch": 0.367,
    "Climb": 0,
@@ -5817,7 +6220,8 @@
    "Length": 18.1,
    "Elevation": "100",
    "Lead_in": 0.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "4x Rooftop Rendezvous",
@@ -5832,7 +6236,8 @@
    "Length": 17.9,
    "Elevation": "251",
    "Lead_in": 2.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Three Village Loop",
@@ -5847,7 +6252,8 @@
    "Length": 23.5,
    "Elevation": "191",
    "Lead_in": 2.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "3x Bridges and Boardwalks",
@@ -5862,7 +6268,8 @@
    "Length": 21,
    "Elevation": "189",
    "Lead_in": 1.9,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Electric Loop",
@@ -5877,7 +6284,8 @@
    "Length": 17.9,
    "Elevation": "84",
    "Lead_in": 0,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "2x Oh Hill No",
@@ -5892,7 +6300,8 @@
    "Length": 15.9,
    "Elevation": "611",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Mountainous"
  },
  {
    "Route": "2x Flatland Loop",
@@ -5907,7 +6316,8 @@
    "Length": 25.9,
    "Elevation": "199",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "7x Queen's Highway",
@@ -5922,7 +6332,8 @@
    "Length": 23.7,
    "Elevation": "326",
    "Lead_in": 2.7,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Greater London Flat",
@@ -5937,7 +6348,8 @@
    "Length": 29,
    "Elevation": "151",
    "Lead_in": 5.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  },
  {
    "Route": "3x Handful Of Gravel",
@@ -5952,12 +6364,13 @@
    "Length": 22.6,
    "Elevation": "244",
    "Lead_in": 4.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Lady Liberty",
    "URL": "https://zwiftinsider.com/route/lady-liberty/",
-   "World": "New York",
+   "World": "NYC",
    "Sprint": 0.05,
    "Punch": 0.246,
    "Climb": 0.139,
@@ -5967,7 +6380,8 @@
    "Length": 25,
    "Elevation": "412",
    "Lead_in": 0.3,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "3x Railways and Rooftops",
@@ -5982,7 +6396,8 @@
    "Length": 20.8,
    "Elevation": "232",
    "Lead_in": 2.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Rolling"
  },
  {
    "Route": "2x Island Outskirts",
@@ -5997,7 +6412,8 @@
    "Length": 22.9,
    "Elevation": "182",
    "Lead_in": 0.2,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Kappa Quest",
@@ -6012,7 +6428,8 @@
    "Length": 22,
    "Elevation": "401",
    "Lead_in": 3.8,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Chain Chomper",
@@ -6027,7 +6444,8 @@
    "Length": 29.6,
    "Elevation": "372",
    "Lead_in": 2.4,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Spirit Forest",
@@ -6042,7 +6460,8 @@
    "Length": 21.5,
    "Elevation": "392",
    "Lead_in": 4.6,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "2x Richmond Rollercoaster",
@@ -6057,6 +6476,7 @@
    "Length": 22.2,
    "Elevation": "190",
    "Lead_in": 12.1,
-   "Ladder": true
+   "Ladder": true,
+   "Type": "Flat"
  }
 ]

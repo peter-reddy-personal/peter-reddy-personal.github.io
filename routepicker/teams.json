@@ -85,6 +85,11 @@
         "name": "Graham Horton [SRT] K"
       },
       {
+        "id": 2300270,
+        "publicId": "a03838b1-f09a-46e2-9826-3bb7e36c4755",
+        "name": "Nick Brackenbury (SRT)"
+      },
+      {
         "id": 2596934,
         "publicId": "9bf1413f-4ffe-4178-b527-de97985b0814",
         "name": "Mountain Hippo [SRT/SZR/ACG/CN]"
@@ -224,7 +229,7 @@
       {
         "id": 4365456,
         "publicId": "b40a56b8-261f-4e3c-9eac-fcf1efa401f0",
-        "name": ". Craig Harper(Rhino)"
+        "name": ".4 Craig Harper(Rhino)"
       },
       {
         "id": 5949219,
@@ -275,7 +280,7 @@
       {
         "id": 3610784,
         "publicId": "e9b9803c-77b5-48e3-bc25-11ebc6434f73",
-        "name": "Chris Bolwell [A-P-V]"
+        "name": "Chris Bolwell [Rhino]"
       },
       {
         "id": 4690567,
@@ -407,7 +412,7 @@
       {
         "id": 4548230,
         "publicId": "e832ae9c-a17c-4816-84c2-f424196ce7ad",
-        "name": "5K evR (5 Falcons 🐦‍🔥)"
+        "name": "6K evR (6 Falcons 🐦‍🔥)"
       },
       {
         "id": 4577445,
@@ -532,6 +537,11 @@
         "name": "Ian.T [TV]"
       },
       {
+        "id": 4823714,
+        "publicId": "35c8efa6-1170-4c6e-bcf9-560ba8769251",
+        "name": "M G [TV](Hoors)"
+      },
+      {
         "id": 5277725,
         "publicId": "8d4b2da7-5c5f-417d-9416-0789c16fa3cd",
         "name": "Justin J Newton (FAAST🟡🌑)"
@@ -642,7 +652,7 @@
       {
         "id": 2305776,
         "publicId": "957fb3c7-885b-4ff0-a446-5cf141c80f98",
-        "name": "Kev T Ⓥ [CLS&Vegan]"
+        "name": "Kev T Ⓥ [CLS]"
       },
       {
         "id": 3248246,
@@ -947,7 +957,7 @@
       {
         "id": 3159617,
         "publicId": "f3aed7d6-5922-4d11-8c13-d5d05ee66da8",
-        "name": "6. Pete [Beasts]"
+        "name": "3/ Pete [Aerostars]"
       }
     ]
   },
@@ -999,7 +1009,7 @@
       {
         "id": 361994,
         "publicId": "08cdb505-d27b-4076-9c34-1bfd17fdbf4c",
-        "name": "6. AB (WMZ)"
+        "name": "7. AB (WMZ)"
       },
       {
         "id": 606426,
@@ -1112,7 +1122,7 @@
       {
         "id": 1076222,
         "publicId": "633e62b7-90e5-49ea-9028-e7afc2982f0c",
-        "name": "Hans Mallegrom (Herd)"
+        "name": "8.Hans Mallegrom (Herd)"
       },
       {
         "id": 1159925,
@@ -1441,7 +1451,7 @@
       {
         "id": 4594142,
         "publicId": "c73e0b78-faae-4ae4-acbe-dc71af0e6be3",
-        "name": "Shaine Spencer [HoFC]"
+        "name": "1 Shaine Spencer [YAKker]"
       },
       {
         "id": 4919149,
@@ -1502,7 +1512,7 @@
       {
         "id": 6685081,
         "publicId": "c8082fad-0483-40fd-ac1b-7520780dce57",
-        "name": ".. Duckman (OTR) 🦬 🦆"
+        "name": ".. Iceman (OTR) 🦬 🦆"
       }
     ]
   },
@@ -1825,7 +1835,7 @@
       {
         "id": 2460567,
         "publicId": "c7008aaf-e8aa-4515-b15b-d0909b844580",
-        "name": "2. Tom F(Rhino)"
+        "name": "3. Tom F(Rhino)"
       },
       {
         "id": 2588094,
@@ -1835,7 +1845,7 @@
       {
         "id": 3565025,
         "publicId": "e9f86b78-706e-48c1-91ea-fd24cc2e5555",
-        "name": "2 Heath (Rhino)"
+        "name": "3 Heath (Rhino)"
       },
       {
         "id": 3593272,
@@ -2295,7 +2305,7 @@
       {
         "id": 5205958,
         "publicId": "600232ae-5698-4efc-a63a-7c8642cc813a",
-        "name": "Fer Robledano [ZABI Ambar]"
+        "name": "Fer Robledano [ZABI Onix]"
       },
       {
         "id": 5564715,
@@ -2326,7 +2336,7 @@
       {
         "id": 15833,
         "publicId": "8b8f0f16-97c0-4e1b-8c38-6d7727ecdfea",
-        "name": "3 Simon(Herd/Devils)"
+        "name": "1 Simon(Herd/Devils)"
       },
       {
         "id": 60838,
@@ -2351,7 +2361,7 @@
       {
         "id": 1144401,
         "publicId": "395ec699-d0c7-4003-bb6a-1601cd495642",
-        "name": "Sam Singleton[WCC]"
+        "name": "Sam Singleton[HERD]"
       },
       {
         "id": 1339625,
@@ -2397,7 +2407,7 @@
       {
         "id": 390569,
         "publicId": "7a1b6596-9f0a-4f58-b4c2-7fd3850111bf",
-        "name": "Loren Pokorny (TT1 / Hagens Berman)"
+        "name": "Loren Pokorny (TT1 / USAF Dad 🇺🇸)"
       },
       {
         "id": 859098,
@@ -2531,6 +2541,11 @@
         "id": 1298544,
         "publicId": "48776fd1-4c3e-4f07-bcff-81c592be403b",
         "name": "Marco Müller [KLUB]"
+      },
+      {
+        "id": 1368099,
+        "publicId": "f022beb0-1134-4d72-9b13-3678fa0396e8",
+        "name": "Oli Beli (KLUB)"
       },
       {
         "id": 1379711,
@@ -2865,7 +2880,7 @@
       {
         "id": 1730413,
         "publicId": "8505d530-3bcf-4c39-86cd-7e6e8d89daeb",
-        "name": "Paul R (DIRT)"
+        "name": "Paul R (Spellbound)"
       },
       {
         "id": 2765354,
@@ -2885,7 +2900,7 @@
       {
         "id": 3602807,
         "publicId": "1a917e36-23b7-4913-b436-47a172f26817",
-        "name": ". CliveN [Spellbound]"
+        "name": ". CliveN [DIRT]"
       },
       {
         "id": 5185997,
@@ -3201,17 +3216,6 @@
     ]
   },
   {
-    "number": 202,
-    "name": "KLUB Bazookas",
-    "riders": [
-      {
-        "id": 1368099,
-        "publicId": "f022beb0-1134-4d72-9b13-3678fa0396e8",
-        "name": "Oli Beli (KLUB)"
-      }
-    ]
-  },
-  {
     "number": 205,
     "name": "Vikings Valgrind",
     "riders": [
@@ -3362,7 +3366,7 @@
       {
         "id": 1071585,
         "publicId": "92046718-7327-4145-85c6-1022165034c2",
-        "name": "World🇺🇦 Peace NVRWuz (OTE)"
+        "name": "World🇺🇦 Peace NVRWuz NoGC (OTE)"
       },
       {
         "id": 1736834,
@@ -3542,7 +3546,7 @@
       {
         "id": 317845,
         "publicId": "e63fc33e-2716-4e2c-8294-5c433d023819",
-        "name": "Francis Gryson (GTR)"
+        "name": "1. Francis (GTR)"
       },
       {
         "id": 865332,
@@ -3562,7 +3566,7 @@
       {
         "id": 1450154,
         "publicId": "8ac612d8-50a4-4d1e-8bb4-d4d2e4f8223b",
-        "name": "Spunky Mcdougal [GTR]"
+        "name": "2 Mcdougal [GTR]"
       },
       {
         "id": 5228528,
@@ -3993,7 +3997,7 @@
       {
         "id": 557678,
         "publicId": "f7aa81e2-ea48-4f56-9e1f-56651147dcf8",
-        "name": "🟠 J Pitts DIRT"
+        "name": "🟠 J Pitts PYRITES"
       },
       {
         "id": 579625,
@@ -4003,7 +4007,7 @@
       {
         "id": 733203,
         "publicId": "9866517a-2c08-4e7c-bb2f-2748979f3951",
-        "name": "Alex Green (pyrites)"
+        "name": "Alex Green (dirt)"
       },
       {
         "id": 946975,
@@ -4028,12 +4032,12 @@
       {
         "id": 3632608,
         "publicId": "97866090-018a-4a4c-abd4-35736befdb3d",
-        "name": "🤮 Paul (PYRITES)"
+        "name": "🤮 Paul (KILOS)"
       },
       {
         "id": 3669559,
         "publicId": "0a1fc5c7-6103-4c9c-a07b-aebb82ccbf3a",
-        "name": ". Rob (PYRITES)"
+        "name": ". Rob (DIRT)"
       },
       {
         "id": 3832397,
@@ -4048,7 +4052,7 @@
       {
         "id": 4590017,
         "publicId": "90a1b216-27bd-4d0e-9c0f-02a44a126ece",
-        "name": "Jeroen VV"
+        "name": "Jeroen VV (pyrites)"
       },
       {
         "id": 5512895,
@@ -4672,7 +4676,7 @@
       {
         "id": 2639239,
         "publicId": "0f6c1ddf-384f-475b-bc34-58ddd16b98fe",
-        "name": "Martin Müller (Rhino)"
+        "name": "1. Martin Müller (Rhino)"
       },
       {
         "id": 3482332,
@@ -4891,7 +4895,7 @@
       {
         "id": 514511,
         "publicId": "5822c706-d6f0-43e8-a703-387c529327d1",
-        "name": "Paloma Ortiz-Lopez [ZSUNR]"
+        "name": "Paloma Ortiz-Lopez [ZABI]"
       },
       {
         "id": 973782,
@@ -5035,6 +5039,11 @@
         "id": 5854934,
         "publicId": "490048b1-2bc9-4120-b206-f41065193436",
         "name": "Michael Dickson [OTE]"
+      },
+      {
+        "id": 5945690,
+        "publicId": "c3a194df-8234-4a25-b0a0-5f50663895b7",
+        "name": "Andrew York(OTE)"
       },
       {
         "id": 6027214,
@@ -5235,7 +5244,7 @@
       {
         "id": 15354,
         "publicId": "595193f0-3dc8-4c31-b36d-c9bbea3dd01a",
-        "name": "- Jokim"
+        "name": "5 Jokim"
       },
       {
         "id": 88513,
@@ -5255,7 +5264,7 @@
       {
         "id": 2446078,
         "publicId": "fadb4cdc-6b9e-455d-8db3-90f0a62bbbbd",
-        "name": "Kial Jackson"
+        "name": "1 Kial (CMC)"
       },
       {
         "id": 4638424,
@@ -5378,6 +5387,11 @@
         "id": 3131279,
         "publicId": "856f7536-8dcb-4041-8040-c7545138a1fd",
         "name": "Darrin Dexter (HCT)"
+      },
+      {
+        "id": 3373053,
+        "publicId": "81950f93-2f0e-485b-add8-7f070f5b202e",
+        "name": "Kevin Walden (HCT)"
       },
       {
         "id": 3589459,
@@ -5522,7 +5536,7 @@
       {
         "id": 299766,
         "publicId": "820fa99b-7974-4bf0-aec9-22a8f7a4a8c3",
-        "name": "Tomokazu Abe"
+        "name": "6 Tomo"
       },
       {
         "id": 352788,
@@ -5791,12 +5805,12 @@
       {
         "id": 6169388,
         "publicId": "8802f846-fb02-4d19-8cfe-18e900e64d52",
-        "name": "Wib Wob [HCT]"
+        "name": "Wib Wob [A-P-V]"
       },
       {
         "id": 6467890,
         "publicId": "f44189fb-3f70-449a-8544-af79185e669a",
-        "name": "Sebastian Prehn [HCT]"
+        "name": "Sebastian Prehn [A-P-V]"
       },
       {
         "id": 6952690,
@@ -5959,7 +5973,7 @@
       {
         "id": 1276973,
         "publicId": "64cdd116-e3a0-4678-8aa0-c7e40fe8aa37",
-        "name": "5_Z. Squiddy(YT/TFC/CRP)"
+        "name": "Z. Squiddy(YT/TFC)"
       },
       {
         "id": 1334196,
@@ -6089,6 +6103,11 @@
         "name": "Chris Corrigan [TFC]"
       },
       {
+        "id": 454725,
+        "publicId": "387af06d-a6f7-43e5-b669-b9141f6b5a94",
+        "name": "Jamie Fox (TFC)"
+      },
+      {
         "id": 580821,
         "publicId": "b4b483ed-98f6-4337-acd0-06b86506d2d3",
         "name": "Helen Thomas TFC"
@@ -6122,6 +6141,11 @@
         "id": 3053887,
         "publicId": "9dfea43b-1894-46c8-b652-576030b8eb1c",
         "name": "M adcat (TFC)"
+      },
+      {
+        "id": 3143156,
+        "publicId": "7e723d9d-5357-4c8f-b0de-841bc01e3412",
+        "name": "Jesus Encinas (TFC)"
       },
       {
         "id": 3377377,
@@ -6219,7 +6243,7 @@
       {
         "id": 77523,
         "publicId": "794edc29-ecc3-45ae-9488-37828634266f",
-        "name": "Brett Billings {4STAR} 🔰"
+        "name": "Brett Billings {OTE} 🔰"
       },
       {
         "id": 336944,
@@ -6234,7 +6258,7 @@
       {
         "id": 1695828,
         "publicId": "6f9d8464-a590-43cd-9fca-54b0c3f0eb0e",
-        "name": "Michael Milne [4STAR]"
+        "name": "3. Mike [4STAR]"
       },
       {
         "id": 2311906,
@@ -6270,7 +6294,7 @@
       {
         "id": 2171275,
         "publicId": "f4146750-9c7c-4fca-ac7a-2cefc4a466df",
-        "name": "Andrew Merrill [4STAR]"
+        "name": "1 Andrew Merrill [4STAR]"
       },
       {
         "id": 2541676,
@@ -6529,7 +6553,7 @@
       {
         "id": 770863,
         "publicId": "b18fac3b-a338-454f-8aa7-a9cffe0549bd",
-        "name": "Itai Katzhandel [SOLOS]"
+        "name": "Itai Katzhandel [4STAR]"
       },
       {
         "id": 2865833,
@@ -7073,7 +7097,7 @@
       {
         "id": 2605296,
         "publicId": "9ae085b0-29d4-44b7-9205-6aa21c78e920",
-        "name": "Lee Ragsdale[SISU]"
+        "name": "Lee Ragsdale [SISU]"
       },
       {
         "id": 3130018,
@@ -7088,7 +7112,7 @@
       {
         "id": 4135737,
         "publicId": "d1b0aaf1-2797-4056-95a8-9d81dd389ede",
-        "name": "Kyle Tart🦖[SISU]"
+        "name": "Kyle Tart🦖"
       },
       {
         "id": 4273128,
@@ -7890,7 +7914,7 @@
       {
         "id": 6164399,
         "publicId": "94552e90-2865-44f6-904a-700db0b2820c",
-        "name": "C éline☕Coalition"
+        "name": "C éline☕(Coalition)"
       },
       {
         "id": 6948912,
@@ -8002,7 +8026,7 @@
       {
         "id": 3360700,
         "publicId": "1c67ee8f-c6a1-459b-a843-2618fea6b0e8",
-        "name": ". Punchy Zwifter 🎇 (ART)"
+        "name": ". 🎇"
       },
       {
         "id": 5898984,
@@ -8821,7 +8845,7 @@
       {
         "id": 7642162,
         "publicId": "359cabb0-5b5d-4802-9a50-b7ba0479b15a",
-        "name": "5 Pandau [GTR]"
+        "name": "7 Pandau [GTR]"
       },
       {
         "id": 7871381,
@@ -8837,7 +8861,7 @@
       {
         "id": 399625,
         "publicId": "562cf10e-5a8d-4e98-92c3-717ec7852649",
-        "name": "..5 Gio Fantucchio [GXY]"
+        "name": ".. Gio Fantucchio [GXY]"
       },
       {
         "id": 679242,
@@ -8948,7 +8972,7 @@
       {
         "id": 5238074,
         "publicId": "ad6b1f17-5e71-40ef-a07d-61072b69cdfb",
-        "name": "4 Bikel Smiff(GXY)"
+        "name": "Bikel Smiff(GXY)"
       },
       {
         "id": 5649477,
@@ -8990,7 +9014,7 @@
       {
         "id": 51905,
         "publicId": "0b82cdd6-e098-4fc6-8dc5-189283f55316",
-        "name": "M Taylor (RAF Tri)"
+        "name": "3.M Taylor (RAF Tri)"
       },
       {
         "id": 597478,
@@ -9348,12 +9372,12 @@
       {
         "id": 12896,
         "publicId": "c5964afb-0a4f-490c-baea-02593c3bd02d",
-        "name": "Mike Huang (Deucez 💩)"
+        "name": "8 Mike (DW9)"
       },
       {
         "id": 72878,
         "publicId": "e4161875-66b4-49e1-a8de-69c92bc85452",
-        "name": "Steve Schilling (deucez)"
+        "name": "Steve Schilling (joes)"
       },
       {
         "id": 116326,
@@ -9363,17 +9387,17 @@
       {
         "id": 156768,
         "publicId": "de8edf1d-a9a4-41d2-bc1c-712a08a794b7",
-        "name": ". Miguel (Deuces) KetoRaceYT"
+        "name": ". Miguel 17 (Joes) KetoRaceYT"
       },
       {
         "id": 410221,
         "publicId": "9c0eccea-882d-4a2a-b57e-b367a0cc4bee",
-        "name": "3 Dan(DW10)(Uproar) 💩"
+        "name": "3 Dan(DW10)(Joe’s) 💩"
       },
       {
         "id": 621045,
         "publicId": "8d2a7221-d2a7-40be-9f46-734d7bf74cc6",
-        "name": "Curtis McIlvain (Deucez)"
+        "name": "Curtis McIlvain (DIRTy Deucez)"
       },
       {
         "id": 1138916,
@@ -9388,7 +9412,7 @@
       {
         "id": 2761303,
         "publicId": "9a2a1102-40df-4d78-b852-518cd25bd661",
-        "name": "Jason Soza (Deucez 💩)"
+        "name": "Jason Soza (DIRTy Bros 💩)"
       },
       {
         "id": 3546905,
@@ -9439,7 +9463,7 @@
       {
         "id": 871728,
         "publicId": "62e19ce7-3ece-4281-9b9f-b7560cd30ca8",
-        "name": "Cookie ART"
+        "name": "Cookie ART 5"
       },
       {
         "id": 2217260,
@@ -9808,7 +9832,7 @@
       {
         "id": 271150,
         "publicId": "b33269f2-ae89-4579-8dd9-447ff637d07f",
-        "name": "Jen Baker [AEO]"
+        "name": "2 Baker [AEO]"
       },
       {
         "id": 1102812,
@@ -9828,7 +9852,7 @@
       {
         "id": 1853706,
         "publicId": "00f217f0-9b9a-47cd-83a3-1e6cb5c2e1ac",
-        "name": "N 🧜‍♀️na (AEO)"
+        "name": "6. N 🧜‍♀️na (AEO)"
       },
       {
         "id": 2003522,
@@ -9843,7 +9867,7 @@
       {
         "id": 3930726,
         "publicId": "964d6cbc-0367-453d-bc69-040a62c1f617",
-        "name": "💃 Tam[AEO]"
+        "name": "💃 1.Tam[AEO]"
       }
     ]
   },
@@ -9940,7 +9964,7 @@
       {
         "id": 3208081,
         "publicId": "1d74d5c8-9117-4da2-9a5c-024119f18a4b",
-        "name": ". 🦇Karen (LEVEL)"
+        "name": ". 🦇Karen (ART/LEVEL)"
       },
       {
         "id": 3545284,
@@ -10060,9 +10084,19 @@
         "name": "Russ Miller (ACU)"
       },
       {
+        "id": 862570,
+        "publicId": "b12f5f4b-058c-4c69-babc-81c1f19ce011",
+        "name": "Morgan Van Des Poules [TNP][Ghost]"
+      },
+      {
         "id": 4005174,
         "publicId": "ca116386-946b-462f-b449-d7283d6dc685",
         "name": "Dylan Tired_Cycling_Dad [TNP]"
+      },
+      {
+        "id": 5687025,
+        "publicId": "428654d0-fca1-417a-8bec-bc6d5d16d8a3",
+        "name": "Grunau Jonas (TNP)"
       },
       {
         "id": 6002652,
@@ -10075,9 +10109,19 @@
         "name": "Liam Mckeever (TNP)"
       },
       {
+        "id": 6896224,
+        "publicId": "93aebd63-4386-4de7-b877-781ad87313c6",
+        "name": "Niclas Mæhle (TNP)"
+      },
+      {
         "id": 6973553,
         "publicId": "610ee35b-0129-41f8-a27e-42a06cb51cb2",
         "name": "Matt Perrault (TNP)"
+      },
+      {
+        "id": 7349351,
+        "publicId": "5f53878d-3988-48d0-80e4-8e0ad6ecbe35",
+        "name": "Fin Stephen (TNP)"
       },
       {
         "id": 7533529,
@@ -10554,7 +10598,7 @@
       {
         "id": 1061322,
         "publicId": "cd923c44-21fb-4507-b98c-260f8cd9d2b6",
-        "name": "Alan Bates [GXY]"
+        "name": "2 Alan [GXY]"
       },
       {
         "id": 1091009,
@@ -10671,7 +10715,7 @@
       {
         "id": 45549,
         "publicId": "1d231f80-8ca5-46c7-bc3d-e55e030a461c",
-        "name": "1 DREW[DW5]"
+        "name": "# DREW[MightyMoos]"
       },
       {
         "id": 190197,
@@ -10681,12 +10725,12 @@
       {
         "id": 424572,
         "publicId": "ccff92e7-13a8-4cf0-becb-c174d5d1e0c6",
-        "name": "zac minock(ACEZ)"
+        "name": "zac minock(JOES)"
       },
       {
         "id": 487613,
         "publicId": "fbfa6472-58bb-45c4-aad3-814d8867963b",
-        "name": "Jeff Hue (Diaperz)"
+        "name": "Jeff Hue (Bros)"
       },
       {
         "id": 1032450,
@@ -10706,7 +10750,7 @@
       {
         "id": 3545021,
         "publicId": "85ad835d-7dd1-4931-a07c-6d0d9c879dde",
-        "name": "D Doug (Acez)"
+        "name": "D Doug (Joes)"
       },
       {
         "id": 4566555,
@@ -10970,7 +11014,7 @@
       {
         "id": 2353271,
         "publicId": "018a1632-7489-4f4e-aacf-acf4be890164",
-        "name": "Perik🐗 Esteve☠️[Hisp]"
+        "name": "Perik🐗 Perik🐗☠️[Hisp]"
       },
       {
         "id": 3121142,
@@ -11071,7 +11115,7 @@
       {
         "id": 6276514,
         "publicId": "3d9db928-88c7-4192-93c9-17a0ef44f60c",
-        "name": "B Derek [VGN PWR]"
+        "name": "B Derek [VEGAN PWR]"
       },
       {
         "id": 6433187,
@@ -11296,7 +11340,7 @@
       {
         "id": 2749055,
         "publicId": "eb672c5c-7f44-4714-8aa2-cd97c09a4f36",
-        "name": ". billy ZsunR"
+        "name": "6 billy DW2"
       },
       {
         "id": 3236875,
@@ -11338,7 +11382,7 @@
       {
         "id": 551970,
         "publicId": "b5f01ef2-8b10-4549-b431-47f1902bab41",
-        "name": "S J VGN/GXY 💚🦖💜"
+        "name": "S J GXY 💚🦖💜"
       },
       {
         "id": 1187826,
@@ -11622,7 +11666,7 @@
       {
         "id": 4062436,
         "publicId": "55106a49-c5bd-45e1-814d-479b0c2d46c8",
-        "name": "6. Luke(SISU)"
+        "name": "4. Luke (SISU)"
       },
       {
         "id": 4735120,
@@ -11667,7 +11711,7 @@
       {
         "id": 7268434,
         "publicId": "02d4ba9a-b692-4ba0-8b21-a7fb8beb68c1",
-        "name": "Michael Torborg"
+        "name": "Michael Torborg SISU"
       },
       {
         "id": 7558111,
@@ -11897,7 +11941,7 @@
       {
         "id": 2929719,
         "publicId": "1cbf7933-7d8b-43eb-87b0-7a93b04fa1d2",
-        "name": "2Karen Marchant [GXY RH]"
+        "name": "Karen Marchant [GXY RH]"
       },
       {
         "id": 3089668,
@@ -11907,7 +11951,7 @@
       {
         "id": 3295229,
         "publicId": "6a978751-c1e7-4946-a275-2356a06432b5",
-        "name": "3 Susi[GXY]"
+        "name": "5 Susi[GXY]"
       },
       {
         "id": 3369537,
@@ -12358,7 +12402,7 @@
       {
         "id": 213940,
         "publicId": "09114d83-09f0-4760-ba56-f8ba5b5a6380",
-        "name": "D NotChase (OTR RED)"
+        "name": "Shane Schantzenbach (OTR RED)"
       },
       {
         "id": 570188,
@@ -12578,7 +12622,7 @@
       {
         "id": 6396358,
         "publicId": "8285dfcd-bd46-466f-aa80-faa6a0eaa980",
-        "name": "Melvin O (TotalTT/MCR)"
+        "name": "Melvin Total TT"
       }
     ]
   },
@@ -12726,7 +12770,7 @@
       {
         "id": 3416416,
         "publicId": "54390508-f14e-4982-9b38-7488c82b9de4",
-        "name": "Ian O'Sullivan [GXY/NJC]"
+        "name": "Ian O'Sullivan [GXY]"
       },
       {
         "id": 3559694,
@@ -12736,12 +12780,12 @@
       {
         "id": 3703158,
         "publicId": "e5a9d2e7-053f-4e52-abbe-dcfa671706b5",
-        "name": "Lardybutt [GXY]🧹 🇺🇦"
+        "name": "3 Lardybutt [GXY]🧹 🇺🇦"
       },
       {
         "id": 4978064,
         "publicId": "49d9a57b-bb0f-442a-8bde-3dc8d9c5decb",
-        "name": "Paul Williams[GXY]"
+        "name": "4 Paul[GXY]"
       },
       {
         "id": 5311566,
@@ -12964,7 +13008,7 @@
       {
         "id": 4712484,
         "publicId": "fddebe5e-3b35-4443-9932-ab4ae1471cc7",
-        "name": "5 BillC-[GXY]"
+        "name": "6 BillC-[GXY]"
       },
       {
         "id": 4766967,
@@ -12985,7 +13029,7 @@
       {
         "id": 160717,
         "publicId": "8f30d352-d893-4cc6-b02f-70137ca35453",
-        "name": "Max (dealerz)"
+        "name": "2 Max (dw2)"
       },
       {
         "id": 167712,
@@ -13010,7 +13054,7 @@
       {
         "id": 602787,
         "publicId": "2369618d-f6f2-403a-a2f0-579542ebfd90",
-        "name": "B ryceDadwtz|DEALERZ"
+        "name": "B ryceDadwtz|DIRTY BROS"
       },
       {
         "id": 626264,
@@ -13020,7 +13064,7 @@
       {
         "id": 944847,
         "publicId": "f76e45eb-fb1f-49ca-a6cd-07e04e5364d0",
-        "name": ". Davis (DLRZ)"
+        "name": ". Davis (DIRTy DLRZ-RIOT)"
       },
       {
         "id": 1232065,
@@ -13030,7 +13074,7 @@
       {
         "id": 1309234,
         "publicId": "45943c43-e286-4e9b-a259-965ea1536e81",
-        "name": "T Statistics [DIRT]"
+        "name": "T Statistics [DiRT]"
       },
       {
         "id": 1350122,
@@ -13050,7 +13094,7 @@
       {
         "id": 5278091,
         "publicId": "3e7f65f7-518d-4456-96db-bb8eea38a76a",
-        "name": "Kyle Devine-Szymonek ZDR pb PERC"
+        "name": "1. Kyle Devine-Szymonek ZDR pb PERC"
       }
     ]
   },
@@ -13307,17 +13351,17 @@
       {
         "id": 134257,
         "publicId": "9294c26b-51b7-48b0-ab66-3e4b42b4ace2",
-        "name": "Karen Richardson [AEO]"
+        "name": ". Karen - DW10"
       },
       {
         "id": 216682,
         "publicId": "8eed2242-72d6-4dc5-8fb4-8657012303ca",
-        "name": "5 Tom(DOUBLE)"
+        "name": "6 Tom(DW10)"
       },
       {
         "id": 291183,
         "publicId": "5f93d010-8b5e-45da-9ea7-916346d5c005",
-        "name": "markb.ikes"
+        "name": "markb.ikes (Joes)"
       },
       {
         "id": 410376,
@@ -13327,17 +13371,17 @@
       {
         "id": 654391,
         "publicId": "3b58c490-e9cc-46a1-a28c-925fa51bd214",
-        "name": "1 Rob S. (Dirt - Black)"
+        "name": ". Rob S. 3 (Dirt - Black)"
       },
       {
         "id": 2154926,
         "publicId": "0ef8aee3-d693-4b90-a313-6dc8f8454903",
-        "name": "Davidoffbeat ttv (DIRT - DD)"
+        "name": "📺 Davidoffbeat ttv (DIRT - DD)"
       },
       {
         "id": 2311823,
         "publicId": "d70c5a3e-af0e-4818-b7b6-7211ddb36e8a",
-        "name": "R odney (DIRT-DD)"
+        "name": "R odney (DIRT)"
       },
       {
         "id": 3761458,
@@ -13347,7 +13391,7 @@
       {
         "id": 4702506,
         "publicId": "8e9a629e-c647-4733-b216-3258ca511ebc",
-        "name": ". Rafa[ DIRT-DD]"
+        "name": ".5 Rafa[ DW9]"
       },
       {
         "id": 6983638,
@@ -13525,11 +13569,6 @@
         "name": ". Stoofer [RollCo]"
       },
       {
-        "id": 7046559,
-        "publicId": "124d9c1c-9dd7-4f36-a475-ebcd12a5c4db",
-        "name": "Shane McAloon (RollCo)"
-      },
-      {
         "id": 7166418,
         "publicId": "68d9b721-6d0c-4288-9884-7b985ae96b54",
         "name": "Andrew Stamp(RollCo)"
@@ -13683,6 +13722,11 @@
         "name": "1. mark [HERC]"
       },
       {
+        "id": 7046559,
+        "publicId": "124d9c1c-9dd7-4f36-a475-ebcd12a5c4db",
+        "name": "Shane McAloon (RollCo)"
+      },
+      {
         "id": 7053041,
         "publicId": "3d06e2ad-0cb1-4ffb-9f83-1274343efa19",
         "name": "Will Smith (TNP/RollCo) YT@cyclobrewer"
@@ -13737,6 +13781,11 @@
         "id": 2259786,
         "publicId": "6a601ff3-c688-4dbd-8221-d0857b136e16",
         "name": "Jose Luis Conversano [Eat4Watt]"
+      },
+      {
+        "id": 2387374,
+        "publicId": "3ffd7a6b-ee86-464d-9d5b-7fc72c7ed2f2",
+        "name": "Franco DAN [Eat&Watt]"
       },
       {
         "id": 3307256,
@@ -13813,7 +13862,7 @@
       {
         "id": 67290,
         "publicId": "6e5dac6d-64b9-4ee8-becd-8cb090007582",
-        "name": "Kristof De Becker [PRT]"
+        "name": "Kristof De Becker"
       },
       {
         "id": 77949,
@@ -13833,7 +13882,7 @@
       {
         "id": 1281192,
         "publicId": "d84ea750-168f-4dda-9819-1b2b8734f099",
-        "name": "D anny [WKG]"
+        "name": "D anny [PRT]"
       },
       {
         "id": 2921633,
@@ -13962,7 +14011,7 @@
       {
         "id": 978648,
         "publicId": "b4255bc9-1262-4772-a450-b33c2227bc15",
-        "name": "6. Jelleke de Vries (Camellamas)"
+        "name": "5. 🤍Jelleke (Camellamas)"
       },
       {
         "id": 1327350,
@@ -14013,12 +14062,12 @@
       {
         "id": 1219171,
         "publicId": "1ccd5361-ef64-4c7e-ac09-7133cb33927b",
-        "name": "1. Beck (Ferrets) 🐹"
+        "name": "6.💗 Beck (Camels)🐫"
       },
       {
         "id": 1587061,
         "publicId": "ffd8d0c3-5722-405e-bc6c-035871e1e832",
-        "name": ". BlairWitch Ⓥ (Herd)"
+        "name": ". 8. BlairWitch Ⓥ (Camels)"
       },
       {
         "id": 1668382,
@@ -14028,12 +14077,12 @@
       {
         "id": 1831840,
         "publicId": "6991925b-a6e7-4374-a884-92d49340355c",
-        "name": "3. Fiona (Camels Off The Leash"
+        "name": "4. Fiona (Camels behaving))"
       },
       {
         "id": 2669917,
         "publicId": "dadd4f14-96ba-4513-b2f5-f497e96f52b3",
-        "name": ". 1 💛Deb🐑[Sheep]"
+        "name": ". 3💛Deb🐪[Camels]"
       },
       {
         "id": 2733924,
@@ -14064,7 +14113,7 @@
       {
         "id": 173017,
         "publicId": "b10e3e1c-a300-4a88-9c90-e4ec5ac063e5",
-        "name": "7 Suzane (Camels)"
+        "name": "2 Suzane 💚🐪 (Camels)"
       },
       {
         "id": 236571,
@@ -14160,7 +14209,7 @@
       {
         "id": 1569620,
         "publicId": "77bb0812-7718-4a79-9e3e-53790b6ed23b",
-        "name": "5 George | CNYT 🦅"
+        "name": "George | LEQP CN 🦅"
       },
       {
         "id": 1638668,
@@ -14302,7 +14351,7 @@
       {
         "id": 3061506,
         "publicId": "f62f97ee-8fe5-42d8-8354-563c3e02e18a",
-        "name": "6 Ciaran"
+        "name": "5 Ciaran"
       },
       {
         "id": 3650875,
@@ -14765,6 +14814,11 @@
         "name": "Mike MOODY[BMTR]"
       },
       {
+        "id": 616484,
+        "publicId": "342dd78a-7d67-4322-a656-7e2ce9f239bc",
+        "name": "Greg Coach Greg HTLT"
+      },
+      {
         "id": 1038557,
         "publicId": "e890d6d4-89f2-4318-a720-260768e75934",
         "name": "Steve Doucette CAN"
@@ -14772,7 +14826,7 @@
       {
         "id": 2873011,
         "publicId": "582a67af-40d2-4f63-9ce8-4bf718f0a498",
-        "name": "Jeff Haig (Canadian Zwifters)"
+        "name": "5 Haig (RVLTN)"
       },
       {
         "id": 4433430,
@@ -14797,7 +14851,7 @@
       {
         "id": 6274019,
         "publicId": "0426e84d-e74e-431a-afee-461ea8928f67",
-        "name": "Andy Ambery 🍁 CAN"
+        "name": "8 Ambery BMTR 🍁 CAN"
       }
     ]
   },
@@ -14813,7 +14867,7 @@
       {
         "id": 55089,
         "publicId": "244ceef3-c051-4e5e-9e63-d347fb11a2ad",
-        "name": ". IT'S COMIN HOME"
+        "name": ". TUCHEL-OUT"
       },
       {
         "id": 1302992,
@@ -14987,7 +15041,7 @@
       {
         "id": 3472196,
         "publicId": "600b6fbd-d9f9-4016-8d60-65e52d26f148",
-        "name": "V Powell *2* [PULSE PURR]"
+        "name": "V Powell *8* [PRO PURR]"
       },
       {
         "id": 3718908,
@@ -15129,7 +15183,7 @@
       {
         "id": 1194175,
         "publicId": "efc2caca-0f0f-4b12-bdbc-70b976111a50",
-        "name": "Charles White (HOSW)"
+        "name": "Charles White (HOFC2)"
       },
       {
         "id": 1316549,
@@ -15179,7 +15233,7 @@
       {
         "id": 5448272,
         "publicId": "cf851974-1f3e-4267-a976-f8cae61bcfb5",
-        "name": "Loren O’Brien AZ | HoSW"
+        "name": "Loren O’Brien AZ | GorillaZ"
       }
     ]
   },
@@ -15205,7 +15259,7 @@
       {
         "id": 3809844,
         "publicId": "5c68ed54-294a-4dd5-ac3e-897afb888638",
-        "name": "Tom Brace [SISU][Fellowship]"
+        "name": "Tom Brace [Fellowship]"
       },
       {
         "id": 5181955,
@@ -15223,14 +15277,19 @@
         "name": "S Biebs [Fellowship]"
       },
       {
+        "id": 7583564,
+        "publicId": "b33c1b66-19a4-40a9-8535-aca243f3bee8",
+        "name": "Ole Müller"
+      },
+      {
         "id": 7628498,
         "publicId": "276f6a27-a28a-445b-985a-b2049e25fad9",
         "name": "Brad Tarrant(Fellowship)"
       },
       {
-        "id": 7838047,
-        "publicId": "8c267c6e-c899-43ca-b1af-ef85737da716",
-        "name": "Jonas Dienstrup [Fellowship]"
+        "id": 7726712,
+        "publicId": "a9e9ad92-caba-4dea-8858-ea72924ec771",
+        "name": "David Zlotnik"
       },
       {
         "id": 7908312,
@@ -15264,6 +15323,11 @@
         "name": "T obi [Fellowship]"
       },
       {
+        "id": 4612716,
+        "publicId": "fba8f52c-fc0f-4ecc-a40c-cfb4e86842aa",
+        "name": "Matthijs Van Den Bergh [Fellowship]"
+      },
+      {
         "id": 4750587,
         "publicId": "c06c3947-9ff6-4c11-8aac-d79affb9e76e",
         "name": "Alex Rishty [Fellowship]"
@@ -15294,9 +15358,19 @@
         "name": "Liam Shaw [Fellowship]"
       },
       {
+        "id": 7706323,
+        "publicId": "7015f49f-9961-437b-97fc-208d8bf5a2d7",
+        "name": "Simon Schudel"
+      },
+      {
         "id": 7829111,
         "publicId": "4f1bb3a5-a855-4662-91bb-d923a3c37779",
         "name": "Chase Manhattan [Fellowship]"
+      },
+      {
+        "id": 7838047,
+        "publicId": "8c267c6e-c899-43ca-b1af-ef85737da716",
+        "name": "Jonas Dienstrup [Fellowship]"
       },
       {
         "id": 7908377,
@@ -15449,7 +15523,7 @@
       {
         "id": 1388533,
         "publicId": "0d16aee3-df87-4ab7-9a89-d06146b51709",
-        "name": "Rudi [GXY]"
+        "name": "1 Rudi [GXY]"
       },
       {
         "id": 1402673,
@@ -15460,6 +15534,11 @@
         "id": 2104090,
         "publicId": "3ef3c1c6-83f6-4130-9f01-910d44029c00",
         "name": "Luke Mattocks [GXY]"
+      },
+      {
+        "id": 4394770,
+        "publicId": "ee6d819e-60fb-496b-8407-ceebe815d702",
+        "name": "Tom Shaw [GXY]"
       },
       {
         "id": 6918121,
@@ -15566,7 +15645,7 @@
       {
         "id": 437410,
         "publicId": "81fd2ea9-429e-42e4-9fb3-529f0a099749",
-        "name": "Adam D [NJC/GXY]"
+        "name": "Adam D [GXY]"
       },
       {
         "id": 703800,
@@ -15591,7 +15670,7 @@
       {
         "id": 6869175,
         "publicId": "ab4bae81-b79c-432d-94d2-a3aea82fb0d5",
-        "name": ". Gary[GXY]"
+        "name": "3 Gary[GXY]"
       },
       {
         "id": 6963639,
@@ -15661,6 +15740,11 @@
     "name": "Fellowship Shadowstep",
     "riders": [
       {
+        "id": 444959,
+        "publicId": "e93ecc24-3d61-4cec-af7a-a5d26d11f50f",
+        "name": "Skyler Rivera [Fellowship]"
+      },
+      {
         "id": 1423459,
         "publicId": "b47a833e-aed3-4d39-9699-056a9164e8ef",
         "name": "Maarten V M [Fellowship]"
@@ -15693,7 +15777,7 @@
       {
         "id": 8130568,
         "publicId": "80d08c4e-7eb7-48f3-934a-cff96faf2dd8",
-        "name": "Nathan Humphrey"
+        "name": "Nathan Humphrey [Fellowship]"
       },
       {
         "id": 8287506,
@@ -15703,7 +15787,7 @@
       {
         "id": 8375332,
         "publicId": "47aea10a-6b10-4ea5-8928-7e63c94ccfa7",
-        "name": "Rik Hermens"
+        "name": "Rik Hermens [Fellowship]"
       },
       {
         "id": 8382911,

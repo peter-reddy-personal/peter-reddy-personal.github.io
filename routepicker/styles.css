@@ -328,6 +328,9 @@ button {
   font-weight: 600;
   border-bottom: 1px solid #d0d4e0;
   text-align: center;
+  nth-child(1) {
+    text-align: left;
+  }
   white-space: nowrap;
 }
 
@@ -346,16 +349,33 @@ button {
   background: #eef3ff;
 }
 
+.results-table th:first-child,
+.results-table td:first-child {
+  text-align: left;
+}
+
 /* Center-align vELO CLS, Opp, Diff columns */
-.routes-table th:nth-child(1),
 .routes-table th:nth-child(2),
-.routes-table td:nth-child(1),
 .routes-table td:nth-child(2) {
   text-align: left;
 }
 
 .diff-positive { color: #008000; }
 .diff-negative { color: #cc0000; }
+
+.table-notes {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+  padding-left: 2px;
+  font-style: italic;
+}
+
+.table-notes div::before {
+  content: "* ";
+  font-weight: bold;
+  color: #888;
+}
 
 .elevation-img {
   width: 40%;

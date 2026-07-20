@@ -23,23 +23,40 @@ window.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("cls-table").innerHTML =
     `<div class="loading-msg">Loading CLS riders…</div>`;
 
-  // Load teams + CLS
-await loadTeams();
-populateOpponentDropdown();
+  // Load teams + populate opponent dropdown
+  await loadTeams();
+  populateOpponentDropdown();
 
-// Load saved riders BEFORE rendering tables
-loadState();
+  // Load saved state (CLS + Opponent riders)
+  loadState();
 
-// If nothing saved, fall back to default CLS load
-if (clsRiders.length === 0) {
-  await renderCLS();
-} else {
-  renderUnifiedCLSTable(clsRiders);
-}
+  // Restore saved opponent team selection
+  const savedOppTeam = localStorage.getItem("selectedOpponentTeam");
+  if (savedOppTeam) {
+    const select = document.getElementById("opponentSelect");
+    select.value = savedOppTeam;
+  }
 
-if (opponentRiders.length > 0) {
-  renderUnifiedOpponentTable(opponentRiders);
-}
+  // Render CLS riders
+  if (clsRiders.length === 0) {
+    await renderCLS();                 // fresh load
+  } else {
+    renderUnifiedCLSTable(clsRiders);  // restored
+  }
+
+  // Render Opponent riders if saved
+  if (opponentRiders.length > 0) {
+    renderUnifiedOpponentTable(opponentRiders);
+  }
+
+  // If opponent riders were saved, do NOT reload the full team
+  if (savedOppTeam && opponentRiders.length > 0) {
+    renderUnifiedOpponentTable(opponentRiders);
+    renderAverages(getRiders());
+  } else if (savedOppTeam) {
+    // No saved riders → load full team
+    await onOpponentSelected();
+  }
 
 
   // Load routes
@@ -47,51 +64,57 @@ if (opponentRiders.length > 0) {
   routes = await resRoutes.json();
   console.log("Routes loaded:", routes.length);
 
-  // Opponent team selection
+  // Opponent team selection handler
   document.getElementById("opponentSelect")
-    .addEventListener("change", onOpponentSelected);
+    .addEventListener("change", () => {
+      onOpponentSelected();
+      saveState();
+    });
 
   // ---------------------------------------------------------
   // REMOVE RIDER (works for both CLS and Opponent tables)
   // ---------------------------------------------------------
-
   document.addEventListener("click", e => {
-  if (!e.target.classList.contains("remove-rider")) return;
+    if (!e.target.classList.contains("remove-rider")) return;
 
-  const factorRow = e.target.closest(".rider-row");
-  const powerRow = factorRow.nextElementSibling;
+    const factorRow = e.target.closest(".rider-row");
+    const powerRow = factorRow.nextElementSibling;
 
-  const team = factorRow.dataset.team;   // "cls" or "opp"
-  const id = factorRow.dataset.id;       // rider id as string
+    const team = factorRow.dataset.team;   // "cls" or "opp"
+    const id = factorRow.dataset.id;       // rider id as string
 
-  if (team === "cls") {
-    clsRiders = clsRiders.filter(r => String(r.id) !== id);
-  } else if (team === "opp") {
-    opponentRiders = opponentRiders.filter(r => String(r.id) !== id);
-  }
+    if (team === "cls") {
+      clsRiders = clsRiders.filter(r => String(r.id) !== id);
+    } else if (team === "opp") {
+      opponentRiders = opponentRiders.filter(r => String(r.id) !== id);
+    }
 
-  if (powerRow && powerRow.classList.contains("power-mode")) {
-    powerRow.remove();
-  }
-  factorRow.remove();
+    if (powerRow && powerRow.classList.contains("power-mode")) {
+      powerRow.remove();
+    }
+    factorRow.remove();
 
-  // Re-render tables from updated arrays
-  renderUnifiedCLSTable(clsRiders);
-  renderUnifiedOpponentTable(opponentRiders);
+    // Re-render tables
+    renderUnifiedCLSTable(clsRiders);
+    renderUnifiedOpponentTable(opponentRiders);
 
-  // 🔁 Recalculate team averages
-  calculateRoutes();
-});
+    // Save new state
+    saveState();
 
+    // Recalculate team averages
+    calculateRoutes();
+  });
 
   // Reset CLS button
   document.getElementById("reset-cls").addEventListener("click", () => {
-    renderCLS();  
+    renderCLS();
+    saveState();
   });
 
   // Reset opponent button
   document.getElementById("reset-opp").addEventListener("click", () => {
-    onOpponentSelected(); 
+    onOpponentSelected();
+    saveState();
   });
 
   // Calculate button
@@ -108,41 +131,45 @@ if (opponentRiders.length > 0) {
       // Re-render both tables
       renderUnifiedCLSTable(clsRiders);
       renderUnifiedOpponentTable(opponentRiders);
+
+      saveState();
     });
   });
 
+  // Route collapse handler
   document.addEventListener("click", e => {
-  const row = e.target.closest(".route-row");
-  if (!row) return;
+    const row = e.target.closest(".route-row");
+    if (!row) return;
 
-  const collapseRow = row.nextElementSibling;
-  if (!collapseRow || !collapseRow.classList.contains("collapse-row")) return;
+    const collapseRow = row.nextElementSibling;
+    if (!collapseRow || !collapseRow.classList.contains("collapse-row")) return;
 
-  const isOpen = collapseRow.style.display !== "none";
-  collapseRow.style.display = isOpen ? "none" : "table-row";
+    const isOpen = collapseRow.style.display !== "none";
+    collapseRow.style.display = isOpen ? "none" : "table-row";
 
-  if (!isOpen) {
-    const img = collapseRow.querySelector(".elevation-img");
-    if (!img) {
-      console.warn("No .elevation-img found in collapse row");
-      return;
+    if (!isOpen) {
+      const img = collapseRow.querySelector(".elevation-img");
+      if (!img) {
+        console.warn("No .elevation-img found in collapse row");
+        return;
+      }
+
+      const worldRaw = row.dataset.world || "";
+      const routeRaw = row.dataset.route || "";
+
+      const world = slugify(worldRaw);
+      const cleanedRoute = cleanRouteName(routeRaw);
+      const route = slugify(cleanedRoute);
+
+      const url = `https://zwiftinsider.com/wp-content/routes/${world}/${route}.svg`;
+      console.log("Elevation URL:", url);
+
+      img.src = url;
     }
-
-    const worldRaw = row.dataset.world || "";
-    const routeRaw = row.dataset.route || "";
-
-    const world = slugify(worldRaw);
-    const cleanedRoute = cleanRouteName(routeRaw);
-    const route = slugify(cleanedRoute);
-
-    const url = `https://zwiftinsider.com/wp-content/routes/${world}/${route}.svg`;
-    console.log("Elevation URL:", url);
-
-    img.src = url;
-  }
-});
+  });
 
 });
+
 
 
 // ---------------------------------------------------------
@@ -339,6 +366,9 @@ async function onOpponentSelected() {
     div.innerHTML = `<div class="loading-msg">No opponent team selected.</div>`;
     return;
   }
+
+  // Save selected team number
+  localStorage.setItem("selectedOpponentTeam", teamNumber);
 
   // Show loading message
   div.innerHTML = `<div class="loading-msg">Loading opponent riders…</div>`;

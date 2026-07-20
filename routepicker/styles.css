@@ -225,6 +225,20 @@ body {
     80px;
 }
 
+/* Center-align power duration columns */
+.profile-cell.wkg5,
+.profile-cell.wkg15,
+.profile-cell.wkg30,
+.profile-cell.wkg60,
+.profile-cell.wkg120,
+.profile-cell.wkg300,
+.profile-cell.wkg1200 {
+  text-align: center;
+}
+.input-headings.power-mode > div:nth-child(n+4):nth-child(-n+10) {
+  text-align: center;
+}
+
 .rider-link,
 .rider-name {
   width: 240px;
@@ -302,6 +316,7 @@ button {
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
+  text-align: center;
   table-layout: fixed;
 }
 
@@ -331,9 +346,12 @@ button {
   background: #eef3ff;
 }
 
-.weight-strong {
-  background: #e8f4ff;
-  font-weight: 600;
+/* Center-align vELO CLS, Opp, Diff columns */
+.routes-table th:nth-child(1),
+.routes-table th:nth-child(2),
+.routes-table td:nth-child(1),
+.routes-table td:nth-child(2) {
+  text-align: left;
 }
 
 .diff-positive { color: #008000; }

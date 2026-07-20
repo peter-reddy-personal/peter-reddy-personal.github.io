@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑17 16:15";
+const jsVersion = "2026‑07‑20 18:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -24,9 +24,23 @@ window.addEventListener("DOMContentLoaded", async () => {
     `<div class="loading-msg">Loading CLS riders…</div>`;
 
   // Load teams + CLS
-  await loadTeams();
-  populateOpponentDropdown();
+await loadTeams();
+populateOpponentDropdown();
+
+// Load saved riders BEFORE rendering tables
+loadState();
+
+// If nothing saved, fall back to default CLS load
+if (clsRiders.length === 0) {
   await renderCLS();
+} else {
+  renderUnifiedCLSTable(clsRiders);
+}
+
+if (opponentRiders.length > 0) {
+  renderUnifiedOpponentTable(opponentRiders);
+}
+
 
   // Load routes
   const resRoutes = await fetch("routes.json");
@@ -155,6 +169,23 @@ async function loadTeams() {
 
   clsTeam = allTeams.find(t => t.number === 63);
   console.log("CLS team found:", clsTeam);
+}
+
+
+// ---------------------------------------------------------
+// SAVE / LOAD STATE (localStorage)
+// ---------------------------------------------------------
+function saveState() {
+  localStorage.setItem("clsRiders", JSON.stringify(clsRiders));
+  localStorage.setItem("opponentRiders", JSON.stringify(opponentRiders));
+}
+
+function loadState() {
+  const savedCLS = JSON.parse(localStorage.getItem("clsRiders") || "[]");
+  const savedOpp = JSON.parse(localStorage.getItem("opponentRiders") || "[]");
+
+  clsRiders = savedCLS;
+  opponentRiders = savedOpp;
 }
 
 
@@ -742,15 +773,6 @@ function computeRouteScores(route, riders) {
 
 
 //---------------------------------------------------------
-// Format output tables with route weightings
-//---------------------------------------------------------
-function formatWeights(r) {
-  const pct = x => (x * 100).toFixed(0) + "%";
-  return `SPR ${pct(r.Sprint)}, PUN ${pct(r.Punch)}, CLI ${pct(r.Climb)}, PUR ${pct(r.Pursuit)}, END ${pct(r.Endurance)}`;
-}
-
-
-//---------------------------------------------------------
 // Rank Routes (with controlled randomness)
 //---------------------------------------------------------
 function rankRoutes(routes, riders) {
@@ -835,22 +857,33 @@ function renderAverages(riders) {
   const max = Math.max(...values);
 
   function gradientStyle(value) {
-    if (max === min) {
-      return `background-color: rgb(235, 235, 235);`;
-    }
-
-    const t = (value - min) / (max - min);
-
-    // Soft green → soft red
-    const start = { r: 210, g: 245, b: 225 }; // CLS advantage
-    const end   = { r: 250, g: 215, b: 215 }; // Opp advantage
-
-    const r = Math.round(start.r + (end.r - start.r) * (1 - t));
-    const g = Math.round(start.g + (end.g - start.g) * (1 - t));
-    const b = Math.round(start.b + (end.b - start.b) * (1 - t));
-
-    return `background-color: rgb(${r}, ${g}, ${b});`;
+  if (value === 0) {
+    return `background-color: rgb(235, 235, 235);`;
   }
+
+  const stops = [
+    { limit: 15,  pos: "rgb(235, 255, 235)", neg: "rgb(255, 235, 235)" },
+    { limit: 30,  pos: "rgb(225, 250, 225)", neg: "rgb(250, 225, 225)" },
+    { limit: 50,  pos: "rgb(215, 245, 215)", neg: "rgb(245, 215, 215)" },
+    { limit: 75,  pos: "rgb(205, 240, 205)", neg: "rgb(240, 205, 205)" },
+    { limit: 100, pos: "rgb(195, 235, 195)", neg: "rgb(235, 195, 195)" },
+    { limit: 150, pos: "rgb(185, 230, 185)", neg: "rgb(230, 185, 185)" },
+    { limit: 200, pos: "rgb(175, 225, 175)", neg: "rgb(225, 175, 175)" },
+    { limit: 250, pos: "rgb(165, 220, 165)", neg: "rgb(220, 165, 165)" }
+  ];
+
+  const abs = Math.abs(value);
+
+  for (const stop of stops) {
+    if (abs <= stop.limit) {
+      return `background-color: ${value > 0 ? stop.pos : stop.neg};`;
+    }
+  }
+
+  // Beyond 250 → strongest pastel
+  return `background-color: ${value > 0 ? "rgb(155, 215, 155)" : "rgb(215, 155, 155)"};`;
+}
+
 
   const tbody = document.getElementById("team-averages");
 
@@ -889,6 +922,9 @@ function renderAverages(riders) {
 //---------------------------------------------------------
 // Render Route Results (with split weight columns + highlight strongest)
 //---------------------------------------------------------
+//---------------------------------------------------------
+// Render Route Results (Type column instead of weight columns)
+//---------------------------------------------------------
 function renderResults(result) {
 
   const clsBody = document.getElementById('best-routes');
@@ -897,62 +933,40 @@ function renderResults(result) {
   clsBody.innerHTML = '';
   oppBody.innerHTML = '';
 
-  const pct = x => (x * 100).toFixed(0);
+  // -----------------------------
+  // Best CLS Routes
+  // -----------------------------
+  result.bestCLS.slice(0, 20).forEach(r => {
+    const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
 
-  function weightCells(r) {
-    const weights = [
-      pct(r.Sprint),
-      pct(r.Punch),
-      pct(r.Climb),
-      pct(r.Pursuit),
-      pct(r.Endurance)
-    ];
+    clsBody.innerHTML += `
+  <tr class="route-row" data-route="${r.Route}" data-world="${r.World}">
+    <td>
+      <a href="${r.URL}" target="_blank" class="route-link">${r.Route}</a>
+    </td>
 
-    const maxVal = Math.max(...weights);
+    <td>${r.Type}</td>
+    <td>${r.Length} km</td>
+    <td>${r.Elevation} m</td>
+    <td>${r.Lead_in} km</td>
 
-    return weights.map(w => {
-      const cls = w == maxVal ? 'weight-strong' : '';
-      return `<td class="${cls}">${w}%</td>`;
-    }).join('');
-  }
+    <td>${r.avgCLS.toFixed(0)}</td>
+    <td>${r.avgOpp.toFixed(0)}</td>
+    <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+  </tr>
 
-// -----------------------------
-// Best CLS Routes
-// -----------------------------
-result.bestCLS.slice(0, 20).forEach(r => {
-  const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
-
-  // Main clickable route row
-  clsBody.innerHTML += `
-    <tr class="route-row" data-route="${r.Route}" data-world="${r.World}">
-      <td>
-        <a href="${r.URL}" target="_blank" class="route-link">${r.Route}</a>
-      </td>
-
-      <td>${r.Length} km</td>
-      <td>${r.Elevation} m</td>
-      <td>${r.Lead_in} km</td>
-
-      <td>${r.avgCLS.toFixed(0)}</td>
-      <td>${r.avgOpp.toFixed(0)}</td>
-      <td class="${diffClass}">${r.diff.toFixed(0)}</td>
-
-      ${weightCells(r)}
-    </tr>
-
-    <!-- Collapsible elevation profile row -->
-    <tr class="collapse-row" style="display:none;">
-      <td colspan="12">
-        <div class="elevation-wrapper">
+  <tr class="collapse-row" style="display:none;">
+    <td colspan="8">
+      <div class="elevation-wrapper">
         <div class="elevation-scale">
           <img class="elevation-img">
         </div>
-        </div>
-      </td>
-    </tr>
-  `;
-});
+      </div>
+    </td>
+  </tr>
+`;
 
+  });
 
   // -----------------------------
   // Best Opponent Routes
@@ -961,34 +975,35 @@ result.bestCLS.slice(0, 20).forEach(r => {
     const diffClass = r.diff >= 0 ? 'diff-positive' : 'diff-negative';
 
     oppBody.innerHTML += `
-      <tr class="route-row" data-route="${r.Route}" data-world="${r.World}">
-      <td>
-        <a href="${r.URL}" target="_blank" class="route-link">${r.Route}</a>
-      </td>
-      <td>${r.Length} km</td>
-      <td>${r.Elevation} m</td>
-      <td>${r.Lead_in} km</td>
+  <tr class="route-row" data-route="${r.Route}" data-world="${r.World}">
+    <td>
+      <a href="${r.URL}" target="_blank" class="route-link">${r.Route}</a>
+    </td>
 
-      <td>${r.avgCLS.toFixed(0)}</td>
-      <td>${r.avgOpp.toFixed(0)}</td>
-      <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+    <td>${r.Type}</td>
+    <td>${r.Length} km</td>
+    <td>${r.Elevation} m</td>
+    <td>${r.Lead_in} km</td>
 
-      ${weightCells(r)}
-    </tr>
+    <td>${r.avgCLS.toFixed(0)}</td>
+    <td>${r.avgOpp.toFixed(0)}</td>
+    <td class="${diffClass}">${r.diff.toFixed(0)}</td>
+  </tr>
 
-    <!-- Collapsible elevation profile row -->
-    <tr class="collapse-row" style="display:none;">
-      <td colspan="12">
-        <div class="elevation-wrapper">
+  <tr class="collapse-row" style="display:none;">
+    <td colspan="8">
+      <div class="elevation-wrapper">
         <div class="elevation-scale">
           <img class="elevation-img">
         </div>
-        </div>
-      </td>
-    </tr>
-  `;
-});
+      </div>
+    </td>
+  </tr>
+`;
+
+  });
 }
+
 
 //---------------------------------------------------------
 // Main Calculate Function

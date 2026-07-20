@@ -24,10 +24,10 @@
     </p>
     <p>
       Team rosters are taken from a cached version of the Club Ladder site, and may 
-      miss newly added or removed riders (within the last few days).
+      miss recently added or removed riders (within the last few days).
     </p> 
     <p>
-      vELO2 (current) and power data (90d best) is taken from ZwiftRacing.app.
+      vELO2 (current) and power (90d best) data is taken from ZwiftRacing.app.
     </p>   
   </section>
 
@@ -172,43 +172,33 @@
 <section class="panel">
   <h2>Best CLS Routes</h2>
 
-  <table class="results-table">
+  <table class="results-table routes-table">
 
     <colgroup>
-      <col style="width: 150px;">  <!-- Route -->
-      <col style="width: 70px;">   <!-- Length -->
-      <col style="width: 70px;">   <!-- Elevation -->
-      <col style="width: 70px;">   <!-- Lead-in -->
+  <col style="width: 150px;">  <!-- Route -->
+  <col style="width: 100px;">  <!-- Type -->
+  <col style="width: 70px;">   <!-- Length -->
+  <col style="width: 70px;">   <!-- Elevation -->
+  <col style="width: 70px;">   <!-- Lead-in -->
 
-      <col style="width: 60px;" class="group-break">   <!-- vELO CLS -->
-      <col style="width: 60px;">                        <!-- vELO Opp -->
-      <col style="width: 60px;">                        <!-- vELO diff -->
+  <col style="width: 60px;" class="group-break">   <!-- vELO CLS -->
+  <col style="width: 60px;">                        <!-- vELO Opp -->
+  <col style="width: 60px;">                        <!-- vELO diff -->
+</colgroup>
 
-      <col style="width: 58px;" class="group-break">    <!-- SPR -->
-      <col style="width: 58px;">                        <!-- PUN -->
-      <col style="width: 58px;">                        <!-- CLI -->
-      <col style="width: 58px;">                        <!-- PUR -->
-      <col style="width: 58px;">                        <!-- END -->
-    </colgroup>
+<thead>
+  <tr>
+    <th>Route</th>
+    <th>Type</th>
+    <th>Length</th>
+    <th>Elevation</th>
+    <th>Lead-in</th>
 
-    <thead>
-      <tr>
-        <th>Route</th>
-        <th>Length</th>
-        <th>Elevation</th>
-        <th>Lead-in</th>
-
-        <th class="group-break">vELO CLS</th>
-        <th>vELO Opp</th>
-        <th>vELO diff</th>
-
-        <th class="group-break">SPR</th>
-        <th>PUN</th>
-        <th>CLI</th>
-        <th>PUR</th>
-        <th>END</th>
-      </tr>
-    </thead>
+    <th class="group-break">vELO CLS</th>
+    <th>vELO Opp</th>
+    <th>vELO diff</th>
+  </tr>
+</thead>
 
     <tbody id="best-routes"></tbody>
 
@@ -216,7 +206,6 @@
 
   <div class="table-notes">
     <div>* Length excludes lead‑in</div>
-    <div>** Weights are rounded and may not sum to 100%</div>
   </div>
 </section>
 
@@ -224,54 +213,44 @@
 <!-- Best Opponent Routes -->
 <section class="panel">
   <h2>Best Opponent Routes</h2>
-  <table class="results-table">
+
+  <table class="results-table routes-table">
 
     <colgroup>
-      <col style="width: 150px;">  <!-- Route -->
-      <col style="width: 70px;">   <!-- Length -->
-      <col style="width: 70px;">   <!-- Elevation -->
-      <col style="width: 70px;">   <!-- Lead-in -->
+  <col style="width: 150px;">  <!-- Route -->
+  <col style="width: 100px;">  <!-- Type -->
+  <col style="width: 70px;">   <!-- Length -->
+  <col style="width: 70px;">   <!-- Elevation -->
+  <col style="width: 70px;">   <!-- Lead-in -->
 
-      <col style="width: 60px;" class="group-break">   <!-- vELO CLS -->
-      <col style="width: 60px;">                        <!-- vELO Opp -->
-      <col style="width: 60px;">                        <!-- vELO diff -->
+  <col style="width: 60px;" class="group-break">   <!-- vELO CLS -->
+  <col style="width: 60px;">                        <!-- vELO Opp -->
+  <col style="width: 60px;">                        <!-- vELO diff -->
+</colgroup>
 
-      <col style="width: 58px;" class="group-break">    <!-- SPR -->
-      <col style="width: 58px;">                        <!-- PUN -->
-      <col style="width: 58px;">                        <!-- CLI -->
-      <col style="width: 58px;">                        <!-- PUR -->
-      <col style="width: 58px;">                        <!-- END -->
-    </colgroup>
+<thead>
+  <tr>
+    <th>Route</th>
+    <th>Type</th>
+    <th>Length</th>
+    <th>Elevation</th>
+    <th>Lead-in</th>
 
-    <thead>
-      <tr>
-        <th>Route</th>
-        <th>Length</th>
-        <th>Elevation</th>
-        <th>Lead-in</th>
-
-        <th class="group-break">vELO CLS</th>
-        <th>vELO Opp</th>
-        <th>vELO diff</th>
-
-        <th class="group-break">SPR</th>
-        <th>PUN</th>
-        <th>CLI</th>
-        <th>PUR</th>
-        <th>END</th>
-      </tr>
-    </thead>
+    <th class="group-break">vELO CLS</th>
+    <th>vELO Opp</th>
+    <th>vELO diff</th>
+  </tr>
+</thead>
 
     <tbody id="worst-routes"></tbody>
+
   </table>
 
-<div class="table-notes">
-  <div>* Length excludes lead‑in</div>
-  <div>** Weights are rounded and may not sum to 100%</div>
-</div>
+  <div class="table-notes">
+    <div>* Length excludes lead‑in</div>
+  </div>
 
 </section>
-
 
   </main>
 

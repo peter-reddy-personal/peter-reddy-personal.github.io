@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑20 18:15";
+const jsVersion = "2026‑07‑21 18:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -53,6 +53,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   if (savedOppTeam && opponentRiders.length > 0) {
     renderUnifiedOpponentTable(opponentRiders);
     renderAverages(getRiders());
+    renderBeeswarm(clsRiders, opponentRiders);
   } else if (savedOppTeam) {
     // No saved riders → load full team
     await onOpponentSelected();
@@ -390,6 +391,135 @@ async function onOpponentSelected() {
   // Update averages (CLS + Opp combined)
   const allRiders = getRiders();
   renderAverages(allRiders);
+  renderBeeswarm(clsRiders, opponentRiders);
+}
+
+// ---------------------------------------------------------
+// GET POWER DISTRIBUTIONS FOR CLS AND OPPONENT RIDERS
+// ---------------------------------------------------------
+function getPowerDistributions(clsRiders, oppRiders) {
+  const durations = [
+    { key: "wkg15",  label: "15s" },
+    { key: "wkg30",  label: "30s" },
+    { key: "wkg60",  label: "1m" },
+    { key: "wkg120", label: "2m" },
+    { key: "wkg300", label: "5m" },
+    { key: "wkg1200", label: "20m" }
+  ];
+
+  function extract(riders) {
+    return durations.map(d => ({
+      label: d.label,
+      values: riders
+        .map(r => r.zr?.power?.[d.key]?.[0])
+        .filter(v => typeof v === "number")
+    }));
+  }
+
+  return {
+    cls: extract(clsRiders),
+    opp: extract(oppRiders),
+    durations
+  };
+}
+
+// ---------------------------------------------------------
+// RENDER BEESWARM CHART FOR POWER DISTRIBUTIONS
+// ---------------------------------------------------------
+function renderBeeswarm(clsRiders, oppRiders) {
+  const durations = [
+    { key: "wkg15",  label: "15s" },
+    { key: "wkg30",  label: "30s" },
+    { key: "wkg60",  label: "1m" },
+    { key: "wkg120", label: "2m" },
+    { key: "wkg300", label: "5m" },
+    { key: "wkg1200", label: "20m" }
+  ];
+
+  // Extract power values
+  function extract(riders) {
+    return durations.map(d => ({
+      label: d.label,
+      values: riders
+        .map(r => ({
+          name: r.name,
+          value: r.zr?.power?.[d.key]?.[0]
+        }))
+        .filter(v => typeof v.value === "number")
+    }));
+  }
+
+  const cls = extract(clsRiders);
+  const opp = extract(oppRiders);
+
+  // Jitter function to avoid overlap
+  function jitter() {
+    return (Math.random() - 0.5) * 0.12;   // ±0.06 jitter
+  }
+
+
+  // Build scatter dataset
+  function buildDataset(teamData, color, offset) {
+  const points = [];
+  teamData.forEach((d, i) => {
+    d.values.forEach(v => {
+      points.push({
+        x: i + offset + jitter(),   // small jitter
+        y: v.value,
+        rider: v.name
+      });
+    });
+  });
+  return {
+    label: color.label,
+    data: points,
+    backgroundColor: color.bg,
+    borderColor: color.border,
+    pointRadius: 6,
+    pointHoverRadius: 8
+  };
+}
+
+  const datasets = [
+  buildDataset(cls, { label: "CLS", bg: "rgba(80,160,255,0.7)", border: "#4a90e2" }, -0.10),
+  buildDataset(opp, { label: "Opponent", bg: "rgba(255,120,120,0.7)", border: "#e25a5a" }, +0.10)
+];
+
+
+  const ctx = document.getElementById("powerBeeswarm").getContext("2d");
+
+  if (window.beeswarmChart) {
+    window.beeswarmChart.destroy();
+  }
+
+  window.beeswarmChart = new Chart(ctx, {
+    type: "scatter",
+    data: { datasets },
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.raw.rider}: ${ctx.raw.y.toFixed(1)} w/kg`
+          }
+        },
+        legend: { position: "top" }
+      },
+      scales: {
+        x: {
+          min: -0.5,
+          max: durations.length - 0.5,
+          ticks: {
+            callback: i => durations[i]?.label ?? ""
+          },
+          title: { display: true, text: "Duration" }
+        },
+        y: {
+          title: { display: true, text: "w/kg" },
+          beginAtZero: false
+        }
+      }
+    }
+  });
 }
 
 
@@ -1042,5 +1172,6 @@ async function calculateRoutes() {
   const riders = getRiders();
   const ranked = rankRoutes(routes, riders);
   renderAverages(riders);
+  renderBeeswarm(clsRiders, opponentRiders);
   renderResults(ranked);
 }

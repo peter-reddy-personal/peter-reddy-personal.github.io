@@ -126,24 +126,26 @@
 
 
 
-    <!-- Compare vELO average -->
-    <section class="panel">
-      <h2>Team Averages</h2>
-      <table class="results-table">
-      <thead>
-        <tr>
-          <th>Team</th>
-          <th>SPR</th>
-          <th>PUN</th>
-          <th>CLI</th>
-          <th>TT</th>
-          <th>PUR</th>
-          <th>END</th>
-        </tr>
-      </thead>
-      <tbody id="team-averages"></tbody>
-      </table>
-    </section>
+<!-- Compare vELO average -->
+<section class="panel">
+  <h2>Team vELO Averages</h2>
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>SPR</th>
+        <th>PUN</th>
+        <th>CLI</th>
+        <th>TT</th>
+        <th>PUR</th>
+        <th>END</th>
+      </tr>
+    </thead>
+    <tbody id="team-averages"></tbody>
+  </table>
+  <h2>Team Power Distribution (Beeswarm)</h2>
+  <canvas id="powerBeeswarm"></canvas>
+</section>
 
     <!-- Calculate routes -->
     <section class="panel route-controls">
@@ -176,7 +178,7 @@
 
     <colgroup>
   <col style="width: 150px;">  <!-- Route -->
-  <col style="width: 100px;">  <!-- Type -->
+  <col style="width: 70px;">  <!-- Type -->
   <col style="width: 70px;">   <!-- Length -->
   <col style="width: 70px;">   <!-- Elevation -->
   <col style="width: 70px;">   <!-- Lead-in -->
@@ -218,7 +220,7 @@
 
     <colgroup>
   <col style="width: 150px;">  <!-- Route -->
-  <col style="width: 100px;">  <!-- Type -->
+  <col style="width: 70px;">  <!-- Type -->
   <col style="width: 70px;">   <!-- Length -->
   <col style="width: 70px;">   <!-- Elevation -->
   <col style="width: 70px;">   <!-- Lead-in -->
@@ -256,6 +258,8 @@
 
   <div id="version-banner">Loading JS…</div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="app.js"></script>
+
 </body>
 </html>

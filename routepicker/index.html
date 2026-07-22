@@ -42,9 +42,9 @@
     <p>
       vELO2 scores every rider and route across six performance factors: 
       <b>sprint</b>, <b>punch</b>, <b>climb</b>, <b>TT</b>, <b>pursuit</b>, and <b>endurance</b>. 
-      The route weighting is split approx 50% between sprint, punch and climb based on the finish profile of 
-      the route, and approx 50% between pursuit and endurance based on its length/overall difficulty. 
-      TT is not used in team racing. 
+      The route vELO weighting is split approx 50% between sprint, punch and climb based on the finish 
+      profile of the route, and approx 50% between pursuit and endurance based on its length/overall 
+      difficulty. TT is not used in team racing. 
     </p>
 
     <p>
@@ -53,14 +53,14 @@
       emphasises sprint and punch, while a 5 minute wall finish like 
       <a href="https://zwiftinsider.com/route/petite-douleur/" target="_blank">Petite Douleur</a> 
       is entirely weighted toward climbing. Pursuit and endurance measure how well a rider survives the 
-      demands of shorter v. longer races. <a href="https://www.zwiftracing.app/reference/routes" target="_blank">Here</a> 
+      demands of shorter and longer races. <a href="https://www.zwiftracing.app/reference/routes" target="_blank">Here</a> 
       is a list of all the route weightings.
       
     </p>
 
     <p>
       A rider’s vELO2 score for a route is calculated by multiplying their individual factor strengths by 
-      the importance (weight) of each factor for that route. The tool then ranks routes by the 
+      the importance (weight) of each factor for that route. The tool ranks routes by the 
       <b>average vELO2 advantage</b> between the two teams, selecting the routes where each team has the 
       strongest statistical edge.
     </p>
@@ -76,13 +76,13 @@
   <div class="power-toggle-wrapper">
     <span class="toggle-label-left">vELO Factors</span>
 
-  <label class="toggle">
-    <input type="checkbox" class="power-toggle">
-    <span class="slider"></span>
-  </label>
-
-  <span class="toggle-label-right">Power</span>
+    <label class="rider-power-switch">
+      <input type="checkbox" class="power-toggle">
+      <span class="rider-power-slider"></span>
+     </label>
+    <span class="toggle-label-right">Power</span>
   </div>
+
 </div>
 
   <div id="cls-table"></div>
@@ -109,9 +109,9 @@
   <div class="power-toggle-wrapper">
     <span class="toggle-label-left">vELO Factors</span>
 
-    <label class="toggle">
+    <label class="rider-power-switch">
       <input type="checkbox" class="power-toggle">
-      <span class="slider"></span>
+      <span class="rider-power-slider"></span>
     </label>
 
     <span class="toggle-label-right">Power</span>
@@ -143,31 +143,46 @@
     </thead>
     <tbody id="team-averages"></tbody>
   </table>
-  <h2>Team Power Distribution (Beeswarm)</h2>
+  <h2>Team Power Distribution</h2>
   <canvas id="powerBeeswarm"></canvas>
 </section>
 
-    <!-- Calculate routes -->
-    <section class="panel route-controls">
+  <!-- Calculate routes -->
+<section class="panel route-controls">
 
-      <!-- Main action button -->
-      <button id="calculate-btn" class="primary-btn">
-        Calculate Routes
-      </button>
+  <div class="controls-row">
 
-      <!-- Ladder toggle -->
-      <div class="ladder-row">
-        <span class="ladder-label">All routes</span>
+    <!-- LEFT: Ladder toggle -->
+    <div class="ladder-col">
+      <span class="control-label">All routes</span>
 
-        <label class="ladder-switch">
-          <input type="checkbox" id="ladder-toggle" checked>
-          <span class="ladder-slider"></span>
-        </label>
+      <label class="power-switch">
+        <input type="checkbox" id="ladder-toggle" checked>
+        <span class="power-slider"></span>
+      </label>
 
-        <span class="ladder-label">Ladder routes only</span>
+      <span class="control-label">Ladder routes only</span>
+    </div>
+
+    <!-- RIGHT: Randomness slider -->
+    <div class="randomness-col">
+
+      <div class="randomness-inner">
+        <label class="randomness-title">Route suggestion randomness</label>
+
+        <div class="randomness-control">
+          <span class="randomness-label-left">Only use best vELO</span>
+          <input type="range" id="randomness-slider" min="0" max="100" value="50">
+          <span id="randomness-value">50%</span>
+          <span class="randomness-label-right">Completely random</span>
+        </div>
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
 
 
     <!-- Best CLS Routes -->

@@ -16,61 +16,74 @@ window.addEventListener("DOMContentLoaded", () => {
 //---------------------------------------------------------
 window.addEventListener("DOMContentLoaded", async () => {
 
-  // Enable collapsibles immediately
   initCollapsibles();
 
-  // Show CLS loading message
+  // Show loading message
   document.getElementById("cls-table").innerHTML =
     `<div class="loading-msg">Loading CLS riders…</div>`;
 
-  // Load teams + populate opponent dropdown
+  // Load teams + opponent dropdown
   await loadTeams();
   populateOpponentDropdown();
 
-  // Load saved state (CLS + Opponent riders)
+  // Restore saved state (CLS + Opponent riders)
   loadState();
 
   // Restore saved opponent team selection
   const savedOppTeam = localStorage.getItem("selectedOpponentTeam");
   if (savedOppTeam) {
-    const select = document.getElementById("opponentSelect");
-    select.value = savedOppTeam;
+    document.getElementById("opponentSelect").value = savedOppTeam;
   }
 
-  // Render CLS riders
+  // Render CLS riders (fresh or restored)
   if (clsRiders.length === 0) {
-    await renderCLS();                 // fresh load
+    await renderCLS();
   } else {
-    renderUnifiedCLSTable(clsRiders);  // restored
+    renderUnifiedCLSTable(clsRiders);
   }
 
-  // Render Opponent riders if saved
-  if (opponentRiders.length > 0) {
-    renderUnifiedOpponentTable(opponentRiders);
-  }
-
-  // If opponent riders were saved, do NOT reload the full team
+  // Render opponent riders (fresh or restored)
   if (savedOppTeam && opponentRiders.length > 0) {
     renderUnifiedOpponentTable(opponentRiders);
-    renderAverages(getRiders());
-    renderBeeswarm(clsRiders, opponentRiders);
   } else if (savedOppTeam) {
-    // No saved riders → load full team
-    await onOpponentSelected();
+    await onOpponentSelected();   // loads full team
   }
-
 
   // Load routes
   const resRoutes = await fetch("routes.json");
   routes = await resRoutes.json();
-  console.log("Routes loaded:", routes.length);
 
   // Opponent team selection handler
   document.getElementById("opponentSelect")
     .addEventListener("change", () => {
-      onOpponentSelected();
+      onOpponentSelected();   // this already calls calculateRoutes()
       saveState();
     });
+
+  // Ladder toggle → recalc
+  document.getElementById("ladder-toggle")
+    .addEventListener("change", calculateRoutes);
+
+  // -----------------------------------------------------
+  // IMPORTANT: run initial calculation BEFORE attaching slider listener
+  // -----------------------------------------------------
+  calculateRoutes();
+
+  // -----------------------------------------------------
+  // Randomness slider handler (attach AFTER DOM is fully rendered)
+  // -----------------------------------------------------
+  const randomnessSlider = document.getElementById("randomness-slider");
+  const randomnessValue = document.getElementById("randomness-value");
+
+  if (randomnessSlider) {
+    randomnessSlider.addEventListener("input", () => {
+      randomnessValue.textContent = `${randomnessSlider.value}%`;
+      calculateRoutes();
+    });
+  }
+});
+
+
 
   // ---------------------------------------------------------
   // REMOVE RIDER (works for both CLS and Opponent tables)
@@ -103,6 +116,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     saveState();
 
     // Recalculate team averages
+    riders = [...clsRiders, ...opponentRiders];
     calculateRoutes();
   });
 
@@ -117,9 +131,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     onOpponentSelected();
     saveState();
   });
-
-  // Calculate button
-  document.getElementById('calculate-btn').onclick = calculateRoutes;
 
   // Unified power toggle handler
   document.querySelectorAll(".power-toggle").forEach(t => {
@@ -168,9 +179,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       img.src = url;
     }
   });
-
-});
-
 
 
 // ---------------------------------------------------------
@@ -502,7 +510,7 @@ function renderBeeswarm(clsRiders, oppRiders) {
             label: ctx => `${ctx.raw.rider}: ${ctx.raw.y.toFixed(1)} w/kg`
           }
         },
-        legend: { position: "top" }
+        legend: { display: false }
       },
       scales: {
         x: {
@@ -511,7 +519,7 @@ function renderBeeswarm(clsRiders, oppRiders) {
           ticks: {
             callback: i => durations[i]?.label ?? ""
           },
-          title: { display: true, text: "Duration" }
+          title: { display: false }
         },
         y: {
           title: { display: true, text: "w/kg" },
@@ -949,19 +957,27 @@ function rankRoutes(routes, riders) {
   const scored = filtered.map(route => {
     const scores = computeRouteScores(route, riders);
 
-    // ⭐ Controlled randomness: ±5 variation
-    const jitter = (Math.random() - 0.5) * 10;   // range: -5 to +5
+    const randomnessSlider = document.getElementById("randomness-slider");
+    const randomness = randomnessSlider ? Number(randomnessSlider.value) : 50;
+
+    const jitterStrength = Math.pow(randomness / 100, 2) * 100;
+    const jitter = (Math.random() - 0.5) * jitterStrength;
 
     return {
       ...route,
+
+      // deterministic values (shown in UI)
       avgCLS: scores.avgCLS,
       avgOpp: scores.avgOpp,
-      diff: scores.diff + jitter   // ⭐ apply jitter here
+      diff: scores.diff,
+
+      // jittered value (used ONLY for ranking)
+      jitteredDiff: scores.diff + jitter
     };
   });
 
-  const bestCLS = [...scored].sort((a, b) => b.diff - a.diff);
-  const bestOpp = [...scored].sort((a, b) => a.diff - b.diff);
+  const bestCLS = [...scored].sort((a, b) => b.jitteredDiff - a.jitteredDiff);
+  const bestOpp = [...scored].sort((a, b) => a.jitteredDiff - b.jitteredDiff);
 
   return { bestCLS, bestOpp };
 }
@@ -1079,9 +1095,6 @@ function renderAverages(riders) {
 }
 
 
-//---------------------------------------------------------
-// Render Route Results (with split weight columns + highlight strongest)
-//---------------------------------------------------------
 //---------------------------------------------------------
 // Render Route Results (Type column instead of weight columns)
 //---------------------------------------------------------

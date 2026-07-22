@@ -90,9 +90,20 @@ body {
 }
 
 .panel-header h2,
-.section-header h2 {
+.section-header h2,
+.panel h2 {
   margin: 0 0 10px 0;   /* top 0, right 0, bottom 10px, left 0 */
   font-size: 18px;
+}
+
+.panel h2 {
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+
+.results-table + h2 {
+  margin-top: 40px;
 }
 
 .loading-msg {
@@ -102,45 +113,21 @@ body {
   font-style: italic;
 }
 
-/* =========================================================
-   Route Controls (Calculate + Ladder Toggle)
-   ========================================================= */
-
-.ladder-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.ladder-label {
-  font-size: 0.9rem;
-  color: #333;
-}
-
-/* =========================================================
-   Toggles (Unified System)
-   ========================================================= */
-
-/* Base toggle wrapper */
-.toggle,
-.ladder-switch {
+/* Rider POWER TOGGLE — independent styling */
+.rider-power-switch {
   position: relative;
   display: inline-block;
   width: 50px;
   height: 24px;
 }
 
-/* Hide checkbox */
-.toggle input,
-.ladder-switch input {
+.rider-power-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* Slider track */
-.slider,
-.ladder-slider {
+.rider-power-slider {
   position: absolute;
   cursor: pointer;
   inset: 0;
@@ -149,9 +136,7 @@ body {
   border-radius: 24px;
 }
 
-/* Slider knob */
-.slider::before,
-.ladder-slider::before {
+.rider-power-slider::before {
   content: "";
   position: absolute;
   height: 18px;
@@ -163,23 +148,138 @@ body {
   transition: 0.3s;
 }
 
-/* Power toggle active */
-.toggle input:checked + .slider {
-  background-color: #2a6ecb;
-}
-
-.toggle input:checked + .slider::before {
-  transform: translateX(24px);
-}
-
-/* Ladder toggle active */
-.ladder-switch input:checked + .ladder-slider {
+.rider-power-switch input:checked + .rider-power-slider {
   background-color: #1f3b5c;
 }
 
-.ladder-switch input:checked + .ladder-slider::before {
+.rider-power-switch input:checked + .rider-power-slider::before {
   transform: translateX(26px);
 }
+
+
+/* =========================================================
+   Controls for calculate routes
+   ========================================================= */
+
+/* Panel layout */
+.route-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 16px 20px;
+}
+
+/* Unified row: ladder toggle (left) + randomness slider (right) */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px; /* breathing room */
+}
+
+/* Left column: ladder toggle */
+.ladder-col {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap; /* keeps labels tidy */
+}
+
+.control-label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Right column: randomness slider */
+.randomness-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-end; /* keeps the whole block right aligned */
+}
+
+/* NEW: wrapper around title + slider block */
+.randomness-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers the title over the slider block */
+  gap: 6px;
+}
+
+.randomness-title {
+  font-size: 1.05rem;     /* slightly larger */
+  font-weight: 600;       /* gives it presence */
+  color: #222;            /* a bit darker for emphasis */
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.randomness-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.randomness-label-left,
+.randomness-label-right {
+  font-size: 0.9rem;      /* smaller than before */
+  font-weight: 400;       /* lighter */
+  color: #555;            /* softer tone */
+  width: 120px;
+  text-align: center;
+}
+
+#randomness-slider {
+  width: 200px;
+}
+
+#randomness-value {
+  display: none;
+}
+
+/* POWER TOGGLE (CLS section only) */
+.power-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.power-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.power-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.power-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.power-switch input:checked + .power-slider {
+  background-color: #1f3b5c;
+}
+
+.power-switch input:checked + .power-slider::before {
+  transform: translateX(26px);
+}
+
 
 /* =========================================================
    Rider Tables
@@ -285,10 +385,12 @@ button {
 .primary-btn {
   background: #4a90e2;
   color: #fff;
-  padding: 10px 22px;
+  padding: 12px 26px;
   border-radius: 6px;
   font-weight: 600;
-  margin-bottom: 16px;
+  font-size: 15px;
+  align-self: flex-start;
+  transition: background 0.2s;
 }
 
 .primary-btn:hover {

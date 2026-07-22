@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // VERSION BANNER
 //---------------------------------------------------------
-const jsVersion = "2026‑07‑21 18:15";
+const jsVersion = "2026‑07‑22 22:15";
 
 window.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("version-banner");
@@ -84,101 +84,117 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 
 
+// ---------------------------------------------------------
+// REMOVE RIDER (works for both CLS and Opponent tables)
+// ---------------------------------------------------------
+document.addEventListener("click", e => {
+  if (!e.target.classList.contains("remove-rider")) return;
 
-  // ---------------------------------------------------------
-  // REMOVE RIDER (works for both CLS and Opponent tables)
-  // ---------------------------------------------------------
-  document.addEventListener("click", e => {
-    if (!e.target.classList.contains("remove-rider")) return;
+  const factorRow = e.target.closest(".rider-row");
+  const powerRow = factorRow.nextElementSibling;
 
-    const factorRow = e.target.closest(".rider-row");
-    const powerRow = factorRow.nextElementSibling;
+  const team = factorRow.dataset.team;   // "cls" or "opp"
+  const id = factorRow.dataset.id;       // rider id as string
 
-    const team = factorRow.dataset.team;   // "cls" or "opp"
-    const id = factorRow.dataset.id;       // rider id as string
+  if (team === "cls") {
+    clsRiders = clsRiders.filter(r => String(r.id) !== id);
+  } else if (team === "opp") {
+    opponentRiders = opponentRiders.filter(r => String(r.id) !== id);
+  }
 
-    if (team === "cls") {
-      clsRiders = clsRiders.filter(r => String(r.id) !== id);
-    } else if (team === "opp") {
-      opponentRiders = opponentRiders.filter(r => String(r.id) !== id);
-    }
+  if (powerRow && powerRow.classList.contains("power-mode")) {
+    powerRow.remove();
+  }
+  factorRow.remove();
 
-    if (powerRow && powerRow.classList.contains("power-mode")) {
-      powerRow.remove();
-    }
-    factorRow.remove();
+  // Re-render tables
+  renderUnifiedCLSTable(clsRiders);
+  renderUnifiedOpponentTable(opponentRiders);
 
-    // Re-render tables
+  // Save new state
+  saveState();
+
+  // Recalculate team averages
+  riders = [...clsRiders, ...opponentRiders];
+  calculateRoutes();
+});
+
+
+// ---------------------------------------------------------
+// Reset CLS button (FIXED — now waits for async renderCLS)
+// ---------------------------------------------------------
+document.getElementById("reset-cls").addEventListener("click", async () => {
+  await onCLSSelected();   // <-- now identical to opponent logic
+
+  riders = [...clsRiders, ...opponentRiders];
+  saveState();
+  calculateRoutes();
+});
+
+
+// ---------------------------------------------------------
+// Reset opponent button
+// ---------------------------------------------------------
+document.getElementById("reset-opp").addEventListener("click", () => {
+  onOpponentSelected();
+  riders = [...clsRiders, ...opponentRiders];
+  saveState();
+  calculateRoutes();
+});
+
+
+// ---------------------------------------------------------
+// Unified power toggle handler
+// ---------------------------------------------------------
+document.querySelectorAll(".power-toggle").forEach(t => {
+  t.addEventListener("change", () => {
+    const checked = t.checked;
+
+    // Sync all toggles
+    document.querySelectorAll(".power-toggle").forEach(x => x.checked = checked);
+
+    // Re-render both tables
     renderUnifiedCLSTable(clsRiders);
     renderUnifiedOpponentTable(opponentRiders);
 
-    // Save new state
-    saveState();
-
-    // Recalculate team averages
-    riders = [...clsRiders, ...opponentRiders];
-    calculateRoutes();
-  });
-
-  // Reset CLS button
-  document.getElementById("reset-cls").addEventListener("click", () => {
-    renderCLS();
     saveState();
   });
+});
 
-  // Reset opponent button
-  document.getElementById("reset-opp").addEventListener("click", () => {
-    onOpponentSelected();
-    saveState();
-  });
 
-  // Unified power toggle handler
-  document.querySelectorAll(".power-toggle").forEach(t => {
-    t.addEventListener("change", () => {
-      const checked = t.checked;
+// ---------------------------------------------------------
+// Route collapse handler
+// ---------------------------------------------------------
+document.addEventListener("click", e => {
+  const row = e.target.closest(".route-row");
+  if (!row) return;
 
-      // Sync all toggles
-      document.querySelectorAll(".power-toggle").forEach(x => x.checked = checked);
+  const collapseRow = row.nextElementSibling;
+  if (!collapseRow || !collapseRow.classList.contains("collapse-row")) return;
 
-      // Re-render both tables
-      renderUnifiedCLSTable(clsRiders);
-      renderUnifiedOpponentTable(opponentRiders);
+  const isOpen = collapseRow.style.display !== "none";
+  collapseRow.style.display = isOpen ? "none" : "table-row";
 
-      saveState();
-    });
-  });
-
-  // Route collapse handler
-  document.addEventListener("click", e => {
-    const row = e.target.closest(".route-row");
-    if (!row) return;
-
-    const collapseRow = row.nextElementSibling;
-    if (!collapseRow || !collapseRow.classList.contains("collapse-row")) return;
-
-    const isOpen = collapseRow.style.display !== "none";
-    collapseRow.style.display = isOpen ? "none" : "table-row";
-
-    if (!isOpen) {
-      const img = collapseRow.querySelector(".elevation-img");
-      if (!img) {
-        console.warn("No .elevation-img found in collapse row");
-        return;
-      }
-
-      const worldRaw = row.dataset.world || "";
-      const routeRaw = row.dataset.route || "";
-
-      const world = slugify(worldRaw);
-      const cleanedRoute = cleanRouteName(routeRaw);
-      const route = slugify(cleanedRoute);
-
-      const url = `https://zwiftinsider.com/wp-content/routes/${world}/${route}.svg`;
-      console.log("Elevation URL:", url);
-
-      img.src = url;
+  if (!isOpen) {
+    const img = collapseRow.querySelector(".elevation-img");
+    if (!img) {
+      console.warn("No .elevation-img found in collapse row");
+      return;
     }
-  });
+
+    const worldRaw = row.dataset.world || "";
+    const routeRaw = row.dataset.route || "";
+
+    const world = slugify(worldRaw);
+    const cleanedRoute = cleanRouteName(routeRaw);
+    const route = slugify(cleanedRoute);
+
+    const url = `https://zwiftinsider.com/wp-content/routes/${world}/${route}.svg`;
+    console.log("Elevation URL:", url);
+
+    img.src = url;
+  }
+});
 
 
 // ---------------------------------------------------------
@@ -363,6 +379,29 @@ function populateOpponentDropdown() {
 }
 
 // ---------------------------------------------------------
+// LOAD + RENDER CLS TEAM (when selected reset pressed)
+// ---------------------------------------------------------
+
+async function onCLSSelected() {
+  const div = document.getElementById("cls-table");
+
+  div.innerHTML = `<div class="loading-msg">Loading CLS riders…</div>`;
+  await Promise.resolve(); // allow paint
+
+  // Fetch + enrich CLS team
+  clsRiders = await enrichTeam(clsTeam);
+
+  // Render table
+  renderUnifiedCLSTable(clsRiders);
+
+  // Update averages + beeswarm
+  const allRiders = getRiders();
+  renderAverages(allRiders);
+  renderBeeswarm(clsRiders, opponentRiders);
+}
+
+
+// ---------------------------------------------------------
 // LOAD + RENDER OPPONENT TEAM (only when selected)
 // ---------------------------------------------------------
 async function onOpponentSelected() {
@@ -396,10 +435,7 @@ async function onOpponentSelected() {
   // Render table
   renderUnifiedOpponentTable(opponentRiders);
 
-  // Update averages (CLS + Opp combined)
-  const allRiders = getRiders();
-  renderAverages(allRiders);
-  renderBeeswarm(clsRiders, opponentRiders);
+  calculateRoutes();
 }
 
 // ---------------------------------------------------------

@@ -295,7 +295,18 @@ async function enrichTeam(team) {
 
   for (const rider of team.riders) {
     const zr = await fetchZwiftRacingRider(rider.id);
-    enriched.push({ ...rider, zr });
+
+    // Safely compute low-sample warning
+    const lowSampleWarning =
+      zr && zr.race && typeof zr.race.finishes === "number"
+        ? zr.race.finishes < 5
+        : false;
+
+    enriched.push({
+      ...rider,
+      zr,
+      lowSampleWarning
+    });
   }
 
   return enriched;
@@ -331,9 +342,9 @@ async function renderCLS() {
 }
 
 // ---------------------------------------------------------
-// Trim rider name to 26 char
+// Trim rider name to 23 char
 // ---------------------------------------------------------
-function trimName(name, max = 26) {
+function trimName(name, max = 23) {
   return name.length > max ? name.slice(0, max) + "…" : name;
 }
 
@@ -658,7 +669,10 @@ function renderUnifiedCLSTable(riders) {
     factorRow.dataset.team = "cls";
     factorRow.dataset.id = String(r.id);
     factorRow.innerHTML = `
-      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">
+        ${trimName(r.name)}
+        ${r.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
+      </a>
       <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
       <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
       <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
@@ -682,7 +696,10 @@ function renderUnifiedCLSTable(riders) {
     powerRow.dataset.team = "cls";
     powerRow.dataset.id = String(r.id);
     powerRow.innerHTML = `
-      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">
+        ${trimName(r.name)}
+        ${r.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
+      </a>
 
       <div class="profile-cell weight">${Math.round(zr.weight) ?? "N/A"}</div>
       <div class="profile-cell phenotype">${zr.phenotype?.value ?? "Unknown"}</div>
@@ -802,7 +819,10 @@ function renderUnifiedOpponentTable(riders) {
     factorRow.dataset.team = "opp";
     factorRow.dataset.id = String(r.id);
     factorRow.innerHTML = `
-      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">
+        ${trimName(r.name)}
+        ${r.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
+      </a>
       <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
       <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
       <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
@@ -826,7 +846,10 @@ function renderUnifiedOpponentTable(riders) {
     powerRow.dataset.team = "opp";
     powerRow.dataset.id = String(r.id);
     powerRow.innerHTML = `
-      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">${trimName(r.name)}</a>
+      <a href="https://zwiftracing.app/riders/${r.id}" target="_blank" class="rider-link">
+        ${trimName(r.name)}
+        ${r.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
+      </a>
 
       <div class="profile-cell weight">${Math.round(zr.weight) ?? "N/A"}</div>
       <div class="profile-cell phenotype">${zr.phenotype?.value ?? "Unknown"}</div>

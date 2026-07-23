@@ -156,6 +156,13 @@ body {
   transform: translateX(26px);
 }
 
+.low-sample-warning {
+  margin-left: 4px;
+  color: #d98c00;
+  font-size: 14px;
+  cursor: help;
+}
+
 
 /* =========================================================
    Controls for calculate routes

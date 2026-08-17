@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Zwift Ladder route picker</title>
+  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -67,11 +68,29 @@
   </div>
 </div>
 
+<!-- Team Selection -->
+<section class="panel">
+  <h2>Select Teams</h2>
+  <div class="team-selection">
+    <div class="team-select-group">
+      <label for="homeTeamSelect">Home Team</label>
+      <select id="homeTeamSelect" class="team-dropdown">
+        <option value="">-- Choose home team --</option>
+      </select>
+    </div>
+    <div class="team-select-group">
+      <label for="awayTeamSelect">Away Team</label>
+      <select id="awayTeamSelect" class="team-dropdown">
+        <option value="">-- Choose away team --</option>
+      </select>
+    </div>
+  </div>
+</section>
 
-<!-- CLS ZR container -->
-<section class="panel cls-panel">
+<!-- Home Team Riders -->
+<section class="panel home-panel">
 <div class="section-header">
-  <h2>CLS Riders</h2>
+  <h2>Home Team Riders</h2>
 
   <div class="power-toggle-wrapper">
     <span class="toggle-label-left">vELO Factors</span>
@@ -85,26 +104,19 @@
 
 </div>
 
-  <div id="cls-table"></div>
-  <button id="reset-cls" class="secondary-btn">Reset CLS Team</button>
+  <div id="home-table"></div>
+  <button id="reset-home" class="secondary-btn">Reset Home Team</button>
 
 </section>
 
 <!-- Opponent Team Selector -->
-<section class="panel opp-panel">
+<section class="panel away-panel">
   <div class="panel-header">
-    <h2>Select Opponent Team</h2>
   </div>
 
-  <select id="opponentSelect" class="team-dropdown">
-    <option value="">-- Choose a team --</option>
-  </select>
-</section>
-
-<!-- Opponent Riders -->
-<section class="panel opp-panel">
+<!-- Away Team Riders -->
 <div class="section-header">
-  <h2>Opponent Riders</h2>
+  <h2>Away Team Riders</h2>
 
   <div class="power-toggle-wrapper">
     <span class="toggle-label-left">vELO Factors</span>
@@ -118,8 +130,8 @@
   </div>
 </div>
 
-  <div id="opp-table"></div>
-  <button id="reset-opp" class="secondary-btn">Reset Opponent Team</button>
+  <div id="away-table"></div>
+  <button id="reset-away" class="secondary-btn">Reset Away Team</button>
 </section>
 
 
@@ -185,9 +197,9 @@
 </section>
 
 
-    <!-- Best CLS Routes -->
+    <!-- Best Home Routes -->
 <section class="panel">
-  <h2>Best CLS Routes</h2>
+  <h2>Best Home Routes</h2>
 
   <table class="results-table routes-table">
 
@@ -198,8 +210,8 @@
   <col style="width: 70px;">   <!-- Elevation -->
   <col style="width: 70px;">   <!-- Lead-in -->
 
-  <col style="width: 60px;" class="group-break">   <!-- vELO CLS -->
-  <col style="width: 60px;">                        <!-- vELO Opp -->
+  <col style="width: 60px;" class="group-break">   <!-- vELO Home -->
+  <col style="width: 60px;">                        <!-- vELO Away -->
   <col style="width: 60px;">                        <!-- vELO diff -->
 </colgroup>
 
@@ -211,8 +223,8 @@
     <th>Elevation</th>
     <th>Lead-in</th>
 
-    <th class="group-break">vELO CLS</th>
-    <th>vELO Opp</th>
+    <th class="group-break">vELO Home</th>
+    <th>vELO Away</th>
     <th>vELO diff</th>
   </tr>
 </thead>
@@ -227,9 +239,9 @@
 </section>
 
 
-<!-- Best Opponent Routes -->
+<!-- Best Away Routes -->
 <section class="panel">
-  <h2>Best Opponent Routes</h2>
+  <h2>Best Away Routes</h2>
 
   <table class="results-table routes-table">
 
@@ -240,8 +252,8 @@
   <col style="width: 70px;">   <!-- Elevation -->
   <col style="width: 70px;">   <!-- Lead-in -->
 
-  <col style="width: 60px;" class="group-break">   <!-- vELO CLS -->
-  <col style="width: 60px;">                        <!-- vELO Opp -->
+  <col style="width: 60px;" class="group-break">   <!-- vELO Home -->
+  <col style="width: 60px;">                        <!-- vELO Away -->
   <col style="width: 60px;">                        <!-- vELO diff -->
 </colgroup>
 
@@ -253,8 +265,8 @@
     <th>Elevation</th>
     <th>Lead-in</th>
 
-    <th class="group-break">vELO CLS</th>
-    <th>vELO Opp</th>
+    <th class="group-break">vELO Home</th>
+    <th>vELO Away</th>
     <th>vELO diff</th>
   </tr>
 </thead>
@@ -274,7 +286,7 @@
   <div id="version-banner">Loading JS…</div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="js/app.js"></script>
 
 </body>
 </html>

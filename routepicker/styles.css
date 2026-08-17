@@ -79,8 +79,8 @@ body {
   gap: 20px;
 }
 
-.cls-panel { background: #f4f8ff; }
-.opp-panel { background: #fff6f6; }
+.home-panel { background: #f4f8ff; }
+.away-panel { background: #fff6f6; }
 
 .panel-header,
 .section-header {
@@ -167,6 +167,43 @@ body {
 /* =========================================================
    Controls for calculate routes
    ========================================================= */
+
+/* =========================================================
+   Team Selection
+   ========================================================= */
+
+.team-selection {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.team-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.team-select-group label {
+  font-weight: 600;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.team-dropdown {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  background: white;
+  cursor: pointer;
+}
+
+.team-dropdown:hover {
+  border-color: #999;
+}
 
 /* Panel layout */
 .route-controls {
@@ -352,23 +389,23 @@ body {
   white-space: nowrap;
 }
 
-.cls-panel .rider-link {
+.home-panel .rider-link {
   color: #2a6ecb;
   font-weight: 600;
   text-decoration: none;
 }
 
-.cls-panel .rider-link:hover {
+.home-panel .rider-link:hover {
   text-decoration: underline;
 }
 
-.opp-panel .rider-link {
+.away-panel .rider-link {
   color: #c0392b;
   font-weight: 600;
   text-decoration: none;
 }
 
-.opp-panel .rider-link:hover {
+.away-panel .rider-link:hover {
   text-decoration: underline;
 }
 

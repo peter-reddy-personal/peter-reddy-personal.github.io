@@ -116,7 +116,7 @@ export function renderRiderTable(riders, containerId, teamType) {
     <div>TT</div>
     <div>PUR</div>
     <div>END</div>
-    <div></div>
+    <div title="Click the button to add or remove rider from team comparison.">Use</div>
   `;
 
   // Headers for power view
@@ -133,7 +133,7 @@ export function renderRiderTable(riders, containerId, teamType) {
     <div>2m</div>
     <div>5m</div>
     <div>20m</div>
-    <div></div>
+    <div title="Click the button to add or remove rider from team comparison.">Use</div>
   `;
 
   container.appendChild(factorHeader);

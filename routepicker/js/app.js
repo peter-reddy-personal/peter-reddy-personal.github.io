@@ -140,6 +140,21 @@ function attachEventListeners() {
     performCalculation();
   });
 
+  // Toggle rider selection from anywhere on the row except the linked name
+  document.addEventListener("click", (e) => {
+    const row = e.target.closest(".rider-row");
+    if (!row || e.target.closest(".rider-link") || e.target.closest(".rider-select")) return;
+
+    const riders = row.dataset.team === "home" ? appState.homeRiders : appState.awayRiders;
+    const rider = riders.find((item) => String(item.id) === row.dataset.id);
+    if (!rider) return;
+
+    rider.selected = rider.selected !== true;
+    appState.saveRiders();
+    renderRiderTable(riders, `${row.dataset.team}-table`, row.dataset.team);
+    performCalculation();
+  });
+
   // Select or unselect every rider on a team
   const setTeamSelection = (team, selected) => {
     const riders = team === "home" ? appState.homeRiders : appState.awayRiders;

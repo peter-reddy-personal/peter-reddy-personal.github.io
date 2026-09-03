@@ -34,9 +34,10 @@ export const DOM_SELECTORS = {
   powerToggle: ".power-toggle",
   
   // Buttons
-  resetHomeBtn: "#reset-home",
-  resetAwayBtn: "#reset-away",
-  removeRiderBtn: ".remove-rider",
+  selectAllHomeBtn: "#select-all-home",
+  unselectAllHomeBtn: "#unselect-all-home",
+  selectAllAwayBtn: "#select-all-away",
+  unselectAllAwayBtn: "#unselect-all-away",
   
   // Tables & Results
   teamAverages: "#team-averages",

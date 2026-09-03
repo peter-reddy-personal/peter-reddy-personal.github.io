@@ -59,26 +59,19 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     // ===== RENDER TEAMS =====
     // Restore home team (default to CLS)
-    showLoadingMessage("home-table", LOADING_MESSAGES.homeRiders);
-    if (appState.homeRiders.length === 0) {
-      await loadHomeTeam();
-    } else {
-      renderRiderTable(appState.homeRiders, "home-table", "home");
-    }
-
-    // Set home team dropdown value
-    document.getElementById(DOM_SELECTORS.homeTeamSelect.replace("#", "")).value = 
+    document.getElementById(DOM_SELECTORS.homeTeamSelect.replace("#", "")).value =
       appState.selectedHomeTeamNumber || CLS_TEAM_NUMBER;
+
+    showLoadingMessage("home-table", LOADING_MESSAGES.homeRiders);
+    await loadHomeTeam(true);
 
     // Restore away team if previously selected
     const savedAwayTeam = appState.selectedAwayTeamNumber;
     if (savedAwayTeam) {
       document.getElementById(DOM_SELECTORS.awayTeamSelect.replace("#", "")).value = savedAwayTeam;
-      if (appState.awayRiders.length > 0) {
-        renderRiderTable(appState.awayRiders, "away-table", "away");
-      } else {
-        await loadAwayTeam();
-      }
+      await loadAwayTeam(true);
+    } else {
+      appState.setAwayRiders([]);
     }
 
     // ===== ATTACH EVENT LISTENERS =====
@@ -130,18 +123,49 @@ function attachEventListeners() {
     });
   }
 
-  // Reset home button
-  document.getElementById(DOM_SELECTORS.resetHomeBtn.replace("#", "")).addEventListener("click", async () => {
-    await loadHomeTeam();
+  // Rider selection
+  document.addEventListener("change", (e) => {
+    if (!e.target.classList.contains("rider-select")) return;
+
+    const row = e.target.closest(".rider-row");
+    if (!row) return;
+
+    const riders = row.dataset.team === "home" ? appState.homeRiders : appState.awayRiders;
+    const rider = riders.find((item) => String(item.id) === row.dataset.id);
+    if (!rider) return;
+
+    rider.selected = e.target.checked;
     appState.saveRiders();
+    renderRiderTable(riders, `${row.dataset.team}-table`, row.dataset.team);
     performCalculation();
   });
 
-  // Reset away button
-  document.getElementById(DOM_SELECTORS.resetAwayBtn.replace("#", "")).addEventListener("click", async () => {
-    await loadAwayTeam();
+  // Select or unselect every rider on a team
+  const setTeamSelection = (team, selected) => {
+    const riders = team === "home" ? appState.homeRiders : appState.awayRiders;
+    riders.forEach((rider) => {
+      rider.selected = selected;
+    });
+
     appState.saveRiders();
+    renderRiderTable(riders, `${team}-table`, team);
     performCalculation();
+  };
+
+  document.getElementById(DOM_SELECTORS.selectAllHomeBtn.replace("#", "")).addEventListener("click", () => {
+    setTeamSelection("home", true);
+  });
+
+  document.getElementById(DOM_SELECTORS.unselectAllHomeBtn.replace("#", "")).addEventListener("click", () => {
+    setTeamSelection("home", false);
+  });
+
+  document.getElementById(DOM_SELECTORS.selectAllAwayBtn.replace("#", "")).addEventListener("click", () => {
+    setTeamSelection("away", true);
+  });
+
+  document.getElementById(DOM_SELECTORS.unselectAllAwayBtn.replace("#", "")).addEventListener("click", () => {
+    setTeamSelection("away", false);
   });
 
   // Power toggle (factor vs power view)
@@ -160,36 +184,6 @@ function attachEventListeners() {
 
       appState.saveRiders();
     });
-  });
-
-  // Remove rider
-  document.addEventListener("click", (e) => {
-    if (!e.target.classList.contains("remove-rider")) return;
-
-    const factorRow = e.target.closest(".rider-row");
-    if (!factorRow) return;
-
-    const team = factorRow.dataset.team;
-    const riderId = factorRow.dataset.id;
-
-    // Remove from state
-    if (team === "home") {
-      appState.removeHomeRider(riderId);
-    } else if (team === "away") {
-      appState.removeAwayRider(riderId);
-    }
-
-    // Remove power row if present
-    const powerRow = factorRow.nextElementSibling;
-    if (powerRow && powerRow.classList.contains("power-mode")) {
-      powerRow.remove();
-    }
-    factorRow.remove();
-
-    // Re-render and recalculate
-    renderRiderTable(appState.homeRiders, "home-table", "home");
-    renderRiderTable(appState.awayRiders, "away-table", "away");
-    performCalculation();
   });
 
   // Route collapse/expand
@@ -224,7 +218,7 @@ function attachEventListeners() {
 /**
  * Load and render home team based on dropdown selection
  */
-async function loadHomeTeam() {
+async function loadHomeTeam(preserveSelection = false) {
   const select = document.getElementById(DOM_SELECTORS.homeTeamSelect.replace("#", ""));
   const teamNumber = parseInt(select.value, 10);
 
@@ -246,7 +240,14 @@ async function loadHomeTeam() {
       return;
     }
 
-    appState.setHomeRiders(await enrichTeam(homeTeam));
+    const savedSelections = new Map(
+      appState.homeRiders.map((rider) => [String(rider.id), rider.selected === true])
+    );
+    const riders = await enrichTeam(homeTeam);
+    appState.setHomeRiders(riders.map((rider) => ({
+      ...rider,
+      selected: preserveSelection ? savedSelections.get(String(rider.id)) !== false : true
+    })));
     renderRiderTable(appState.homeRiders, "home-table", "home");
   } catch (error) {
     console.error("Error loading home team:", error);
@@ -257,7 +258,7 @@ async function loadHomeTeam() {
 /**
  * Load and render away team based on dropdown selection
  */
-async function loadAwayTeam() {
+async function loadAwayTeam(preserveSelection = false) {
   const select = document.getElementById(DOM_SELECTORS.awayTeamSelect.replace("#", ""));
   const teamNumber = parseInt(select.value, 10);
 
@@ -279,7 +280,14 @@ async function loadAwayTeam() {
       return;
     }
 
-    appState.setAwayRiders(await enrichTeam(awayTeam));
+    const savedSelections = new Map(
+      appState.awayRiders.map((rider) => [String(rider.id), rider.selected === true])
+    );
+    const riders = await enrichTeam(awayTeam);
+    appState.setAwayRiders(riders.map((rider) => ({
+      ...rider,
+      selected: preserveSelection ? savedSelections.get(String(rider.id)) !== false : true
+    })));
     renderRiderTable(appState.awayRiders, "away-table", "away");
   } catch (error) {
     console.error("Error loading away team:", error);
@@ -307,7 +315,10 @@ function performCalculation() {
 
     // Render all results
     renderAverages(riders);
-    renderBeeswarm(appState.homeRiders, appState.awayRiders);
+    renderBeeswarm(
+      appState.homeRiders.filter((rider) => rider.selected === true),
+      appState.awayRiders.filter((rider) => rider.selected === true)
+    );
     renderResults(rankedRoutes);
 
     console.log("Calculation complete");

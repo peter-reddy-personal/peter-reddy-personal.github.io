@@ -1312,6 +1312,22 @@
    "Type": "Flat"
  },
  {
+   "Route": "Mech Isle Mayhem",
+   "URL": "https://zwiftinsider.com/route/mech-isle-mayhem/",
+   "World": "Makuri Islands",
+   "Sprint": 0.2487,
+   "Punch": 0.2487,
+   "Climb": 0,
+   "TT": 0.3391,
+   "Pursuit": 0,
+   "Endurance": 0.1634,
+   "Length": 18.3,
+   "Elevation": "113",
+   "Lead_in": 2,
+   "Ladder": true,
+   "Type": "Flat"
+ },
+ {
    "Route": "Neokyo All-Nighter",
    "URL": "https://zwiftinsider.com/route/neokyo-all-nighter/",
    "World": "Makuri Islands",
@@ -1600,6 +1616,22 @@
    "Type": "Rolling"
  },
  {
+   "Route": "Twilight Crit",
+   "URL": "https://zwiftinsider.com/route/twilight-crit/",
+   "World": "Makuri Islands",
+   "Sprint": 0.3268,
+   "Punch": 0.2579,
+   "Climb": 0,
+   "TT": 0.4153,
+   "Pursuit": 0,
+   "Endurance": 0,
+   "Length": 3.9,
+   "Elevation": "20",
+   "Lead_in": 1.8,
+   "Ladder": false,
+   "Type": "Flat"
+ },
+ {
    "Route": "Twilight Harbor",
    "URL": "https://zwiftinsider.com/route/twilight-harbor/",
    "World": "Makuri Islands",
@@ -1629,6 +1661,22 @@
    "Elevation": "88",
    "Lead_in": 0.2,
    "Ladder": false,
+   "Type": "Rolling"
+ },
+ {
+   "Route": "Urumaze",
+   "URL": "https://zwiftinsider.com/route/urumaze/",
+   "World": "Makuri Islands",
+   "Sprint": 0.1229,
+   "Punch": 0.1872,
+   "Climb": 0.1429,
+   "TT": 0.1463,
+   "Pursuit": 0,
+   "Endurance": 0.4008,
+   "Length": 24.7,
+   "Elevation": "193",
+   "Lead_in": 2,
+   "Ladder": true,
    "Type": "Rolling"
  },
  {
@@ -1662,6 +1710,22 @@
    "Lead_in": 0.1,
    "Ladder": true,
    "Type": "Rolling"
+ },
+ {
+   "Route": "WhatYumeziWe'reLost?",
+   "URL": "https://zwiftinsider.com/route/whatyumeziwerelost/",
+   "World": "Makuri Islands",
+   "Sprint": 0.0115,
+   "Punch": 0.0387,
+   "Climb": 0.4431,
+   "TT": 0.3259,
+   "Pursuit": 0,
+   "Endurance": 0.1808,
+   "Length": 17.4,
+   "Elevation": "282",
+   "Lead_in": 0.1,
+   "Ladder": true,
+   "Type": "Hilly"
  },
  {
    "Route": "Yumezi Grit",
@@ -2349,7 +2413,7 @@
    "Elevation": "29",
    "Lead_in": 0.3,
    "Ladder": true,
-   "Type": "NA"
+   "Type": "Flat"
  },
  {
    "Route": "Crêpe Escape",
@@ -2365,7 +2429,7 @@
    "Elevation": "113",
    "Lead_in": 3.2,
    "Ladder": true,
-   "Type": "NA"
+   "Type": "Rolling"
  },
  {
    "Route": "Double Espresso",
@@ -2381,7 +2445,7 @@
    "Elevation": "221",
    "Lead_in": 3.2,
    "Ladder": true,
-   "Type": "NA"
+   "Type": "Rolling"
  },
  {
    "Route": "Heart of Montmartre",
@@ -2397,7 +2461,7 @@
    "Elevation": "500",
    "Lead_in": 3.2,
    "Ladder": false,
-   "Type": "NA"
+   "Type": "Rolling"
  },
  {
    "Route": "La Boucle",
@@ -2413,7 +2477,7 @@
    "Elevation": "117",
    "Lead_in": 3.2,
    "Ladder": true,
-   "Type": "NA"
+   "Type": "Rolling"
  },
  {
    "Route": "Loop de loop de loop",
@@ -2429,7 +2493,7 @@
    "Elevation": "36",
    "Lead_in": 3.2,
    "Ladder": false,
-   "Type": "NA"
+   "Type": "Flat"
  },
  {
    "Route": "Lutece Express",
@@ -2461,7 +2525,7 @@
    "Elevation": "190",
    "Lead_in": 2.4,
    "Ladder": true,
-   "Type": "NA"
+   "Type": "Rolling"
  },
  {
    "Route": "Paris Toujours",
@@ -2477,7 +2541,7 @@
    "Elevation": "448",
    "Lead_in": 3.2,
    "Ladder": false,
-   "Type": "NA"
+   "Type": "Rolling"
  },
  {
    "Route": "Cobbled Climbs",
@@ -3869,6 +3933,22 @@
    "Elevation": "355",
    "Lead_in": 0.2,
    "Ladder": false,
+   "Type": "Hilly"
+ },
+ {
+   "Route": "Spiral Summit",
+   "URL": "https://zwiftinsider.com/route/spiral-summit",
+   "World": "Watopia",
+   "Sprint": 0.0004,
+   "Punch": 0.0786,
+   "Climb": 0.3765,
+   "TT": 0.1612,
+   "Pursuit": 0,
+   "Endurance": 0.3833,
+   "Length": 23.9,
+   "Elevation": "284",
+   "Lead_in": 0.2,
+   "Ladder": true,
    "Type": "Hilly"
  },
  {

@@ -21,14 +21,14 @@ export function getRidersFromDOM() {
 
       riders.push({
         team,
-        selected: row.querySelector(".rider-select")?.checked ?? true,
+        selected: row.querySelector(".rider-select")?.checked ?? false,
         name: row.querySelector(".rider-link")?.textContent.trim() || "",
-        sprint: Number(row.querySelector(".rider-sprint")?.value) || 0,
-        punch: Number(row.querySelector(".rider-punch")?.value) || 0,
-        climb: Number(row.querySelector(".rider-climb")?.value) || 0,
-        tt: Number(row.querySelector(".rider-tt")?.value) || 0,
-        pursuit: Number(row.querySelector(".rider-pursuit")?.value) || 0,
-        endurance: Number(row.querySelector(".rider-endurance")?.value) || 0
+        sprint: Number(row.querySelector(".rider-sprint")?.textContent) || 0,
+        punch: Number(row.querySelector(".rider-punch")?.textContent) || 0,
+        climb: Number(row.querySelector(".rider-climb")?.textContent) || 0,
+        tt: Number(row.querySelector(".rider-tt")?.textContent) || 0,
+        pursuit: Number(row.querySelector(".rider-pursuit")?.textContent) || 0,
+        endurance: Number(row.querySelector(".rider-endurance")?.textContent) || 0
       });
     }
   });
@@ -55,9 +55,9 @@ export function computeSingleRiderScore(route, rider) {
  * Compute average vELO scores for both teams on a specific route
  */
 export function computeRouteScores(route, riders) {
-  const homeRiders = riders.filter((r) => r.team === "home" && r.selected !== false);
+  const homeRiders = riders.filter((r) => r.team === "home" && r.selected === true);
   const awayRiders = riders.filter(
-    (r) => r.team === "away" && r.selected !== false
+    (r) => r.team === "away" && r.selected === true
   );
 
   function avgScore(team) {

@@ -70,7 +70,7 @@ export function populateOpponentDropdown(teams, selectorId = null) {
  */
 export function renderRiderTable(riders, containerId, teamType) {
   const toggle = getElement(DOM_SELECTORS.powerToggle);
-  const showPower = toggle ? toggle.checked : false;
+  const showPower = toggle ? toggle.checked : true;
 
   const container = document.getElementById(containerId);
   if (!container) {
@@ -83,6 +83,9 @@ export function renderRiderTable(riders, containerId, teamType) {
   // Calculate column min/max for power heatmap
   const columnMin = {};
   const columnMax = {};
+  const factorKeys = ["sprint", "punch", "climb", "timeTrial", "pursuit", "endurance"];
+  const factorMin = {};
+  const factorMax = {};
 
   POWER_STATS.forEach((stat) => {
     const values = riders
@@ -91,6 +94,15 @@ export function renderRiderTable(riders, containerId, teamType) {
 
     columnMin[stat] = values.length ? Math.min(...values) : NaN;
     columnMax[stat] = values.length ? Math.max(...values) : NaN;
+  });
+
+  factorKeys.forEach((key) => {
+    const values = riders
+      .map((rider) => rider.zr?.velo?.factors?.[key])
+      .filter((value) => typeof value === "number");
+
+    factorMin[key] = values.length ? Math.min(...values) : NaN;
+    factorMax[key] = values.length ? Math.max(...values) : NaN;
   });
 
   // Headers for factor view
@@ -135,7 +147,7 @@ export function renderRiderTable(riders, containerId, teamType) {
 
     // Factor row
     const factorRow = document.createElement("div");
-    factorRow.className = "rider-row factors-mode factors-grid";
+    factorRow.className = `rider-row factors-mode factors-grid${rider.selected === true ? "" : " rider-unselected"}`;
     factorRow.dataset.team = teamType;
     factorRow.dataset.id = String(rider.id);
     factorRow.innerHTML = `
@@ -143,13 +155,15 @@ export function renderRiderTable(riders, containerId, teamType) {
         ${trimName(rider.name)}
         ${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
       </a>
-      <input class="rider-sprint" value="${Math.round(factors.sprint || 0)}">
-      <input class="rider-punch" value="${Math.round(factors.punch || 0)}">
-      <input class="rider-climb" value="${Math.round(factors.climb || 0)}">
-      <input class="rider-tt" value="${Math.round(factors.timeTrial || 0)}">
-      <input class="rider-pursuit" value="${Math.round(factors.pursuit || 0)}">
-      <input class="rider-endurance" value="${Math.round(factors.endurance || 0)}">
-      <button class="remove-rider">Remove</button>
+      <div class="profile-cell rider-sprint" style="background:${lerpColor(factorMin.sprint, factorMax.sprint, factors.sprint)};">${formatNumber(factors.sprint, 0)}</div>
+      <div class="profile-cell rider-punch" style="background:${lerpColor(factorMin.punch, factorMax.punch, factors.punch)};">${formatNumber(factors.punch, 0)}</div>
+      <div class="profile-cell rider-climb" style="background:${lerpColor(factorMin.climb, factorMax.climb, factors.climb)};">${formatNumber(factors.climb, 0)}</div>
+      <div class="profile-cell rider-tt" style="background:${lerpColor(factorMin.timeTrial, factorMax.timeTrial, factors.timeTrial)};">${formatNumber(factors.timeTrial, 0)}</div>
+      <div class="profile-cell rider-pursuit" style="background:${lerpColor(factorMin.pursuit, factorMax.pursuit, factors.pursuit)};">${formatNumber(factors.pursuit, 0)}</div>
+      <div class="profile-cell rider-endurance" style="background:${lerpColor(factorMin.endurance, factorMax.endurance, factors.endurance)};">${formatNumber(factors.endurance, 0)}</div>
+      <div class="rider-selection">
+        <input type="checkbox" class="rider-select" aria-label="Select ${trimName(rider.name)}" ${rider.selected === true ? "checked" : ""}>
+      </div>
     `;
 
     // Power row with heatmap coloring
@@ -162,7 +176,7 @@ export function renderRiderTable(riders, containerId, teamType) {
     const v1200 = power.wkg1200?.[0];
 
     const powerRow = document.createElement("div");
-    powerRow.className = "rider-row power-mode power-grid";
+    powerRow.className = `rider-row power-mode power-grid${rider.selected === true ? "" : " rider-unselected"}`;
     powerRow.dataset.team = teamType;
     powerRow.dataset.id = String(rider.id);
     powerRow.innerHTML = `
@@ -179,7 +193,9 @@ export function renderRiderTable(riders, containerId, teamType) {
       <div class="profile-cell wkg120" style="background:${lerpColor(columnMin.wkg120, columnMax.wkg120, v120)};">${formatNumber(v120)}</div>
       <div class="profile-cell wkg300" style="background:${lerpColor(columnMin.wkg300, columnMax.wkg300, v300)};">${formatNumber(v300)}</div>
       <div class="profile-cell wkg1200" style="background:${lerpColor(columnMin.wkg1200, columnMax.wkg1200, v1200)};">${formatNumber(v1200)}</div>
-      <button class="remove-rider">Remove</button>
+      <div class="rider-selection">
+        <input type="checkbox" class="rider-select" aria-label="Select ${trimName(rider.name)}" ${rider.selected === true ? "checked" : ""}>
+      </div>
     `;
 
     container.appendChild(factorRow);
@@ -209,8 +225,8 @@ export function showLoadingMessage(containerId, message) {
  * Render team average vELO scores with gradient differences
  */
 export function renderAverages(riders) {
-  const homeRiders = riders.filter((r) => r.team === "home");
-  const awayRiders = riders.filter((r) => r.team === "away");
+  const homeRiders = riders.filter((r) => r.team === "home" && r.selected === true);
+  const awayRiders = riders.filter((r) => r.team === "away" && r.selected === true);
 
   function avg(team, key) {
     if (team.length === 0) return 0;

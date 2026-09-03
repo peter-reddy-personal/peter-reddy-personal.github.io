@@ -110,6 +110,7 @@ export function renderRiderTable(riders, containerId, teamType) {
   factorHeader.className = "input-headings factors-mode factors-grid";
   factorHeader.innerHTML = `
     <div>Name</div>
+    <div class="factor-spacer"></div>
     <div>SPR</div>
     <div>PUN</div>
     <div>CLI</div>
@@ -155,6 +156,7 @@ export function renderRiderTable(riders, containerId, teamType) {
         ${trimName(rider.name)}
         ${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
       </a>
+      <div class="factor-spacer"></div>
       <div class="profile-cell rider-sprint" style="background:${lerpColor(factorMin.sprint, factorMax.sprint, factors.sprint)};">${formatNumber(factors.sprint, 0)}</div>
       <div class="profile-cell rider-punch" style="background:${lerpColor(factorMin.punch, factorMax.punch, factors.punch)};">${formatNumber(factors.punch, 0)}</div>
       <div class="profile-cell rider-climb" style="background:${lerpColor(factorMin.climb, factorMax.climb, factors.climb)};">${formatNumber(factors.climb, 0)}</div>

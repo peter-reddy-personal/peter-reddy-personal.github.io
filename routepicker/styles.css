@@ -364,8 +364,17 @@ body {
 .rider-row.factors-mode {
   grid-template-columns:
     240px
-    60px 60px 60px 60px 60px 60px
+    10px
+    repeat(6, 60px)
     50px;
+}
+
+.factor-spacer {
+  width: 10px;
+}
+
+.input-headings.factors-mode > div:nth-child(n+3):nth-child(-n+8) {
+  text-align: center;
 }
 
 /* Power mode */
@@ -488,6 +497,10 @@ body {
   font-size: 0.9rem;
   white-space: nowrap;
   font-weight: 600;
+}
+
+.rider-row.factors-mode > div:nth-child(2) {
+  width: 10px;
 }
 
 /* =========================================================

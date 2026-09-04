@@ -43,8 +43,8 @@
     <p>
       vELO2 scores every rider and route across six performance factors: 
       <b>sprint</b>, <b>punch</b>, <b>climb</b>, <b>TT</b>, <b>pursuit</b>, and <b>endurance</b>. 
-      The route vELO weighting is split approx 50% between sprint, punch and climb based on the finish 
-      profile of the route, and approx 50% between pursuit and endurance based on its length/overall 
+      The route vELO weighting is split ~50% between sprint, punch and climb based on the finish 
+      profile of the route, and ~50% between pursuit and endurance based on its length/overall 
       difficulty. TT is not used in team racing. 
     </p>
 
@@ -282,6 +282,34 @@
   </div>
 
 </section>
+
+<!-- Selected route rider ranking -->
+<section class="panel selected-route-panel">
+  <h2>Predicted result</h2>
+  <div class="route-selection-layout">
+    <div class="route-selection">
+      <div class="team-select-group">
+        <label for="route-world-select">World</label>
+        <select id="route-world-select" class="team-dropdown">
+          <option value="">All worlds</option>
+        </select>
+      </div>
+      <div class="team-select-group">
+        <label for="route-select">Route</label>
+        <select id="route-select" class="team-dropdown"></select>
+      </div>
+    </div>
+    <div id="route-info" class="route-info"></div>
+  </div>
+  <div class="route-result-layout">
+    <div id="route-profile" class="route-profile"></div>
+    <div id="expected-points" class="expected-points"></div>
+  </div>
+  <div class="table-scroll">
+    <table id="route-rider-rankings" class="results-table route-rankings-table"></table>
+  </div>
+</section>
+
 
   </main>
 

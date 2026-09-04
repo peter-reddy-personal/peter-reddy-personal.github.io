@@ -21,9 +21,12 @@ import {
   renderAverages,
   renderBeeswarm,
   renderResults,
+  populateRouteSelectors,
+  renderRouteRiderRankings,
+  renderExpectedPoints,
   loadRouteElevation
 } from "./renderer.js";
-import { getRidersFromDOM, rankRoutes } from "./calculations.js";
+import { getRidersFromDOM, rankRoutes, rankRidersForRoute, calculateExpectedPoints } from "./calculations.js";
 
 // =========================================================================
 // INITIALIZATION
@@ -47,6 +50,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     console.log("Loading teams and routes...");
     appState.allTeams = await fetchAllTeams();
     appState.routes = await fetchAllRoutes();
+    populateRouteSelectors(appState.routes);
 
     // Populate team dropdowns with all teams
     populateOpponentDropdown(appState.allTeams, DOM_SELECTORS.homeTeamSelect);
@@ -111,6 +115,12 @@ function attachEventListeners() {
 
   // Ladder toggle (ladder-only routes)
   document.getElementById(DOM_SELECTORS.ladderToggle.replace("#", "")).addEventListener("change", performCalculation);
+
+  document.getElementById(DOM_SELECTORS.routeWorldSelect.replace("#", "")).addEventListener("change", (event) => {
+    populateRouteSelectors(appState.routes, event.target.value);
+    renderSelectedRoute();
+  });
+  document.getElementById(DOM_SELECTORS.routeSelect.replace("#", "")).addEventListener("change", renderSelectedRoute);
 
   // Randomness slider
   const randomnessSlider = document.getElementById(DOM_SELECTORS.randomnessSlider.replace("#", ""));
@@ -335,9 +345,34 @@ function performCalculation() {
       appState.awayRiders.filter((rider) => rider.selected === true)
     );
     renderResults(rankedRoutes);
+    renderSelectedRoute();
 
     console.log("Calculation complete");
   } catch (error) {
     console.error("Error during calculation:", error);
   }
+}
+
+function renderSelectedRoute() {
+  const routeSelect = document.getElementById(DOM_SELECTORS.routeSelect.replace("#", ""));
+  const route = routeSelect && routeSelect.value !== ""
+    ? appState.routes[Number(routeSelect.value)]
+    : null;
+  const homeRiders = appState.homeRiders
+    .filter((rider) => rider.selected === true)
+    .map((rider) => ({ ...rider, team: "home" }));
+  const awayRiders = appState.awayRiders
+    .filter((rider) => rider.selected === true)
+    .map((rider) => ({ ...rider, team: "away" }));
+  const selectedRiders = [...homeRiders, ...awayRiders];
+  const homeTeam = appState.findTeam(appState.selectedHomeTeamNumber);
+  const awayTeam = appState.findTeam(appState.selectedAwayTeamNumber);
+
+  renderExpectedPoints(
+    route,
+    calculateExpectedPoints(route, homeRiders, awayRiders),
+    homeTeam?.name || "Home",
+    awayTeam?.name || "Away"
+  );
+  renderRouteRiderRankings(route, rankRidersForRoute(route, selectedRiders));
 }

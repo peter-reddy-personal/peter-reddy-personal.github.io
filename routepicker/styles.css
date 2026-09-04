@@ -205,6 +205,240 @@ body {
   border-color: #999;
 }
 
+.route-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.route-selection .team-select-group {
+  max-width: 500px;
+}
+
+.route-selection-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.route-profile {
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.route-info {
+  min-height: 120px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f7f9fc, #eef3fb);
+  border: 1px solid #dce3ef;
+  box-shadow: 0 2px 5px rgba(31, 59, 92, 0.08);
+}
+
+.route-info .route-profile-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  margin: 0;
+}
+
+.route-info .route-profile-details strong {
+  grid-column: 1 / -1;
+  font-size: 1.2rem;
+  color: #1f3b5c;
+}
+
+.route-info .route-profile-details span::first-letter {
+  color: #4a90e2;
+}
+
+.route-profile .elevation-img {
+  width: 80%;
+  max-width: 480px;
+}
+
+.route-result-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+
+.expected-points {
+  margin: 12px 0 16px;
+  padding: 18px 16px;
+  background: linear-gradient(135deg, #f7f9fc, #eef3fb);
+  border: 1px solid #dce3ef;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(31, 59, 92, 0.08);
+}
+
+.expected-points strong {
+  color: #1f3b5c;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  cursor: help;
+}
+
+.expected-scoreline {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.expected-team {
+  display: flex;
+  flex-direction: column;
+  min-width: 110px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+.expected-home {
+  color: #2a6ecb;
+  background: #f4f8ff;
+}
+
+.expected-away {
+  color: #c0392b;
+  background: #fff0f0;
+}
+
+.expected-winner {
+  border-color: currentColor;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 2px 6px rgba(31, 59, 92, 0.16);
+}
+
+.expected-winner .expected-team-name::after {
+  content: " ★";
+  font-size: 0.85em;
+}
+
+.expected-team-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.expected-score {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.expected-points-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.expected-versus {
+  align-self: center;
+  color: #1f3b5c;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.route-profile-details {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.route-profile-details span {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.route-info .route-profile-details span::before {
+  display: inline-block;
+  width: 1.4em;
+  color: #4a90e2;
+  font-weight: 600;
+}
+
+.route-info .route-world::before { content: "◎"; }
+.route-info .route-type::before { content: "↗"; }
+.route-info .route-length::before { content: "↔"; }
+.route-info .route-elevation::before { content: "△"; }
+.route-info .route-lead-in::before { content: "→"; }
+
+.route-rankings-table th,
+.route-rankings-table td {
+  text-align: center;
+}
+
+.route-rankings-table th:first-child,
+.route-rankings-table td:first-child {
+  text-align: left;
+}
+
+.route-rankings-table {
+  min-width: 920px;
+}
+
+.route-rankings-table th:nth-child(1),
+.route-rankings-table td:nth-child(1) {
+  width: 220px;
+}
+
+.route-rankings-table th:nth-child(2),
+.route-rankings-table td:nth-child(2) {
+  width: 105px;
+}
+
+.route-rankings-table th:nth-child(3),
+.route-rankings-table td:nth-child(3) {
+  width: 80px;
+}
+
+.route-rankings-table th:nth-child(4),
+.route-rankings-table td:nth-child(4) {
+  width: 85px;
+}
+
+.route-rankings-table th:nth-child(5),
+.route-rankings-table td:nth-child(5) {
+  width: 100px;
+}
+
+.route-rankings-table th:nth-child(n+6),
+.route-rankings-table td:nth-child(n+6) {
+  width: 54px;
+}
+
+.route-rankings-table .route-home-row td {
+  background: #f4f8ff;
+}
+
+.route-rankings-table .route-away-row td {
+  background: #fff0f0;
+}
+
+.route-rankings-table .route-home-row td:first-child {
+  border-left: 4px solid #2a6ecb;
+}
+
+.route-rankings-table .route-away-row td:first-child {
+  border-left: 4px solid #c0392b;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
 /* Panel layout */
 .route-controls {
   display: flex;

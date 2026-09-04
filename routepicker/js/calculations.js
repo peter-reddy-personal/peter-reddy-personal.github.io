@@ -52,6 +52,84 @@ export function computeSingleRiderScore(route, rider) {
 }
 
 /**
+ * Rank selected riders from both teams for a route.
+ */
+export function rankRidersForRoute(route, riders) {
+  if (!route) return [];
+
+  return riders
+    .filter((rider) => rider.selected === true)
+    .map((rider) => {
+      const factors = rider.zr?.velo?.factors || {};
+      const score = computeSingleRiderScore(route, {
+        sprint: factors.sprint || 0,
+        punch: factors.punch || 0,
+        climb: factors.climb || 0,
+        tt: factors.timeTrial || 0,
+        pursuit: factors.pursuit || 0,
+        endurance: factors.endurance || 0
+      });
+
+      return { ...rider, routeScore: score };
+    })
+    .sort((a, b) => b.routeScore - a.routeScore);
+}
+
+function buildSubsets(riders, size) {
+  if (riders.length <= size) return [riders];
+
+  const subsets = [];
+  function collect(start, subset) {
+    if (subset.length === size) {
+      subsets.push(subset);
+      return;
+    }
+
+    for (let index = start; index <= riders.length - (size - subset.length); index += 1) {
+      collect(index + 1, [...subset, riders[index]]);
+    }
+  }
+
+  collect(0, []);
+  return subsets;
+}
+
+/**
+ * Calculate the average points for every possible team subset pairing.
+ */
+export function calculateExpectedPoints(route, homeRiders, awayRiders) {
+  if (!route) return { home: 0, away: 0, pairings: 0 };
+
+  const homeSubsets = buildSubsets(homeRiders.filter((rider) => rider.selected === true), 5);
+  const awaySubsets = buildSubsets(awayRiders.filter((rider) => rider.selected === true), 5);
+  if (!homeSubsets.length || !awaySubsets.length) {
+    return { home: 0, away: 0, pairings: 0 };
+  }
+
+  let homeTotal = 0;
+  let awayTotal = 0;
+  let pairings = 0;
+
+  homeSubsets.forEach((homeSubset) => {
+    awaySubsets.forEach((awaySubset) => {
+      const ranked = rankRidersForRoute(route, [...homeSubset, ...awaySubset]);
+      ranked.forEach((rider, index) => {
+        const points = 10 - index;
+        if (rider.team === "home") homeTotal += points;
+        else awayTotal += points;
+      });
+      pairings += 1;
+    });
+  });
+
+  return {
+    home: homeTotal / pairings,
+    away: awayTotal / pairings,
+    pairings
+  };
+}
+
+/**
  * Compute average vELO scores for both teams on a specific route
  */
 export function computeRouteScores(route, riders) {

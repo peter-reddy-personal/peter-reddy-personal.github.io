@@ -65,6 +65,138 @@ export function populateOpponentDropdown(teams, selectorId = null) {
 }
 
 /**
+ * Populate route selectors and keep the route list filtered by world.
+ */
+export function populateRouteSelectors(routes, world = "") {
+  const worldSelect = getElement(DOM_SELECTORS.routeWorldSelect);
+  const routeSelect = getElement(DOM_SELECTORS.routeSelect);
+  if (!worldSelect || !routeSelect) {
+    console.error("Route selector elements not found");
+    return;
+  }
+
+  if (worldSelect.options.length <= 1) {
+    [...new Set(routes.map((route) => route.World))]
+      .sort((a, b) => a.localeCompare(b))
+      .forEach((routeWorld) => {
+        worldSelect.appendChild(new Option(routeWorld, routeWorld));
+      });
+  }
+
+  worldSelect.value = world;
+  const filteredRoutes = world
+    ? routes.filter((route) => route.World === world)
+    : routes;
+  routeSelect.innerHTML = '<option value="">Select a route</option>';
+  filteredRoutes.forEach((route) => {
+    routeSelect.appendChild(new Option(`${route.World} — ${route.Route}`, String(routes.indexOf(route))));
+  });
+}
+
+/**
+ * Render the selected route profile and combined rider ranking.
+ */
+export function renderRouteRiderRankings(route, riders) {
+  const info = getElement(DOM_SELECTORS.routeInfo);
+  const profile = getElement(DOM_SELECTORS.routeProfile);
+  const table = getElement(DOM_SELECTORS.routeRiderRankings);
+  if (!info || !profile || !table) {
+    console.error("Selected route result elements not found");
+    return;
+  }
+
+  if (!route) {
+    info.innerHTML = "<p>Select a route to see its details.</p>";
+    profile.innerHTML = "<p>Select a route to see its profile and rider ranking.</p>";
+    table.innerHTML = "";
+    return;
+  }
+
+  info.innerHTML = `
+    <div class="route-profile-details">
+      <strong><a href="${route.URL}" target="_blank" class="route-link">${route.Route}</a></strong>
+      <span class="route-world">${route.World}</span>
+      <span class="route-type">${route.Type}</span>
+      <span class="route-length">${route.Length} km</span>
+      <span class="route-elevation">${route.Elevation} m elevation</span>
+      <span class="route-lead-in">${route.Lead_in} km lead-in</span>
+    </div>
+  `;
+  profile.innerHTML = `
+    <div class="elevation-wrapper">
+      <div class="elevation-scale"><img class="elevation-img" src="${generateElevationUrl(route.World, route.Route)}" alt="${route.Route} elevation profile"></div>
+    </div>
+  `;
+
+  const ranked = riders
+    .filter((rider) => rider.selected === true)
+    .sort((a, b) => b.routeScore - a.routeScore);
+  const powerHeaders = ["Weight", "Phenotype", "5s", "15s", "30s", "1m", "2m", "5m", "20m"];
+  const powerKeys = ["wkg5", "wkg15", "wkg30", "wkg60", "wkg120", "wkg300", "wkg1200"];
+  const powerRanges = Object.fromEntries(powerKeys.map((key) => {
+    const values = ranked
+      .map((rider) => rider.zr?.power?.[key]?.[0])
+      .filter((value) => typeof value === "number");
+    return [key, {
+      min: values.length ? Math.min(...values) : NaN,
+      max: values.length ? Math.max(...values) : NaN
+    }];
+  }));
+  table.innerHTML = `
+    <thead><tr>
+      <th>Rider</th><th>Expected position</th><th>vELO score</th>
+      ${powerHeaders.map((header) => `<th>${header}</th>`).join("")}
+    </tr></thead>
+    <tbody>
+      ${ranked.length ? ranked.map((rider, index) => {
+        const zr = rider.zr || {};
+        const power = zr.power || {};
+        return `<tr class="${rider.team === "home" ? "route-home-row" : "route-away-row"}">
+          <td><a href="https://zwiftracing.app/riders/${rider.id}" target="_blank" class="rider-link">${trimName(rider.name)}</a>${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}</td>
+          <td>${index + 1}</td>
+          <td>${formatNumber(rider.routeScore, 0)}</td>
+          <td>${formatNumber(Math.round(zr.weight), 0)}</td>
+          <td>${zr.phenotype?.value ?? "Unknown"}</td>
+          ${powerKeys.map((key) => `<td style="background:${lerpColor(powerRanges[key].min, powerRanges[key].max, power[key]?.[0])};">${formatNumber(power[key]?.[0])}</td>`).join("")}
+        </tr>`;
+      }).join("") : `<tr><td colspan="12">No riders are selected.</td></tr>`}
+    </tbody>
+  `;
+}
+
+export function renderExpectedPoints(route, points, homeTeamName, awayTeamName) {
+  const container = getElement(DOM_SELECTORS.expectedPoints);
+  if (!container) {
+    console.error("Expected points element not found");
+    return;
+  }
+
+  if (!route) {
+    container.innerHTML = "";
+    return;
+  }
+
+  const homeWinner = points.home > points.away;
+  const awayWinner = points.away > points.home;
+  container.innerHTML = `
+    <strong class="expected-result-label" title="Calculated as the average result across the selected riders. If 5 or more riders are selected, the calculation assumes a 5v5 race.">Expected result</strong>
+    <div class="expected-scoreline">
+      <span class="expected-team expected-home${homeWinner ? " expected-winner" : ""}">
+        <span class="expected-team-name">${homeTeamName}</span>
+        <span class="expected-score">${formatNumber(points.home, 0)}</span>
+        <span class="expected-points-label">points</span>
+      </span>
+      <span class="expected-versus">v</span>
+      <span class="expected-team expected-away${awayWinner ? " expected-winner" : ""}">
+        <span class="expected-team-name">${awayTeamName}</span>
+        <span class="expected-score">${formatNumber(points.away, 0)}</span>
+        <span class="expected-points-label">points</span>
+      </span>
+    </div>
+  `;
+}
+
+/**
  * Render unified rider table (CLS or Opponent)
  * Supports toggle between vELO factors and power metrics views
  */

@@ -2,7 +2,7 @@
  * Configuration constants for the Zwift Ladder Route Picker
  */
 
-export const APP_VERSION = "2026‑07‑22 22:15";
+export const APP_VERSION = "2026‑09‑04 17:15";
 
 export const CLS_TEAM_NUMBER = 63;
 
@@ -44,6 +44,12 @@ export const DOM_SELECTORS = {
   powerBeeswarm: "#powerBeeswarm",
   bestRoutes: "#best-routes",
   worstRoutes: "#worst-routes",
+  routeWorldSelect: "#route-world-select",
+  routeSelect: "#route-select",
+  routeInfo: "#route-info",
+  routeProfile: "#route-profile",
+  expectedPoints: "#expected-points",
+  routeRiderRankings: "#route-rider-rankings",
   
   // Riders
   riderRow: ".rider-row",

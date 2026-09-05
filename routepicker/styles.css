@@ -382,6 +382,11 @@ body {
 
 .route-rankings-table th:first-child,
 .route-rankings-table td:first-child {
+  text-align: center;
+}
+
+.route-rankings-table th:nth-child(2),
+.route-rankings-table td:nth-child(2) {
   text-align: left;
 }
 
@@ -391,12 +396,12 @@ body {
 
 .route-rankings-table th:nth-child(1),
 .route-rankings-table td:nth-child(1) {
-  width: 220px;
+  width: 60px;
 }
 
 .route-rankings-table th:nth-child(2),
 .route-rankings-table td:nth-child(2) {
-  width: 105px;
+  width: 220px;
 }
 
 .route-rankings-table th:nth-child(3),
@@ -597,17 +602,17 @@ body {
 .input-headings.factors-mode,
 .rider-row.factors-mode {
   grid-template-columns:
+    55px
     240px
     10px
-    repeat(6, 60px)
-    50px;
+    repeat(6, 60px);
 }
 
 .factor-spacer {
   width: 10px;
 }
 
-.input-headings.factors-mode > div:nth-child(n+3):nth-child(-n+8) {
+.input-headings.factors-mode > div:nth-child(n+4):nth-child(-n+9) {
   text-align: center;
 }
 
@@ -615,11 +620,11 @@ body {
 .input-headings.power-mode,
 .rider-row.power-mode {
   grid-template-columns:
+    55px
     240px
     80px
     120px
-    60px 60px 60px 60px 60px 60px 60px
-    50px;
+    60px 60px 60px 60px 60px 60px 60px;
 }
 
 /* Center-align power duration columns */
@@ -656,8 +661,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  width: 50px;
-  padding-left: 10px;
+  width: 55px;
   box-sizing: border-box;
   white-space: nowrap;
 }
@@ -674,14 +678,22 @@ body {
   flex: 0 0 22px;
 }
 
-.input-headings.factors-mode > div:last-child,
-.input-headings.power-mode > div:last-child {
-  text-align: center;
-  padding-left: 10px;
-  box-sizing: border-box;
+.select-all-team.selected {
+  border-color: #2a6ecb;
+  background: #2a6ecb;
+  box-shadow: inset 0 0 0 4px #fff;
 }
 
-.input-headings.power-mode > div:nth-child(2),
+.input-headings .select-all-team {
+  justify-self: center;
+}
+
+.away-panel .select-all-team.selected {
+  border-color: #d98282;
+  background: #d98282;
+}
+
+.input-headings.power-mode > div:nth-child(3),
 .profile-cell.weight {
   text-align: center;
 }
@@ -733,7 +745,7 @@ body {
   font-weight: 600;
 }
 
-.rider-row.factors-mode > div:nth-child(2) {
+.rider-row.factors-mode > div:nth-child(3) {
   width: 10px;
 }
 

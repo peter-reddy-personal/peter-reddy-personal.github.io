@@ -144,7 +144,7 @@ export function renderRouteRiderRankings(route, riders) {
   }));
   table.innerHTML = `
     <thead><tr>
-      <th>Rider</th><th>Expected position</th><th>vELO score</th>
+      <th>Exp #</th><th>Rider</th><th>vELO</th>
       ${powerHeaders.map((header) => `<th>${header}</th>`).join("")}
     </tr></thead>
     <tbody>
@@ -152,8 +152,8 @@ export function renderRouteRiderRankings(route, riders) {
         const zr = rider.zr || {};
         const power = zr.power || {};
         return `<tr class="${rider.team === "home" ? "route-home-row" : "route-away-row"}">
-          <td><a href="https://zwiftracing.app/riders/${rider.id}" target="_blank" class="rider-link">${trimName(rider.name)}</a>${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}</td>
           <td>${index + 1}</td>
+          <td><a href="https://zwiftracing.app/riders/${rider.id}" target="_blank" class="rider-link">${trimName(rider.name)}</a>${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}</td>
           <td>${formatNumber(rider.routeScore, 0)}</td>
           <td>${formatNumber(Math.round(zr.weight), 0)}</td>
           <td>${zr.phenotype?.value ?? "Unknown"}</td>
@@ -240,7 +240,9 @@ export function renderRiderTable(riders, containerId, teamType) {
   // Headers for factor view
   const factorHeader = document.createElement("div");
   factorHeader.className = "input-headings factors-mode factors-grid";
+  const allSelected = riders.length > 0 && riders.every((rider) => rider.selected === true);
   factorHeader.innerHTML = `
+    <button class="select-all-team rider-select${allSelected ? " selected" : ""}" data-team="${teamType}" type="button" aria-label="${allSelected ? "Unselect all riders" : "Select all riders"}" title="${allSelected ? "Unselect all riders" : "Select all riders"}"></button>
     <div>Name</div>
     <div class="factor-spacer"></div>
     <div>SPR</div>
@@ -249,13 +251,13 @@ export function renderRiderTable(riders, containerId, teamType) {
     <div>TT</div>
     <div>PUR</div>
     <div>END</div>
-    <div title="Click the button to add or remove rider from team comparison.">Use</div>
   `;
 
   // Headers for power view
   const powerHeader = document.createElement("div");
   powerHeader.className = "input-headings power-mode power-grid";
   powerHeader.innerHTML = `
+    <button class="select-all-team rider-select${allSelected ? " selected" : ""}" data-team="${teamType}" type="button" aria-label="${allSelected ? "Unselect all riders" : "Select all riders"}" title="${allSelected ? "Unselect all riders" : "Select all riders"}"></button>
     <div>Name</div>
     <div>Weight</div>
     <div>Phenotype</div>
@@ -266,7 +268,6 @@ export function renderRiderTable(riders, containerId, teamType) {
     <div>2m</div>
     <div>5m</div>
     <div>20m</div>
-    <div title="Click the button to add or remove rider from team comparison.">Use</div>
   `;
 
   container.appendChild(factorHeader);
@@ -284,6 +285,9 @@ export function renderRiderTable(riders, containerId, teamType) {
     factorRow.dataset.team = teamType;
     factorRow.dataset.id = String(rider.id);
     factorRow.innerHTML = `
+      <div class="rider-selection">
+        <input type="checkbox" class="rider-select" aria-label="Select ${trimName(rider.name)}" ${rider.selected === true ? "checked" : ""}>
+      </div>
       <a href="https://zwiftracing.app/riders/${rider.id}" target="_blank" class="rider-link">
         ${trimName(rider.name)}
         ${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
@@ -295,9 +299,6 @@ export function renderRiderTable(riders, containerId, teamType) {
       <div class="profile-cell rider-tt" style="background:${lerpColor(factorMin.timeTrial, factorMax.timeTrial, factors.timeTrial)};">${formatNumber(factors.timeTrial, 0)}</div>
       <div class="profile-cell rider-pursuit" style="background:${lerpColor(factorMin.pursuit, factorMax.pursuit, factors.pursuit)};">${formatNumber(factors.pursuit, 0)}</div>
       <div class="profile-cell rider-endurance" style="background:${lerpColor(factorMin.endurance, factorMax.endurance, factors.endurance)};">${formatNumber(factors.endurance, 0)}</div>
-      <div class="rider-selection">
-        <input type="checkbox" class="rider-select" aria-label="Select ${trimName(rider.name)}" ${rider.selected === true ? "checked" : ""}>
-      </div>
     `;
 
     // Power row with heatmap coloring
@@ -314,6 +315,9 @@ export function renderRiderTable(riders, containerId, teamType) {
     powerRow.dataset.team = teamType;
     powerRow.dataset.id = String(rider.id);
     powerRow.innerHTML = `
+      <div class="rider-selection">
+        <input type="checkbox" class="rider-select" aria-label="Select ${trimName(rider.name)}" ${rider.selected === true ? "checked" : ""}>
+      </div>
       <a href="https://zwiftracing.app/riders/${rider.id}" target="_blank" class="rider-link">
         ${trimName(rider.name)}
         ${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
@@ -327,9 +331,6 @@ export function renderRiderTable(riders, containerId, teamType) {
       <div class="profile-cell wkg120" style="background:${lerpColor(columnMin.wkg120, columnMax.wkg120, v120)};">${formatNumber(v120)}</div>
       <div class="profile-cell wkg300" style="background:${lerpColor(columnMin.wkg300, columnMax.wkg300, v300)};">${formatNumber(v300)}</div>
       <div class="profile-cell wkg1200" style="background:${lerpColor(columnMin.wkg1200, columnMax.wkg1200, v1200)};">${formatNumber(v1200)}</div>
-      <div class="rider-selection">
-        <input type="checkbox" class="rider-select" aria-label="Select ${trimName(rider.name)}" ${rider.selected === true ? "checked" : ""}>
-      </div>
     `;
 
     container.appendChild(factorRow);

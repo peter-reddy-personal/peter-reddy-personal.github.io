@@ -7,9 +7,9 @@ import { API_ENDPOINTS, LOW_SAMPLE_THRESHOLD } from "./config.js";
 /**
  * Fetch all teams from teams.json
  */
-export async function fetchAllTeams() {
+export async function fetchAllTeams(endpoint = API_ENDPOINTS.teams) {
   try {
-    const res = await fetch(API_ENDPOINTS.teams);
+    const res = await fetch(endpoint);
     if (!res.ok) {
       throw new Error(`Failed to fetch teams: ${res.status}`);
     }

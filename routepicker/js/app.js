@@ -177,20 +177,12 @@ function attachEventListeners() {
     performCalculation();
   };
 
-  document.getElementById(DOM_SELECTORS.selectAllHomeBtn.replace("#", "")).addEventListener("click", () => {
-    setTeamSelection("home", true);
-  });
-
-  document.getElementById(DOM_SELECTORS.unselectAllHomeBtn.replace("#", "")).addEventListener("click", () => {
-    setTeamSelection("home", false);
-  });
-
-  document.getElementById(DOM_SELECTORS.selectAllAwayBtn.replace("#", "")).addEventListener("click", () => {
-    setTeamSelection("away", true);
-  });
-
-  document.getElementById(DOM_SELECTORS.unselectAllAwayBtn.replace("#", "")).addEventListener("click", () => {
-    setTeamSelection("away", false);
+  document.addEventListener("click", (e) => {
+    const button = e.target.closest(".select-all-team");
+    if (!button) return;
+    const team = button.dataset.team;
+    const riders = team === "home" ? appState.homeRiders : appState.awayRiders;
+    setTeamSelection(team, !riders.every((rider) => rider.selected === true));
   });
 
   // Power toggle (factor vs power view)

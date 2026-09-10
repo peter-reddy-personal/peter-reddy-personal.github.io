@@ -25,9 +25,9 @@ export async function fetchAllTeams(endpoint = API_ENDPOINTS.teams) {
 /**
  * Fetch all routes from routes.json
  */
-export async function fetchAllRoutes() {
+export async function fetchAllRoutes(endpoint = API_ENDPOINTS.routes) {
   try {
-    const res = await fetch(API_ENDPOINTS.routes);
+    const res = await fetch(endpoint);
     if (!res.ok) {
       throw new Error(`Failed to fetch routes: ${res.status}`);
     }

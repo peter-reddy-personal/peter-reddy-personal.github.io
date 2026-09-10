@@ -2,9 +2,9 @@ import { FACTORS, SELECTORS } from "./config.js";
 import { getFactorValue } from "./calculations.js";
 
 const format = (value) => {
-  if (!Number.isFinite(value)) return "0";
+  if (!Number.isFinite(value)) return "N/A";
   const rounded = Math.round(value);
-  return rounded === 0 ? "0" : String(rounded);
+  return rounded === 0 ? "N/A" : String(rounded);
 };
 const el = (selector) => document.querySelector(selector);
 
@@ -50,15 +50,16 @@ export function renderSummary(summary) {
   el(SELECTORS.summary).innerHTML = `
     <div><strong>${summary.wins} <small>out of ${summary.total}</small></strong><span>expected wins</span></div>
     <div><strong>${format(summary.averagePoints)}</strong><span>average points</span></div>
-    <div><strong>${summary.rankingStatus}</strong><span>compared to strength</span></div>`;
+    <div><strong>${summary.rankingStatus}</strong><span>compared to strength of nearby teams</span></div>`;
   el(SELECTORS.strengths).innerHTML = summary.strengths.length
-    ? `<p class="route-conclusion">${summary.routeConclusion}</p>${summary.strengths.map((item, index) => `
+    ? `${summary.strengths.map((item, index) => `
       <article class="strength-card strength-level-${item.rank} ${item.difference >= 0 ? "strength-positive" : "strength-negative"}">
         <span class="strength-rank">${item.rank + 1}</span>
         <strong>${item.label}</strong>
         <span class="strength-verdict">${item.difference >= 0 ? (index === 0 ? "Strongest advantage" : "Better than opponent average") : (index === 0 ? "Least behind" : "Behind opponent average")}</span>
         <span class="strength-values">${format(item.teamAverage)} <b>vs</b> ${format(item.opponentAverage)}</span>
       </article>`).join("")}`
+      + `<p class="route-conclusion">${summary.routeConclusion}</p>`
     : "<p>No qualifying opponents found.</p>";
 }
 

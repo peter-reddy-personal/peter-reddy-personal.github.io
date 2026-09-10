@@ -2,6 +2,7 @@ import { STORAGE_KEYS } from "./config.js";
 
 export const state = {
   teams: [],
+  routes: [],
   selectedTeam: null,
   riders: [],
   comparisons: []

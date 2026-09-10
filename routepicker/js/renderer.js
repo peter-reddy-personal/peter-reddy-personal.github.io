@@ -96,7 +96,7 @@ export function populateRouteSelectors(routes, world = "") {
 /**
  * Render the selected route profile and combined rider ranking.
  */
-export function renderRouteRiderRankings(route, riders) {
+export function renderRouteRiderRankings(route, riders, homeTeamName = "Home", awayTeamName = "Away", showTeamSummary = false) {
   const info = getElement(DOM_SELECTORS.routeInfo);
   const profile = getElement(DOM_SELECTORS.routeProfile);
   const table = getElement(DOM_SELECTORS.routeRiderRankings);
@@ -120,6 +120,13 @@ export function renderRouteRiderRankings(route, riders) {
       <span class="route-length">${route.Length} km</span>
       <span class="route-elevation">${route.Elevation} m elevation</span>
       <span class="route-lead-in">${route.Lead_in} km lead-in</span>
+      <span class="route-weightings">
+        <span><b>SPR</b><strong>${formatNumber(route.Sprint * 100, 0)}%</strong></span>
+        <span><b>PUN</b><strong>${formatNumber(route.Punch * 100, 0)}%</strong></span>
+        <span><b>CLI</b><strong>${formatNumber(route.Climb * 100, 0)}%</strong></span>
+        <span><b>PUR</b><strong>${formatNumber(route.Pursuit * 100, 0)}%</strong></span>
+        <span><b>END</b><strong>${formatNumber(route.Endurance * 100, 0)}%</strong></span>
+      </span>
     </div>
   `;
   profile.innerHTML = `
@@ -142,26 +149,45 @@ export function renderRouteRiderRankings(route, riders) {
       max: values.length ? Math.max(...values) : NaN
     }];
   }));
-  table.innerHTML = `
-    <thead><tr>
-      <th>Exp #</th><th>Rider</th><th>vELO</th>
-      ${powerHeaders.map((header) => `<th>${header}</th>`).join("")}
-    </tr></thead>
-    <tbody>
-      ${ranked.length ? ranked.map((rider, index) => {
+  const renderRows = (teamRiders, includeExpectedPosition) => teamRiders.length
+    ? teamRiders.map((rider, index) => {
         const zr = rider.zr || {};
         const power = zr.power || {};
         return `<tr class="${rider.team === "home" ? "route-home-row" : "route-away-row"}">
-          <td>${index + 1}</td>
+          ${includeExpectedPosition ? `<td>${index + 1}</td>` : ""}
           <td><a href="https://zwiftracing.app/riders/${rider.id}" target="_blank" class="rider-link">${trimName(rider.name)}</a>${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}</td>
           <td>${formatNumber(rider.routeScore, 0)}</td>
           <td>${formatNumber(Math.round(zr.weight), 0)}</td>
           <td>${zr.phenotype?.value ?? "Unknown"}</td>
           ${powerKeys.map((key) => `<td style="background:${lerpColor(powerRanges[key].min, powerRanges[key].max, power[key]?.[0])};">${formatNumber(power[key]?.[0])}</td>`).join("")}
         </tr>`;
-      }).join("") : `<tr><td colspan="12">No riders are selected.</td></tr>`}
-    </tbody>
+      }).join("")
+    : `<tr><td colspan="${includeExpectedPosition ? 12 : 11}">No riders are selected.</td></tr>`;
+
+  const renderTable = (title, teamRiders, includeExpectedPosition) => `
+    <div class="route-rankings-team">
+      <h3>${title}</h3>
+      <table class="results-table route-rankings-table${includeExpectedPosition ? "" : " team-summary-table"}">
+        <thead><tr>
+          ${includeExpectedPosition ? "<th>Exp #</th>" : ""}
+          <th>Rider</th><th>vELO</th>
+          ${powerHeaders.map((header) => `<th>${header}</th>`).join("")}
+        </tr></thead>
+        <tbody>${renderRows(teamRiders, includeExpectedPosition)}</tbody>
+      </table>
+    </div>
   `;
+
+  if (showTeamSummary) {
+    table.innerHTML = `
+      <div class="route-rankings-team-grid">
+        ${renderTable(homeTeamName, ranked.filter((rider) => rider.team === "home"), false)}
+        ${renderTable(awayTeamName, ranked.filter((rider) => rider.team === "away"), false)}
+      </div>
+    `;
+  } else {
+    table.innerHTML = renderTable("Expected finish position", ranked, true);
+  }
 }
 
 export function renderExpectedPoints(route, points, homeTeamName, awayTeamName) {
@@ -276,7 +302,15 @@ export function renderRiderTable(riders, containerId, teamType) {
   // Render each rider
   riders.forEach((rider) => {
     const zr = rider.zr || {};
-    const factors = zr.velo?.factors || {};
+
+    const factors = Object.fromEntries(
+      ["sprint", "punch", "climb", "timeTrial", "pursuit", "endurance"]
+      .map(k => [k, zr.history?.[0]?.velo?.elo?.factors?.[k]?.after])
+    );
+    
+    console.log("Latest race:", zr.history?.[0]);
+    console.log("ELO factors:", zr.history?.[0]?.velo?.elo?.factors);
+
     const power = zr.power || {};
 
     // Factor row
@@ -360,8 +394,17 @@ export function showLoadingMessage(containerId, message) {
  * Render team average vELO scores with gradient differences
  */
 export function renderAverages(riders) {
-  const homeRiders = riders.filter((r) => r.team === "home" && r.selected === true);
-  const awayRiders = riders.filter((r) => r.team === "away" && r.selected === true);
+  const hasUsableFactorScores = (rider) =>
+    ["sprint", "punch", "climb", "tt", "pursuit", "endurance"].every((key) => {
+      const value = rider[key];
+      return Number.isFinite(value) && value !== 0;
+    });
+  const homeRiders = riders.filter(
+    (r) => r.team === "home" && r.selected === true && hasUsableFactorScores(r)
+  );
+  const awayRiders = riders.filter(
+    (r) => r.team === "away" && r.selected === true && hasUsableFactorScores(r)
+  );
 
   function avg(team, key) {
     if (team.length === 0) return 0;

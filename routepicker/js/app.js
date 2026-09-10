@@ -121,6 +121,7 @@ function attachEventListeners() {
     renderSelectedRoute();
   });
   document.getElementById(DOM_SELECTORS.routeSelect.replace("#", "")).addEventListener("change", renderSelectedRoute);
+  document.getElementById(DOM_SELECTORS.teamSummaryToggle.replace("#", "")).addEventListener("change", renderSelectedRoute);
 
   // Randomness slider
   const randomnessSlider = document.getElementById(DOM_SELECTORS.randomnessSlider.replace("#", ""));
@@ -366,5 +367,12 @@ function renderSelectedRoute() {
     homeTeam?.name || "Home",
     awayTeam?.name || "Away"
   );
-  renderRouteRiderRankings(route, rankRidersForRoute(route, selectedRiders));
+  const showTeamSummary = document.getElementById(DOM_SELECTORS.teamSummaryToggle.replace("#", ""))?.checked ?? false;
+  renderRouteRiderRankings(
+    route,
+    rankRidersForRoute(route, selectedRiders),
+    homeTeam?.name || "Home",
+    awayTeam?.name || "Away",
+    showTeamSummary
+  );
 }

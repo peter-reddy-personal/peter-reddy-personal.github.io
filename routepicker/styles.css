@@ -10,10 +10,20 @@ body {
 }
 
 .app-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   background: #1f3b5c;
   color: #fff;
   padding: 12px 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.app-header-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  justify-self: start;
 }
 
 .app-header h1 {
@@ -374,6 +384,56 @@ body {
 .route-info .route-length::before { content: "↔"; }
 .route-info .route-elevation::before { content: "△"; }
 .route-info .route-lead-in::before { content: "→"; }
+.route-info .route-weightings {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #1f3b5c;
+  font-weight: 600;
+}
+
+.route-info .route-weightings > span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+
+.route-info .route-weightings strong {
+  font-size: 1.05rem;
+}
+
+.route-rankings-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.route-rankings-container {
+  min-width: 920px;
+}
+
+.route-rankings-team-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.route-rankings-team h3 {
+  margin: 0 0 8px;
+  color: #1f3b5c;
+  font-size: 1rem;
+}
+
+.team-summary-table {
+  min-width: 0;
+  width: 100%;
+  table-layout: fixed;
+}
 
 .route-rankings-table th,
 .route-rankings-table td {
@@ -422,6 +482,37 @@ body {
 .route-rankings-table th:nth-child(n+6),
 .route-rankings-table td:nth-child(n+6) {
   width: 54px;
+}
+
+.team-summary-table {
+  min-width: 0;
+  width: 100%;
+}
+
+.team-summary-table th:first-child,
+.team-summary-table td:first-child {
+  width: 24%;
+  text-align: left;
+}
+
+.team-summary-table th:nth-child(2),
+.team-summary-table td:nth-child(2) {
+  width: 8%;
+}
+
+.team-summary-table th:nth-child(3),
+.team-summary-table td:nth-child(3) {
+  width: 9%;
+}
+
+.team-summary-table th:nth-child(4),
+.team-summary-table td:nth-child(4) {
+  width: 13%;
+}
+
+.team-summary-table th:nth-child(n+5),
+.team-summary-table td:nth-child(n+5) {
+  width: 6.57%;
 }
 
 .route-rankings-table .route-home-row td {

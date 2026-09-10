@@ -11,6 +11,7 @@
 <body>
 
   <header class="app-header">
+    <img class="app-header-logo" src="./FavIcon.png" alt="Zwift Ladder logo">
     <h1>Zwift Ladder route picker</h1>
   </header>
 
@@ -301,8 +302,16 @@
     <div id="route-profile" class="route-profile"></div>
     <div id="expected-points" class="expected-points"></div>
   </div>
+  <div class="route-rankings-controls">
+    <span class="control-label">vELO order</span>
+    <label class="power-switch">
+      <input type="checkbox" id="team-summary-toggle">
+      <span class="power-slider"></span>
+    </label>
+    <span class="control-label">Team summary</span>
+  </div>
   <div class="table-scroll">
-    <table id="route-rider-rankings" class="results-table route-rankings-table"></table>
+    <div id="route-rider-rankings" class="route-rankings-container"></div>
   </div>
 </section>
 

@@ -8,13 +8,21 @@ const EXPECTED_SCORE_WEIGHTS = {
   timeTrial: 0,
   endurance: 0.351
 };
+const MAX_EXPECTED_POINTS_DRAWS = 150;
 
 export function getFactorValue(rider, key) {
-  return Number(rider.zr?.velo?.factors?.[key]) || 0;
+  return rider.zr?.history?.[0]?.velo?.elo?.factors?.[key]?.after ?? 0;
+}
+
+function hasUsableFactorScores(rider) {
+  return FACTORS.every(({ key }) => {
+    const value = getFactorValue(rider, key);
+    return Number.isFinite(value) && value !== 0;
+  });
 }
 
 export function averageFactors(riders) {
-  const selected = riders.filter((rider) => rider.selected === true);
+  const selected = riders.filter((rider) => rider.selected === true && hasUsableFactorScores(rider));
   return Object.fromEntries(FACTORS.map(({ key }) => [
     key,
     selected.length
@@ -40,15 +48,48 @@ function riderStrength(rider) {
   );
 }
 
+function bestLadderRoute(strengths, routes) {
+  const differences = Object.fromEntries(strengths.map(({ key, difference }) => [key, difference]));
+  return routes
+    .filter((route) => route.Ladder === true)
+    .map((route) => ({
+      route,
+      score: ["sprint", "punch", "climb", "pursuit", "endurance"].reduce(
+        (total, key) => total + differences[key] * (route[key.charAt(0).toUpperCase() + key.slice(1)] || 0),
+        0
+      )
+    }))
+    .sort((a, b) => b.score - a.score)[0]?.route;
+}
+
 export function expectedPoints(homeRiders, awayRiders) {
-  const home = homeRiders.filter((rider) => rider.selected === true).sort((a, b) => riderStrength(b) - riderStrength(a)).slice(0, 5);
-  const away = awayRiders.slice().sort((a, b) => riderStrength(b) - riderStrength(a)).slice(0, 5);
-  const ranked = [...home.map((rider) => ({ rider, team: "home" })), ...away.map((rider) => ({ rider, team: "away" }))]
-    .sort((a, b) => riderStrength(b.rider) - riderStrength(a.rider));
-  return ranked.reduce((result, entry, index) => {
-    result[entry.team] += Math.max(0, 10 - index);
-    return result;
-  }, { home: 0, away: 0 });
+  const selectedHome = homeRiders.filter((rider) => rider.selected === true && hasUsableFactorScores(rider));
+  const usableAway = awayRiders.filter(hasUsableFactorScores);
+  const comparisonSize = Math.min(5, selectedHome.length, usableAway.length);
+  if (!comparisonSize) return { home: 0, away: 0 };
+
+  const totals = { home: 0, away: 0 };
+  for (let draw = 0; draw < MAX_EXPECTED_POINTS_DRAWS; draw += 1) {
+    const home = randomRiders(selectedHome, comparisonSize);
+    const away = randomRiders(usableAway, comparisonSize);
+    const ranked = [...home.map((rider) => ({ rider, team: "home" })), ...away.map((rider) => ({ rider, team: "away" }))]
+      .sort((a, b) => riderStrength(b.rider) - riderStrength(a.rider));
+    ranked.forEach((entry, index) => {
+      totals[entry.team] += Math.max(0, 10 - index);
+    });
+  }
+  return {
+    home: totals.home / MAX_EXPECTED_POINTS_DRAWS,
+    away: totals.away / MAX_EXPECTED_POINTS_DRAWS
+  };
+}
+
+function randomRiders(riders, count) {
+  return riders
+    .map((rider) => ({ rider, sortKey: Math.random() }))
+    .sort((a, b) => a.sortKey - b.sortKey)
+    .slice(0, count)
+    .map(({ rider }) => rider);
 }
 
 export function compareTeam(homeRiders, opponent) {
@@ -60,7 +101,7 @@ export function compareTeam(homeRiders, opponent) {
   return { ...opponent, home, away, differences, strengths, points };
 }
 
-export function aggregateComparisons(comparisons, selectedTeam, teams) {
+export function aggregateComparisons(comparisons, selectedTeam, teams, routes = []) {
   if (!comparisons.length) {
     return {
       wins: 0,
@@ -98,13 +139,13 @@ export function aggregateComparisons(comparisons, selectedTeam, teams) {
   const isBoundaryRank = regionalRank <= 15 || regionalRank > maxRegionalRank - 15;
   const rankingStatus = isBoundaryRank
     ? "approximately correct position"
-    : averagePoints > 33
+    : averagePoints > 35
       ? "dramatically under ranked"
-      : averagePoints > 28
+      : averagePoints > 29
         ? "slightly under ranked"
-        : averagePoints > 21
+        : averagePoints > 24
           ? "approximately correct position"
-          : averagePoints > 16
+          : averagePoints > 19
             ? "slightly over ranked"
             : "dramatically over ranked";
   const sprintProfile = strengths
@@ -113,14 +154,20 @@ export function aggregateComparisons(comparisons, selectedTeam, teams) {
   const lengthDifference = strengths.find((item) => item.key === "pursuit").difference -
     strengths.find((item) => item.key === "endurance").difference;
   const routeLength = Math.abs(lengthDifference) < 10
-    ? "medium"
+    ? "medium-length"
     : lengthDifference > 0 ? "short" : "long";
+  const routeProfileLabels = {
+    climb: "climbing-focused",
+    sprint: "sprint-focused",
+    punch: "punchy"
+  };
+  const bestRoute = bestLadderRoute(strengths, routes);
   return {
     wins: comparisons.filter((comparison) => comparison.points.home > comparison.points.away).length,
     total: comparisons.length,
     averagePoints,
     rankingStatus,
-    routeConclusion: `This team performs relatively best on ${routeLength}, ${sprintProfile.label.toLowerCase()} routes.`,
+    routeConclusion: `This team performs relatively best on ${routeLength}, ${routeProfileLabels[sprintProfile.key]} routes${bestRoute ? `, such as ${bestRoute.Route}` : ""}.`,
     strengths
   };
 }

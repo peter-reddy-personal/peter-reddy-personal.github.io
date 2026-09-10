@@ -49,6 +49,7 @@ export const DOM_SELECTORS = {
   routeInfo: "#route-info",
   routeProfile: "#route-profile",
   expectedPoints: "#expected-points",
+  teamSummaryToggle: "#team-summary-toggle",
   routeRiderRankings: "#route-rider-rankings",
   
   // Riders

@@ -36,6 +36,13 @@ export function getRidersFromDOM() {
   return riders;
 }
 
+function hasUsableFactorScores(rider) {
+  return ["sprint", "punch", "climb", "tt", "pursuit", "endurance"].every((key) => {
+    const value = rider[key];
+    return Number.isFinite(value) && value !== 0;
+  });
+}
+
 /**
  * Compute score for a single rider on a specific route
  * Multiplies rider vELO factors by route weightings
@@ -58,7 +65,7 @@ export function rankRidersForRoute(route, riders) {
   if (!route) return [];
 
   return riders
-    .filter((rider) => rider.selected === true)
+    .filter((rider) => rider.selected === true && hasUsableFactorScores(rider))
     .map((rider) => {
       const factors = rider.zr?.velo?.factors || {};
       const score = computeSingleRiderScore(route, {
@@ -76,6 +83,7 @@ export function rankRidersForRoute(route, riders) {
 }
 
 function buildSubsets(riders, size) {
+  if (riders.length === 0) return [];
   if (riders.length <= size) return [riders];
 
   const subsets = [];
@@ -100,8 +108,14 @@ function buildSubsets(riders, size) {
 export function calculateExpectedPoints(route, homeRiders, awayRiders) {
   if (!route) return { home: 0, away: 0, pairings: 0 };
 
-  const homeSubsets = buildSubsets(homeRiders.filter((rider) => rider.selected === true), 5);
-  const awaySubsets = buildSubsets(awayRiders.filter((rider) => rider.selected === true), 5);
+  const homeSubsets = buildSubsets(
+    homeRiders.filter((rider) => rider.selected === true && hasUsableFactorScores(rider)),
+    5
+  );
+  const awaySubsets = buildSubsets(
+    awayRiders.filter((rider) => rider.selected === true && hasUsableFactorScores(rider)),
+    5
+  );
   if (!homeSubsets.length || !awaySubsets.length) {
     return { home: 0, away: 0, pairings: 0 };
   }
@@ -133,9 +147,11 @@ export function calculateExpectedPoints(route, homeRiders, awayRiders) {
  * Compute average vELO scores for both teams on a specific route
  */
 export function computeRouteScores(route, riders) {
-  const homeRiders = riders.filter((r) => r.team === "home" && r.selected === true);
+  const homeRiders = riders.filter(
+    (r) => r.team === "home" && r.selected === true && hasUsableFactorScores(r)
+  );
   const awayRiders = riders.filter(
-    (r) => r.team === "away" && r.selected === true
+    (r) => r.team === "away" && r.selected === true && hasUsableFactorScores(r)
   );
 
   function avgScore(team) {

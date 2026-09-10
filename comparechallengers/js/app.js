@@ -1,4 +1,4 @@
-import { fetchAllTeams, enrichTeam } from "../../routepicker/js/api.js";
+import { fetchAllTeams, fetchAllRoutes, enrichTeam } from "../../routepicker/js/api.js";
 import { STORAGE_KEYS, SELECTORS } from "./config.js";
 import { state, loadSavedState, saveState } from "./state.js";
 import { eligibleOpponents, compareTeam, aggregateComparisons } from "./calculations.js";
@@ -26,6 +26,7 @@ async function loadTeam(teamNumber) {
     return;
   }
   state.selectedTeam = team;
+  renderContext(null, 0);
   renderLoadingState();
   showStatus("Loading team and qualifying opponents…");
   const savedRiders = new Map(loadSavedState().riders.map((rider) => [String(rider.id), rider.selected !== false]));
@@ -41,7 +42,7 @@ async function loadTeam(teamNumber) {
   state.comparisons = enrichedOpponents.map((opponent) => compareTeam(state.riders, opponent));
   renderContext(team, state.comparisons.length);
   renderRiders(state.riders);
-  renderSummary(aggregateComparisons(state.comparisons, team, state.teams));
+  renderSummary(aggregateComparisons(state.comparisons, team, state.teams, state.routes));
   renderComparisons(state.comparisons, team);
   saveState();
   showStatus(`Compared ${state.comparisons.length} reasonable opponents.`);
@@ -58,7 +59,7 @@ function attachEvents() {
     const refreshed = state.comparisons.map((comparison) => compareTeam(state.riders, comparison));
     state.comparisons = refreshed;
     renderRiders(state.riders);
-    renderSummary(aggregateComparisons(refreshed, state.selectedTeam, state.teams));
+    renderSummary(aggregateComparisons(refreshed, state.selectedTeam, state.teams, state.routes));
     renderComparisons(refreshed, state.selectedTeam);
   });
   document.addEventListener("click", (event) => {
@@ -73,13 +74,16 @@ function setAllRiders(selected) {
   const refreshed = state.comparisons.map((comparison) => compareTeam(state.riders, comparison));
   state.comparisons = refreshed;
   renderRiders(state.riders);
-  renderSummary(aggregateComparisons(refreshed, state.selectedTeam, state.teams));
+  renderSummary(aggregateComparisons(refreshed, state.selectedTeam, state.teams, state.routes));
   renderComparisons(refreshed, state.selectedTeam);
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
   try {
-    state.teams = await fetchAllTeams("../routepicker/teams.json");
+    [state.teams, state.routes] = await Promise.all([
+      fetchAllTeams("../routepicker/teams.json"),
+      fetchAllRoutes("../routepicker/routes.json")
+    ]);
     populateTeams(state.teams);
     const saved = loadSavedState();
     const selected = saved.team || state.teams[0]?.number;

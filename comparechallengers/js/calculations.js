@@ -11,7 +11,13 @@ const EXPECTED_SCORE_WEIGHTS = {
 const MAX_EXPECTED_POINTS_DRAWS = 150;
 
 export function getFactorValue(rider, key) {
-  return rider.zr?.history?.[0]?.velo?.elo?.factors?.[key]?.after ?? 0;
+  const historyEntry = rider.zr?.history?.find((entry) => {
+    const value = entry?.velo?.elo?.factors?.[key]?.after;
+    return value !== undefined && value !== null && Number.isFinite(Number(value));
+  });
+  const value = historyEntry?.velo?.elo?.factors?.[key]?.after;
+
+  return value === undefined || value === null ? 0 : Number(value);
 }
 
 function hasUsableFactorScores(rider) {

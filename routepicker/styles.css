@@ -695,15 +695,20 @@ body {
   grid-template-columns:
     55px
     240px
-    10px
+    70px
+    14px
     repeat(6, 60px);
 }
 
-.factor-spacer {
-  width: 10px;
+.input-headings.factors-mode > div:nth-child(n+3):nth-child(-n+10) {
+  text-align: center;
 }
 
-.input-headings.factors-mode > div:nth-child(n+4):nth-child(-n+9) {
+.factor-separator {
+  width: 14px;
+}
+
+.confidence-heading {
   text-align: center;
 }
 
@@ -735,6 +740,30 @@ body {
 .profile-cell.rider-pursuit,
 .profile-cell.rider-endurance {
   text-align: center;
+}
+
+.profile-cell.confidence-cell {
+  text-align: center;
+}
+
+.confidence-high {
+  background: #c6efce;
+  color: #176b2c;
+}
+
+.confidence-medium {
+  background: #fff2cc;
+  color: #7f6000;
+}
+
+.confidence-low {
+  background: #f4cccc;
+  color: #9c0006;
+}
+
+.confidence-unknown {
+  background: #eef1f4;
+  color: #687585;
 }
 .input-headings.power-mode > div:nth-child(n+4):nth-child(-n+10) {
   text-align: center;
@@ -785,7 +814,9 @@ body {
 }
 
 .input-headings.power-mode > div:nth-child(3),
-.profile-cell.weight {
+.input-headings.power-mode > div:nth-child(4),
+.profile-cell.weight,
+.profile-cell.phenotype {
   text-align: center;
 }
 
@@ -834,10 +865,6 @@ body {
   font-size: 0.9rem;
   white-space: nowrap;
   font-weight: 600;
-}
-
-.rider-row.factors-mode > div:nth-child(3) {
-  width: 10px;
 }
 
 /* =========================================================

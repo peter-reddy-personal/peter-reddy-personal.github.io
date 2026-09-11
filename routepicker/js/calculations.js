@@ -36,9 +36,38 @@ export function getRidersFromDOM() {
   return riders;
 }
 
+export function getHistoryFactors(rider) {
+  return rider.zr?.history?.find((entry) => {
+    const factors = entry?.velo?.elo?.factors;
+    return factors && Object.keys(factors).length > 0;
+  })?.velo?.elo?.factors || {};
+}
+
+export function getHistoryConfidence(rider) {
+  const entry = rider.zr?.history?.find((historyEntry) => {
+    const confidence = historyEntry?.velo?.seed?.confidence ?? historyEntry?.elo?.confidence;
+    return confidence !== undefined && confidence !== null && Number.isFinite(Number(confidence));
+  });
+  const confidence = entry?.velo?.seed?.confidence ?? entry?.elo?.confidence;
+
+  return confidence === undefined || confidence === null ? undefined : Number(confidence);
+}
+
+function getFactorScores(rider) {
+  const factors = getHistoryFactors(rider);
+
+  return {
+    sprint: rider.sprint ?? factors.sprint?.after ?? 0,
+    punch: rider.punch ?? factors.punch?.after ?? 0,
+    climb: rider.climb ?? factors.climb?.after ?? 0,
+    tt: rider.tt ?? factors.timeTrial?.after ?? 0,
+    pursuit: rider.pursuit ?? factors.pursuit?.after ?? 0,
+    endurance: rider.endurance ?? factors.endurance?.after ?? 0
+  };
+}
+
 function hasUsableFactorScores(rider) {
-  return ["sprint", "punch", "climb", "tt", "pursuit", "endurance"].every((key) => {
-    const value = rider[key];
+  return Object.values(getFactorScores(rider)).every((value) => {
     return Number.isFinite(value) && value !== 0;
   });
 }
@@ -67,15 +96,7 @@ export function rankRidersForRoute(route, riders) {
   return riders
     .filter((rider) => rider.selected === true && hasUsableFactorScores(rider))
     .map((rider) => {
-      const factors = rider.zr?.velo?.factors || {};
-      const score = computeSingleRiderScore(route, {
-        sprint: factors.sprint || 0,
-        punch: factors.punch || 0,
-        climb: factors.climb || 0,
-        tt: factors.timeTrial || 0,
-        pursuit: factors.pursuit || 0,
-        endurance: factors.endurance || 0
-      });
+      const score = computeSingleRiderScore(route, getFactorScores(rider));
 
       return { ...rider, routeScore: score };
     })

@@ -4,6 +4,7 @@
 
 import { DOM_SELECTORS, POWER_STATS, DURATIONS, BEESWARM_CONFIG, LOADING_MESSAGES } from "./config.js";
 import { trimName, slugify, cleanRouteName, generateElevationUrl, lerpColor, getGradientStyle, jitter, getElement, getElements, formatNumber } from "./utils.js";
+import { getHistoryConfidence, getHistoryFactors } from "./calculations.js";
 
 /**
  * Set version banner text
@@ -270,7 +271,11 @@ export function renderRiderTable(riders, containerId, teamType) {
   factorHeader.innerHTML = `
     <button class="select-all-team rider-select${allSelected ? " selected" : ""}" data-team="${teamType}" type="button" aria-label="${allSelected ? "Unselect all riders" : "Select all riders"}" title="${allSelected ? "Unselect all riders" : "Select all riders"}"></button>
     <div>Name</div>
-    <div class="factor-spacer"></div>
+    <div
+      class="confidence-heading"
+      title="0-1 score representing the level of confidence ZR.app has that a rider's power curve is accurate and up-to-date. Measured by the variance in max efforts (1min, 5min and 20min) over the last 180 days. A score less than 0.8 implies very low confidence in power numbers and vELO scores."
+    >Confidence</div>
+    <div class="factor-separator"></div>
     <div>SPR</div>
     <div>PUN</div>
     <div>CLI</div>
@@ -303,14 +308,13 @@ export function renderRiderTable(riders, containerId, teamType) {
   riders.forEach((rider) => {
     const zr = rider.zr || {};
 
+    const historyFactors = getHistoryFactors(rider);
+    const confidence = getHistoryConfidence(rider);
     const factors = Object.fromEntries(
       ["sprint", "punch", "climb", "timeTrial", "pursuit", "endurance"]
-      .map(k => [k, zr.history?.[0]?.velo?.elo?.factors?.[k]?.after])
+        .map((key) => [key, historyFactors[key]?.after])
     );
-    
-    console.log("Latest race:", zr.history?.[0]);
-    console.log("ELO factors:", zr.history?.[0]?.velo?.elo?.factors);
-
+  
     const power = zr.power || {};
 
     // Factor row
@@ -326,7 +330,8 @@ export function renderRiderTable(riders, containerId, teamType) {
         ${trimName(rider.name)}
         ${rider.lowSampleWarning ? `<span class="low-sample-warning" title="Rider has fewer than 5 race finishes in 90 days. Data may be unreliable.">⚠️</span>` : ""}
       </a>
-      <div class="factor-spacer"></div>
+      <div class="profile-cell confidence-cell confidence-${confidence > 0.9 ? "high" : confidence > 0.8 ? "medium" : confidence === undefined ? "unknown" : "low"}">${formatNumber(confidence, 2)}</div>
+      <div class="factor-separator"></div>
       <div class="profile-cell rider-sprint" style="background:${lerpColor(factorMin.sprint, factorMax.sprint, factors.sprint)};">${formatNumber(factors.sprint, 0)}</div>
       <div class="profile-cell rider-punch" style="background:${lerpColor(factorMin.punch, factorMax.punch, factors.punch)};">${formatNumber(factors.punch, 0)}</div>
       <div class="profile-cell rider-climb" style="background:${lerpColor(factorMin.climb, factorMax.climb, factors.climb)};">${formatNumber(factors.climb, 0)}</div>

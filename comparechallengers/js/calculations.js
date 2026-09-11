@@ -54,7 +54,7 @@ function riderStrength(rider) {
   );
 }
 
-function bestLadderRoute(strengths, routes) {
+function bestLadderRoute(strengths, routes, lengthDifference) {
   const differences = Object.fromEntries(strengths.map(({ key, difference }) => [key, difference]));
   return routes
     .filter((route) => route.Ladder === true)
@@ -63,7 +63,7 @@ function bestLadderRoute(strengths, routes) {
       score: ["sprint", "punch", "climb", "pursuit", "endurance"].reduce(
         (total, key) => total + differences[key] * (route[key.charAt(0).toUpperCase() + key.slice(1)] || 0),
         0
-      )
+      ) + lengthDifference * ((route.Pursuit || 0) - (route.Endurance || 0))
     }))
     .sort((a, b) => b.score - a.score)[0]?.route;
 }
@@ -179,20 +179,20 @@ export function aggregateComparisons(comparisons, selectedTeam, teams, routes = 
   const lengthDifference = strengths.find((item) => item.key === "pursuit").difference -
     strengths.find((item) => item.key === "endurance").difference;
   const routeLength = Math.abs(lengthDifference) < 10
-    ? "medium-length"
+    ? ""
     : lengthDifference > 0 ? "shorter" : "longer";
   const routeProfileLabels = {
     climb: "climbing-focused",
     sprint: "sprint-focused",
     punch: "punchy"
   };
-  const bestRoute = bestLadderRoute(strengths, routes);
+  const bestRoute = bestLadderRoute(strengths, routes, lengthDifference);
   return {
     wins: comparisons.filter((comparison) => comparison.points.home > comparison.points.away).length,
     total: comparisons.length,
     averagePoints,
     rankingStatus,
-    routeConclusion: `This team performs relatively best on ${routeLength}, ${routeProfileLabels[sprintProfile.key]} routes${bestRoute ? ", such as" : "."}`,
+    routeConclusion: `This team performs relatively best on ${routeLength ? `${routeLength}, ` : ""}${routeProfileLabels[sprintProfile.key]} routes${bestRoute ? ", such as" : "."}`,
     suggestedRoute: bestRoute || null,
     strengths
   };

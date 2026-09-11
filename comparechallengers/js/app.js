@@ -19,6 +19,7 @@ async function loadTeam(teamNumber) {
       averagePoints: 0,
       rankingStatus: "approximately correct position",
       routeConclusion: "",
+      suggestedRoute: null,
       strengths: []
     });
     renderComparisons([], null);

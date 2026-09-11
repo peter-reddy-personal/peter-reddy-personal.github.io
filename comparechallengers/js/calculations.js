@@ -115,6 +115,7 @@ export function aggregateComparisons(comparisons, selectedTeam, teams, routes = 
       averagePoints: 0,
       rankingStatus: "approximately correct position",
       routeConclusion: "",
+      suggestedRoute: null,
       strengths: []
     };
   }
@@ -131,12 +132,30 @@ export function aggregateComparisons(comparisons, selectedTeam, teams, routes = 
       difference
     };
   });
-  const rankedKeys = [...strengths].sort((a, b) => b.difference - a.difference);
-  const rankByKey = new Map(rankedKeys.map((item, index) => [item.key, index]));
-  strengths.forEach((item) => {
-    item.rank = rankByKey.get(item.key);
+  const positiveStrengths = strengths
+    .filter((item) => item.difference > 0)
+    .sort((a, b) => b.difference - a.difference);
+  const negativeStrengths = strengths
+    .filter((item) => item.difference < 0)
+    .sort((a, b) => a.difference - b.difference);
+  positiveStrengths.forEach((item, index) => {
+    item.rank = positiveStrengths.length - index;
+    item.level = index;
   });
+  negativeStrengths.forEach((item, index) => {
+    item.rank = -(negativeStrengths.length - index);
+    item.level = index;
+  });
+  strengths
+    .filter((item) => item.difference === 0)
+    .forEach((item) => {
+      item.rank = 0;
+      item.level = 0;
+    });
   const averagePoints = comparisons.reduce((sum, comparison) => sum + comparison.points.home, 0) / comparisons.length;
+  const expectedWins = comparisons.filter(
+    (comparison) => comparison.points.home > comparison.points.away
+  ).length;
   const regionalTeams = teams?.filter(
     (team) => team.positions?.region?.name === selectedTeam?.positions?.region?.name
   ) || [];
@@ -145,13 +164,13 @@ export function aggregateComparisons(comparisons, selectedTeam, teams, routes = 
   const isBoundaryRank = regionalRank <= 15 || regionalRank > maxRegionalRank - 15;
   const rankingStatus = isBoundaryRank
     ? "approximately correct position"
-    : averagePoints > 35
+    : expectedWins > 25
       ? "dramatically under ranked"
-      : averagePoints > 29
+      : expectedWins > 19
         ? "slightly under ranked"
-        : averagePoints > 24
+        : expectedWins > 9
           ? "approximately correct position"
-          : averagePoints > 19
+          : expectedWins > 4
             ? "slightly over ranked"
             : "dramatically over ranked";
   const sprintProfile = strengths
@@ -161,7 +180,7 @@ export function aggregateComparisons(comparisons, selectedTeam, teams, routes = 
     strengths.find((item) => item.key === "endurance").difference;
   const routeLength = Math.abs(lengthDifference) < 10
     ? "medium-length"
-    : lengthDifference > 0 ? "short" : "long";
+    : lengthDifference > 0 ? "shorter" : "longer";
   const routeProfileLabels = {
     climb: "climbing-focused",
     sprint: "sprint-focused",
@@ -173,7 +192,8 @@ export function aggregateComparisons(comparisons, selectedTeam, teams, routes = 
     total: comparisons.length,
     averagePoints,
     rankingStatus,
-    routeConclusion: `This team performs relatively best on ${routeLength}, ${routeProfileLabels[sprintProfile.key]} routes${bestRoute ? `, such as ${bestRoute.Route}` : ""}.`,
+    routeConclusion: `This team performs relatively best on ${routeLength}, ${routeProfileLabels[sprintProfile.key]} routes${bestRoute ? ", such as" : "."}`,
+    suggestedRoute: bestRoute || null,
     strengths
   };
 }

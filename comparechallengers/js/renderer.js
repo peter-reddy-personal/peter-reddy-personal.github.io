@@ -1,5 +1,6 @@
 import { FACTORS, SELECTORS } from "./config.js";
 import { getFactorValue } from "./calculations.js";
+import { generateElevationUrl } from "../../routepicker/js/utils.js";
 
 const format = (value) => {
   if (!Number.isFinite(value)) return "N/A";
@@ -28,8 +29,13 @@ export function renderRiders(riders) {
   const container = el(SELECTORS.riderTable);
   const allSelected = riders.length > 0 && riders.every((rider) => rider.selected === true);
   const ranges = Object.fromEntries(FACTORS.map(({ key }) => {
-    const values = riders.map((rider) => getFactorValue(rider, key));
-    return [key, { min: Math.min(...values), max: Math.max(...values) }];
+    const values = riders
+      .map((rider) => getFactorValue(rider, key))
+      .filter((value) => Number.isFinite(value) && value !== 0);
+    return [key, {
+      min: values.length ? Math.min(...values) : NaN,
+      max: values.length ? Math.max(...values) : NaN
+    }];
   }));
   container.innerHTML = `<div class="rider-header"><button id="select-all" class="select-toggle${allSelected ? " selected" : ""}" type="button" aria-label="${allSelected ? "Unselect all riders" : "Select all riders"}" title="${allSelected ? "Unselect all riders" : "Select all riders"}"></button><span>Rider</span>${FACTORS.map(({ label }) => `<span>${label}</span>`).join("")}</div>` +
     riders.map((rider) => `<div class="rider-row${rider.selected ? "" : " rider-unselected"}">
@@ -40,9 +46,11 @@ export function renderRiders(riders) {
 }
 
 function factorGradient(value, range) {
-  if (!Number.isFinite(value) || range.min === range.max) return "background:#eef3fb";
+  if (!Number.isFinite(value) || value === 0 || !Number.isFinite(range.min) || !Number.isFinite(range.max) || range.min === range.max) {
+    return "background:#eef3fb";
+  }
   const ratio = (value - range.min) / (range.max - range.min);
-  const hue = Math.round(5 + ratio * 120);
+  const hue = Math.round(120 - ratio * 115);
   return `background:hsl(${hue} 65% 88%)`;
 }
 
@@ -51,15 +59,34 @@ export function renderSummary(summary) {
     <div><strong>${summary.wins} <small>out of ${summary.total}</small></strong><span>expected wins</span></div>
     <div><strong>${format(summary.averagePoints)}</strong><span>average points</span></div>
     <div><strong>${summary.rankingStatus}</strong><span>compared to strength of nearby teams</span></div>`;
+  const positiveCount = summary.strengths.filter((item) => item.difference > 0).length;
+  const negativeCount = summary.strengths.filter((item) => item.difference < 0).length;
+  const allPositive = positiveCount === summary.strengths.length;
+  const allNegative = negativeCount === summary.strengths.length;
   el(SELECTORS.strengths).innerHTML = summary.strengths.length
     ? `${summary.strengths.map((item, index) => `
-      <article class="strength-card strength-level-${item.rank} ${item.difference >= 0 ? "strength-positive" : "strength-negative"}">
-        <span class="strength-rank">${item.rank + 1}</span>
+      <article class="strength-card strength-level-${item.level} ${item.difference > 0 ? "strength-positive" : item.difference < 0 ? "strength-negative" : "strength-neutral"}">
+        <span class="strength-rank">${item.rank > 0 ? "+" : ""}${item.rank}</span>
         <strong>${item.label}</strong>
-        <span class="strength-verdict">${item.difference >= 0 ? (index === 0 ? "Strongest advantage" : "Better than opponent average") : (index === 0 ? "Least behind" : "Behind opponent average")}</span>
+        <span class="strength-verdict">${item.difference > 0
+          ? (item.rank === positiveCount
+            ? "Strongest advantage"
+            : allPositive && item.rank === 1 ? "Weakest advantage" : item.rank > 0 ? "Above opponent average" : "")
+          : item.difference < 0
+            ? (item.rank === -negativeCount
+              ? "Greatest disadvantage"
+              : allNegative && item.rank === -1 ? "Least severe disadvantage" : "Below opponent average")
+            : "Equal to opponent average"}</span>
         <span class="strength-values">${format(item.teamAverage)} <b>vs</b> ${format(item.opponentAverage)}</span>
       </article>`).join("")}`
-      + `<p class="route-conclusion">${summary.routeConclusion}</p>`
+      + `<p class="route-conclusion">${summary.routeConclusion}${summary.suggestedRoute
+        ? ` <a href="${summary.suggestedRoute.URL}" target="_blank" rel="noopener noreferrer">${summary.suggestedRoute.Route}</a>.`
+        : ""}</p>`
+      + (summary.suggestedRoute
+        ? `<div class="suggested-route-profile">
+            <img src="${generateElevationUrl(summary.suggestedRoute.World, summary.suggestedRoute.Route)}" alt="${summary.suggestedRoute.Route} elevation profile">
+          </div>`
+        : "")
     : "<p>No qualifying opponents found.</p>";
 }
 

@@ -67,7 +67,11 @@ function getFactorScores(rider) {
 }
 
 function hasUsableFactorScores(rider) {
-  return Object.values(getFactorScores(rider)).every((value) => {
+  // TT is not used by team-racing routes, so missing TT data must not exclude a rider.
+  const teamRaceFactors = Object.fromEntries(
+    Object.entries(getFactorScores(rider)).filter(([key]) => key !== "tt")
+  );
+  return Object.values(teamRaceFactors).every((value) => {
     return Number.isFinite(value) && value !== 0;
   });
 }

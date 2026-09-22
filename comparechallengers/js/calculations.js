@@ -1,4 +1,4 @@
-import { FACTORS } from "./config.js";
+import { FACTORS } from "./config.js?v=20260916";
 
 const EXPECTED_SCORE_WEIGHTS = {
   sprint: 0.103,

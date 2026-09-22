@@ -1,6 +1,6 @@
-import { FACTORS, SELECTORS } from "./config.js";
-import { getFactorValue } from "./calculations.js";
-import { generateElevationUrl } from "../../routepicker/js/utils.js";
+import { FACTORS, SELECTORS } from "./config.js?v=20260916";
+import { getFactorValue } from "./calculations.js?v=20260916";
+import { generateElevationUrl } from "../../routepicker/js/utils.js?v=20260916";
 
 const format = (value) => {
   if (!Number.isFinite(value)) return "N/A";

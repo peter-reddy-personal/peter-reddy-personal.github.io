@@ -1,8 +1,8 @@
-import { fetchAllTeams, fetchAllRoutes, enrichTeam } from "../../routepicker/js/api.js";
-import { STORAGE_KEYS, SELECTORS } from "./config.js";
-import { state, loadSavedState, saveState } from "./state.js";
-import { eligibleOpponents, compareTeam, aggregateComparisons } from "./calculations.js";
-import { populateTeams, renderRiders, renderSummary, renderComparisons, renderContext, renderLoadingState, showStatus } from "./renderer.js";
+import { fetchAllTeams, fetchAllRoutes, enrichTeam } from "../../routepicker/js/api.js?v=20260916";
+import { STORAGE_KEYS, SELECTORS } from "./config.js?v=20260916";
+import { state, loadSavedState, saveState } from "./state.js?v=20260916";
+import { eligibleOpponents, compareTeam, aggregateComparisons } from "./calculations.js?v=20260916";
+import { populateTeams, renderRiders, renderSummary, renderComparisons, renderContext, renderLoadingState, showStatus } from "./renderer.js?v=20260916";
 
 const select = () => document.querySelector(SELECTORS.team);
 

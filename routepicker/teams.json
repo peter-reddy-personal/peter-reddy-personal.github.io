@@ -5,15 +5,20 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 62
+        "rank": 63
       },
-      "world": 96
+      "world": 95
     },
     "riders": [
       {
         "id": 161597,
         "publicId": "60f57c72-e7ed-4c2f-afab-b812b75f6123",
         "name": "Gavin Spiers (Electricspirit.co)"
+      },
+      {
+        "id": 352229,
+        "publicId": "36a6a6ea-3864-4a92-b24a-584a9d1fec3f",
+        "name": "Simon Deakin [ElectricSpirit]"
       },
       {
         "id": 526964,
@@ -48,7 +53,7 @@
       {
         "id": 3706176,
         "publicId": "0de785a1-ce21-445f-a95f-b76195d9c492",
-        "name": "David Salisbury [ElectricSpirit]"
+        "name": "David Salisbury"
       },
       {
         "id": 3819483,
@@ -63,9 +68,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 21
+        "rank": 25
       },
-      "world": 32
+      "world": 44
     },
     "riders": [
       {
@@ -106,7 +111,7 @@
       {
         "id": 3418758,
         "publicId": "bea31da0-68c2-43da-a98f-0685f97cc990",
-        "name": "5 Alex Fox [SRT]"
+        "name": "Alex Fox [SRT]"
       },
       {
         "id": 3800026,
@@ -136,7 +141,7 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 65
+        "rank": 67
       },
       "world": 99
     },
@@ -169,7 +174,7 @@
       {
         "id": 4873192,
         "publicId": "ef5d514b-eba7-412f-a703-e8a335dad9aa",
-        "name": "Paul Denvir [SRT]"
+        "name": "Paul Denvir [SRT D / T]"
       },
       {
         "id": 5186754,
@@ -184,9 +189,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 109
+        "rank": 113
       },
-      "world": 158
+      "world": 170
     },
     "riders": [
       {
@@ -203,11 +208,6 @@
         "id": 427154,
         "publicId": "8ed2f318-670f-4725-8a87-007ef35fd361",
         "name": "Mark Bircham [ElectricSpirit]"
-      },
-      {
-        "id": 560720,
-        "publicId": "87fec0e3-70c1-41b0-aa34-70913af1faba",
-        "name": "Noel Slevin [ElectricSpirit]"
       },
       {
         "id": 848965,
@@ -235,6 +235,11 @@
         "name": "Susan Lyle [ElectricSpirit]"
       },
       {
+        "id": 3013595,
+        "publicId": "258628f0-73bd-4290-8ab4-3ac28ea4a3b7",
+        "name": "Matt Davi-Lou [ElectricSpirit]"
+      },
+      {
         "id": 6383916,
         "publicId": "6374b2e6-391c-4c4d-90e4-fc884c8dfcef",
         "name": "Simon Chilli [Electricspirit]"
@@ -247,15 +252,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 73
+        "rank": 76
       },
-      "world": 107
+      "world": 109
     },
     "riders": [
       {
         "id": 584996,
         "publicId": "10f2c2bb-2fd8-48a0-acf2-70295c7f4ec7",
-        "name": "2 Andy Mc [Rhino] (Cov Tri)"
+        "name": "Andy Mc [Rhino] (Cov Tri)"
       },
       {
         "id": 1314542,
@@ -315,9 +320,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 5
+        "rank": 6
       },
-      "world": 9
+      "world": 10
     },
     "riders": [
       {
@@ -398,9 +403,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 120
+        "rank": 123
       },
-      "world": 182
+      "world": 184
     },
     "riders": [
       {
@@ -411,7 +416,7 @@
       {
         "id": 406022,
         "publicId": "6339cc3f-465a-412c-8d6d-8577c5340eb0",
-        "name": "Hal Wye YT"
+        "name": "Som Goiya"
       },
       {
         "id": 805469,
@@ -436,7 +441,7 @@
       {
         "id": 1757584,
         "publicId": "f3933834-10b5-4f40-a5c3-d8efa2a2f464",
-        "name": "Dwayne Marshall (Seataurs)"
+        "name": "Dwayne Marshall (herd Seataurs)"
       },
       {
         "id": 3324741,
@@ -476,9 +481,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 89
+        "rank": 88
       },
-      "world": 133
+      "world": 125
     },
     "riders": [
       {
@@ -534,7 +539,7 @@
       {
         "id": 2640298,
         "publicId": "97e43f4b-a7b0-47de-9b62-ec55c2a3966d",
-        "name": "Peter Ferngren 🐌 [SZ]"
+        "name": "2Peter Ferngren 🐌 [SZ]"
       },
       {
         "id": 3359213,
@@ -564,9 +569,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 47
+        "rank": 49
       },
-      "world": 66
+      "world": 68
     },
     "riders": [
       {
@@ -592,7 +597,7 @@
       {
         "id": 2179113,
         "publicId": "fa7a03d9-4d16-4368-8cf4-7063c0e754eb",
-        "name": "G erald [TV - HOORS]"
+        "name": "G erald [TV Hoors]"
       },
       {
         "id": 3212721,
@@ -612,7 +617,7 @@
       {
         "id": 5277725,
         "publicId": "8d4b2da7-5c5f-417d-9416-0789c16fa3cd",
-        "name": "Justin J Newton (FAAST🟡🌑)"
+        "name": "Justin J Newton (SDCC🟡🌑)"
       },
       {
         "id": 5472406,
@@ -627,20 +632,20 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 49
+        "rank": 50
       },
-      "world": 68
+      "world": 69
     },
     "riders": [
       {
         "id": 280216,
         "publicId": "2c78cbd7-d938-45f9-b01b-80ab505430c3",
-        "name": "4 Emmoth[SZ]"
+        "name": "5 🔵Emmoth[SZ]"
       },
       {
         "id": 1415029,
         "publicId": "2deb686e-a849-4ed1-baa2-b9208ce33a08",
-        "name": "Kenneth Söderberg [SZ]"
+        "name": "7 Söderberg [SZ]"
       },
       {
         "id": 1475133,
@@ -665,7 +670,7 @@
       {
         "id": 4309848,
         "publicId": "b02c6e94-3a74-4344-a9ad-7b6268b56db9",
-        "name": "Jerker Östman [SZ]"
+        "name": "8. Jerker Östman [SZ]"
       },
       {
         "id": 4371613,
@@ -700,9 +705,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 104
+        "rank": 109
       },
-      "world": 153
+      "world": 166
     },
     "riders": [
       {
@@ -758,15 +763,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 25
+        "rank": 28
       },
-      "world": 44
+      "world": 47
     },
     "riders": [
       {
         "id": 33929,
         "publicId": "33f71986-2c80-4667-ab43-c0293ae32f79",
-        "name": "Mike Widdowson (CLS)"
+        "name": "Mike Widdowson[CLS]"
       },
       {
         "id": 40180,
@@ -831,7 +836,7 @@
       {
         "id": 5863659,
         "publicId": "6c0dbb56-279d-4366-8958-b15c0697a8a1",
-        "name": "Pedro Palma (PTz)"
+        "name": "Pedro Palma (CLS | PTz)"
       },
       {
         "id": 7482324,
@@ -846,9 +851,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 53
+        "rank": 54
       },
-      "world": 76
+      "world": 84
     },
     "riders": [
       {
@@ -929,9 +934,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 18
+        "rank": 19
       },
-      "world": 29
+      "world": 25
     },
     "riders": [
       {
@@ -1035,7 +1040,7 @@
       {
         "id": 2939762,
         "publicId": "c76c9074-c9c5-40e9-bbcc-007fa7ad5430",
-        "name": "Max Turcotte [CAFÉ CHAMPIONS-HERD]"
+        "name": "Max Turcotte [CAFÉ CHAMPIONS]"
       },
       {
         "id": 4816683,
@@ -1050,7 +1055,7 @@
       {
         "id": 5286668,
         "publicId": "71455009-a115-4d36-83ad-131e91a89633",
-        "name": "Abraham Fowler[DINOS]"
+        "name": "Abraham Fowler[HERD]"
       },
       {
         "id": 5292686,
@@ -1075,9 +1080,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 31
+        "rank": 32
       },
-      "world": 50
+      "world": 51
     },
     "riders": [
       {
@@ -1151,7 +1156,7 @@
       {
         "id": 1966,
         "publicId": "c3a6a245-7ac9-45eb-832d-5d71f318290a",
-        "name": "6 Andy (BEASTS)"
+        "name": "1 Andy (TFC)"
       },
       {
         "id": 9625,
@@ -1176,12 +1181,12 @@
       {
         "id": 1366959,
         "publicId": "3db0bfe8-b4f4-4c7b-afd9-3fb932449f00",
-        "name": "Snowy [BEASTs]"
+        "name": "Snowy [EVO 🦅]"
       },
       {
         "id": 1645497,
         "publicId": "8c8af74a-74f2-43bc-ba22-4ee1f8c68a90",
-        "name": "Graeme (DIRT🦍)"
+        "name": "Graeme (BEASTlings)"
       },
       {
         "id": 2008571,
@@ -1191,7 +1196,12 @@
       {
         "id": 2633618,
         "publicId": "d5042c0e-f338-424e-8642-73a8a19bcd42",
-        "name": "Ben Mayers (Beasts)"
+        "name": "Ben Mayers (ITA)"
+      },
+      {
+        "id": 2643802,
+        "publicId": "3b1dfdea-77ad-419c-a12c-1e6bb3045909",
+        "name": "M Beats (TFC) (CAP)"
       },
       {
         "id": 2811358,
@@ -1206,7 +1216,7 @@
       {
         "id": 3159617,
         "publicId": "f3aed7d6-5922-4d11-8c13-d5d05ee66da8",
-        "name": "4. Pete [Aerostars]"
+        "name": "4. Pete [Beasts]"
       },
       {
         "id": 5720324,
@@ -1221,9 +1231,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 29
+        "rank": 26
       },
-      "world": 48
+      "world": 45
     },
     "riders": [
       {
@@ -1304,9 +1314,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 80
+        "rank": 81
       },
-      "world": 117
+      "world": 118
     },
     "riders": [
       {
@@ -1318,6 +1328,11 @@
         "id": 390987,
         "publicId": "eb7b2e49-6274-4392-a0ab-b9ef7bf98cab",
         "name": "René Petersen [DZR]"
+      },
+      {
+        "id": 984874,
+        "publicId": "0970e5a4-2214-4131-abda-6772dee1a587",
+        "name": "Daniel Wegener [DZR ZZ]"
       },
       {
         "id": 1785150,
@@ -1342,7 +1357,7 @@
       {
         "id": 3511489,
         "publicId": "2dc03fd2-03dc-41bc-b29f-6588a576219d",
-        "name": "Nick Niebling [DZR WW]"
+        "name": "Nick Niebling [DZR]"
       },
       {
         "id": 4037541,
@@ -1382,15 +1397,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 88
+        "rank": 93
       },
-      "world": 132
+      "world": 136
     },
     "riders": [
       {
         "id": 174799,
         "publicId": "2a142daa-5d5a-451a-82de-e9db71f681eb",
-        "name": "Martin Raven Herd"
+        "name": "Martin Raven Herd Cavs"
       },
       {
         "id": 398226,
@@ -1420,7 +1435,7 @@
       {
         "id": 1628932,
         "publicId": "d91bfd7c-5eea-4009-801a-e9b57c3c0147",
-        "name": "Laura Sayers GXY1 Herd"
+        "name": "Laura Sayers Herd 🐿 🐧"
       },
       {
         "id": 1662887,
@@ -1460,7 +1475,7 @@
       {
         "id": 5491856,
         "publicId": "d027fc2c-b677-4814-a6c4-1adac78a66f8",
-        "name": ". Bigsey Pack Lead/Sweep"
+        "name": ". Bigsey"
       }
     ]
   },
@@ -1508,7 +1523,7 @@
       {
         "id": 3610784,
         "publicId": "e9b9803c-77b5-48e3-bc25-11ebc6434f73",
-        "name": "Chris Bolwell [Rhino]"
+        "name": "Chris Bolwell [Rhino 🦅🐍]"
       },
       {
         "id": 4560455,
@@ -1518,7 +1533,7 @@
       {
         "id": 4823385,
         "publicId": "5f5a01a0-9548-40aa-9891-41519b29ce6d",
-        "name": "Nick Kaine [RHINOCEROS] 🤠🦏🦧"
+        "name": "Nick Kaine [RHINO🦅🐍] 🤠"
       },
       {
         "id": 5356933,
@@ -1543,9 +1558,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 59
+        "rank": 60
       },
-      "world": 91
+      "world": 92
     },
     "riders": [
       {
@@ -1628,7 +1643,7 @@
         "name": "APAC",
         "rank": 3
       },
-      "world": 8
+      "world": 9
     },
     "riders": [
       {
@@ -1686,7 +1701,7 @@
         "name": "AMER",
         "rank": 32
       },
-      "world": 128
+      "world": 131
     },
     "riders": [
       {
@@ -1697,7 +1712,7 @@
       {
         "id": 65302,
         "publicId": "af6d21f9-7936-4e07-957f-d83e08018ad0",
-        "name": "Foster Boone (herd)"
+        "name": "1. Foster(herd)"
       },
       {
         "id": 1394688,
@@ -1764,18 +1779,13 @@
         "name": "AMER",
         "rank": 11
       },
-      "world": 40
+      "world": 35
     },
     "riders": [
       {
         "id": 51483,
         "publicId": "63b1a754-7969-412a-af0e-86b4e4cc41e3",
         "name": "Adam P (OTR)"
-      },
-      {
-        "id": 68397,
-        "publicId": "28d19c54-540a-4cbb-8e46-e98b0c3e4385",
-        "name": "M ike Robson🐰 (OMG)"
       },
       {
         "id": 293812,
@@ -1825,15 +1835,20 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 124
+        "rank": 128
       },
-      "world": 186
+      "world": 189
     },
     "riders": [
       {
         "id": 411665,
         "publicId": "2e39e9ac-56e0-4e0a-9ea1-c56666d9dd5f",
         "name": "Phil Johnson [Team CLS]"
+      },
+      {
+        "id": 696821,
+        "publicId": "90c722e1-5e3b-429d-ae7d-f5c494089bac",
+        "name": "Gary Truman [CLS]"
       },
       {
         "id": 1942596,
@@ -1853,7 +1868,7 @@
       {
         "id": 2960744,
         "publicId": "38e3cd55-e987-45f1-b25f-df7469c5d84c",
-        "name": "Alun T [CLS]"
+        "name": "Alun T"
       },
       {
         "id": 4740873,
@@ -1928,9 +1943,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 125
+        "rank": 129
       },
-      "world": 187
+      "world": 190
     },
     "riders": [
       {
@@ -1946,7 +1961,7 @@
       {
         "id": 199839,
         "publicId": "73c51533-c501-443d-a1ec-7bf8c896500d",
-        "name": "Ian Coupland ☕️(TV) Team500"
+        "name": "Ian Coupland ☕️ (TV) Team500"
       },
       {
         "id": 305811,
@@ -1979,6 +1994,11 @@
         "name": "Janne Kylliäinen🇫🇮[TV](Sausage)"
       },
       {
+        "id": 2991198,
+        "publicId": "5ff3cbe2-87da-4d3c-953c-8dee97c2c98c",
+        "name": "Morten Tobiassen 🇬🇱🇺🇦 [TV] (Thorir)"
+      },
+      {
         "id": 3656701,
         "publicId": "b2ed22e5-ec22-4702-804d-188c8001ab61",
         "name": "Anders Håkon Gaut [TV] [Thorir]"
@@ -2001,9 +2021,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 121
+        "rank": 125
       },
-      "world": 183
+      "world": 186
     },
     "riders": [
       {
@@ -2084,9 +2104,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 6
+        "rank": 7
       },
-      "world": 35
+      "world": 31
     },
     "riders": [
       {
@@ -2098,6 +2118,11 @@
         "id": 44725,
         "publicId": "a7a48994-c563-45a3-b554-81a66cc0243e",
         "name": "Dustin Quigley ( OTR )"
+      },
+      {
+        "id": 68397,
+        "publicId": "28d19c54-540a-4cbb-8e46-e98b0c3e4385",
+        "name": "M ike Robson🐰 (OMG)"
       },
       {
         "id": 250099,
@@ -2117,7 +2142,7 @@
       {
         "id": 725699,
         "publicId": "014dc238-23e4-497b-b42a-38145866aa08",
-        "name": "Glenn Kempton"
+        "name": "Glenn Kempton (OMG)"
       },
       {
         "id": 2124922,
@@ -2132,9 +2157,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 97
+        "rank": 101
       },
-      "world": 141
+      "world": 144
     },
     "riders": [
       {
@@ -2150,7 +2175,7 @@
       {
         "id": 810554,
         "publicId": "7aa2b912-45c9-471b-8a8b-76677d1499e9",
-        "name": "8. Tim Ferguson (Rhino)"
+        "name": "7. Tim Ferguson (Rhino)"
       },
       {
         "id": 882956,
@@ -2180,12 +2205,12 @@
       {
         "id": 2460567,
         "publicId": "c7008aaf-e8aa-4515-b15b-d0909b844580",
-        "name": "4. Tom F(Rhino)"
+        "name": "8. Tom F(Rhino)"
       },
       {
         "id": 3565025,
         "publicId": "e9f86b78-706e-48c1-91ea-fd24cc2e5555",
-        "name": "5 Heath (Rhino)"
+        "name": "4 Heath (Rhino)"
       },
       {
         "id": 4365456,
@@ -2215,15 +2240,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 52
+        "rank": 53
       },
-      "world": 73
+      "world": 74
     },
     "riders": [
       {
         "id": 255016,
         "publicId": "3e98b53e-0734-4d5c-9536-39398468d1ac",
-        "name": "Daniel vd Heiden [Herd 🦈]"
+        "name": "1. Daniel vd Heiden [Herd 🦈]"
       },
       {
         "id": 405473,
@@ -2263,7 +2288,7 @@
       {
         "id": 5575369,
         "publicId": "53991655-3709-42db-88d3-f61e572de72d",
-        "name": "Iain Thistle [HERD]"
+        "name": "Iain Thistle [EINTRACHT]"
       },
       {
         "id": 5923049,
@@ -2278,15 +2303,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 15
+        "rank": 16
       },
-      "world": 20
+      "world": 22
     },
     "riders": [
       {
         "id": 38554,
         "publicId": "647b2861-3d28-48b6-9e56-a11135f77a5b",
-        "name": "Matt(Vultures)"
+        "name": "Matt🇬🇧(Buteos)"
       },
       {
         "id": 335164,
@@ -2296,12 +2321,12 @@
       {
         "id": 513566,
         "publicId": "adb57d54-23b8-41f7-826c-292a21d8649a",
-        "name": "JonP (Vultures)"
+        "name": "6 JonP (Spitfires)"
       },
       {
         "id": 676023,
         "publicId": "6ebe8061-5ed7-40a6-8531-898fe3ab40f9",
-        "name": "Matt (Vultures)"
+        "name": "1. Matt (Spits)"
       },
       {
         "id": 1099918,
@@ -2321,12 +2346,12 @@
       {
         "id": 2340067,
         "publicId": "19e700e9-b2ba-4d7b-853e-59c0741e2069",
-        "name": "Andy (Vultures)"
+        "name": "Andy (Ospreys)"
       },
       {
         "id": 2708344,
         "publicId": "9dc8563c-1feb-4e41-95dc-64568282d1fa",
-        "name": "Batu Yildiz-(Vultures)"
+        "name": "Batu Yildiz"
       },
       {
         "id": 3659440,
@@ -2366,9 +2391,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 30
+        "rank": 31
       },
-      "world": 49
+      "world": 50
     },
     "riders": [
       {
@@ -2419,7 +2444,7 @@
       {
         "id": 4347484,
         "publicId": "2b624356-5391-4ddb-be3c-47b5e0a1c852",
-        "name": "Pietro Pavia (ITA 👻)"
+        "name": "Pietro Pavia"
       },
       {
         "id": 5312603,
@@ -2434,9 +2459,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 16
+        "rank": 17
       },
-      "world": 21
+      "world": 23
     },
     "riders": [
       {
@@ -2512,9 +2537,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 45
+        "rank": 46
       },
-      "world": 64
+      "world": 65
     },
     "riders": [
       {
@@ -2530,7 +2555,7 @@
       {
         "id": 470254,
         "publicId": "cd02b703-8e12-4d41-877c-4a031719e93a",
-        "name": "1 Chris (BAKPDL)"
+        "name": "Chris Knight (BAKPDL)"
       },
       {
         "id": 514482,
@@ -2555,7 +2580,7 @@
       {
         "id": 3067422,
         "publicId": "b10a7225-ef2b-45ce-a1d7-de9e4273e57d",
-        "name": "2 PHewie BP"
+        "name": "P Hewie BP"
       },
       {
         "id": 3465944,
@@ -2563,9 +2588,19 @@
         "name": "R Schep[bakpdl]"
       },
       {
+        "id": 4122485,
+        "publicId": "9220f43b-6c89-4e23-9e0c-65497b155654",
+        "name": "Troy De Juncker [BAKPDL]"
+      },
+      {
         "id": 4750604,
         "publicId": "a8c928f0-ee65-4548-b645-abb71365de5a",
         "name": "Nathan Edwards - scottyt [BAKPDL]"
+      },
+      {
+        "id": 5402177,
+        "publicId": "45baa296-a290-4f3c-8ea1-bede569d3d0f",
+        "name": "Ola Finkelsen"
       },
       {
         "id": 6173585,
@@ -2610,9 +2645,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 107
+        "rank": 103
       },
-      "world": 156
+      "world": 148
     },
     "riders": [
       {
@@ -2623,12 +2658,12 @@
       {
         "id": 733203,
         "publicId": "9866517a-2c08-4e7c-bb2f-2748979f3951",
-        "name": "Alex Green (cycos)"
+        "name": "Alex Green (dirt)"
       },
       {
         "id": 1563379,
         "publicId": "42c3adc8-bb7b-4a8b-949e-28fbd6e5745e",
-        "name": "Matthias (Cycos)"
+        "name": "Matthias (Mammoths)"
       },
       {
         "id": 1742545,
@@ -2668,7 +2703,7 @@
       {
         "id": 4590017,
         "publicId": "90a1b216-27bd-4d0e-9c0f-02a44a126ece",
-        "name": "Jeroen VV (cycos)"
+        "name": "Jeroen VV"
       },
       {
         "id": 6056089,
@@ -2678,17 +2713,17 @@
       {
         "id": 7700236,
         "publicId": "e4837ac2-735b-4566-9342-84199f04b04a",
-        "name": "O ruze [cycos]"
+        "name": "O ruze [Tsqls]"
       },
       {
         "id": 7861156,
         "publicId": "2200dfd8-5428-4eb0-b965-5cbd518f1aa2",
-        "name": "J ohn [Cycos]"
+        "name": "J OHN_R [DIRT-TS]"
       },
       {
         "id": 8420845,
         "publicId": "17f0d091-9063-474e-80a2-91b4b9f9ccbc",
-        "name": "Chatty Pizza (DIRT)"
+        "name": "Chatty Pizza (BADGERS)"
       }
     ]
   },
@@ -2698,20 +2733,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 37
+        "rank": 39
       },
-      "world": 56
+      "world": 58
     },
     "riders": [
       {
         "id": 1132368,
         "publicId": "bc045af4-dd4c-47fc-92e8-99409e005b7b",
         "name": "Marçal Gode [ZABI]"
-      },
-      {
-        "id": 1369748,
-        "publicId": "ede81be5-6cdd-4642-833b-13a2c5a9b59e",
-        "name": "Hugo López [ZABI]"
       },
       {
         "id": 1520797,
@@ -2776,9 +2806,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 79
+        "rank": 84
       },
-      "world": 116
+      "world": 121
     },
     "riders": [
       {
@@ -2859,9 +2889,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 84
+        "rank": 87
       },
-      "world": 125
+      "world": 124
     },
     "riders": [
       {
@@ -2932,9 +2962,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 48
+        "rank": 47
       },
-      "world": 67
+      "world": 66
     },
     "riders": [
       {
@@ -3008,8 +3038,11 @@
     "number": 154,
     "name": "Vikings Yme",
     "positions": {
-      "region": null,
-      "world": null
+      "region": {
+        "name": "EMEA",
+        "rank": 72
+      },
+      "world": 104
     },
     "riders": [
       {
@@ -3070,7 +3103,7 @@
       {
         "id": 1553672,
         "publicId": "2d7ab95c-009e-4e4d-84b0-74082eff67fe",
-        "name": "SG Roska [V]Niflheim"
+        "name": "SG Roska [V]YME"
       },
       {
         "id": 2835809,
@@ -3095,15 +3128,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 86
+        "rank": 91
       },
-      "world": 130
+      "world": 134
     },
     "riders": [
       {
         "id": 450032,
         "publicId": "e95b0805-bd9e-4975-adc6-553902b0e5d1",
-        "name": "Dirk Ehrmantraut [KLUB][BON]"
+        "name": "Dirk Ehrmantraut [KLUB]"
       },
       {
         "id": 1298544,
@@ -3114,6 +3147,16 @@
         "id": 1388533,
         "publicId": "0d16aee3-df87-4ab7-9a89-d06146b51709",
         "name": "Rudi [KLUB]"
+      },
+      {
+        "id": 4344980,
+        "publicId": "fadef65b-93e0-4e74-ace4-4460ba2f91e0",
+        "name": "Frank Frank [KLUB]"
+      },
+      {
+        "id": 4648660,
+        "publicId": "99d959a2-8ce4-4a2b-b7bc-dddeff5e07d6",
+        "name": "Thomas Höss [KLUB]"
       },
       {
         "id": 5039261,
@@ -3136,11 +3179,6 @@
         "name": "# Thorsten [KLUB]"
       },
       {
-        "id": 6572384,
-        "publicId": "f64d6d4e-fde9-44e7-a527-e01706970acc",
-        "name": ". Denny [KLUB]"
-      },
-      {
         "id": 6751203,
         "publicId": "7de1b88c-171e-4d2f-babd-4e9e2c861195",
         "name": "Stefan PTRS [KLUB]"
@@ -3153,9 +3191,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 27
+        "rank": 29
       },
-      "world": 46
+      "world": 48
     },
     "riders": [
       {
@@ -3181,7 +3219,7 @@
       {
         "id": 702791,
         "publicId": "cbc96c84-4a08-4036-a424-7a640624fc64",
-        "name": "Lee (Buteos)"
+        "name": "Lee (Buzzards)"
       },
       {
         "id": 901874,
@@ -3216,7 +3254,7 @@
       {
         "id": 4098941,
         "publicId": "11bef10c-c860-4f18-abdf-6ef80fe78516",
-        "name": "Ivo (Buteos)"
+        "name": "Ivo (Buzzards)"
       },
       {
         "id": 6555777,
@@ -3233,7 +3271,7 @@
         "name": "EMEA",
         "rank": 135
       },
-      "world": 198
+      "world": 197
     },
     "riders": [
       {
@@ -3294,9 +3332,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 110
+        "rank": 115
       },
-      "world": 159
+      "world": 172
     },
     "riders": [
       {
@@ -3367,9 +3405,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 12
+        "rank": 13
       },
-      "world": 17
+      "world": 19
     },
     "riders": [
       {
@@ -3405,7 +3443,7 @@
       {
         "id": 6047352,
         "publicId": "0be575a2-7262-40d7-a491-6d7630ba8784",
-        "name": "3. Lundqvist (SZ)"
+        "name": "Sam Lundqvist (SZ)"
       },
       {
         "id": 6267448,
@@ -3430,9 +3468,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 41
+        "rank": 42
       },
-      "world": 60
+      "world": 61
     },
     "riders": [
       {
@@ -3478,7 +3516,7 @@
       {
         "id": 3167977,
         "publicId": "eef674b3-0652-4f6a-9bfd-be8d36b5918c",
-        "name": "P ETE"
+        "name": "P ETE [SeaSlugs]"
       },
       {
         "id": 3423457,
@@ -3513,15 +3551,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 123
+        "rank": 127
       },
-      "world": 185
+      "world": 188
     },
     "riders": [
       {
         "id": 1825946,
         "publicId": "616dc43b-5d68-4114-b038-c766ea07b2ce",
-        "name": "P hil [Sabs]"
+        "name": "P hil [Puffs]"
       },
       {
         "id": 1970746,
@@ -3541,7 +3579,7 @@
       {
         "id": 4462961,
         "publicId": "c123adf4-f43b-48c9-afac-daf366904744",
-        "name": ". Nick (Sabs)"
+        "name": ". Nick (Goldfinches)"
       },
       {
         "id": 5320327,
@@ -3561,7 +3599,7 @@
       {
         "id": 7574336,
         "publicId": "b7052ac0-7089-428a-8ac5-07589c33627f",
-        "name": "TessGames Tessachka (Sabs)"
+        "name": "TessGames Tessachka (Puffs)"
       },
       {
         "id": 7903886,
@@ -3579,9 +3617,19 @@
     },
     "riders": [
       {
+        "id": 1284312,
+        "publicId": "277963e3-19ee-486c-b14c-682f9383c524",
+        "name": ". Sam Splash [Foudre]"
+      },
+      {
         "id": 2455427,
         "publicId": "f3f16ef6-6e62-4503-965e-13670219eb71",
         "name": "Petithory Philippe 🦊 (Foudre)"
+      },
+      {
+        "id": 2594970,
+        "publicId": "952489ce-4d27-4a9f-abe4-4d9d982715f4",
+        "name": "J-Miche Miche 🥨 (Foudre)"
       },
       {
         "id": 4510045,
@@ -3592,6 +3640,26 @@
         "id": 4845917,
         "publicId": "74fbf111-f9b6-4f91-8499-531a81c0b6e1",
         "name": "Benjamin Puisset⚡ (FOUDRE)"
+      },
+      {
+        "id": 4869683,
+        "publicId": "99a63d42-fad3-4e39-ad7e-9b11e9f7948b",
+        "name": "Taboada Kaspar (Foudre)"
+      },
+      {
+        "id": 6879300,
+        "publicId": "3e55aefc-d1b7-4a10-8107-227f1c32eb36",
+        "name": "Sylvain Le Jeune (Foudre)3"
+      },
+      {
+        "id": 7021311,
+        "publicId": "2858dc96-1a92-40f6-8919-08384caba37d",
+        "name": "⚡ Thomas Sauvage⚡ ( Foudre )⚡"
+      },
+      {
+        "id": 7452290,
+        "publicId": "13baa595-5274-4041-9961-545702898913",
+        "name": "C Nw_ZAPATA (Foudre)"
       }
     ]
   },
@@ -3601,9 +3669,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 40
+        "rank": 41
       },
-      "world": 59
+      "world": 60
     },
     "riders": [
       {
@@ -3614,7 +3682,7 @@
       {
         "id": 990876,
         "publicId": "b283aed7-cb51-42bd-b694-bfb9fd00ebbb",
-        "name": "Pete Connor (WCC)"
+        "name": "Pete Connor (TNP)"
       },
       {
         "id": 1066534,
@@ -3664,9 +3732,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 63
+        "rank": 64
       },
-      "world": 97
+      "world": 96
     },
     "riders": [
       {
@@ -3687,7 +3755,7 @@
       {
         "id": 2882571,
         "publicId": "c98ab400-80e2-4c3f-bc10-a43144939e89",
-        "name": "4. Pete Horn [SRT] 🤠"
+        "name": "3. Pete Horn [SRT] 🤠"
       },
       {
         "id": 5304538,
@@ -3737,9 +3805,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 25
+        "rank": 26
       },
-      "world": 95
+      "world": 111
     },
     "riders": [
       {
@@ -3810,7 +3878,7 @@
       {
         "id": 4705365,
         "publicId": "34d79a99-d978-4c22-8ef4-74f335033a4f",
-        "name": ". Dean [OTR]"
+        "name": ". Dean [MNSTRS]"
       },
       {
         "id": 4978559,
@@ -3825,9 +3893,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 127
+        "rank": 124
       },
-      "world": 189
+      "world": 185
     },
     "riders": [
       {
@@ -3848,12 +3916,17 @@
       {
         "id": 1618334,
         "publicId": "025455a6-56ed-48e0-b5c4-008dfa9e91ec",
-        "name": "Th. Stähli🍌"
+        "name": "Th. Stähli🍌 [KLUB]"
       },
       {
         "id": 1641429,
         "publicId": "ed943a79-15dd-4e22-b2a4-7ab5a747402d",
         "name": "Ralf Martin [KLUB]"
+      },
+      {
+        "id": 2848945,
+        "publicId": "47dac292-0c30-40fe-9be3-3bac8dddc305",
+        "name": "der txg1332"
       },
       {
         "id": 3122763,
@@ -3864,11 +3937,6 @@
         "id": 3336900,
         "publicId": "88056d13-6d7f-4ba5-9644-17d24f681b84",
         "name": "Jörn Adamczyk [KLUB]"
-      },
-      {
-        "id": 3572511,
-        "publicId": "f1a1c181-44a3-4997-b402-208f39005f76",
-        "name": "Stefan Masters 💯 [KLUB]"
       },
       {
         "id": 3589965,
@@ -3891,9 +3959,14 @@
         "name": "Gerhard HINTERHÖLZL[KLUB]"
       },
       {
+        "id": 6600208,
+        "publicId": "c1c8f840-ddb2-483f-adcb-9399b3fdd6f6",
+        "name": "René [KLUB | BIKE24]"
+      },
+      {
         "id": 7395570,
         "publicId": "99f15f6c-7680-4cc4-9bd6-8c7d0bbbcdb2",
-        "name": ".2 Ritchie[KLUB]"
+        "name": ". Ritchie[KLUB]"
       },
       {
         "id": 7694553,
@@ -3944,6 +4017,11 @@
         "id": 6787283,
         "publicId": "32bc13af-7a58-4f28-ae61-1d35466c42d8",
         "name": "Jørgen Halset [V]"
+      },
+      {
+        "id": 7643354,
+        "publicId": "e7527c0e-b246-40c0-926d-d341dbec73c4",
+        "name": "Rene Halle Jensen"
       }
     ]
   },
@@ -4003,9 +4081,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 38
+        "rank": 39
       },
-      "world": 169
+      "world": 162
     },
     "riders": [
       {
@@ -4017,6 +4095,11 @@
         "id": 405238,
         "publicId": "e3de5703-737a-4cf8-a60a-b238eed7a146",
         "name": ". BarryO (ZSUNR☀️)"
+      },
+      {
+        "id": 456545,
+        "publicId": "47d0eecc-c1fb-4b82-83ae-4644158a9a9d",
+        "name": "Carrie Merritt"
       },
       {
         "id": 503460,
@@ -4123,7 +4206,7 @@
         "name": "AMER",
         "rank": 10
       },
-      "world": 39
+      "world": 34
     },
     "riders": [
       {
@@ -4199,9 +4282,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 19
+        "rank": 23
       },
-      "world": 81
+      "world": 86
     },
     "riders": [
       {
@@ -4250,14 +4333,29 @@
     },
     "riders": [
       {
-        "id": 118250,
-        "publicId": "4bb60d2f-abc6-4b7c-a382-665716b536fb",
-        "name": "⚡️ Alain⚡ [Foudre]"
+        "id": 670723,
+        "publicId": "1e706a20-343b-4693-9bb7-85fa04f151f0",
+        "name": ". Alex (Foudre)"
+      },
+      {
+        "id": 1526671,
+        "publicId": "796351c4-2d31-4fa9-93f3-1565cf85e35e",
+        "name": "lolo lorenzo (Foudre)"
+      },
+      {
+        "id": 1763705,
+        "publicId": "7f52e116-ded1-4ebc-84a0-e2061a31ceff",
+        "name": "Alexandre Ounanian [Team Foudre]"
       },
       {
         "id": 2285450,
         "publicId": "4f000f04-8dfd-451b-b121-1abad9ec2ec1",
         "name": "Vince Feelgood (Foudre) ⚡️"
+      },
+      {
+        "id": 3345958,
+        "publicId": "0da7572f-5033-43e2-9eec-82f36416e955",
+        "name": "WALTER AMICO (FOUDRE)"
       },
       {
         "id": 3416281,
@@ -4292,9 +4390,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 102
+        "rank": 106
       },
-      "world": 150
+      "world": 151
     },
     "riders": [
       {
@@ -4306,6 +4404,11 @@
         "id": 182885,
         "publicId": "5634f9f7-be17-45d3-9397-0284938fbfd3",
         "name": "K B (ATGNI)"
+      },
+      {
+        "id": 185338,
+        "publicId": "0befa498-8a73-491d-b916-5220a6c9beac",
+        "name": "Marek Braun [ ATGNI ]"
       },
       {
         "id": 450212,
@@ -4355,9 +4458,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 111
+        "rank": 116
       },
-      "world": 160
+      "world": 173
     },
     "riders": [
       {
@@ -4383,7 +4486,7 @@
       {
         "id": 1450154,
         "publicId": "8ac612d8-50a4-4d1e-8bb4-d4d2e4f8223b",
-        "name": "Spunky Mcdougal [GTR]"
+        "name": "Spunky Mcdougal 🍻 [GTR]"
       },
       {
         "id": 1638476,
@@ -4468,9 +4571,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 24
+        "rank": 22
       },
-      "world": 43
+      "world": 41
     },
     "riders": [
       {
@@ -4629,8 +4732,11 @@
     "number": 239,
     "name": "Cryo-Gen Handlebar Heroes",
     "positions": {
-      "region": null,
-      "world": null
+      "region": {
+        "name": "EMEA",
+        "rank": 4
+      },
+      "world": 6
     },
     "riders": [
       {
@@ -4671,7 +4777,7 @@
       {
         "id": 6896912,
         "publicId": "4af6aea1-8d47-48e5-be23-bdbd1490448e",
-        "name": "N iels G"
+        "name": "N iels G (Jokers🃏)"
       }
     ]
   },
@@ -4736,9 +4842,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 113
+        "rank": 117
       },
-      "world": 162
+      "world": 174
     },
     "riders": [
       {
@@ -4749,12 +4855,12 @@
       {
         "id": 620827,
         "publicId": "dd21c573-e643-44d4-8cd4-2664c27b5d9b",
-        "name": "Martin (Condors)"
+        "name": "Martin (Goldfinches)"
       },
       {
         "id": 1090650,
         "publicId": "a25aaff6-e03d-4df5-8f0f-1ee4d5786d72",
-        "name": "Larry Webb(Condors)"
+        "name": "Larry(Falcons)"
       },
       {
         "id": 2612903,
@@ -4794,7 +4900,7 @@
       {
         "id": 5535384,
         "publicId": "b120fd49-d898-4475-8cd6-7cb5a1d4019d",
-        "name": "Tony Bennett"
+        "name": "Tony (Falcons)"
       }
     ]
   },
@@ -4804,9 +4910,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 17
+        "rank": 18
       },
-      "world": 28
+      "world": 24
     },
     "riders": [
       {
@@ -4822,7 +4928,7 @@
       {
         "id": 805369,
         "publicId": "0bedd0e8-f453-439a-8d80-cd93df56c0a1",
-        "name": "B ."
+        "name": "B en (Coalition)"
       },
       {
         "id": 1246463,
@@ -4887,9 +4993,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 112
+        "rank": 104
       },
-      "world": 161
+      "world": 149
     },
     "riders": [
       {
@@ -4910,7 +5016,7 @@
       {
         "id": 1137146,
         "publicId": "3b639e3f-04c1-4adb-a634-2e54da79fd83",
-        "name": "x Nolan (Pyrites)"
+        "name": "0 Nolan (Pyrites)"
       },
       {
         "id": 2524919,
@@ -4930,7 +5036,7 @@
       {
         "id": 3632608,
         "publicId": "97866090-018a-4a4c-abd4-35736befdb3d",
-        "name": "5 Paul (KILOS)"
+        "name": "7 Paul (KILOS)"
       },
       {
         "id": 3669559,
@@ -4945,7 +5051,7 @@
       {
         "id": 7260086,
         "publicId": "d1d2127f-d261-45e3-a3a1-5ebdee241f93",
-        "name": "# Greg C🌵 [PYRITES]"
+        "name": "# Greg C🌵 [CLOWNFISH]"
       }
     ]
   },
@@ -4955,9 +5061,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 20
+        "rank": 23
       },
-      "world": 31
+      "world": 42
     },
     "riders": [
       {
@@ -5068,9 +5174,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 134
+        "rank": 138
       },
-      "world": 197
+      "world": 200
     },
     "riders": [
       {
@@ -5174,19 +5280,19 @@
     },
     "riders": [
       {
+        "id": 918258,
+        "publicId": "50e7ad71-fb7b-414b-a03b-147c24498df0",
+        "name": "JUAN JIMENEZ [5.W.4.T]"
+      },
+      {
         "id": 1299505,
         "publicId": "e2a869fa-ccfa-4d31-b681-b2afb171cda0",
-        "name": "Laurent [5.W.4.T] CAP"
+        "name": "Laurent [5.W.4.T]"
       },
       {
-        "id": 2791038,
-        "publicId": "03d2ffff-8da2-451f-bd89-c58bee9dd3a5",
-        "name": "Marinelli.Tv [5.W.4.T]"
-      },
-      {
-        "id": 6383217,
-        "publicId": "440f7008-af9d-4747-8512-428b7e345213",
-        "name": "Francis Robichaud [5.W.4.T]"
+        "id": 1519406,
+        "publicId": "76ffdbc8-f1ef-4834-9445-03ad1af89be7",
+        "name": "Terry Belanger [5.W.4.T]"
       }
     ]
   },
@@ -5198,7 +5304,7 @@
         "name": "AMER",
         "rank": 46
       },
-      "world": 205
+      "world": 211
     },
     "riders": [
       {
@@ -5259,7 +5365,7 @@
       {
         "id": 6980686,
         "publicId": "18687fb8-3f69-438c-a404-c66157aaf1f2",
-        "name": "Dave Hufnagle (OTR)"
+        "name": "Dave Hufnagle (RollCo/OTR)"
       }
     ]
   },
@@ -5269,9 +5375,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 91
+        "rank": 96
       },
-      "world": 135
+      "world": 139
     },
     "riders": [
       {
@@ -5320,6 +5426,11 @@
         "name": "Jake Cole [Rhinos/SRT]"
       },
       {
+        "id": 4327950,
+        "publicId": "3b837e8a-ab38-4615-b06f-5cf90387b19a",
+        "name": "Sam Hyde (SRT)"
+      },
+      {
         "id": 4391995,
         "publicId": "868d23f9-3882-461a-8828-e832beaec7b0",
         "name": ". Swanny (SRT /GXY)"
@@ -5339,7 +5450,7 @@
         "name": "APAC",
         "rank": 10
       },
-      "world": 109
+      "world": 112
     },
     "riders": [
       {
@@ -5460,9 +5571,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 85
+        "rank": 89
       },
-      "world": 129
+      "world": 132
     },
     "riders": [
       {
@@ -5483,12 +5594,17 @@
       {
         "id": 1413884,
         "publicId": "81e81b0f-0adb-48d1-a1dc-eaf2c18d6215",
-        "name": "#. littleian (BAKPDL) 🎯"
+        "name": "4. littleian (BAKPDL) 🎯"
       },
       {
         "id": 1445924,
         "publicId": "ab09d99c-ccd0-4fd5-a39d-1e6f5503b937",
-        "name": "Stephen Brophy [ BAKPDL]"
+        "name": "Stephen Brophy[ BAKPDL]"
+      },
+      {
+        "id": 1725207,
+        "publicId": "904eae10-26c5-473e-ac4e-13d094bf3081",
+        "name": "Barry Townsend 🦅(BAKPDL)"
       },
       {
         "id": 2093759,
@@ -5503,12 +5619,12 @@
       {
         "id": 5184358,
         "publicId": "1da89031-bec6-48c3-9f61-bb89459aaeb7",
-        "name": "Rob Larsen [BAKPDL]"
+        "name": "Rob Larsen [BAKPDL C2]"
       },
       {
         "id": 5804361,
         "publicId": "ab7c4cff-e50b-4009-9f60-ceb223ad5862",
-        "name": ". WILLETTS"
+        "name": "2 WILLETTS"
       }
     ]
   },
@@ -5520,7 +5636,7 @@
         "name": "EMEA",
         "rank": 1
       },
-      "world": 2
+      "world": 3
     },
     "riders": [
       {
@@ -5576,7 +5692,7 @@
       {
         "id": 4471698,
         "publicId": "4d02fe1c-1a2f-499b-b11b-663a43413a7e",
-        "name": "B Agema [TeamNL]"
+        "name": "Bram Agema [TeamNL]"
       },
       {
         "id": 4582417,
@@ -5606,9 +5722,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 38
+        "rank": 34
       },
-      "world": 57
+      "world": 53
     },
     "riders": [
       {
@@ -5674,9 +5790,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 18
+        "rank": 19
       },
-      "world": 80
+      "world": 81
     },
     "riders": [
       {
@@ -5742,9 +5858,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 82
+        "rank": 83
       },
-      "world": 119
+      "world": 120
     },
     "riders": [
       {
@@ -5761,6 +5877,11 @@
         "id": 842613,
         "publicId": "951fdbbf-9efc-4998-a9fb-d2ae6a138566",
         "name": "R alph [TV | PBU]"
+      },
+      {
+        "id": 2117354,
+        "publicId": "6aefe590-e7ec-4f6e-99c6-4e329c655913",
+        "name": "Mike Champion"
       },
       {
         "id": 3565636,
@@ -5795,9 +5916,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 33
+        "rank": 35
       },
-      "world": 52
+      "world": 54
     },
     "riders": [
       {
@@ -5873,9 +5994,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 56
+        "rank": 57
       },
-      "world": 88
+      "world": 89
     },
     "riders": [
       {
@@ -5906,7 +6027,7 @@
       {
         "id": 973782,
         "publicId": "9e7064ad-ba23-4c4b-93ab-71df4d7d3d7a",
-        "name": "Alan ZSUNR"
+        "name": "Alan (ZSUNR)"
       },
       {
         "id": 1448163,
@@ -5954,6 +6075,11 @@
     },
     "riders": [
       {
+        "id": 1328651,
+        "publicId": "acb61afb-a691-4ed3-a9d4-20422510ce97",
+        "name": "Kirsty Heber-Smith"
+      },
+      {
         "id": 3500188,
         "publicId": "c28e3e8b-13ab-4314-acb9-d64175ce9b67",
         "name": "Diego Martinho [ATGNI]"
@@ -5983,13 +6109,13 @@
         "name": "AMER",
         "rank": 47
       },
-      "world": 214
+      "world": 212
     },
     "riders": [
       {
         "id": 225489,
         "publicId": "52d41c84-9fb5-4c7a-8464-a07c64dfd772",
-        "name": "B. Ikeboy(COALITION)"
+        "name": "B. Ikeboy(DIRT)"
       },
       {
         "id": 229459,
@@ -6030,6 +6156,11 @@
         "id": 7470760,
         "publicId": "42348d07-37f5-4dc1-9bc4-af83eadda8b8",
         "name": "Micah Huegel (COALITION)"
+      },
+      {
+        "id": 7504068,
+        "publicId": "cfcb9a86-f1ea-43a7-aa24-0900bdec5c4c",
+        "name": "Krist Hazarian (Coalition)"
       },
       {
         "id": 7670167,
@@ -6081,7 +6212,7 @@
         "name": "AMER",
         "rank": 14
       },
-      "world": 75
+      "world": 76
     },
     "riders": [
       {
@@ -6140,6 +6271,11 @@
         "name": "Kevin Klevenz [OTE]"
       },
       {
+        "id": 7765872,
+        "publicId": "97644ee4-a5e4-4423-ad8c-3a3fa521a0d8",
+        "name": "mitch brooks (Godspeed Racing) [OTE]"
+      },
+      {
         "id": 8204390,
         "publicId": "f6a89e97-517a-4111-ae61-0e7bad576f20",
         "name": "Joseph Gerhardt [OTE]"
@@ -6152,9 +6288,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 5
+        "rank": 6
       },
-      "world": 34
+      "world": 30
     },
     "riders": [
       {
@@ -6217,18 +6353,18 @@
         "name": "APAC",
         "rank": 9
       },
-      "world": 71
+      "world": 72
     },
     "riders": [
       {
         "id": 72072,
         "publicId": "f4a778a5-ec0e-4313-8f3b-17f8c7948579",
-        "name": "2. Burrito 🌯"
+        "name": "F ootlong Burrito 🌯"
       },
       {
         "id": 117273,
         "publicId": "5320c9b9-dac7-4f2c-8e56-978a30ccdfe4",
-        "name": "4 Pat🐺 Wolfie EVO"
+        "name": "Pat🐺 Wolfie EVO/EC2"
       },
       {
         "id": 179470,
@@ -6238,7 +6374,7 @@
       {
         "id": 1788830,
         "publicId": "13e5b906-1d65-4253-9ddc-13aabfd2b73b",
-        "name": "5. Marlon (HERC)"
+        "name": "2. Marlon (HERC)"
       },
       {
         "id": 3109731,
@@ -6253,7 +6389,7 @@
       {
         "id": 4638424,
         "publicId": "18c37a46-a369-46d0-9f55-3dc393bc3260",
-        "name": "1 Fredi🦅[EVO]🦍"
+        "name": "Fredi🥷[EVO] Ninjas"
       },
       {
         "id": 4922843,
@@ -6278,9 +6414,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 35
+        "rank": 37
       },
-      "world": 166
+      "world": 160
     },
     "riders": [
       {
@@ -6337,6 +6473,11 @@
         "id": 5971828,
         "publicId": "cebc1cc0-f842-4c18-be72-0fb9147d667b",
         "name": "Miriam Gershenson (COALITION)"
+      },
+      {
+        "id": 7042883,
+        "publicId": "c1d8c661-a956-45c3-9254-79eb3bd715ae",
+        "name": "L Nicko (coalition)"
       }
     ]
   },
@@ -6363,7 +6504,7 @@
         "name": "APAC",
         "rank": 8
       },
-      "world": 27
+      "world": 39
     },
     "riders": [
       {
@@ -6379,7 +6520,7 @@
       {
         "id": 88513,
         "publicId": "34ce1eb0-256b-4372-abad-67b1ef3097c2",
-        "name": "😎 Jake I [EVO]"
+        "name": "😎 Jake I [EVO A👨‍🎓]"
       },
       {
         "id": 394612,
@@ -6399,12 +6540,12 @@
       {
         "id": 2383255,
         "publicId": "5be1c193-be9b-4bba-8d5d-14f74255e835",
-        "name": "Ben Kirby [EVO/TTT]"
+        "name": "Ben Kirby [EVO Wizards]"
       },
       {
         "id": 2446078,
         "publicId": "fadb4cdc-6b9e-455d-8db3-90f0a62bbbbd",
-        "name": "Kial Jackson (TNP)"
+        "name": "Kial Jackson ( EVO 🧙‍♂️)"
       },
       {
         "id": 5126575,
@@ -6424,9 +6565,9 @@
     "positions": {
       "region": {
         "name": "APAC",
-        "rank": 5
+        "rank": 6
       },
-      "world": 24
+      "world": 37
     },
     "riders": [
       {
@@ -6442,12 +6583,12 @@
       {
         "id": 743084,
         "publicId": "b921a129-70dd-4e73-935c-6d717122f41e",
-        "name": "4.Richard Gibson [SRT]"
+        "name": "Richard Gibson [SRT]"
       },
       {
         "id": 870984,
         "publicId": "ed3c4114-fb51-41ba-8dd4-ce50e4237700",
-        "name": "3 Conor OCall (SRT)"
+        "name": "Conor OCall (SRT)"
       },
       {
         "id": 1214834,
@@ -6497,9 +6638,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 58
+        "rank": 59
       },
-      "world": 90
+      "world": 91
     },
     "riders": [
       {
@@ -6510,7 +6651,7 @@
       {
         "id": 248001,
         "publicId": "c21f2910-bbb3-4ceb-8e51-4145acd719b1",
-        "name": "Darren Shiels"
+        "name": "Darren Shiels [HCT]"
       },
       {
         "id": 1527816,
@@ -6630,9 +6771,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 99
+        "rank": 102
       },
-      "world": 143
+      "world": 147
     },
     "riders": [
       {
@@ -6673,7 +6814,7 @@
       {
         "id": 4887309,
         "publicId": "433a4a4b-08b1-46eb-add5-a097cfed0405",
-        "name": "TomBeeast▶️LEQP"
+        "name": "2TomBeeast▶️LEQP"
       },
       {
         "id": 6016552,
@@ -6695,7 +6836,7 @@
         "name": "APAC",
         "rank": 1
       },
-      "world": 4
+      "world": 2
     },
     "riders": [
       {
@@ -6716,12 +6857,12 @@
       {
         "id": 147386,
         "publicId": "1e38f109-274a-41b2-9ef8-546d8c3de5f0",
-        "name": "S Lamprecht (AERO CT)"
+        "name": "5 Lamprecht (AERO CT)"
       },
       {
         "id": 299766,
         "publicId": "820fa99b-7974-4bf0-aec9-22a8f7a4a8c3",
-        "name": "4 Tomo"
+        "name": "2 Abe"
       },
       {
         "id": 352788,
@@ -6731,7 +6872,7 @@
       {
         "id": 763893,
         "publicId": "469f72c7-98c8-4b97-a936-b552588dc48b",
-        "name": "3 robreg [AERO]"
+        "name": "rob reg [AERO]"
       },
       {
         "id": 787965,
@@ -6756,9 +6897,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 119
+        "rank": 122
       },
-      "world": 181
+      "world": 183
     },
     "riders": [
       {
@@ -6789,7 +6930,7 @@
       {
         "id": 3249793,
         "publicId": "71abb532-c74c-434c-87c7-7a00df5e1192",
-        "name": "Ro Rolf [KLUB]"
+        "name": "Ro Rolf [Herd]"
       },
       {
         "id": 3929649,
@@ -6799,7 +6940,7 @@
       {
         "id": 5272929,
         "publicId": "f37b93e0-2ef9-40f1-89a3-879a3a3f1145",
-        "name": "Silvia Mosler [ZRG-R | KLUB]"
+        "name": "Silvia Mosler [KLUB]"
       },
       {
         "id": 6253259,
@@ -6815,6 +6956,11 @@
         "id": 7562518,
         "publicId": "a15f3c4b-38ce-4186-8d0c-a17ea5da40ec",
         "name": "Chris Topper"
+      },
+      {
+        "id": 7898510,
+        "publicId": "50f7babe-1938-4033-9a30-b166eaf68358",
+        "name": "Patrick Bruns [TSC]"
       }
     ]
   },
@@ -6849,9 +6995,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 147
+        "rank": 150
       },
-      "world": 225
+      "world": 224
     },
     "riders": [
       {
@@ -6890,6 +7036,11 @@
         "name": "Steve Knowles (Herd)"
       },
       {
+        "id": 2986456,
+        "publicId": "81cc5005-7ef5-4aab-97df-1dc728f0f602",
+        "name": ". Diane - Falcons 🫶"
+      },
+      {
         "id": 3658694,
         "publicId": "c810a8a2-d417-490d-9482-4526daca5a31",
         "name": "5.Mathew Brown [Toads]"
@@ -6914,7 +7065,7 @@
         "name": "EMEA",
         "rank": 2
       },
-      "world": 3
+      "world": 4
     },
     "riders": [
       {
@@ -6943,6 +7094,11 @@
         "name": "L. auritz"
       },
       {
+        "id": 1732885,
+        "publicId": "bfb630e5-58f6-41be-866b-bb17aa49196b",
+        "name": "Jack Samways [HCT]"
+      },
+      {
         "id": 1769269,
         "publicId": "09cc57a3-a19e-4530-9000-a925b4a25320",
         "name": "Martin Mulhall (HCT)"
@@ -6960,17 +7116,17 @@
       {
         "id": 6169388,
         "publicId": "8802f846-fb02-4d19-8cfe-18e900e64d52",
-        "name": "Wib Wob [HCT]"
+        "name": "Wib Wob [A-P-V]"
       },
       {
         "id": 6467890,
         "publicId": "f44189fb-3f70-449a-8544-af79185e669a",
-        "name": "Sebastian Prehn [HCT]"
+        "name": "Sebastian Prehn [A-P-V]"
       },
       {
         "id": 6952690,
         "publicId": "2a7914c3-9d2b-45ec-a4f0-9d749b8944b4",
-        "name": "Bryn Richmond (HCT Comets)"
+        "name": "Bryn Richmond (HCT Venom)"
       }
     ]
   },
@@ -6980,9 +7136,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 105
+        "rank": 110
       },
-      "world": 154
+      "world": 167
     },
     "riders": [
       {
@@ -6998,7 +7154,7 @@
       {
         "id": 1209191,
         "publicId": "d7d10ac6-0b9d-4c31-8ea6-ed9e60e62261",
-        "name": "J ase (ART)"
+        "name": "J ase (ART Kinetic)"
       },
       {
         "id": 2021735,
@@ -7008,7 +7164,7 @@
       {
         "id": 2309653,
         "publicId": "50ae34c6-5469-4b48-a5b7-189d0448f03c",
-        "name": "P Bezzy (ART 6)"
+        "name": "P Bezzy (ART Kinetic)"
       },
       {
         "id": 2629714,
@@ -7043,9 +7199,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 72
+        "rank": 75
       },
-      "world": 106
+      "world": 108
     },
     "riders": [
       {
@@ -7062,11 +7218,6 @@
         "id": 462221,
         "publicId": "770f47bb-d068-4768-a4b8-ab33fa71277e",
         "name": "Nick Keat [TFC]"
-      },
-      {
-        "id": 674358,
-        "publicId": "8ebbeaf2-d203-4b96-b43e-64942f63c90a",
-        "name": "Dappy Muppet(TFC)"
       },
       {
         "id": 1156570,
@@ -7106,15 +7257,15 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 3
+        "rank": 4
       },
-      "world": 22
+      "world": 26
     },
     "riders": [
       {
         "id": 12162,
         "publicId": "5ba6b03f-a2ac-4b50-9a1f-82ac41fe2ee5",
-        "name": "Jon Meals [EMVE]"
+        "name": "Jon Meals [TFC]"
       },
       {
         "id": 42241,
@@ -7152,6 +7303,11 @@
         "name": ". Curtis (TFC•RtB)"
       },
       {
+        "id": 1597292,
+        "publicId": "5ad15aca-568f-4705-94a5-afab61c0d3d6",
+        "name": "B Ditty (TFC)"
+      },
+      {
         "id": 2030298,
         "publicId": "e128f852-cec9-42bf-93c1-8ae71b4454f8",
         "name": "E J. (TFC)"
@@ -7174,12 +7330,12 @@
       {
         "id": 6104104,
         "publicId": "b0a20cbe-aafe-49a1-8e4f-6ff09cc72e7a",
-        "name": "CLynch (TFC)(BPCC)(DWTC)"
+        "name": "CLynch (TFC)(BPCC)"
       },
       {
         "id": 6519686,
         "publicId": "451a6a17-c463-4c64-85cc-79b14924c3bf",
-        "name": "Ryan Alsot (TFC/RAD)"
+        "name": "Ryan Alsot (TFC)"
       }
     ]
   },
@@ -7189,9 +7345,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 43
+        "rank": 44
       },
-      "world": 62
+      "world": 63
     },
     "riders": [
       {
@@ -7202,7 +7358,7 @@
       {
         "id": 556944,
         "publicId": "dd87aa7c-58ae-4ab6-a696-79c8f0eb1859",
-        "name": "Wouter Hoogenboom (TFC)"
+        "name": "6. Wooter (TFC)"
       },
       {
         "id": 661851,
@@ -7262,9 +7418,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 117
+        "rank": 120
       },
-      "world": 177
+      "world": 180
     },
     "riders": [
       {
@@ -7283,11 +7439,6 @@
         "name": ". Reg TFC"
       },
       {
-        "id": 196349,
-        "publicId": "3f974f9e-3bb6-4195-9c3f-ad5ef33209b9",
-        "name": "Chris Corrigan [TFC]"
-      },
-      {
         "id": 454725,
         "publicId": "387af06d-a6f7-43e5-b669-b9141f6b5a94",
         "name": "Jamie Fox (TFC)"
@@ -7296,6 +7447,11 @@
         "id": 580821,
         "publicId": "b4b483ed-98f6-4337-acd0-06b86506d2d3",
         "name": "Helen Thomas TFC"
+      },
+      {
+        "id": 674358,
+        "publicId": "8ebbeaf2-d203-4b96-b43e-64942f63c90a",
+        "name": "Dappy Muppet(TFC)"
       },
       {
         "id": 675457,
@@ -7352,7 +7508,7 @@
         "name": "WOMENS",
         "rank": 6
       },
-      "world": 179
+      "world": 182
     },
     "riders": [
       {
@@ -7410,7 +7566,7 @@
         "name": "APAC",
         "rank": 2
       },
-      "world": 7
+      "world": 8
     },
     "riders": [
       {
@@ -7468,13 +7624,13 @@
         "name": "APAC",
         "rank": 7
       },
-      "world": 26
+      "world": 38
     },
     "riders": [
       {
         "id": 2171275,
         "publicId": "f4146750-9c7c-4fca-ac7a-2cefc4a466df",
-        "name": "Andrew Merrill [4STAR]"
+        "name": "1. Andrew Merrill [4STAR]"
       },
       {
         "id": 2541676,
@@ -7529,9 +7685,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 51
+        "rank": 52
       },
-      "world": 72
+      "world": 73
     },
     "riders": [
       {
@@ -7602,9 +7758,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 42
+        "rank": 43
       },
-      "world": 173
+      "world": 177
     },
     "riders": [
       {
@@ -7660,7 +7816,7 @@
       {
         "id": 6140906,
         "publicId": "6686117e-3825-48ae-9999-e8f430bd4bb6",
-        "name": "Dom Thiel (TFC Mutants)"
+        "name": "Dom Thiel (TFC)"
       },
       {
         "id": 6297711,
@@ -7682,7 +7838,7 @@
         "name": "AMER",
         "rank": 45
       },
-      "world": 191
+      "world": 193
     },
     "riders": [
       {
@@ -7763,9 +7919,9 @@
     "positions": {
       "region": {
         "name": "APAC",
-        "rank": 12
+        "rank": 11
       },
-      "world": 111
+      "world": 113
     },
     "riders": [
       {
@@ -7811,7 +7967,7 @@
       {
         "id": 6460324,
         "publicId": "56051551-9d3a-4ea5-9f30-723cf80ede07",
-        "name": ". Tobey [4STAR]"
+        "name": ". Tobey [4STAR/WMZ]"
       },
       {
         "id": 6557669,
@@ -7831,25 +7987,25 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 23
+        "rank": 22
       },
-      "world": 86
+      "world": 85
     },
     "riders": [
       {
         "id": 85853,
         "publicId": "b7c4cb9b-010b-4101-801e-a8ae9e17760e",
-        "name": "D CVeen (Dirt)"
+        "name": "D CVeen (Bourbon)"
       },
       {
         "id": 116326,
         "publicId": "1a6bcbf8-5877-4126-89aa-09448b29c0d5",
-        "name": "B Rizz"
+        "name": "B Rizz (Affogato)"
       },
       {
         "id": 410221,
         "publicId": "9c0eccea-882d-4a2a-b57e-b367a0cc4bee",
-        "name": "5 Dan(DW9)(CrabZ)"
+        "name": "7 Dan(DW9)(CrabZ)"
       },
       {
         "id": 487613,
@@ -7869,7 +8025,7 @@
       {
         "id": 3420848,
         "publicId": "0a272bed-1e52-4c0f-8757-b728db3203c3",
-        "name": "D J (Mentality)"
+        "name": "D J (HoFC)"
       },
       {
         "id": 4985245,
@@ -7879,12 +8035,12 @@
       {
         "id": 5733580,
         "publicId": "a3f30ef9-5be2-4d9c-9e47-dc2b39e2cb8c",
-        "name": "Radim [Crabz 💩]"
+        "name": "Radim [DIRT 💩]"
       },
       {
         "id": 7099479,
         "publicId": "7c3508b2-a6e4-48fe-854e-abd91c1d5274",
-        "name": ". Bryce[Crabz 🦀]"
+        "name": ".8 Bryce[MITTEN]"
       },
       {
         "id": 7266518,
@@ -7899,9 +8055,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 4
+        "rank": 5
       },
-      "world": 33
+      "world": 29
     },
     "riders": [
       {
@@ -7962,7 +8118,7 @@
       {
         "id": 7231591,
         "publicId": "2c95f513-7af3-4563-a177-40829f4d4d10",
-        "name": "Dan Wolbrink [SISU]"
+        "name": "Dan Wolbrink [SISU Sorsa]"
       },
       {
         "id": 7752437,
@@ -7977,9 +8133,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 11
+        "rank": 12
       },
-      "world": 16
+      "world": 18
     },
     "riders": [
       {
@@ -8035,9 +8191,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 28
+        "rank": 30
       },
-      "world": 47
+      "world": 49
     },
     "riders": [
       {
@@ -8096,6 +8252,11 @@
         "name": "Carlos León (PCH) [LEQP]"
       },
       {
+        "id": 5747037,
+        "publicId": "05c98671-f399-4d27-99c2-39fa7bc1c9f5",
+        "name": "Unai B.P. [LEQP]"
+      },
+      {
         "id": 6159774,
         "publicId": "67d65052-4c5a-44ac-8469-aa7b6a63b4bc",
         "name": "Elena Llorente (LEQP)"
@@ -8113,9 +8274,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 78
+        "rank": 79
       },
-      "world": 115
+      "world": 116
     },
     "riders": [
       {
@@ -8196,9 +8357,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 20
+        "rank": 18
       },
-      "world": 82
+      "world": 80
     },
     "riders": [
       {
@@ -8234,7 +8395,7 @@
       {
         "id": 5562906,
         "publicId": "83f9cf2f-6af9-4cb7-8ead-6f2280251a93",
-        "name": "Colin Smith (Coalition)"
+        "name": "Colin Smith 🇨🇦💪 (COALITION)"
       },
       {
         "id": 5792857,
@@ -8269,9 +8430,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 24
+        "rank": 25
       },
-      "world": 92
+      "world": 110
     },
     "riders": [
       {
@@ -8335,11 +8496,8 @@
     "number": 393,
     "name": "WMZ ZOMBIES",
     "positions": {
-      "region": {
-        "name": "APAC",
-        "rank": 11
-      },
-      "world": 110
+      "region": null,
+      "world": null
     },
     "riders": [
       {
@@ -8400,15 +8558,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 76
+        "rank": 80
       },
-      "world": 113
+      "world": 117
     },
     "riders": [
       {
         "id": 214214,
         "publicId": "631db1e8-1ae9-41d6-b549-cb7bdbf80fb2",
-        "name": "Mark Darnell (WCC) Lead/Sweep"
+        "name": "Mark Darnell (WCC)"
       },
       {
         "id": 666492,
@@ -8480,7 +8638,7 @@
         "name": "AMER",
         "rank": 13
       },
-      "world": 74
+      "world": 75
     },
     "riders": [
       {
@@ -8501,7 +8659,7 @@
       {
         "id": 2605296,
         "publicId": "9ae085b0-29d4-44b7-9205-6aa21c78e920",
-        "name": "Lee Ragsdale [SISU] GT⚡️MC"
+        "name": "Lee Ragsdale [SISU]"
       },
       {
         "id": 3130018,
@@ -8556,9 +8714,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 70
+        "rank": 66
       },
-      "world": 104
+      "world": 98
     },
     "riders": [
       {
@@ -8614,7 +8772,7 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 66
+        "rank": 68
       },
       "world": 100
     },
@@ -8682,9 +8840,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 114
+        "rank": 118
       },
-      "world": 163
+      "world": 175
     },
     "riders": [
       {
@@ -8745,9 +8903,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 44
+        "rank": 40
       },
-      "world": 178
+      "world": 163
     },
     "riders": [
       {
@@ -8838,9 +8996,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 137
+        "rank": 140
       },
-      "world": 200
+      "world": 202
     },
     "riders": [
       {
@@ -8981,7 +9139,7 @@
         "name": "AMER",
         "rank": 12
       },
-      "world": 70
+      "world": 71
     },
     "riders": [
       {
@@ -9050,6 +9208,11 @@
         "name": "Majin Matty(Fury/Rhino)"
       },
       {
+        "id": 5398854,
+        "publicId": "c81ce03c-ac03-40f6-b3c7-844093aa9ac1",
+        "name": "Trevan Burn [Rhino]"
+      },
+      {
         "id": 5625938,
         "publicId": "f6ec9ffc-afb3-4473-a105-b83d72a2ddf2",
         "name": "John Daly (RHINO)"
@@ -9062,9 +9225,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 83
+        "rank": 85
       },
-      "world": 124
+      "world": 122
     },
     "riders": [
       {
@@ -9120,9 +9283,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 98
+        "rank": 107
       },
-      "world": 142
+      "world": 152
     },
     "riders": [
       {
@@ -9168,7 +9331,7 @@
       {
         "id": 6812372,
         "publicId": "9e9281f2-3280-4f50-82bd-331d8dabd9fd",
-        "name": "James MacDonald (ROC)"
+        "name": "James MacDonald (ROC💎)"
       },
       {
         "id": 7583490,
@@ -9235,7 +9398,7 @@
         "name": "WOMENS",
         "rank": 19
       },
-      "world": 224
+      "world": 227
     },
     "riders": [
       {
@@ -9264,6 +9427,11 @@
         "name": "Theresia Hansson [SZ]"
       },
       {
+        "id": 1274418,
+        "publicId": "c67c31eb-a047-4efa-bf56-1ae74883498a",
+        "name": "3. Jessica [SZ]"
+      },
+      {
         "id": 1631367,
         "publicId": "cf312eed-2201-42c4-a9be-20fcac487aec",
         "name": "Johanna Wikman [SZ]"
@@ -9271,7 +9439,7 @@
       {
         "id": 3092741,
         "publicId": "982204d6-6cb5-49b2-8699-e91601a8ba30",
-        "name": "Jenny Berglund [SZ]"
+        "name": "5 Jenny [SZ]"
       },
       {
         "id": 3171530,
@@ -9313,7 +9481,7 @@
         "name": "WOMENS",
         "rank": 3
       },
-      "world": 148
+      "world": 153
     },
     "riders": [
       {
@@ -9344,7 +9512,7 @@
       {
         "id": 1576154,
         "publicId": "6cef60cd-41f0-451b-9685-896bfb48d23c",
-        "name": "Jonna Westerlund [SZ]"
+        "name": "6. Jonna [SZ]"
       },
       {
         "id": 1578356,
@@ -9369,9 +9537,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 2
+        "rank": 1
       },
-      "world": 146
+      "world": 145
     },
     "riders": [
       {
@@ -9422,12 +9590,12 @@
       {
         "id": 6877752,
         "publicId": "4761df76-f94e-4fa0-81a6-40d7b4a140da",
-        "name": "Karin Whyte (LEVEL)"
+        "name": ".Karin Whyte (LEVEL)"
       },
       {
         "id": 8033165,
         "publicId": "d4e7921c-268b-481c-b7b4-e56d1934003a",
-        "name": "Antonia [HERC]"
+        "name": "Antonia [RRC 🐆/HERC]"
       }
     ]
   },
@@ -9562,9 +9730,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 7
+        "rank": 8
       },
-      "world": 211
+      "world": 213
     },
     "riders": [
       {
@@ -9600,7 +9768,7 @@
       {
         "id": 6164399,
         "publicId": "94552e90-2865-44f6-904a-700db0b2820c",
-        "name": "C éline☕️[Coalition-EVO]"
+        "name": "C éline☕️(COAL / EVO)"
       },
       {
         "id": 7038871,
@@ -9745,9 +9913,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 28
+        "rank": 29
       },
-      "world": 122
+      "world": 128
     },
     "riders": [
       {
@@ -9820,7 +9988,7 @@
         "name": "WOMENS",
         "rank": 15
       },
-      "world": 220
+      "world": 222
     },
     "riders": [
       {
@@ -9896,9 +10064,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 64
+        "rank": 65
       },
-      "world": 98
+      "world": 97
     },
     "riders": [
       {
@@ -9949,7 +10117,7 @@
       {
         "id": 5896817,
         "publicId": "fb930fff-6b23-434d-ab54-32cbbe5541cc",
-        "name": "Jesper Poulsen [DBR]"
+        "name": "J. Poulsen [DBR - Black Ice]"
       }
     ]
   },
@@ -9959,9 +10127,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 126
+        "rank": 136
       },
-      "world": 188
+      "world": 198
     },
     "riders": [
       {
@@ -10017,7 +10185,7 @@
       {
         "id": 6434537,
         "publicId": "c3fc8d79-e605-41bc-8713-8e26c2728d5c",
-        "name": "John Eriksson [SZR]"
+        "name": "5. John Eriksson [SZR]"
       }
     ]
   },
@@ -10257,9 +10425,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 8
+        "rank": 9
       },
-      "world": 12
+      "world": 13
     },
     "riders": [
       {
@@ -10270,7 +10438,7 @@
       {
         "id": 478958,
         "publicId": "14eabbde-101a-4a52-8cc5-219a3b8fa4be",
-        "name": "Dave Johnson (TNP)"
+        "name": "2 Dave J (TNP)"
       },
       {
         "id": 619770,
@@ -10290,7 +10458,7 @@
       {
         "id": 4330389,
         "publicId": "cdaec447-6fb3-4243-8ade-02b3b5710641",
-        "name": ". Sam [TNP]"
+        "name": ". 1 Sam [TNP]"
       },
       {
         "id": 5245340,
@@ -10300,7 +10468,7 @@
       {
         "id": 5893609,
         "publicId": "612d3097-0378-4945-b228-a489eec028a5",
-        "name": "Aled Jones (TNP) YT@RideandRazz"
+        "name": "Aled Jones TNP @RideandRazz"
       },
       {
         "id": 5959135,
@@ -10320,12 +10488,12 @@
       {
         "id": 6853346,
         "publicId": "b519cfc2-a760-4696-a907-ca81d6055cc9",
-        "name": "Matthieu De Smet ⚡️"
+        "name": "M Watopian in Review"
       },
       {
         "id": 7384755,
         "publicId": "1b136ef5-4c5b-4bb2-b4b5-82c004e3dbb1",
-        "name": "A. Franz (TNP)"
+        "name": "3 A. Franz (TNP)"
       }
     ]
   },
@@ -10335,9 +10503,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 136
+        "rank": 139
       },
-      "world": 199
+      "world": 201
     },
     "riders": [
       {
@@ -10426,7 +10594,7 @@
       {
         "id": 3219713,
         "publicId": "05748048-6706-4e6a-83c0-6c25e287fd06",
-        "name": "Jakob Zellinger 💙💛 [TSC] [KLUB]"
+        "name": "Jakob Zellinger 💙💛 [TSC]"
       },
       {
         "id": 3758737,
@@ -10441,7 +10609,7 @@
       {
         "id": 4580781,
         "publicId": "16a21ec6-631f-4c18-9bcc-46388e55a34e",
-        "name": "Markus Clever[KLUB][KfK][WSK]"
+        "name": "Markus Clever[KLUB][KfK][WoSR]"
       },
       {
         "id": 5241299,
@@ -10464,9 +10632,14 @@
         "name": ". Steven[KLUB]"
       },
       {
+        "id": 6572384,
+        "publicId": "f64d6d4e-fde9-44e7-a527-e01706970acc",
+        "name": ". Denny [KLUB] [KDD]"
+      },
+      {
         "id": 6586106,
         "publicId": "f5183a0f-278a-429f-845d-b93730daa287",
-        "name": "L ukas [KLUB]"
+        "name": "L ukas [KLUB] [SRT]"
       }
     ]
   },
@@ -10476,9 +10649,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 13
+        "rank": 7
       },
-      "world": 218
+      "world": 208
     },
     "riders": [
       {
@@ -10539,9 +10712,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 41
+        "rank": 42
       },
-      "world": 172
+      "world": 176
     },
     "riders": [
       {
@@ -10592,7 +10765,7 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 129
+        "rank": 131
       },
       "world": 192
     },
@@ -10620,7 +10793,7 @@
       {
         "id": 2915883,
         "publicId": "951431a3-2a72-4a5b-8969-04f82b99f272",
-        "name": "Tate ❤️ (GTR)"
+        "name": "2Tate ❤️ (GTR)"
       },
       {
         "id": 4530762,
@@ -10645,7 +10818,7 @@
       {
         "id": 7369501,
         "publicId": "3f8d3c10-9ad3-41df-9b10-bbed8673487e",
-        "name": "Tony Ballett(GTR)"
+        "name": "1Tony Ballett(GTR)"
       },
       {
         "id": 7483307,
@@ -10665,9 +10838,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 11
+        "rank": 10
       },
-      "world": 216
+      "world": 217
     },
     "riders": [
       {
@@ -10698,7 +10871,7 @@
       {
         "id": 1362103,
         "publicId": "50cf77be-9ec8-4b6a-93d6-ba2e2febd5fe",
-        "name": "S am Swanson [GXY]"
+        "name": "S am Swanson [GXY] BLAZAR"
       },
       {
         "id": 2524738,
@@ -10718,7 +10891,7 @@
       {
         "id": 4990046,
         "publicId": "834d5edc-c5fa-4a58-8645-c35e3a684fbd",
-        "name": "Lindsay Rodgers [GXY]"
+        "name": "Lindsay Rodgers [GXY SM]"
       },
       {
         "id": 5502358,
@@ -10740,13 +10913,13 @@
         "name": "EMEA",
         "rank": 146
       },
-      "world": 210
+      "world": 209
     },
     "riders": [
       {
         "id": 228443,
         "publicId": "1bbacb99-d857-4cc1-b568-03fcf369e8c1",
-        "name": "Phil Ward [GXY]"
+        "name": "Phil Ward [GXY BLZR]"
       },
       {
         "id": 643499,
@@ -10766,7 +10939,7 @@
       {
         "id": 3022097,
         "publicId": "cb643a8e-c54a-4d79-ae08-b0e824cf5a5a",
-        "name": "R Fielden"
+        "name": "R Fielden (GXY)"
       },
       {
         "id": 3115786,
@@ -10791,7 +10964,7 @@
       {
         "id": 5900206,
         "publicId": "4ec94e57-d1bf-4154-93c2-5eb4cc36957a",
-        "name": "S teven Feline [GXY]"
+        "name": "S teven Feline [Gxy Blazar]"
       },
       {
         "id": 5996498,
@@ -10826,9 +10999,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 46
+        "rank": 48
       },
-      "world": 65
+      "world": 67
     },
     "riders": [
       {
@@ -10869,7 +11042,7 @@
       {
         "id": 3405001,
         "publicId": "bae403bf-8567-4b63-918a-694363c1a498",
-        "name": "5 Stuart Day (GXY)"
+        "name": "5 Stuart Day (GXY-CENT)"
       },
       {
         "id": 4369637,
@@ -10914,9 +11087,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 4
+        "rank": 5
       },
-      "world": 149
+      "world": 155
     },
     "riders": [
       {
@@ -11102,9 +11275,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 35
+        "rank": 37
       },
-      "world": 54
+      "world": 56
     },
     "riders": [
       {
@@ -11160,9 +11333,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 22
+        "rank": 21
       },
-      "world": 85
+      "world": 83
     },
     "riders": [
       {
@@ -11178,12 +11351,12 @@
       {
         "id": 156768,
         "publicId": "de8edf1d-a9a4-41d2-bc1c-712a08a794b7",
-        "name": ". Miguel (Deuces)KetoRaceYT"
+        "name": ". Miguel (USMC)KetoRaceYT"
       },
       {
         "id": 918330,
         "publicId": "016be129-ad03-470e-b92c-ee6baf2e9fc7",
-        "name": "Smallwood (Deuces)"
+        "name": "Smallwood (Deuces 💩💩)"
       },
       {
         "id": 1138916,
@@ -11208,7 +11381,7 @@
       {
         "id": 3890349,
         "publicId": "22ea80cc-376e-44c2-bd41-c2696fc72d62",
-        "name": "J P (DIRT)"
+        "name": "J P (Always DIRTy)"
       },
       {
         "id": 4431785,
@@ -11223,7 +11396,7 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 18
+        "rank": 16
       },
       "world": 223
     },
@@ -11257,11 +11430,6 @@
         "id": 6871831,
         "publicId": "2d00fee5-c6a6-4627-8a30-14d5ec15960c",
         "name": "Lauren Goetz (COALITION)"
-      },
-      {
-        "id": 7042883,
-        "publicId": "c1d8c661-a956-45c3-9254-79eb3bd715ae",
-        "name": "L Nicko (coalition)"
       }
     ]
   },
@@ -11271,20 +11439,20 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 144
+        "rank": 141
       },
-      "world": 208
+      "world": 203
     },
     "riders": [
       {
         "id": 78090,
         "publicId": "d3f73750-221a-4a0e-9be7-2864e3234a27",
-        "name": "Chris Marshall 1 (ART)"
+        "name": "Chris Marshall (ART)"
       },
       {
         "id": 257544,
         "publicId": "b21066c5-a147-4865-b263-aad84c21ef7d",
-        "name": "Matt Mangan 4 (ART)"
+        "name": "Matt Mangan (ART)"
       },
       {
         "id": 398496,
@@ -11329,7 +11497,7 @@
       {
         "id": 5171056,
         "publicId": "59db37af-6970-41c7-a6bd-f3dc720b9a37",
-        "name": "Duncan Truswell [ART]"
+        "name": "Duncan Truswell [ART2]"
       },
       {
         "id": 7973494,
@@ -11344,7 +11512,7 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 67
+        "rank": 69
       },
       "world": 101
     },
@@ -11442,9 +11610,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 13
+        "rank": 14
       },
-      "world": 18
+      "world": 20
     },
     "riders": [
       {
@@ -11475,12 +11643,12 @@
       {
         "id": 1602133,
         "publicId": "671518d8-a84b-4ad5-8f5e-ba9c20edd346",
-        "name": "Jens [WATT]"
+        "name": "Jens [WATT AV]"
       },
       {
         "id": 2812537,
         "publicId": "0536f343-83ac-4dcd-99a8-13aca86e4bb7",
-        "name": "Jelle [WATT]"
+        "name": "Jelle [WATT TERRO]"
       },
       {
         "id": 2917725,
@@ -11600,9 +11768,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 21
+        "rank": 20
       },
-      "world": 83
+      "world": 82
     },
     "riders": [
       {
@@ -11683,15 +11851,15 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 5
+        "rank": 4
       },
-      "world": 151
+      "world": 154
     },
     "riders": [
       {
         "id": 69698,
         "publicId": "49145a59-7357-4f25-9eb8-7c861261cbbb",
-        "name": ". Theia[AEO]360VELO"
+        "name": ". Theia[AEO]"
       },
       {
         "id": 271150,
@@ -11791,7 +11959,7 @@
         "name": "WOMENS",
         "rank": 14
       },
-      "world": 219
+      "world": 221
     },
     "riders": [
       {
@@ -11877,9 +12045,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 40
+        "rank": 34
       },
-      "world": 171
+      "world": 157
     },
     "riders": [
       {
@@ -11900,7 +12068,7 @@
       {
         "id": 3326792,
         "publicId": "abc9f2aa-4068-4066-bd70-ea36a11cb084",
-        "name": "Joshua Hulse (Rhino)"
+        "name": "Joshua Hulse (Rocket)"
       },
       {
         "id": 3398842,
@@ -11920,7 +12088,7 @@
       {
         "id": 5993524,
         "publicId": "96faa845-a55c-41c5-894e-85f2c00c0f48",
-        "name": "Bobby Picou [Rhino]"
+        "name": "Bobby Picou"
       },
       {
         "id": 6163834,
@@ -11930,7 +12098,7 @@
       {
         "id": 6398163,
         "publicId": "f5b63259-122d-4977-9e9b-35f01318eb31",
-        "name": "Steven Smith (Rhino)"
+        "name": "Steven Smith (Rocket)"
       },
       {
         "id": 6714936,
@@ -11965,9 +12133,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 44
+        "rank": 45
       },
-      "world": 63
+      "world": 64
     },
     "riders": [
       {
@@ -11993,7 +12161,7 @@
       {
         "id": 5119381,
         "publicId": "8f3aa94a-cffb-4359-879e-9011a90001c6",
-        "name": "Dan Kent (TNP)"
+        "name": "Dan Kent(TNP)"
       },
       {
         "id": 5687025,
@@ -12028,7 +12196,7 @@
       {
         "id": 7533529,
         "publicId": "2de6dfff-bc28-491e-a8f9-392fa264e01f",
-        "name": ". henderson[TNP]"
+        "name": "1. henderson[TNP]"
       },
       {
         "id": 7557927,
@@ -12048,9 +12216,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 133
+        "rank": 137
       },
-      "world": 196
+      "world": 199
     },
     "riders": [
       {
@@ -12106,7 +12274,7 @@
       {
         "id": 8293003,
         "publicId": "a5bc7f7c-8531-450b-9912-5f94122445a4",
-        "name": "L yndon D"
+        "name": "L yndon D (COALITION)"
       }
     ]
   },
@@ -12116,9 +12284,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 131
+        "rank": 133
       },
-      "world": 194
+      "world": 195
     },
     "riders": [
       {
@@ -12181,7 +12349,7 @@
         "name": "AMER",
         "rank": 31
       },
-      "world": 127
+      "world": 130
     },
     "riders": [
       {
@@ -12217,7 +12385,7 @@
       {
         "id": 2885001,
         "publicId": "58fe1d62-563f-4a2f-bbaf-6e6bbf2dd28e",
-        "name": "🇺🇲John Rodriguez🇺🇲 [OTR]🇺🇸"
+        "name": "🇺🇲John Rodriguez🇺🇲 [BPCC]🇺🇸"
       },
       {
         "id": 2896327,
@@ -12292,9 +12460,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 7
+        "rank": 8
       },
-      "world": 11
+      "world": 12
     },
     "riders": [
       {
@@ -12311,6 +12479,11 @@
         "id": 851405,
         "publicId": "48469a5d-4de6-4fe2-a4ee-6a52bb100277",
         "name": "Luis G. [T-VGN]🐧🌱"
+      },
+      {
+        "id": 907008,
+        "publicId": "d28b7cca-2762-4a6d-98e9-ec4136c5b0d4",
+        "name": "Evert Schots"
       },
       {
         "id": 1671094,
@@ -12350,9 +12523,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 140
+        "rank": 143
       },
-      "world": 203
+      "world": 205
     },
     "riders": [
       {
@@ -12448,9 +12621,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 118
+        "rank": 121
       },
-      "world": 180
+      "world": 181
     },
     "riders": [
       {
@@ -12462,11 +12635,6 @@
         "id": 79751,
         "publicId": "edbe9b38-10c9-4ed8-a015-c576387ccd99",
         "name": "T im Moody (Rhino)"
-      },
-      {
-        "id": 970484,
-        "publicId": "84c6c270-1f4d-404a-97e7-24d189ce4d3b",
-        "name": "5 John Ashworth E Rhino"
       },
       {
         "id": 1226911,
@@ -12494,24 +12662,19 @@
         "name": "Ian Radar (Rhino)"
       },
       {
-        "id": 3614882,
-        "publicId": "6c41a628-c97c-46ff-b2d9-3ca566dbff87",
-        "name": "Simon Gower Rhino"
-      },
-      {
         "id": 3669536,
         "publicId": "41217099-21bf-4eed-ab4c-d4d0780b100b",
-        "name": "Adam Diamant (Rhino)"
+        "name": "A.dam Diamant (Rhino)"
+      },
+      {
+        "id": 3947147,
+        "publicId": "805dde26-8081-4fb0-8822-f0fe884e68f0",
+        "name": "Gavin Harris(TriPurbeck/Rhino)"
       },
       {
         "id": 4207351,
         "publicId": "fae7698c-5aaf-4e5e-a905-801acbadbe76",
         "name": "Ammon Lane-Ramsey (Rhino)"
-      },
-      {
-        "id": 4459873,
-        "publicId": "0c9f086d-7af4-4767-865b-e89581757a3f",
-        "name": "Matt Mckeever (RHINO)"
       },
       {
         "id": 5224823,
@@ -12571,9 +12734,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 4
+        "rank": 5
       },
-      "world": 6
+      "world": 7
     },
     "riders": [
       {
@@ -12590,6 +12753,11 @@
         "id": 1091009,
         "publicId": "8d3aa7ce-1915-48f0-a71c-ef9366240921",
         "name": "Rob Selina (GXY)"
+      },
+      {
+        "id": 1436818,
+        "publicId": "2b6df7d2-25c5-42e3-9d47-fa0ded3ece1d",
+        "name": "Rob O'Brien [GXY]"
       },
       {
         "id": 1553834,
@@ -12609,7 +12777,7 @@
       {
         "id": 2486583,
         "publicId": "9e7350e9-d17b-481d-9f45-117c973295e8",
-        "name": "D CZWIFTER RWB"
+        "name": "D CZWIFTER ☘️RWB☘️"
       },
       {
         "id": 3086406,
@@ -12639,9 +12807,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 9
+        "rank": 10
       },
-      "world": 13
+      "world": 14
     },
     "riders": [
       {
@@ -12702,15 +12870,20 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 26
+        "rank": 28
       },
-      "world": 120
+      "world": 127
     },
     "riders": [
       {
+        "id": 13655,
+        "publicId": "9b772b2b-8b64-406f-b01c-51298227c56d",
+        "name": "C- RAGE (Dirty Drafters)"
+      },
+      {
         "id": 45549,
         "publicId": "1d231f80-8ca5-46c7-bc3d-e55e030a461c",
-        "name": "4 DREW[DW11]"
+        "name": "7 DREW[DW11]"
       },
       {
         "id": 134257,
@@ -12720,17 +12893,17 @@
       {
         "id": 190197,
         "publicId": "a2c4ba08-6e09-40c0-8810-44f0f1cae34c",
-        "name": ". Hatch(Acez)"
+        "name": ". Iowa(CornFed)"
       },
       {
         "id": 424572,
         "publicId": "ccff92e7-13a8-4cf0-becb-c174d5d1e0c6",
-        "name": "zac minock(ACEZdirt)"
+        "name": "zac minock(GRINDERS)"
       },
       {
         "id": 1032450,
         "publicId": "6477814e-12dd-4f77-8afb-29aa7a89c5d6",
-        "name": "Doug Streeter"
+        "name": "Doug Streeter (Havoc)"
       },
       {
         "id": 2154926,
@@ -12750,7 +12923,7 @@
       {
         "id": 4702506,
         "publicId": "8e9a629e-c647-4733-b216-3258ca511ebc",
-        "name": "🐒 Rafa[DW9]"
+        "name": "🐒 Rafa[DIRT-ACEZ]"
       },
       {
         "id": 5292520,
@@ -12765,9 +12938,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 74
+        "rank": 78
       },
-      "world": 108
+      "world": 115
     },
     "riders": [
       {
@@ -12778,12 +12951,12 @@
       {
         "id": 207319,
         "publicId": "297b82c6-74df-40ad-8e5e-a76866d88754",
-        "name": "dave b"
+        "name": "dave b (Frenzy)"
       },
       {
         "id": 239956,
         "publicId": "817fc86a-e004-44ea-bb99-6cda8e577e98",
-        "name": "> Lewis (FRENZY)"
+        "name": "> Lewis (COYOTES)"
       },
       {
         "id": 354912,
@@ -12803,7 +12976,7 @@
       {
         "id": 1699206,
         "publicId": "97a8f134-5c60-4864-860d-5ef2c017a159",
-        "name": "Dustin[Frenzy]"
+        "name": "Dustin[T-sharks]"
       },
       {
         "id": 2497831,
@@ -12853,9 +13026,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 87
+        "rank": 92
       },
-      "world": 131
+      "world": 135
     },
     "riders": [
       {
@@ -12881,17 +13054,17 @@
       {
         "id": 680991,
         "publicId": "36d13923-3be2-4643-b5e2-be1833af8cf8",
-        "name": "Russ Miller (TNP)"
+        "name": "Russ Miller (ACU)"
       },
       {
         "id": 1323455,
         "publicId": "570de546-39bf-4b20-81f1-395de5db64b9",
-        "name": "AnthonyHambelton"
+        "name": "Anthony🦖Hambelton"
       },
       {
         "id": 3843791,
         "publicId": "5f6232f4-c151-4c8c-80c5-c0c5536acd61",
-        "name": "Sven Meyer (TNP)"
+        "name": "Sven M (TNP)"
       },
       {
         "id": 4071304,
@@ -12941,9 +13114,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 101
+        "rank": 105
       },
-      "world": 147
+      "world": 150
     },
     "riders": [
       {
@@ -13019,9 +13192,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 139
+        "rank": 142
       },
-      "world": 202
+      "world": 204
     },
     "riders": [
       {
@@ -13082,7 +13255,7 @@
       {
         "id": 6693015,
         "publicId": "afb8a3ba-c1cb-4f23-b613-32688b178ebe",
-        "name": "Javier Navia"
+        "name": "Javier Navia [T-Hisp]"
       },
       {
         "id": 7753825,
@@ -13097,7 +13270,7 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 61
+        "rank": 62
       },
       "world": 94
     },
@@ -13205,15 +13378,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 10
+        "rank": 11
       },
-      "world": 15
+      "world": 17
     },
     "riders": [
       {
         "id": 854673,
         "publicId": "30e752c8-5412-45a6-9375-d216edf0c569",
-        "name": "Frank Escaros-Buechsel[R&K] [ZRG-R]"
+        "name": "Frank Escaros-Buechsel[R&K Jaguars]"
       },
       {
         "id": 946737,
@@ -13233,12 +13406,12 @@
       {
         "id": 1378816,
         "publicId": "23cf0073-df89-4ee1-9583-0359af8e134a",
-        "name": "L. Christian 1 [RWB]"
+        "name": "L. Christian3 [RWB]"
       },
       {
         "id": 1454483,
         "publicId": "a1472a4d-d6d4-4d71-a2e4-993209839bf7",
-        "name": "D. Kehrmaschine [DSTNY]"
+        "name": "D. Kehrmaschine 🧹 [DSTNY]"
       },
       {
         "id": 3155344,
@@ -13278,9 +13451,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 132
+        "rank": 134
       },
-      "world": 195
+      "world": 196
     },
     "riders": [
       {
@@ -13299,6 +13472,11 @@
         "name": "Andy Morton (TNP)"
       },
       {
+        "id": 3789457,
+        "publicId": "4ab902d6-5591-455a-9b5c-695a26ad65d1",
+        "name": "Stuart Williams (TNP)"
+      },
+      {
         "id": 3791286,
         "publicId": "d1c4c3ce-e230-4cec-a5fe-6a38a83cacd6",
         "name": "Andrew Black"
@@ -13311,7 +13489,7 @@
       {
         "id": 4744093,
         "publicId": "3c99873c-d194-40d7-9241-12a14249b329",
-        "name": "Ian Lovely(tnp)"
+        "name": "4 Lovely(tnp)"
       },
       {
         "id": 6269112,
@@ -13383,7 +13561,7 @@
         "name": "AMER",
         "rank": 30
       },
-      "world": 126
+      "world": 129
     },
     "riders": [
       {
@@ -13404,7 +13582,7 @@
       {
         "id": 206686,
         "publicId": "0842e8b4-f831-432c-9c0f-63f2f11114e5",
-        "name": ". Phil (BMTR Racing Bad News)"
+        "name": ". Phil (BMTR Racing)"
       },
       {
         "id": 207797,
@@ -13429,12 +13607,12 @@
       {
         "id": 2749055,
         "publicId": "eb672c5c-7f44-4714-8aa2-cd97c09a4f36",
-        "name": "2 billyP DW9"
+        "name": ". billyP ZsunR"
       },
       {
         "id": 6454226,
         "publicId": "2769336f-67a3-450a-85f3-f7e5a5a845e6",
-        "name": "Mark Deckard (ZSUNR)"
+        "name": "Mark Deckard 🇵🇸 (ZSUNR)"
       }
     ]
   },
@@ -13459,9 +13637,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 1
+        "rank": 2
       },
-      "world": 144
+      "world": 146
     },
     "riders": [
       {
@@ -13472,7 +13650,7 @@
       {
         "id": 551970,
         "publicId": "b5f01ef2-8b10-4549-b431-47f1902bab41",
-        "name": "S J GXY-VGN 💚🦖"
+        "name": "S J 💚💜🦖"
       },
       {
         "id": 1187826,
@@ -13487,7 +13665,7 @@
       {
         "id": 2699035,
         "publicId": "05474743-9605-42b1-94bb-7fe248bb5740",
-        "name": "K B GXY/VGN🦖"
+        "name": "K B DINOS🦖SASSY👩‍🎤"
       },
       {
         "id": 3215093,
@@ -13534,7 +13712,7 @@
         "name": "EMEA",
         "rank": 71
       },
-      "world": 105
+      "world": 103
     },
     "riders": [
       {
@@ -13585,7 +13763,7 @@
       {
         "id": 5183620,
         "publicId": "d25570a1-2862-4ae4-8f3e-b11e50d14d28",
-        "name": "Dennis [TNL] Van Lith 🦁"
+        "name": "3.Dennis [TNL] Van Lith 🦁"
       },
       {
         "id": 5251508,
@@ -13610,9 +13788,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 22
+        "rank": 27
       },
-      "world": 41
+      "world": 46
     },
     "riders": [
       {
@@ -13693,9 +13871,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 42
+        "rank": 43
       },
-      "world": 61
+      "world": 62
     },
     "riders": [
       {
@@ -13756,7 +13934,7 @@
       {
         "id": 5300769,
         "publicId": "c9aa6c30-0a93-4a61-a3bb-8e94ce604fcf",
-        "name": "3 TIM (🌀ZSUNR)"
+        "name": "T IM(🌀ZSUNR)"
       },
       {
         "id": 5504254,
@@ -13776,9 +13954,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 9
+        "rank": 13
       },
-      "world": 213
+      "world": 220
     },
     "riders": [
       {
@@ -13841,7 +14019,7 @@
         "name": "AMER",
         "rank": 27
       },
-      "world": 121
+      "world": 126
     },
     "riders": [
       {
@@ -13857,7 +14035,7 @@
       {
         "id": 4062436,
         "publicId": "55106a49-c5bd-45e1-814d-479b0c2d46c8",
-        "name": "8. Luke (SISU)"
+        "name": "5. Luke (SISU)"
       },
       {
         "id": 4735120,
@@ -13902,7 +14080,7 @@
       {
         "id": 7136654,
         "publicId": "7cf1da0f-db60-4a5f-818d-8f22a9623447",
-        "name": "Michael Almaguer😈 [SISU]"
+        "name": "Michael Almaguer😈 [SISU KURKI]"
       },
       {
         "id": 7268434,
@@ -13912,7 +14090,7 @@
       {
         "id": 7558111,
         "publicId": "d348e336-1cff-4272-a4ef-3cb1ea34b2cb",
-        "name": "8 Brad (SISU)"
+        "name": "- Brad (SISU KURKI)"
       },
       {
         "id": 7741872,
@@ -13927,9 +14105,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 96
+        "rank": 100
       },
-      "world": 140
+      "world": 143
     },
     "riders": [
       {
@@ -14010,9 +14188,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 37
+        "rank": 38
       },
-      "world": 168
+      "world": 161
     },
     "riders": [
       {
@@ -14066,14 +14244,14 @@
         "name": "Joey Sheff [CRYO-GEN]"
       },
       {
+        "id": 5422903,
+        "publicId": "95d81492-3058-4c93-8a95-57a33cdc9322",
+        "name": "Buddy (Cryo-Gen) Young"
+      },
+      {
         "id": 5529639,
         "publicId": "36ae034b-4401-4838-8ba1-68f4d295e73f",
         "name": "Andrew Wilson [CRYO-GEN]"
-      },
-      {
-        "id": 5796495,
-        "publicId": "852ef2ed-3836-4b93-8c33-3f14879914ce",
-        "name": "Eric (Cryo-Gen)"
       },
       {
         "id": 6671735,
@@ -14093,9 +14271,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 17
+        "rank": 18
       },
-      "world": 222
+      "world": 226
     },
     "riders": [
       {
@@ -14106,7 +14284,7 @@
       {
         "id": 174071,
         "publicId": "58f99f4d-bc7c-4a86-9898-3b76f97a5abf",
-        "name": ".. Barb K [GXY]"
+        "name": ".. Barb K [GXY RH]"
       },
       {
         "id": 329600,
@@ -14116,7 +14294,7 @@
       {
         "id": 460103,
         "publicId": "b7743eed-9443-4e32-829c-b2bca9993929",
-        "name": "4: JULES [GXY-SM]"
+        "name": "4: JULES [GXY-IN]"
       },
       {
         "id": 1329062,
@@ -14126,12 +14304,12 @@
       {
         "id": 1569748,
         "publicId": "28b7cd80-3fb3-484a-a5eb-7f8559eab82e",
-        "name": "Jennie Bournonville [GXY]"
+        "name": "Jennie Bournonville [GXY RH]"
       },
       {
         "id": 2674171,
         "publicId": "d6a578d9-e1b5-442a-856f-20a67c1397ee",
-        "name": "Marie Mangan [GXY RH]"
+        "name": "Marie Mangan [GXY BE]"
       },
       {
         "id": 2923485,
@@ -14156,17 +14334,17 @@
       {
         "id": 4043046,
         "publicId": "3b868fd0-8bfd-4083-a9dd-e8c179eab9e9",
-        "name": "E mma G [GXY]"
+        "name": "E mma G [GXY SM]"
       },
       {
         "id": 4769037,
         "publicId": "da5cd78f-5da9-46ce-bdf2-582f657fb06e",
-        "name": "Yvonne Mowlam [GXY]"
+        "name": "Yvonne Mowlam [GXY RH]"
       },
       {
         "id": 5181665,
         "publicId": "fb519fe9-898e-4d11-8b8e-4aed3b80f2a5",
-        "name": ". Andrea [GXY]"
+        "name": ". Andrea [GXY SM]"
       },
       {
         "id": 5594152,
@@ -14181,9 +14359,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 92
+        "rank": 97
       },
-      "world": 136
+      "world": 140
     },
     "riders": [
       {
@@ -14204,7 +14382,7 @@
       {
         "id": 459776,
         "publicId": "257c8125-837c-4e52-96e0-90604c7a1c00",
-        "name": "7 Rod [CLS ]"
+        "name": "5 Rod [CLS ]"
       },
       {
         "id": 500386,
@@ -14417,15 +14595,20 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 93
+        "rank": 99
       },
-      "world": 137
+      "world": 142
     },
     "riders": [
       {
         "id": 34042,
         "publicId": "7d92c871-46a2-4d05-9304-a30951b6d433",
         "name": "H Johnson [ZSUNR]"
+      },
+      {
+        "id": 36881,
+        "publicId": "4ad8900d-b0bc-4edc-aff1-7f9324638d69",
+        "name": "Brian Warner (ZSUNR)"
       },
       {
         "id": 95319,
@@ -14485,9 +14668,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 54
+        "rank": 56
       },
-      "world": 84
+      "world": 88
     },
     "riders": [
       {
@@ -14518,7 +14701,7 @@
       {
         "id": 856515,
         "publicId": "a6a41f1c-d5ea-4697-a2c8-4c1d3b680c0e",
-        "name": "Vinko Zaninović [Herd/Eintracht]🐢🦅"
+        "name": "Vinko Zaninović [Eintracht]🐢🦡🦁🦅"
       },
       {
         "id": 877940,
@@ -14553,7 +14736,7 @@
       {
         "id": 3503476,
         "publicId": "fa54129f-7794-4c90-bf3b-c4c8c6538a07",
-        "name": "M arc(Herd🦡)"
+        "name": "M. arc(Herd🦡)"
       },
       {
         "id": 3614977,
@@ -14563,7 +14746,7 @@
       {
         "id": 3623573,
         "publicId": "6163fb41-dbbd-4b1a-b64c-2c9ca0242926",
-        "name": "8 Chris (Herd)"
+        "name": "8 Chris (Eintracht)"
       }
     ]
   },
@@ -14571,8 +14754,11 @@
     "number": 631,
     "name": "AT-R2",
     "positions": {
-      "region": null,
-      "world": null
+      "region": {
+        "name": "EMEA",
+        "rank": 70
+      },
+      "world": 102
     },
     "riders": [
       {
@@ -14618,9 +14804,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 29
+        "rank": 24
       },
-      "world": 123
+      "world": 106
     },
     "riders": [
       {
@@ -14746,9 +14932,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 90
+        "rank": 95
       },
-      "world": 134
+      "world": 138
     },
     "riders": [
       {
@@ -14829,9 +15015,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 43
+        "rank": 44
       },
-      "world": 174
+      "world": 178
     },
     "riders": [
       {
@@ -14894,7 +15080,7 @@
         "name": "AMER",
         "rank": 36
       },
-      "world": 167
+      "world": 159
     },
     "riders": [
       {
@@ -14948,11 +15134,6 @@
         "name": "Ad Rock (Rhino)"
       },
       {
-        "id": 5398854,
-        "publicId": "c81ce03c-ac03-40f6-b3c7-844093aa9ac1",
-        "name": "Trevan Burn [Rhino]"
-      },
-      {
         "id": 6324440,
         "publicId": "622a92d6-450d-4424-948a-3f2f3b131c4b",
         "name": "Bryan🤟YT(Rhino)"
@@ -14980,7 +15161,7 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 60
+        "rank": 61
       },
       "world": 93
     },
@@ -15033,9 +15214,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 145
+        "rank": 147
       },
-      "world": 209
+      "world": 210
     },
     "riders": [
       {
@@ -15061,7 +15242,7 @@
       {
         "id": 3166961,
         "publicId": "495fa2ae-09a8-475d-b30c-85cc65d6fa42",
-        "name": "E rik [DIRT]"
+        "name": "E rik [Strangers]"
       },
       {
         "id": 4789073,
@@ -15076,7 +15257,7 @@
       {
         "id": 7536082,
         "publicId": "ff2f518c-05e6-48d8-8405-a6e7e09ef390",
-        "name": "Scott Holmes [Strangers]"
+        "name": "Scott Holmes [Puffs]"
       },
       {
         "id": 7618072,
@@ -15086,7 +15267,7 @@
       {
         "id": 7736037,
         "publicId": "da98bfca-0cba-4032-b15c-1af7616ae04a",
-        "name": "Roland Kuipers [DIRT]"
+        "name": "Roland Kuipers [Puffs]"
       },
       {
         "id": 7817017,
@@ -15103,7 +15284,7 @@
         "name": "EMEA",
         "rank": 94
       },
-      "world": 138
+      "world": 137
     },
     "riders": [
       {
@@ -15119,17 +15300,17 @@
       {
         "id": 878884,
         "publicId": "f960c2a6-00fa-47ad-8f2c-8386ff68b767",
-        "name": "1 Neil [GXY]"
+        "name": "2 Neil [GXY]"
       },
       {
         "id": 1041234,
         "publicId": "2365a13f-281f-464b-a1b0-52aaaaea9a57",
-        "name": "C inderella_Man[GXY]"
+        "name": "6) inderella_Man[GXY]"
       },
       {
         "id": 2131608,
         "publicId": "785995ab-999b-45a2-90ee-ea3355b7366e",
-        "name": "2 Olly (GXY / TBG)"
+        "name": "4 Olly (GXY / TBG)"
       },
       {
         "id": 2561618,
@@ -15184,9 +15365,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 9
+        "rank": 2
       },
-      "world": 38
+      "world": 15
     },
     "riders": [
       {
@@ -15237,7 +15418,7 @@
       {
         "id": 7054092,
         "publicId": "da077fef-72fa-4af6-a4b0-fd72b3c15c14",
-        "name": "Derek Karmolinski (SISU)"
+        "name": "Derek Karmolinski (SISU Nokisorsa)"
       },
       {
         "id": 7312890,
@@ -15272,9 +15453,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 39
+        "rank": 41
       },
-      "world": 170
+      "world": 164
     },
     "riders": [
       {
@@ -15340,9 +15521,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 122
+        "rank": 126
       },
-      "world": 184
+      "world": 187
     },
     "riders": [
       {
@@ -15358,7 +15539,7 @@
       {
         "id": 1177216,
         "publicId": "04a54a81-bf3b-4647-8c9d-f629047b411d",
-        "name": "Martin Painter [GXY]"
+        "name": "Martin Painter [GXY Perseus]"
       },
       {
         "id": 1219704,
@@ -15403,9 +15584,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 2
+        "rank": 3
       },
-      "world": 14
+      "world": 16
     },
     "riders": [
       {
@@ -15431,7 +15612,7 @@
       {
         "id": 465714,
         "publicId": "33b5e324-fb15-4e96-b983-8e29b6d30447",
-        "name": ". Brent(EMVE)"
+        "name": ". Brent(Eat DIRT)"
       },
       {
         "id": 602787,
@@ -15456,7 +15637,7 @@
       {
         "id": 1232065,
         "publicId": "bff04b9b-c3c6-4832-92fe-35cac71cb5d0",
-        "name": "Dan Sheremeto (DIRT)"
+        "name": "Dan Sheremeto (MNSTRS)"
       },
       {
         "id": 1309234,
@@ -15471,7 +15652,7 @@
       {
         "id": 2260841,
         "publicId": "c6103086-e399-4c50-9a55-286a3450d939",
-        "name": "joe reynolds [DLRZ]"
+        "name": "joe reynolds [GRiT]"
       }
     ]
   },
@@ -15656,9 +15837,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 100
+        "rank": 98
       },
-      "world": 145
+      "world": 141
     },
     "riders": [
       {
@@ -15744,9 +15925,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 34
+        "rank": 35
       },
-      "world": 165
+      "world": 158
     },
     "riders": [
       {
@@ -15767,7 +15948,7 @@
       {
         "id": 654391,
         "publicId": "3b58c490-e9cc-46a1-a28c-925fa51bd214",
-        "name": "3 Rob S. (Dirt)"
+        "name": "4 Rob S. (Dirt)"
       },
       {
         "id": 2311823,
@@ -15867,9 +16048,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 116
+        "rank": 119
       },
-      "world": 176
+      "world": 179
     },
     "riders": [
       {
@@ -15931,6 +16112,11 @@
         "id": 8283450,
         "publicId": "88747d3c-1f3b-4200-ab67-7dd94d693c96",
         "name": "Tom Davey (RollCo)"
+      },
+      {
+        "id": 8406632,
+        "publicId": "6013be2a-5103-4fc2-b159-415e6c994f28",
+        "name": "Philipp Hennig"
       }
     ]
   },
@@ -15940,9 +16126,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 75
+        "rank": 86
       },
-      "world": 112
+      "world": 123
     },
     "riders": [
       {
@@ -15993,7 +16179,7 @@
       {
         "id": 6956475,
         "publicId": "9ded7e4a-5951-4d28-afe0-94fb8f04bf08",
-        "name": "@MarkusHarford(YouTube)"
+        "name": "@MarkusHarford (Hellions)"
       },
       {
         "id": 7018812,
@@ -16018,9 +16204,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 14
+        "rank": 15
       },
-      "world": 19
+      "world": 21
     },
     "riders": [
       {
@@ -16088,7 +16274,7 @@
         "name": "WOMENS",
         "rank": 12
       },
-      "world": 217
+      "world": 219
     },
     "riders": [
       {
@@ -16139,9 +16325,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 36
+        "rank": 38
       },
-      "world": 55
+      "world": 57
     },
     "riders": [
       {
@@ -16207,7 +16393,7 @@
       {
         "id": 7290570,
         "publicId": "01d40012-7ca7-4577-aeff-bff89c7abee8",
-        "name": "Adam Check"
+        "name": "Adam Check (Eat Dirt)"
       },
       {
         "id": 7499812,
@@ -16227,15 +16413,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 138
+        "rank": 145
       },
-      "world": 201
+      "world": 207
     },
     "riders": [
       {
         "id": 18843,
         "publicId": "a6f45b68-c694-43f6-b21a-7aa4b465f66f",
-        "name": "🐰🥕 Bugs Bunny[ITA E4W]"
+        "name": "🐰🥕 Bugs Bunny[FastEat&Watt]"
       },
       {
         "id": 278868,
@@ -16260,12 +16446,12 @@
       {
         "id": 2259786,
         "publicId": "6a601ff3-c688-4dbd-8221-d0857b136e16",
-        "name": "Jose Luis Conversano[C&W]"
+        "name": "Jose Luis Conversano[BellaVita]"
       },
       {
         "id": 2387374,
         "publicId": "3ffd7a6b-ee86-464d-9d5b-7fc72c7ed2f2",
-        "name": "Franco DAN [Eat&Watt]"
+        "name": "Franco DAN [C&W]"
       },
       {
         "id": 3307256,
@@ -16275,7 +16461,7 @@
       {
         "id": 4354777,
         "publicId": "addba43d-320c-40b2-8d50-131dbc51b235",
-        "name": "Salvatore Canna [Team Italy E&W]"
+        "name": "Salvatore Canna [AperEat&Watt]"
       },
       {
         "id": 6166336,
@@ -16290,7 +16476,7 @@
       {
         "id": 6833512,
         "publicId": "1dd02c75-df4f-448a-9583-fa88ca662f47",
-        "name": "Samuele Rovini [Eat&Watt]"
+        "name": "Samuele Rovini [FastEat&Watt]"
       }
     ]
   },
@@ -16300,9 +16486,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 19
+        "rank": 20
       },
-      "world": 30
+      "world": 28
     },
     "riders": [
       {
@@ -16318,7 +16504,7 @@
       {
         "id": 897287,
         "publicId": "4187a11b-8c95-41fe-83ad-c22c1d09fc8e",
-        "name": "Mikkel Christensen (DBR)"
+        "name": "Mikkel Christensen (DBR)ECKD"
       },
       {
         "id": 1044375,
@@ -16348,7 +16534,7 @@
       {
         "id": 6685536,
         "publicId": "d0f3e33f-f542-4531-9369-996e6592c07d",
-        "name": "Jesper Stoltze"
+        "name": "Jesper Stoltze [DBR]"
       }
     ]
   },
@@ -16358,9 +16544,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 6
+        "rank": 7
       },
-      "world": 10
+      "world": 11
     },
     "riders": [
       {
@@ -16386,7 +16572,7 @@
       {
         "id": 1281192,
         "publicId": "d84ea750-168f-4dda-9819-1b2b8734f099",
-        "name": "Danny de Jong (WKG)"
+        "name": "Danny de Jong [PRT]"
       },
       {
         "id": 2921633,
@@ -16571,15 +16757,15 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 10
+        "rank": 11
       },
-      "world": 215
+      "world": 218
     },
     "riders": [
       {
         "id": 101978,
         "publicId": "6478ac73-fa8f-4028-bcc5-47cb065b7d75",
-        "name": "1 Ina 🌞 [Falcons]"
+        "name": "K. Ina 🌞 [Hyenas]"
       },
       {
         "id": 261212,
@@ -16594,7 +16780,7 @@
       {
         "id": 1219171,
         "publicId": "1ccd5361-ef64-4c7e-ac09-7133cb33927b",
-        "name": "5. 💙Beck (Camels🐫)"
+        "name": "5. 💙Beck (Giants 🐧)"
       },
       {
         "id": 1587061,
@@ -16604,17 +16790,17 @@
       {
         "id": 1668382,
         "publicId": "24162060-99da-4c43-a023-c17987784f00",
-        "name": ". 2.Kim (Herd)"
+        "name": ". 5 💚 Kim 🦙 (Alpacas)"
       },
       {
         "id": 1831840,
         "publicId": "6991925b-a6e7-4374-a884-92d49340355c",
-        "name": "6. Fiona (Roaming Alpacas)"
+        "name": "4. Fiona 🧡 (Roaming Alpacas)"
       },
       {
         "id": 2669917,
         "publicId": "dadd4f14-96ba-4513-b2f5-f497e96f52b3",
-        "name": ".5💛 Deb🐪[Camels]"
+        "name": ".3💛 Deb🐪[Camels]"
       },
       {
         "id": 2733924,
@@ -16624,7 +16810,7 @@
       {
         "id": 3246156,
         "publicId": "be5fc195-dbce-4bc4-949b-0bac1daf5df1",
-        "name": "Emily Royer [Ferrets]"
+        "name": "Emily Royer [Margaritas]"
       },
       {
         "id": 3553430,
@@ -16644,15 +16830,15 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 8
+        "rank": 9
       },
-      "world": 212
+      "world": 216
     },
     "riders": [
       {
         "id": 173017,
         "publicId": "b10e3e1c-a300-4a88-9c90-e4ec5ac063e5",
-        "name": ". 2 🤍 Suz 🐪 (Camels)"
+        "name": "L Suzane (Team CLS)"
       },
       {
         "id": 236571,
@@ -16677,7 +16863,7 @@
       {
         "id": 1244261,
         "publicId": "d58b49d7-86b2-4ff5-9f09-1f231cb0e65e",
-        "name": "Laila Setvik Loe(Weasels)"
+        "name": "Laila Setvik Loe(Royal 🐧)"
       },
       {
         "id": 2123822,
@@ -16712,9 +16898,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 50
+        "rank": 51
       },
-      "world": 69
+      "world": 70
     },
     "riders": [
       {
@@ -16755,7 +16941,7 @@
       {
         "id": 3061506,
         "publicId": "f62f97ee-8fe5-42d8-8354-563c3e02e18a",
-        "name": "3 Ciaran"
+        "name": "Ciaran LEQP"
       },
       {
         "id": 4080350,
@@ -16785,9 +16971,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 142
+        "rank": 148
       },
-      "world": 206
+      "world": 214
     },
     "riders": [
       {
@@ -16863,15 +17049,15 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 68
+        "rank": 73
       },
-      "world": 102
+      "world": 105
     },
     "riders": [
       {
         "id": 712347,
         "publicId": "b0047693-b915-4d18-8fb0-39bccb24a684",
-        "name": "Manon | LEQP 🦅🐰"
+        "name": "Manon | LEQP 🦅"
       },
       {
         "id": 1188648,
@@ -16881,7 +17067,7 @@
       {
         "id": 1859134,
         "publicId": "0c8af96b-3aef-46b3-81be-aedaecac2a0e",
-        "name": "Erwin Meermans | LEQP"
+        "name": "Erwin Meermans | ZNL"
       },
       {
         "id": 4013675,
@@ -16901,7 +17087,7 @@
       {
         "id": 5369322,
         "publicId": "f9f69f85-e8e9-4851-a0be-3d18e6158d11",
-        "name": "James YT@chadrides (CYE/LEQP Aubisque)"
+        "name": "James YT@chadrides (CYE)"
       },
       {
         "id": 6329623,
@@ -16921,9 +17107,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 106
+        "rank": 112
       },
-      "world": 155
+      "world": 169
     },
     "riders": [
       {
@@ -17029,9 +17215,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 32
+        "rank": 33
       },
-      "world": 51
+      "world": 52
     },
     "riders": [
       {
@@ -17058,6 +17244,11 @@
         "id": 1007613,
         "publicId": "6f84f77d-de6b-4efa-8ce4-49b74fb424d3",
         "name": "Grig Schulz [WATTFabrik] CRP"
+      },
+      {
+        "id": 1444304,
+        "publicId": "8749bda4-d11a-46a2-ae1d-1cf17607b31d",
+        "name": "Jean-Pierre Jonen [WATTFabrik]"
       },
       {
         "id": 1448130,
@@ -17177,9 +17368,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 26
+        "rank": 21
       },
-      "world": 45
+      "world": 40
     },
     "riders": [
       {
@@ -17325,11 +17516,16 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 8
+        "rank": 9
       },
-      "world": 37
+      "world": 33
     },
     "riders": [
+      {
+        "id": 71053,
+        "publicId": "87df8774-4ea3-482d-a9a2-9e75f69e65df",
+        "name": "Nicholas Ravanelli [OMG]"
+      },
       {
         "id": 616484,
         "publicId": "342dd78a-7d67-4322-a656-7e2ce9f239bc",
@@ -17353,7 +17549,7 @@
       {
         "id": 4787604,
         "publicId": "17a2c700-01d7-4768-a931-6e33c1ca1848",
-        "name": "Shayne Morden"
+        "name": "Shayne Morden [CAN]"
       },
       {
         "id": 5052789,
@@ -17378,9 +17574,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 143
+        "rank": 149
       },
-      "world": 207
+      "world": 215
     },
     "riders": [
       {
@@ -17406,7 +17602,7 @@
       {
         "id": 5234626,
         "publicId": "0378b1a4-fd5b-4469-b346-17518db62e43",
-        "name": "Matt Wood"
+        "name": "Matt Wood (BAKPDL / WCC)"
       },
       {
         "id": 6237249,
@@ -17566,9 +17762,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 141
+        "rank": 144
       },
-      "world": 204
+      "world": 206
     },
     "riders": [
       {
@@ -17579,7 +17775,7 @@
       {
         "id": 267614,
         "publicId": "b8e93e88-a508-4444-b125-b777f849822a",
-        "name": "S hannon [MITTEN]"
+        "name": "S hannon [DINOS]"
       },
       {
         "id": 414937,
@@ -17589,7 +17785,7 @@
       {
         "id": 3472196,
         "publicId": "600b6fbd-d9f9-4016-8d60-65e52d26f148",
-        "name": "V Powell 1 (eSRT) (Pro PZ)"
+        "name": "V Powell (eSRT🧨✨️) (Pro PZ)"
       },
       {
         "id": 4762315,
@@ -17649,9 +17845,9 @@
     "positions": {
       "region": {
         "name": "WOMENS",
-        "rank": 16
+        "rank": 17
       },
-      "world": 221
+      "world": 225
     },
     "riders": [
       {
@@ -17739,7 +17935,7 @@
         "name": "AMER",
         "rank": 33
       },
-      "world": 164
+      "world": 156
     },
     "riders": [
       {
@@ -17755,12 +17951,12 @@
       {
         "id": 1194175,
         "publicId": "efc2caca-0f0f-4b12-bdbc-70b976111a50",
-        "name": "Charles White (HOFC2)"
+        "name": "Charles White (HOCC)"
       },
       {
         "id": 1576356,
         "publicId": "1033c759-7273-4311-8e33-2856e0cc75dd",
-        "name": "F. Jose (HoFC)"
+        "name": "F. Jose (USMeS/T&S)"
       },
       {
         "id": 2084640,
@@ -17785,7 +17981,7 @@
       {
         "id": 3414402,
         "publicId": "246462fe-3300-43b0-b742-0ab9d95e092c",
-        "name": "M ike. Herd"
+        "name": "M ike. HODD"
       },
       {
         "id": 3555583,
@@ -17795,12 +17991,12 @@
       {
         "id": 3681457,
         "publicId": "7df7ef23-73b0-4561-8396-65e1353c7d3f",
-        "name": "Kate Muir (HOFC)"
+        "name": "Kate Muir (HOFC / OTE W)"
       },
       {
         "id": 4786195,
         "publicId": "c4773d00-8a07-472c-997b-0206c60d2295",
-        "name": "Aaron Collishaw (HERD)"
+        "name": "Aaron Collishaw (Herd/HoSW)"
       },
       {
         "id": 5447416,
@@ -17820,9 +18016,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 81
+        "rank": 82
       },
-      "world": 118
+      "world": 119
     },
     "riders": [
       {
@@ -17888,9 +18084,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 34
+        "rank": 36
       },
-      "world": 53
+      "world": 55
     },
     "riders": [
       {
@@ -17971,9 +18167,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 23
+        "rank": 24
       },
-      "world": 42
+      "world": 43
     },
     "riders": [
       {
@@ -18049,9 +18245,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 103
+        "rank": 108
       },
-      "world": 152
+      "world": 165
     },
     "riders": [
       {
@@ -18122,9 +18318,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 57
+        "rank": 58
       },
-      "world": 89
+      "world": 90
     },
     "riders": [
       {
@@ -18155,7 +18351,7 @@
       {
         "id": 212407,
         "publicId": "2795369f-9007-4f66-97e4-02be62fce4fd",
-        "name": "... Steelo [GXY]"
+        "name": ".... Steelo [GXY Falcons]"
       },
       {
         "id": 844226,
@@ -18170,12 +18366,12 @@
       {
         "id": 2104090,
         "publicId": "3ef3c1c6-83f6-4130-9f01-910d44029c00",
-        "name": "Luke Mattocks [GXY]"
+        "name": "3 Luke [GXY]"
       },
       {
         "id": 3021754,
         "publicId": "702adae7-b62d-4754-b691-f9c270fa63ba",
-        "name": "V Jos [GXY]"
+        "name": "Jos Verbeek GALAXY FALCONS [GXY]"
       },
       {
         "id": 4394770,
@@ -18205,9 +18401,9 @@
     "positions": {
       "region": {
         "name": "APAC",
-        "rank": 6
+        "rank": 4
       },
-      "world": 25
+      "world": 27
     },
     "riders": [
       {
@@ -18228,7 +18424,7 @@
       {
         "id": 1634693,
         "publicId": "a3aa83a4-0bf5-459c-9791-a63137a9a975",
-        "name": "Gareth Stevens"
+        "name": "Gareth Stevens [ Level ]"
       },
       {
         "id": 1725305,
@@ -18243,12 +18439,12 @@
       {
         "id": 1996576,
         "publicId": "9e7cf73e-bc47-4d98-bd99-8d208d1827a3",
-        "name": "Adam Dawson (OTR)"
+        "name": "Adam Dawson (GXY)"
       },
       {
         "id": 2789097,
         "publicId": "b76fee04-9650-4596-9739-8b7b708275f7",
-        "name": "Matt Humphrey[GXY/CR]"
+        "name": "Matt Humphrey[BMTR bandits/CR]"
       },
       {
         "id": 2874150,
@@ -18268,12 +18464,12 @@
       {
         "id": 3793558,
         "publicId": "45a8ae36-9e75-4ff7-9922-3773f812317d",
-        "name": "4. Brian Connolly 🇮🇪 ( GXY )"
+        "name": "Brian Connolly 🇮🇪 ( GXY )"
       },
       {
         "id": 4584321,
         "publicId": "22d04843-78bb-4384-a729-d29c36f1c456",
-        "name": "Jaakko Kuulasmaa[RCF]"
+        "name": "Jaakko Kuulasmaa[4STAR/RCF]"
       },
       {
         "id": 5069181,
@@ -18293,9 +18489,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 108
+        "rank": 111
       },
-      "world": 157
+      "world": 168
     },
     "riders": [
       {
@@ -18366,9 +18562,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 39
+        "rank": 40
       },
-      "world": 58
+      "world": 59
     },
     "riders": [
       {
@@ -18429,9 +18625,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 130
+        "rank": 132
       },
-      "world": 193
+      "world": 194
     },
     "riders": [
       {
@@ -18519,7 +18715,7 @@
         "name": "WOMENS",
         "rank": 20
       },
-      "world": 226
+      "world": 228
     },
     "riders": [
       {
@@ -18575,9 +18771,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 95
+        "rank": 90
       },
-      "world": 139
+      "world": 133
     },
     "riders": [
       {
@@ -18628,9 +18824,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 69
+        "rank": 74
       },
-      "world": 103
+      "world": 107
     },
     "riders": [
       {
@@ -18656,7 +18852,7 @@
       {
         "id": 3321984,
         "publicId": "91b96b36-193a-448c-86a6-162754742ce7",
-        "name": "Alsted [DBR]"
+        "name": "Alsted [DBR)"
       },
       {
         "id": 4082842,
@@ -18691,9 +18887,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 115
+        "rank": 114
       },
-      "world": 175
+      "world": 171
     },
     "riders": [
       {
@@ -18729,7 +18925,7 @@
       {
         "id": 6610002,
         "publicId": "db4966f6-6526-4f46-8fd8-36ba1967d90e",
-        "name": "Sebastjan Vuga [VSlo4E]"
+        "name": "Sebastjan Vuga [Fellowship]"
       },
       {
         "id": 7403696,
@@ -18769,9 +18965,9 @@
     "positions": {
       "region": {
         "name": "AMER",
-        "rank": 7
+        "rank": 8
       },
-      "world": 36
+      "world": 32
     },
     "riders": [
       {
@@ -18802,7 +18998,7 @@
       {
         "id": 3398732,
         "publicId": "db691cd1-7aae-4078-9a11-d2cab3091523",
-        "name": "Tay Dozier [ATP]"
+        "name": "Tay Dozier ⚛️ [ATP]"
       },
       {
         "id": 3445894,
@@ -18827,9 +19023,9 @@
     "positions": {
       "region": {
         "name": "EMEA",
-        "rank": 128
+        "rank": 130
       },
-      "world": 190
+      "world": 191
     },
     "riders": [
       {
@@ -18843,6 +19039,11 @@
         "name": "Kevin Lebis"
       },
       {
+        "id": 250995,
+        "publicId": "0645937f-7a7f-486b-8708-101fa442bfd4",
+        "name": "Ron van der Voort (TNL)"
+      },
+      {
         "id": 396624,
         "publicId": "66143668-852f-4e98-8fae-9981f3dd080b",
         "name": "Sverre TeamNL"
@@ -18850,7 +19051,7 @@
       {
         "id": 728814,
         "publicId": "bf69e8be-8804-43f0-b91d-0bf7add1624c",
-        "name": "Jelmer hitzert"
+        "name": "Jelmer Hitzert"
       },
       {
         "id": 2930317,
@@ -18895,9 +19096,9 @@
     "positions": {
       "region": {
         "name": "APAC",
-        "rank": 4
+        "rank": 5
       },
-      "world": 23
+      "world": 36
     },
     "riders": [
       {
@@ -18979,6 +19180,91 @@
         "id": 7939901,
         "publicId": "0c11094f-6484-45df-84f9-662427762fac",
         "name": "Kelly Wang (ROC💎)"
+      }
+    ]
+  },
+  {
+    "number": 731,
+    "name": "Pont l'Eveque",
+    "positions": {
+      "region": null,
+      "world": null
+    },
+    "riders": [
+      {
+        "id": 479635,
+        "publicId": "48706c8a-2697-4148-b866-a18b22158cd3",
+        "name": "D. ominique 🇧🇪 ⚡️( Foudre)⚡️ 🏹 🇫🇷"
+      },
+      {
+        "id": 2330220,
+        "publicId": "265dedda-5eda-45d7-ae0c-95a739a43f82",
+        "name": "d enis falaise ⚡🎸(foudre)"
+      },
+      {
+        "id": 2838769,
+        "publicId": "cf7e0c0a-6285-4cef-9e2c-108f0ed23f9e",
+        "name": "Morfin Delphine (Foudre]"
+      },
+      {
+        "id": 4783503,
+        "publicId": "3ec95e70-b0f1-4b0b-9d19-dbacc30caa37",
+        "name": "Jean Géraudie [Foudre]"
+      },
+      {
+        "id": 7177933,
+        "publicId": "a8427799-bf21-44ae-8513-64933436f422",
+        "name": "Geoffroy Vié (Foudre)"
+      },
+      {
+        "id": 7476656,
+        "publicId": "6c399545-0483-4a07-a837-9d4a87b33272",
+        "name": "Maxime Evrard (Foudre)"
+      }
+    ]
+  },
+  {
+    "number": 732,
+    "name": "GTE Rhinos",
+    "positions": {
+      "region": null,
+      "world": null
+    },
+    "riders": [
+      {
+        "id": 240423,
+        "publicId": "e79dee52-b0b4-4ac0-8268-1a70d312b988",
+        "name": "Sandy Laurie (Rhino)"
+      },
+      {
+        "id": 970484,
+        "publicId": "84c6c270-1f4d-404a-97e7-24d189ce4d3b",
+        "name": "5 John Ashworth E Rhino"
+      },
+      {
+        "id": 2881529,
+        "publicId": "60866378-18c0-4e48-8ac6-b6ac5b8db3e8",
+        "name": "B ruce Dov (Rhino)"
+      },
+      {
+        "id": 3614882,
+        "publicId": "6c41a628-c97c-46ff-b2d9-3ca566dbff87",
+        "name": "Simon Gower Rhino"
+      },
+      {
+        "id": 3670968,
+        "publicId": "06322b2e-069f-49d3-95d8-4fefec76f28c",
+        "name": "Harry Walker (Rhino)"
+      },
+      {
+        "id": 4459873,
+        "publicId": "0c9f086d-7af4-4767-865b-e89581757a3f",
+        "name": "Matt Mckeever (RHINO)"
+      },
+      {
+        "id": 4538010,
+        "publicId": "c7d694cb-6c4d-426f-8604-8df0e3a9af57",
+        "name": "Charles Collard (RHINO)"
       }
     ]
   }

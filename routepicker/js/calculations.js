@@ -43,16 +43,6 @@ export function getHistoryFactors(rider) {
   })?.velo?.elo?.factors || {};
 }
 
-export function getHistoryConfidence(rider) {
-  const entry = rider.zr?.history?.find((historyEntry) => {
-    const confidence = historyEntry?.velo?.seed?.confidence ?? historyEntry?.elo?.confidence;
-    return confidence !== undefined && confidence !== null && Number.isFinite(Number(confidence));
-  });
-  const confidence = entry?.velo?.seed?.confidence ?? entry?.elo?.confidence;
-
-  return confidence === undefined || confidence === null ? undefined : Number(confidence);
-}
-
 function getFactorScores(rider) {
   const factors = getHistoryFactors(rider);
 

@@ -1,11 +1,16 @@
 import { FACTORS, SELECTORS } from "./config.js?v=20260916";
-import { getFactorValue } from "./calculations.js?v=20260916";
+import { getFactorValue } from "./calculations.js?v=20261008";
 import { generateElevationUrl } from "../../routepicker/js/utils.js?v=20260916";
 
 const format = (value) => {
   if (!Number.isFinite(value)) return "N/A";
   const rounded = Math.round(value);
   return rounded === 0 ? "N/A" : String(rounded);
+};
+const formatPoints = (points) => {
+  const home = Math.round(points.home);
+  const total = Math.round(points.home + points.away);
+  return `${format(home)}–${format(total - home)}`;
 };
 const el = (selector) => document.querySelector(selector);
 
@@ -99,7 +104,7 @@ export function renderComparisons(comparisons, selectedTeam) {
     ? `<tr class="selected-team-row"><td><strong>${row.selectedTeam.name}</strong> <span class="selected-label">Selected team</span></td><td>${row.rank}</td><td colspan="5">—</td><td>Baseline team</td></tr>`
     : `<tr><td>${row.comparison.name}</td><td>${row.rank}</td>
       ${FACTORS.map(({ key }) => `<td class="${row.comparison.differences[key] >= 0 ? "positive" : "negative"}">${format(row.comparison.differences[key])}</td>`).join("")}
-      <td class="${row.comparison.points.home > row.comparison.points.away ? "expected-win" : "expected-loss"}">${format(row.comparison.points.home)}–${format(row.comparison.points.away)}</td></tr>`).join("")
+      <td class="${row.comparison.points.home > row.comparison.points.away ? "expected-win" : "expected-loss"}">${formatPoints(row.comparison.points)}</td></tr>`).join("")
     : `<tr><td colspan="8">No reasonable opponents found for this team.</td></tr>`;
 }
 

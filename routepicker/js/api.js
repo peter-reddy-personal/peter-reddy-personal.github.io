@@ -51,11 +51,11 @@ export async function fetchAllRoutes(endpoint = API_ENDPOINTS.routes) {
 /**
  * Fetch ZwiftRacing data for a single rider via Cloudflare Worker
  */
-export async function fetchZwiftRacingRider(riderId) {
+export async function fetchZwiftRacingRider(riderId, fetcher = fetch) {
   try {
     console.log(`Fetching ZwiftRacing data for rider: ${riderId}`);
     const url = API_ENDPOINTS.zwiftRacing(riderId);
-    const res = await fetch(url);
+    const res = await fetcher(url);
 
     if (!res.ok) {
       console.warn(`ZwiftRacing fetch failed for rider ${riderId}: ${res.status}`);
@@ -123,7 +123,7 @@ export async function fetchZwiftRacingRider(riderId) {
  * Enrich a team's riders with ZwiftRacing data
  * Fetches vELO2 scores, power metrics, and other rider statistics
  */
-export async function enrichTeam(team) {
+export async function enrichTeam(team, fetcher = fetch) {
   if (!team || !team.riders) {
     throw new Error("Invalid team object");
   }
@@ -131,7 +131,7 @@ export async function enrichTeam(team) {
   const enriched = [];
 
   for (const rider of team.riders) {
-    const zrData = await fetchZwiftRacingRider(rider.id);
+    const zrData = await fetchZwiftRacingRider(rider.id, fetcher);
 
     // Check if rider has low sample size for data reliability warning
     const lowSampleWarning =

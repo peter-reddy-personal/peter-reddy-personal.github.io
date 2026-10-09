@@ -43,7 +43,7 @@ export function eligibleOpponents(team, teams) {
   return teams
     .filter((candidate) => candidate.number !== team.number)
     .filter((candidate) => candidate.positions?.region?.name === region.name)
-    .filter((candidate) => Math.abs(candidate.positions.region.rank - region.rank) <= 15)
+    .filter((candidate) => Math.abs(candidate.positions.region.rank - region.rank) <= 10)
     .sort((a, b) => a.positions.region.rank - b.positions.region.rank);
 }
 

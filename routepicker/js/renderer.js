@@ -66,6 +66,206 @@ export function populateOpponentDropdown(teams, selectorId = null) {
 }
 
 /**
+ * Render the selected team's ladder neighborhood and, when selected, the
+ * ladder span toward the away team.
+ */
+export function renderTeamLadderSummary(teams, homeTeamNumber, awayTeamNumber) {
+  const summary = document.getElementById("team-ladder-summary");
+  if (!summary) {
+    console.error("Team ladder summary element not found");
+    return;
+  }
+
+  summary.replaceChildren();
+  const homeTeam = teams.find((team) => team.number === homeTeamNumber);
+  const awayTeam = teams.find((team) => team.number === awayTeamNumber);
+  if (!homeTeam) {
+    summary.textContent = "Select a home team to see its ladder position.";
+    return;
+  }
+
+  const homeRegion = homeTeam.positions?.region;
+  const awayRegion = awayTeam?.positions?.region;
+  const sameRegion = Boolean(
+    awayTeam && homeRegion?.name && awayRegion?.name && homeRegion.name === awayRegion.name
+  );
+  const rankType = awayTeam
+    ? (sameRegion ? "region" : "world")
+    : (homeRegion?.name ? "region" : "world");
+  const positionLabel = rankType === "region" ? homeRegion.name : "World";
+  const rankLabel = positionLabel;
+  const getRank = (team) => {
+    const rank = rankType === "region" ? team.positions?.region?.rank : team.positions?.world;
+    return Number.isFinite(rank) ? rank : null;
+  };
+  const formatPosition = (team) => {
+    const rank = getRank(team);
+    return rank === null ? "Position unavailable" : `${rankLabel} #${rank}`;
+  };
+
+  const positions = document.createElement("div");
+  positions.className = "team-ladder-positions";
+  [
+    { team: homeTeam, label: "Home", className: "team-ladder-home" },
+    ...(awayTeam ? [{ team: awayTeam, label: "Away", className: "team-ladder-away" }] : [])
+  ].forEach(({ team, label, className }) => {
+    const item = document.createElement("p");
+    item.className = className;
+    const role = document.createElement("strong");
+    role.textContent = `${label}: `;
+    item.append(role, document.createTextNode(`${formatPosition(team)} — ${team.name}`));
+    positions.appendChild(item);
+  });
+  summary.appendChild(positions);
+
+  const rankedTeams = teams
+    .filter((team) => {
+      if (rankType === "region" && team.positions?.region?.name !== positionLabel) return false;
+      return getRank(team) !== null;
+    })
+    .sort((a, b) => getRank(a) - getRank(b) || a.name.localeCompare(b.name));
+  const homeIndex = rankedTeams.findIndex((team) => team.number === homeTeam.number);
+  const awayIndex = awayTeam
+    ? rankedTeams.findIndex((team) => team.number === awayTeam.number)
+    : -1;
+  if (homeIndex === -1 || (awayTeam && awayIndex === -1)) {
+    const message = document.createElement("p");
+    message.className = "team-ladder-unavailable";
+    message.textContent = "Ladder comparison is unavailable for these teams.";
+    summary.appendChild(message);
+    return;
+  }
+
+  const visibleIndexes = new Set();
+  if (awayIndex === -1) {
+    const homeStart = Math.max(0, homeIndex - 5);
+    const homeEnd = Math.min(rankedTeams.length - 1, homeIndex + 5);
+    for (let index = homeStart; index <= homeEnd; index += 1) {
+      visibleIndexes.add(index);
+    }
+  } else {
+    const direction = awayIndex < homeIndex ? -1 : 1;
+    const wrongDirection = -direction;
+    for (let offset = 1; offset <= 2; offset += 1) {
+      const index = homeIndex + wrongDirection * offset;
+      if (index >= 0 && index < rankedTeams.length) visibleIndexes.add(index);
+    }
+
+    visibleIndexes.add(homeIndex);
+    for (let offset = 1; offset <= 5; offset += 1) {
+      const index = homeIndex + direction * offset;
+      if ((direction < 0 && index < awayIndex) || (direction > 0 && index > awayIndex)) break;
+      visibleIndexes.add(index);
+    }
+
+    visibleIndexes.add(awayIndex);
+    for (let offset = 1; offset <= 2; offset += 1) {
+      const index = awayIndex + direction * offset;
+      if (index >= 0 && index < rankedTeams.length) visibleIndexes.add(index);
+    }
+
+    for (let offset = 6; offset < Math.abs(awayIndex - homeIndex) && visibleIndexes.size < 15; offset += 1) {
+      visibleIndexes.add(homeIndex + direction * offset);
+    }
+  }
+  const orderedIndexes = [...visibleIndexes].sort((a, b) => a - b);
+
+  const averageFactors = [
+    { key: "sprint", label: "SPR", weight: 0.103 },
+    { key: "punch", label: "PUN", weight: 0.215 },
+    { key: "climb", label: "CLI", weight: 0.131 },
+    { key: "pursuit", label: "PUR", weight: 0.2 },
+    { key: "endurance", label: "END", weight: 0.351 }
+  ];
+  const table = document.createElement("table");
+  table.className = "results-table team-ladder-table";
+  const columns = document.createElement("colgroup");
+  [7, 41, ...averageFactors.map(() => 8), 12].forEach((width) => {
+    const column = document.createElement("col");
+    column.style.width = `${width}%`;
+    columns.appendChild(column);
+  });
+  table.appendChild(columns);
+
+  const head = document.createElement("thead");
+  const averageRow = document.createElement("tr");
+  const rankHeading = document.createElement("th");
+  rankHeading.rowSpan = 2;
+  rankHeading.scope = "col";
+  rankHeading.textContent = "Rank";
+  const teamHeading = document.createElement("th");
+  teamHeading.rowSpan = 2;
+  teamHeading.scope = "col";
+  teamHeading.textContent = "Team";
+  const averagesHeading = document.createElement("th");
+  averagesHeading.colSpan = averageFactors.length + 1;
+  averagesHeading.scope = "colgroup";
+  averagesHeading.textContent = "Team vELO2 averages";
+  averageRow.append(rankHeading, teamHeading, averagesHeading);
+  head.appendChild(averageRow);
+
+  const factorRow = document.createElement("tr");
+  averageFactors.forEach((factor) => {
+    const cell = document.createElement("th");
+    cell.scope = "col";
+    if (factor.key === "sprint") cell.className = "team-ladder-sprint-heading";
+    cell.textContent = factor.label;
+    factorRow.appendChild(cell);
+  });
+  const totalHeading = document.createElement("th");
+  totalHeading.scope = "col";
+  totalHeading.textContent = "Total";
+  factorRow.appendChild(totalHeading);
+  head.appendChild(factorRow);
+  table.appendChild(head);
+
+  const body = document.createElement("tbody");
+  orderedIndexes.forEach((teamIndex, index) => {
+    const previousIndex = orderedIndexes[index - 1];
+    if (index > 0 && teamIndex - previousIndex > 1) {
+      const omittedRow = document.createElement("tr");
+      omittedRow.className = "team-ladder-omitted";
+      const omittedCell = document.createElement("td");
+      omittedCell.colSpan = 3 + averageFactors.length;
+      omittedCell.textContent = `… ${teamIndex - previousIndex - 1} teams omitted …`;
+      omittedRow.appendChild(omittedCell);
+      body.appendChild(omittedRow);
+    }
+
+    const team = rankedTeams[teamIndex];
+    const row = document.createElement("tr");
+    if (team.number === homeTeam.number) row.classList.add("team-ladder-home");
+    if (awayTeam && team.number === awayTeam.number) row.classList.add("team-ladder-away");
+    const positionCell = document.createElement("td");
+    positionCell.textContent = String(getRank(team));
+    const teamCell = document.createElement("td");
+    teamCell.textContent = team.name;
+    const factorScores = averageFactors.map((factor) => team.averages?.[factor.key]);
+    const weightedTotal = factorScores.every(Number.isFinite)
+      ? averageFactors.reduce(
+          (total, factor) => total + team.averages[factor.key] * factor.weight,
+          0
+        )
+      : NaN;
+    const totalCell = document.createElement("td");
+    totalCell.textContent = formatNumber(weightedTotal, 0);
+    row.append(
+      positionCell,
+      teamCell,
+      ...averageFactors.map((factor) => {
+        const cell = document.createElement("td");
+        cell.textContent = formatNumber(team.averages?.[factor.key], 0);
+        return cell;
+      }),
+      totalCell
+    );
+    body.appendChild(row);
+  });
+  table.appendChild(body);
+  summary.appendChild(table);
+}
+
+/**
  * Populate route selectors and keep the route list filtered by world.
  */
 export function populateRouteSelectors(routes, world = "") {

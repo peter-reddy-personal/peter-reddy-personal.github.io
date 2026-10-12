@@ -7,6 +7,7 @@ const format = (value) => {
   const rounded = Math.round(value);
   return rounded === 0 ? "N/A" : String(rounded);
 };
+const formatDifference = (value) => Number.isFinite(value) ? String(Math.round(value)) : "N/A";
 const formatPoints = (points) => {
   const home = Math.round(points.home);
   const total = Math.round(points.home + points.away);
@@ -92,7 +93,7 @@ export function renderSummary(summary) {
             <img src="${generateElevationUrl(summary.suggestedRoute.World, summary.suggestedRoute.Route)}" alt="${summary.suggestedRoute.Route} elevation profile">
           </div>`
         : "")
-    : "<p>No qualifying opponents found.</p>";
+    : `<p>${summary.total ? "No factor averages available for qualifying opponents." : "No qualifying opponents found."}</p>`;
 }
 
 export function renderComparisons(comparisons, selectedTeam) {
@@ -103,7 +104,7 @@ export function renderComparisons(comparisons, selectedTeam) {
   el(SELECTORS.comparisons).innerHTML = rows.length ? rows.map((row) => row.type === "selected"
     ? `<tr class="selected-team-row"><td><strong>${row.selectedTeam.name}</strong> <span class="selected-label">Selected team</span></td><td>${row.rank}</td><td colspan="5">—</td><td>Baseline team</td></tr>`
     : `<tr><td>${row.comparison.name}</td><td>${row.rank}</td>
-      ${FACTORS.map(({ key }) => `<td class="${row.comparison.differences[key] >= 0 ? "positive" : "negative"}">${format(row.comparison.differences[key])}</td>`).join("")}
+      ${FACTORS.map(({ key }) => `<td class="${Number.isFinite(row.comparison.differences[key]) ? row.comparison.differences[key] >= 0 ? "positive" : "negative" : ""}">${formatDifference(row.comparison.differences[key])}</td>`).join("")}
       <td class="${row.comparison.points.home > row.comparison.points.away ? "expected-win" : "expected-loss"}">${formatPoints(row.comparison.points)}</td></tr>`).join("")
     : `<tr><td colspan="8">No reasonable opponents found for this team.</td></tr>`;
 }

@@ -1,9 +1,9 @@
 import { fetchAllTeams, fetchAllRoutes } from "../../routepicker/js/api.js?v=20261008";
-import { enrichTeam } from "./api.js?v=20261009";
+import { enrichTeam } from "./api.js?v=20261012";
 import { STORAGE_KEYS, SELECTORS } from "./config.js?v=20260916";
 import { state, loadSavedState, saveState } from "./state.js?v=20260916";
-import { eligibleOpponents, compareTeam, aggregateComparisons } from "./calculations.js?v=20261008";
-import { populateTeams, renderRiders, renderSummary, renderComparisons, renderContext, renderLoadingState, showStatus } from "./renderer.js?v=20261008";
+import { eligibleOpponents, compareTeam, aggregateComparisons } from "./calculations.js?v=20261012-2";
+import { populateTeams, renderRiders, renderSummary, renderComparisons, renderContext, renderLoadingState, showStatus } from "./renderer.js?v=20261012";
 
 const select = () => document.querySelector(SELECTORS.team);
 
@@ -35,13 +35,7 @@ async function loadTeam(teamNumber) {
   const enrichedHome = await enrichTeam(team);
   state.riders = enrichedHome.map((rider) => ({ ...rider, selected: savedRiders.get(String(rider.id)) ?? true }));
   const opponents = eligibleOpponents(team, state.teams);
-  const enrichedOpponents = await Promise.all(
-    opponents.map(async (opponent) => ({
-      ...opponent,
-      riders: (await enrichTeam(opponent)).map((rider) => ({ ...rider, selected: true }))
-    }))
-  );
-  state.comparisons = enrichedOpponents.map((opponent) => compareTeam(state.riders, opponent));
+  state.comparisons = opponents.map((opponent) => compareTeam(state.riders, opponent));
   renderContext(team, state.comparisons.length);
   renderRiders(state.riders);
   renderSummary(aggregateComparisons(state.comparisons, team, state.teams, state.routes));

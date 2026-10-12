@@ -215,6 +215,65 @@ body {
   border-color: #999;
 }
 
+.team-ladder-summary {
+  margin-top: 18px;
+}
+
+.team-ladder-positions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 10px;
+}
+
+.team-ladder-positions p {
+  margin: 0;
+}
+
+.team-ladder-home {
+  background: #e8f1ff;
+}
+
+.team-ladder-away {
+  background: #fff0f0;
+}
+
+.team-ladder-home.team-ladder-away {
+  background: #eee8ff;
+}
+
+.team-ladder-table thead th {
+  position: static;
+}
+
+.results-table.team-ladder-table thead th.team-ladder-sprint-heading {
+  text-align: center;
+}
+
+.team-ladder-table tbody tr.team-ladder-home td,
+.team-ladder-table tbody tr.team-ladder-away td {
+  font-weight: 700;
+}
+
+.team-ladder-table tbody tr.team-ladder-home td {
+  background: #e8f1ff;
+}
+
+.team-ladder-table tbody tr.team-ladder-away td {
+  background: #fff0f0;
+}
+
+.team-ladder-table tbody tr.team-ladder-home.team-ladder-away td {
+  background: #eee8ff;
+}
+
+.team-ladder-table tbody tr.team-ladder-omitted td,
+.team-ladder-unavailable {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
 .route-selection {
   display: flex;
   flex-direction: column;

@@ -21,6 +21,7 @@ import {
   renderAverages,
   renderBeeswarm,
   renderResults,
+  renderTeamLadderSummary,
   populateRouteSelectors,
   renderRouteRiderRankings,
   renderExpectedPoints,
@@ -77,6 +78,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     } else {
       appState.setAwayRiders([]);
     }
+    updateTeamLadderSummary();
 
     // ===== ATTACH EVENT LISTENERS =====
     attachEventListeners();
@@ -101,6 +103,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 function attachEventListeners() {
   // Home team selection
   document.getElementById(DOM_SELECTORS.homeTeamSelect.replace("#", "")).addEventListener("change", async () => {
+    updateTeamLadderSummary();
     await loadHomeTeam();
     appState.saveRiders();
     performCalculation();
@@ -108,6 +111,7 @@ function attachEventListeners() {
 
   // Away team selection
   document.getElementById(DOM_SELECTORS.awayTeamSelect.replace("#", "")).addEventListener("change", async () => {
+    updateTeamLadderSummary();
     await loadAwayTeam();
     appState.saveRiders();
     performCalculation();
@@ -227,6 +231,12 @@ function attachEventListeners() {
       }
     }
   });
+}
+
+function updateTeamLadderSummary() {
+  const homeTeamNumber = Number(document.getElementById(DOM_SELECTORS.homeTeamSelect.replace("#", "")).value);
+  const awayTeamNumber = Number(document.getElementById(DOM_SELECTORS.awayTeamSelect.replace("#", "")).value);
+  renderTeamLadderSummary(appState.allTeams, homeTeamNumber, awayTeamNumber);
 }
 
 // =========================================================================

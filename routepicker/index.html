@@ -26,8 +26,8 @@
       to analyse every Zwift route and show where your team has the biggest advantage.
     </p>
     <p>
-      Team rosters are taken from a cached version of the Club Ladder site, and may 
-      miss recently added or removed riders (within the last few days).
+      Team rosters and ladder rankings are taken from a cached version of the Club Ladder site, 
+      and may miss recently added or removed riders (within the last few days).
     </p> 
     <p>
       vELO2 (current) and power (90d best) data is taken from ZwiftRacing.app.
@@ -56,9 +56,7 @@
       emphasises sprint and punch, while a 5 minute wall finish like 
       <a href="https://zwiftinsider.com/route/petite-douleur/" target="_blank">Petite Douleur</a> 
       is entirely weighted toward climbing. Pursuit and endurance measure how well a rider survives the 
-      demands of shorter and longer races. <a href="https://www.zwiftracing.app/reference/routes" target="_blank">Here</a> 
-      is a list of all the route weightings.
-      
+      demands of shorter and longer races.
     </p>
 
     <p>
@@ -173,14 +171,18 @@
         <span class="power-slider"></span>
       </label>
 
-      <span class="control-label">Ladder routes only</span>
+      <span class="control-label" title="These are routes that have been used in ladder races in the last six months.">Ladder routes only</span>
+      <span class="help-indicator" title="These are routes that have been used in ladder races in the last six months." aria-label="More information about ladder routes">?</span>
     </div>
 
     <!-- RIGHT: Randomness slider -->
     <div class="randomness-col">
 
       <div class="randomness-inner">
-        <label class="randomness-title">Route suggestion randomness</label>
+        <div class="randomness-heading">
+          <label class="randomness-title" title="If only the best vELO routes are used, the same routes tend to get suggested over and over again, which gets a bit dull. Randomness adds some variation.">Route suggestion randomness</label>
+          <span class="help-indicator" title="If only the best vELO routes are used, the same routes tend to get suggested over and over again, which gets a bit dull. Randomness adds some variation." aria-label="More information about route suggestion randomness">?</span>
+        </div>
 
         <div class="randomness-control">
           <span class="randomness-label-left">Only use best vELO</span>
@@ -235,6 +237,7 @@
 
   <div class="table-notes">
     <div>Length and elevation excludes lead‑in</div>
+    <div>Click a row (not the route name) to see the route profile</div>
   </div>
 </section>
 
@@ -277,6 +280,7 @@
 
   <div class="table-notes">
     <div>Length and elevation excludes lead‑in</div>
+    <div>Click a row (not the route name) to see the route profile</div>
   </div>
 
 </section>

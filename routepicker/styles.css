@@ -623,6 +623,21 @@ body {
   color: #333;
 }
 
+.help-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  color: #555;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: help;
+}
+
 /* Right column: randomness slider */
 .randomness-col {
   display: flex;
@@ -636,6 +651,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;   /* centers the title over the slider block */
+  gap: 6px;
+}
+
+.randomness-heading {
+  display: flex;
+  align-items: center;
   gap: 6px;
 }
 

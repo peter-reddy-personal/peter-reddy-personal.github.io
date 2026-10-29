@@ -7,8 +7,10 @@ import { API_ENDPOINTS, LOW_SAMPLE_THRESHOLD } from "./config.js";
 const PHENOTYPE_LABELS = {
   sprinter: "Sprinter",
   puncher: "Puncher",
+  puncheur: "Puncheur",
   allRounder: "All rounder",
   climber: "Climber",
+  pursuiter: "Pursuiter",
   tt: "Time trialist"
 };
 
